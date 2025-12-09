@@ -22,7 +22,7 @@ in
       settings = {
         font-family = "JetBrainsMono NFM Regular";
         font-size = 19;
-        theme = "Catppuccin Frappe";
+        theme = "Catppuccin Mocha";
         window-padding-color = "extend";
         window-padding-x = 4;
       };

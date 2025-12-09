@@ -13,7 +13,7 @@
     programs = {
       tmux = {
         enable = true;
-        terminal = "tmux-256color";
+        terminal = "xterm-256color";
         shell = "\$SHELL";
         escapeTime = 0;
         mouse = true;
@@ -23,7 +23,7 @@
           {
             plugin = tmuxPlugins.catppuccin;
             extraConfig = ''
-              set -g @catppuccin_flavor "frappe"
+              set -g @catppuccin_flavor "mocha"
               set -g @catppuccin_status_background "none"
 
               set -g @catppuccin_window_number_position "right"
