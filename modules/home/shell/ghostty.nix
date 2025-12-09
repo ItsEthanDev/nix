@@ -21,10 +21,10 @@ in
       installBatSyntax = true;
       settings = {
         font-family = "JetBrainsMono NFM Regular";
-        font-size = 16;
+        font-size = 19;
         theme = "Catppuccin Frappe";
-        window-padding-x = 8;
-        window-padding-y = 2;
+        window-padding-color = "extend";
+        window-padding-x = 4;
       };
     };
   };
