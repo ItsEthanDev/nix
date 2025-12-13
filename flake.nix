@@ -1,5 +1,5 @@
 {
-  description = "My NixOS configuration flake";
+  description = "It's Ethan's configuration flake";
 
   inputs = {
     home-manager = {
