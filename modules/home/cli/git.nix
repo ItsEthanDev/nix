@@ -18,52 +18,54 @@
     };
   };
 
-  config = lib.mkIf config.itsEthan.cli.git.enable {
-    programs.git = {
-      enable = true;
-      userEmail = config.itsEthan.cli.git.email;
-      userName = config.itsEthan.cli.git.name;
-      extraConfig = {
-        advice = {
-          skippedCherryPicks = false;
-        };
-        core = {
-          compression = 9;
-          whitespace = "error";
-          preloadindex = true;
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        log = {
-          abbrevCommit = true;
-        };
-        pull = {
-          default = "current";
-          rebase = true;
-        };
-        push = {
-          autoSetupRemote = true;
-          default = "current";
-          followTags = true;
-        };
-        rebase = {
-          autostash = true;
-          missingCommitsCheck = "warn";
-        };
-        status = {
-          branch = true;
-          showStash = true;
-          showUntrackedFiles = "all";
-        };
-        "url \"git@github.com:EthanJ-Brady/\"" = {
-          insteadOf = "me:";
-        };
-      };
-      aliases = {
-        last = "log -1 HEAD";
-      };
-    };
+   config = lib.mkIf config.itsEthan.cli.git.enable {
+     programs.git = {
+       enable = true;
+       settings = {
+         user = {
+           email = config.itsEthan.cli.git.email;
+           name = config.itsEthan.cli.git.name;
+         };
+         alias = {
+           last = "log -1 HEAD";
+         };
+         advice = {
+           skippedCherryPicks = false;
+         };
+         core = {
+           compression = 9;
+           whitespace = "error";
+           preloadindex = true;
+         };
+         init = {
+           defaultBranch = "main";
+         };
+         log = {
+           abbrevCommit = true;
+         };
+         pull = {
+           default = "current";
+           rebase = true;
+         };
+         push = {
+           autoSetupRemote = true;
+           default = "current";
+           followTags = true;
+         };
+         rebase = {
+           autostash = true;
+           missingCommitsCheck = "warn";
+         };
+         status = {
+           branch = true;
+           showStash = true;
+           showUntrackedFiles = "all";
+         };
+         "url \"git@github.com:EthanJ-Brady/\"" = {
+           insteadOf = "me:";
+         };
+       };
+     };
 
     programs.zsh.shellAliases = {
       gd = "git diff";
