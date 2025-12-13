@@ -19,6 +19,7 @@
   config = lib.mkIf config.itsEthan.shell.enable {
     home.sessionVariables.EDITOR = "vim";
     programs.zellij.enable = true;
+    programs.lazygit.enable = true;
 
     itsEthan.shell.carapace.enable = true;
     itsEthan.shell.ghostty.enable = true;
