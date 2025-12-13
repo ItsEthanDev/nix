@@ -44,8 +44,18 @@
               };
               users.ethan = {
                 imports = [
-                  ./hosts/newton/home.nix
-                  ./modules/home
+                  ./homes/aarch64-darwin/newton
+                  ./modules/home/carapace
+                  ./modules/home/cli
+                  ./modules/home/ghostty
+                  ./modules/home/git
+                  ./modules/home/javascript
+                  ./modules/home/lazygit
+                  ./modules/home/nvim
+                  ./modules/home/oh-my-posh
+                  ./modules/home/ssh
+                  ./modules/home/zellij
+                  ./modules/home/zsh
                 ];
               };
             };
