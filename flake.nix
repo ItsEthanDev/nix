@@ -14,6 +14,7 @@
 
     catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    zen-browser.url = "github:youwen5/zen-browser-flake";
   };
 
   outputs = {
@@ -85,6 +86,7 @@
           ./modules/nixos/tailscale
           ./modules/nixos/user
           ./modules/nixos/wayland
+          ./modules/nixos/zen
           ./modules/nixos/zsa
           home-manager.nixosModules.home-manager
           {
