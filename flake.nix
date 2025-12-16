@@ -71,11 +71,15 @@
 
     nixosConfigurations = {
       turing = nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           ./systems/x86_64-linux/turing
           ./modules/nixos/audio
           ./modules/nixos/bluetooth
           ./modules/nixos/catppuccin
+          ./modules/nixos/boot
           ./modules/nixos/font
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
@@ -92,12 +96,10 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              users.turing = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  inherit inputs;
-                };
+              extraSpecialArgs = {
+                inherit inputs;
+              };
+              users.ethan = {
                 imports = [
                   ./homes/x86_64-linux/turing
                   ./modules/home/banana-cursor
@@ -114,7 +116,6 @@
                   ./modules/home/oh-my-posh
                   ./modules/home/ssh
                   ./modules/home/zellij
-                  ./modules/home/zen
                   ./modules/home/zsh
                 ];
               };

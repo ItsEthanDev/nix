@@ -16,7 +16,7 @@
     };
   };
 
-  config = lib.mkIf config.itsEthan.locale.enable {
+  config = {
     time.timeZone = config.itsEthan.locale.timezone;
     i18n.defaultLocale = config.itsEthan.locale.identifier;
     i18n.extraLocaleSettings = {

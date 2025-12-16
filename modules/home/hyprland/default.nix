@@ -27,8 +27,8 @@
 
         # TODO Switch off a raise
 
-        "SUPER_SHIFT, return, exec, raise -c \"com.mitchellh.ghostty\" -e \"ghostty\""
-        "SUPER_SHIFT, I, exec, raise -c \"vesktop\" -e \"vesktop\""
+        "SUPER_SHIFT, return, exec, ghostty"
+        "SUPER_SHIFT, I, exec, vesktop"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
 
         "SUPER, W, killactive"
@@ -72,6 +72,7 @@
         "SUPER_ALT, 6, movetoworkspace, 6"
         "SUPER_ALT, 7, movetoworkspace, 7"
         "SUPER_ALT, 8, movetoworkspace, 8"
+        "SUPER_ALT, 9, movetoworkspace, 9"
 
         "SUPER, F, fullscreen, 0"
         "SUPER, T, togglefloating"
