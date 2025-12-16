@@ -11,6 +11,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
@@ -55,6 +57,59 @@
                   ./modules/home/oh-my-posh
                   ./modules/home/ssh
                   ./modules/home/zellij
+                  ./modules/home/zsh
+                ];
+              };
+            };
+          }
+        ];
+      };
+    };
+
+    nixosConfigurations = {
+      turing = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./systems/x86_64-linux/turing
+          ./modules/nixos/audio
+          ./modules/nixos/bluetooth
+          ./modules/nixos/catppuccin
+          ./modules/nixos/font
+          ./modules/nixos/hyprland
+          ./modules/nixos/locale
+          ./modules/nixos/network
+          ./modules/nixos/nix
+          ./modules/nixos/ssh
+          ./modules/nixos/sunshine
+          ./modules/nixos/tailscale
+          ./modules/nixos/user
+          ./modules/nixos/wayland
+          ./modules/nixos/zsa
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              users.turing = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
+                imports = [
+                  ./homes/x86_64-linux/turing
+                  ./modules/home/banana-cursor
+                  ./modules/home/carapace
+                  ./modules/home/catppuccin
+                  ./modules/home/cli
+                  ./modules/home/ghostty
+                  ./modules/home/git
+                  ./modules/home/hyprland
+                  ./modules/home/javascript
+                  ./modules/home/lazygit
+                  ./modules/home/mangohud
+                  ./modules/home/nvim
+                  ./modules/home/oh-my-posh
+                  ./modules/home/ssh
+                  ./modules/home/zellij
+                  ./modules/home/zen
                   ./modules/home/zsh
                 ];
               };
