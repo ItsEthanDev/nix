@@ -7,6 +7,7 @@
     ripgrep
     fd
     zk
+    opencode
   ];
 
   programs = {
