@@ -13,6 +13,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     catppuccin.url = "github:catppuccin/nix";
+    nix-gaming.url = "github:fufexan/nix-gaming";
   };
 
   outputs = {
@@ -74,6 +75,7 @@
           ./modules/nixos/bluetooth
           ./modules/nixos/catppuccin
           ./modules/nixos/font
+          ./modules/nixos/gaming
           ./modules/nixos/hyprland
           ./modules/nixos/locale
           ./modules/nixos/network
