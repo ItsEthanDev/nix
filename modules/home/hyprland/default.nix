@@ -22,16 +22,17 @@
       ];
       bind = [
         # Find clients by looking for `class: <class>` in `hyprctl clients`
-        # TODO: setup zen browser
-        # "SUPER_SHIFT, B, exec, raise -c \"brave-browser\" -e \"brave\""
-
-        # TODO Switch off a raise
-
         "SUPER_SHIFT, return, exec, ghostty"
         "SUPER_SHIFT, I, exec, vesktop"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
+        "SUPER_SHIFT, B, exec, zen"
 
         "SUPER, W, killactive"
+
+        "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
+        "SUPER, V, sendshortcut, Shift, Insert, activewindow"
+        "SUPER, X, sendshortcut, CTRL, X, activewindow"
+        "SUPER, A, sendshortcut, CTRL, A, activewindow"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust_zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust_zoom.sh 1.25"
