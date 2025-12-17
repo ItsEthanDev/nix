@@ -6,5 +6,8 @@
   catppuccin = {
     enable = true;
     flavor = "mocha";
+    zsh-syntax-highlighting = {
+      enable = false;
+    };
   };
 }
