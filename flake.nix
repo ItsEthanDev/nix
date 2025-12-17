@@ -15,6 +15,7 @@
     catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
     zen-browser.url = "github:youwen5/zen-browser-flake";
+    lazyvim.url = "github:pfassina/lazyvim-nix";
     walker.url = "github:abenz1267/walker";
   };
 
