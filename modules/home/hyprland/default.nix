@@ -42,6 +42,10 @@
         "SUPER, O, pin"
         "SUPER, P, exec, hyprshot -m output -m active -o ~/Screenshots"
 
+        # TOGGLES
+        "SUPER_CTRL, D, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust_zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust_zoom.sh 1.25"
         "SUPER, mouse:274, exec, ~/.config/hypr/adjust_zoom.sh 0"
