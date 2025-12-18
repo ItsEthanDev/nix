@@ -22,12 +22,15 @@
       ];
       bind = [
         # Find clients by looking for `class: <class>` in `hyprctl clients`
+
+        # LAUNCH
         "SUPER_SHIFT, return, exec, ghostty"
         "SUPER_SHIFT, I, exec, vesktop"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
         "SUPER_SHIFT, B, exec, zen"
-        "SUPER_SHIFT, P, exec, hyprshot -m region"
+        "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ~/Screenshots"
 
+        # ACTIONS
         "SUPER, W, killactive"
         "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
         "SUPER, V, sendshortcut, CTRL_SHIFT, V, activewindow"
@@ -36,7 +39,7 @@
         "SUPER, F, fullscreen, 0"
         "SUPER, T, togglefloating"
         "SUPER, O, pin"
-        "SUPER, P, exec, hyprshot -m output"
+        "SUPER, P, exec, hyprshot -m output -m active -o ~/Screenshots"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust_zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust_zoom.sh 1.25"
