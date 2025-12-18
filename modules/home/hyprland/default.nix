@@ -41,6 +41,7 @@
         "SUPER, T, togglefloating"
         "SUPER, O, pin"
         "SUPER, P, exec, hyprshot -m output -m active -o ~/Screenshots"
+        "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
 
         # TOGGLES
         "SUPER_CTRL, D, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -107,6 +108,7 @@
     hyprpicker
     hyprshot
     hyprsunset
+    satty
     bc # for adjust_zoom.sh
   ];
 }
