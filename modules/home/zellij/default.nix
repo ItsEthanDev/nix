@@ -1,4 +1,6 @@
-{...}: {
+{pkgs, ...}: let
+  copyCommand = if pkgs.stdenv.isLinux then "wl-copy" else "pbcopy";
+in {
   programs.zellij.enable = true;
 
   programs.zellij.layouts = {
@@ -182,5 +184,7 @@
     default_layout "simple"
     pane_frames false
     show_startup_tips false
+    copy_command "${copyCommand}"
+    copy_on_select true
   '';
 }

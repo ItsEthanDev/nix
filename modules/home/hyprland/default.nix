@@ -30,7 +30,7 @@
         "SUPER, W, killactive"
 
         "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
-        "SUPER, V, sendshortcut, Shift, Insert, activewindow"
+        "SUPER, V, sendshortcut, CTRL_SHIFT, V, activewindow"
         "SUPER, X, sendshortcut, CTRL, X, activewindow"
         "SUPER, A, sendshortcut, CTRL, A, activewindow"
 
