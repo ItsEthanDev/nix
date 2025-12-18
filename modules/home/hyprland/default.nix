@@ -29,6 +29,7 @@
         "SUPER_SHIFT, C, exec, hyprpicker -a"
         "SUPER_SHIFT, B, exec, zen"
         "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ~/Screenshots"
+        "SUPER_SHIFT, S, exec, steam"
 
         # ACTIONS
         "SUPER, W, killactive"
