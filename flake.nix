@@ -107,6 +107,7 @@
                   ./modules/home/carapace
                   ./modules/home/catppuccin
                   ./modules/home/cli
+                  ./modules/home/discord
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/hyprland
