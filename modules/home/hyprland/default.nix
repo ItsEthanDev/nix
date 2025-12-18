@@ -26,21 +26,21 @@
         "SUPER_SHIFT, I, exec, vesktop"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
         "SUPER_SHIFT, B, exec, zen"
+        "SUPER_SHIFT, P, exec, hyprshot -m region"
 
         "SUPER, W, killactive"
-
         "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
         "SUPER, V, sendshortcut, CTRL_SHIFT, V, activewindow"
         "SUPER, X, sendshortcut, CTRL, X, activewindow"
         "SUPER, A, sendshortcut, CTRL, A, activewindow"
+        "SUPER, F, fullscreen, 0"
+        "SUPER, T, togglefloating"
+        "SUPER, O, pin"
+        "SUPER, P, exec, hyprshot -m output"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust_zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust_zoom.sh 1.25"
         "SUPER, mouse:274, exec, ~/.config/hypr/adjust_zoom.sh 0"
-
-        "SUPER, P, exec, hyprshot -m output"
-        "SUPER_CTRL, P, exec, hyprshot -m region"
-        "SUPER_ALT, P, exec, hyprshot -m window"
 
         "SUPER, H, movefocus, l"
         "SUPER, J, movefocus, d"
@@ -74,10 +74,6 @@
         "SUPER_ALT, 7, movetoworkspace, 7"
         "SUPER_ALT, 8, movetoworkspace, 8"
         "SUPER_ALT, 9, movetoworkspace, 9"
-
-        "SUPER, F, fullscreen, 0"
-        "SUPER, T, togglefloating"
-        "SUPER, O, pin"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
