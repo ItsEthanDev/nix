@@ -24,6 +24,7 @@
       shfmt
       stylua
       tailwindcss-language-server
+      tree-sitter
       typescript-language-server
       vscode-json-languageserver
       vtsls
