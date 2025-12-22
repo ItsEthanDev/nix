@@ -52,7 +52,9 @@
                 imports = [
                   ./homes/aarch64-darwin/newton
                   ./modules/home/carapace
+                  ./modules/home/catppuccin
                   ./modules/home/cli
+                  ./modules/home/fish
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/javascript
@@ -60,6 +62,7 @@
                   ./modules/home/nvim
                   ./modules/home/oh-my-posh
                   ./modules/home/ssh
+                  ./modules/home/starship
                   ./modules/home/zellij
                   ./modules/home/zsh
                 ];
