@@ -34,6 +34,17 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    fish = {
+      shellAliases = {
+        cat = "bat";
+        cd = "z";
+        ls = "eza --icons=always";
+        ll = "eza -lh";
+        l = "eza -lah";
+        tree = "eza -T";
+      };
+    };
     zsh = {
       shellAliases = {
         cat = "bat";
