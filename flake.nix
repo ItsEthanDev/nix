@@ -39,6 +39,7 @@
           ./modules/darwin/ghostty
           ./modules/darwin/homebrew
           ./modules/darwin/network
+          ./modules/darwin/nix
           ./modules/darwin/settings
           home-manager.darwinModules.home-manager
           {
