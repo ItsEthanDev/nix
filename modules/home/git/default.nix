@@ -11,7 +11,7 @@
     };
     name = lib.mkOption {
       type = lib.types.str;
-      default = "EthanJ-Brady";
+      default = "ItsEthanXYZ";
       description = "The name to use for git commits";
     };
   };
