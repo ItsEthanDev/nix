@@ -10,6 +10,7 @@ in {
     enable = true;
     package = lib.mkIf isDarwin ghostty-mock;
     enableZshIntegration = true;
+    enableFishIntegration = true;
     installBatSyntax = true;
     settings = {
       font-family = "JetBrainsMono NFM Regular";
