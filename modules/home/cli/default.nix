@@ -15,12 +15,14 @@
     eza = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       git = true;
       icons = "auto";
     };
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       fileWidgetOptions = [
         "-i"
         "-e"
@@ -33,6 +35,7 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     fish = {

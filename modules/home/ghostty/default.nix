@@ -13,6 +13,7 @@ in {
     enableFishIntegration = true;
     installBatSyntax = true;
     settings = {
+      command = "${pkgs.fish}/bin/fish";
       font-family = "JetBrainsMono NFM Regular";
       font-size = 19;
       theme = "Catppuccin Mocha";
