@@ -15,7 +15,6 @@ in {
     neofetch
     ripgrep
     fd
-    opencode
   ];
 
   programs = {
