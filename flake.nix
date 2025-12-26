@@ -41,6 +41,7 @@
           ./modules/darwin/network
           ./modules/darwin/nix
           ./modules/darwin/settings
+          ./modules/darwin/user
           home-manager.darwinModules.home-manager
           {
             home-manager = {
