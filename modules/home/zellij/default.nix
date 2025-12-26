@@ -1,5 +1,8 @@
 {pkgs, ...}: let
-  copyCommand = if pkgs.stdenv.isLinux then "wl-copy" else "pbcopy";
+  copyCommand =
+    if pkgs.stdenv.isLinux
+    then "wl-copy"
+    else "pbcopy";
 in {
   programs.zellij.enable = true;
 

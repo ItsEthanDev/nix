@@ -10,6 +10,7 @@
     interactiveShellInit = ''
       fish_vi_key_bindings
       set fish_greeting
+      set -gx SHELL (which fish)
     '';
   };
 }

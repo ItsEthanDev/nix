@@ -36,12 +36,12 @@
         modules = [
           ./systems/aarch64-darwin/newton
           ./modules/darwin/aerospace
+          ./modules/darwin/fish
           ./modules/darwin/ghostty
           ./modules/darwin/homebrew
           ./modules/darwin/network
           ./modules/darwin/nix
           ./modules/darwin/settings
-          ./modules/darwin/user
           home-manager.darwinModules.home-manager
           {
             home-manager = {
