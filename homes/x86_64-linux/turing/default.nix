@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -18,4 +18,16 @@
   home.homeDirectory = "/home/ethan";
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;
+
+  xdg.desktopEntries.nemo = {
+    name = "Nemo";
+    exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+  };
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = ["nemo.desktop"];
+      "application/x-gnome-saved-search" = ["nemo.desktop"];
+    };
+  };
 }
