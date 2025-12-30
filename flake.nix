@@ -36,9 +36,11 @@
         modules = [
           ./systems/aarch64-darwin/newton
           ./modules/darwin/aerospace
+          ./modules/darwin/fish
           ./modules/darwin/ghostty
           ./modules/darwin/homebrew
           ./modules/darwin/network
+          ./modules/darwin/nix
           ./modules/darwin/settings
           home-manager.darwinModules.home-manager
           {
@@ -51,15 +53,17 @@
               users.ethan = {
                 imports = [
                   ./homes/aarch64-darwin/newton
-                  ./modules/home/carapace
+                  ./modules/home/catppuccin
                   ./modules/home/cli
+                  ./modules/home/fish
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/javascript
                   ./modules/home/lazygit
                   ./modules/home/nvim
-                  ./modules/home/oh-my-posh
+                  ./modules/home/opencode
                   ./modules/home/ssh
+                  ./modules/home/starship
                   ./modules/home/zellij
                   ./modules/home/zsh
                 ];
@@ -105,7 +109,6 @@
                 imports = [
                   ./homes/x86_64-linux/turing
                   ./modules/home/banana-cursor
-                  ./modules/home/carapace
                   ./modules/home/catppuccin
                   ./modules/home/cli
                   ./modules/home/discord
@@ -116,7 +119,7 @@
                   ./modules/home/lazygit
                   ./modules/home/mangohud
                   ./modules/home/nvim
-                  ./modules/home/oh-my-posh
+                  ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/zellij
                   ./modules/home/zsh

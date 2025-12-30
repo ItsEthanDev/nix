@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  shellAliases = {
+    cat = "bat";
+    cd = "z";
+    ls = "eza --icons=always";
+    ll = "eza -lh";
+    l = "eza -lah";
+    tree = "eza -T";
+  };
+in {
   home.packages = with pkgs; [
     unzip
     zip
@@ -6,8 +15,6 @@
     neofetch
     ripgrep
     fd
-    zk
-    opencode
   ];
 
   programs = {
@@ -15,12 +22,14 @@
     eza = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       git = true;
       icons = "auto";
     };
     fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       fileWidgetOptions = [
         "-i"
         "-e"
@@ -33,16 +42,10 @@
     zoxide = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
-    zsh = {
-      shellAliases = {
-        cat = "bat";
-        cd = "z";
-        ls = "eza --icons=always";
-        ll = "eza -lh";
-        l = "eza -lah";
-        tree = "eza -T";
-      };
-    };
+
+    fish.shellAliases = shellAliases;
+    zsh.shellAliases = shellAliases;
   };
 }

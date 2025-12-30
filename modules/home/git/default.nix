@@ -2,7 +2,19 @@
   config,
   lib,
   ...
-}: {
+}: let
+  gitAliases = {
+    gd = "git diff";
+    ga = "git add";
+    gap = "git add -p";
+    gc = "git commit";
+    gp = "git push";
+    gu = "git pull";
+    gl = "git log --all --graph";
+    gs = "git status -s";
+    gcl = "git clone";
+  };
+in {
   options.itsEthan.cli.git = {
     email = lib.mkOption {
       type = lib.types.str;
@@ -11,7 +23,7 @@
     };
     name = lib.mkOption {
       type = lib.types.str;
-      default = "EthanJ-Brady";
+      default = "ItsEthanXYZ";
       description = "The name to use for git commits";
     };
   };
@@ -34,6 +46,9 @@
           compression = 9;
           whitespace = "error";
           preloadindex = true;
+        };
+        format = {
+          pretty = "format:%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n";
         };
         init = {
           defaultBranch = "main";
@@ -65,16 +80,7 @@
       };
     };
 
-    programs.zsh.shellAliases = {
-      gd = "git diff";
-      ga = "git add";
-      gap = "git add -p";
-      gc = "git commit";
-      gp = "git push";
-      gu = "git pull";
-      gl = "git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n'";
-      gs = "git status -s";
-      gcl = "git clone";
-    };
+    programs.zsh.shellAliases = gitAliases;
+    programs.fish.shellAbbrs = gitAliases;
   };
 }

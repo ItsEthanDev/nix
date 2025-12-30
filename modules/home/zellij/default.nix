@@ -1,5 +1,8 @@
 {pkgs, ...}: let
-  copyCommand = if pkgs.stdenv.isLinux then "wl-copy" else "pbcopy";
+  copyCommand =
+    if pkgs.stdenv.isLinux
+    then "wl-copy"
+    else "pbcopy";
 in {
   programs.zellij.enable = true;
 
@@ -74,9 +77,11 @@ in {
             bind "j" { Resize "Increase down"; }
             bind "k" { Resize "Increase up"; }
             bind "l" { Resize "Increase right"; }
+            bind "esc" { SwitchToMode "locked"; }
         }
         entersearch {
             bind "enter" { SwitchToMode "search"; }
+            bind "esc" { SwitchToMode "normal"; }
         }
         search {
             bind "n" { Search "down"; }
@@ -85,6 +90,7 @@ in {
             bind "c" { SearchToggleOption "CaseSensitivity"; }
             bind "o" { SearchToggleOption "WholeWord"; }
             bind "w" { SearchToggleOption "Wrap"; }
+            bind "esc" { SwitchToMode "normal"; }
         }
         normal {
             bind "h" { MoveFocus "left"; }
@@ -117,7 +123,7 @@ in {
                     floating true
                     move_to_focused_tab true
                 }
-                SwitchToMode "normal"
+                SwitchToMode "locked"
             }
         }
         shared_except "locked" {
@@ -130,9 +136,11 @@ in {
             bind "esc" { SwitchToMode "locked"; }
         }
         renametab {
+            bind "enter" { SwitchToMode "locked"; }
             bind "esc" { UndoRenameTab; SwitchToMode "locked"; }
         }
         renamepane {
+            bind "enter" { SwitchToMode "locked"; }
             bind "esc" { UndoRenamePane; SwitchToMode "locked"; }
         }
 

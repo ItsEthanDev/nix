@@ -1,6 +1,4 @@
 {...}: {
-  nix.settings.experimental-features = "nix-command flakes";
-
   system.defaults = {
     ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
     NSGlobalDomain = {

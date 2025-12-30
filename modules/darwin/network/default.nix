@@ -4,6 +4,7 @@
   ...
 }: {
   options = {
+    # This option should be set at a system level
     itsEthan.network.name = lib.mkOption {
       type = lib.types.str;
       default = null;
