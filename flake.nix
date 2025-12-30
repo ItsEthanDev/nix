@@ -111,6 +111,7 @@
                   ./modules/home/catppuccin
                   ./modules/home/cli
                   ./modules/home/discord
+                  ./modules/home/fish
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/hyprland
