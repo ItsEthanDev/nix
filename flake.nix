@@ -85,6 +85,7 @@
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
           ./modules/nixos/locale
+          ./modules/nixos/n8n
           ./modules/nixos/network
           ./modules/nixos/nix
           ./modules/nixos/ssh
