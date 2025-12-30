@@ -89,6 +89,7 @@
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
           ./modules/nixos/locale
+          ./modules/nixos/n8n
           ./modules/nixos/network
           ./modules/nixos/nix
           ./modules/nixos/ssh
@@ -121,6 +122,7 @@
                   ./modules/home/nvim
                   ./modules/home/opencode
                   ./modules/home/ssh
+                  ./modules/home/starship
                   ./modules/home/zellij
                   ./modules/home/zsh
                 ];

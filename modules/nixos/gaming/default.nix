@@ -12,6 +12,8 @@
 
   programs.gamemode.enable = true;
 
+  hardware.xone.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -22,6 +24,7 @@
   environment.systemPackages = with pkgs; [
     protonup-qt
     vkbasalt
+    steam-devices-udev-rules
   ];
 
   services.pipewire = {
