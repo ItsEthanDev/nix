@@ -121,6 +121,7 @@
                   ./modules/home/nvim
                   ./modules/home/opencode
                   ./modules/home/ssh
+                  ./modules/home/starship
                   ./modules/home/zellij
                   ./modules/home/zsh
                 ];
