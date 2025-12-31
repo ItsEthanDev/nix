@@ -1,4 +1,9 @@
-{...}: {
+{pkgs, ...}: let
+  copyCommand =
+    if pkgs.stdenv.isLinux
+    then "wl-copy"
+    else "pbcopy";
+in {
   programs.fish = {
     enable = true;
     binds = {
@@ -22,9 +27,18 @@
         echo $history[1]
       end
       abbr -a !! --position anywhere --function last_history_item
+
+      # Auto ls after cd
+      function cd
+        builtin cd $argv
+        ls
+      end
     '';
     shellAbbrs = {
-      "!!" = "'history | head -1 | read cmd; eval $cmd'";
+      "C" = {
+        position = "anywhere";
+        expansion = copyCommand;
+      };
     };
   };
 }
