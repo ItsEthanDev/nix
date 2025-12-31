@@ -28,9 +28,9 @@ in {
       end
       abbr -a !! --position anywhere --function last_history_item
 
-      # Auto ls after cd
+      # Auto ls after cd (using zoxide)
       function cd
-        builtin cd $argv
+        z $argv
         ls
       end
     '';
