@@ -15,6 +15,7 @@ in {
     neofetch
     ripgrep
     fd
+    jless
   ];
 
   programs = {
