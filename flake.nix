@@ -88,6 +88,7 @@
           ./modules/nixos/font
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
+          ./modules/nixos/llama
           ./modules/nixos/locale
           ./modules/nixos/n8n
           ./modules/nixos/network
@@ -120,6 +121,7 @@
                   ./modules/home/lazygit
                   ./modules/home/mangohud
                   ./modules/home/nvim
+                  ./modules/home/ollama
                   ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/starship
