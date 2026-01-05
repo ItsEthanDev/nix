@@ -1,9 +1,23 @@
-{...}: {
+{_, ...}: {
   programs = {
     zsh = {
       enable = true;
-      syntaxHighlighting.enable = true;
-      autosuggestion.enable = true;
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "main"
+          "brackets"
+          "pattern"
+          "cursor"
+          "regexp"
+          "root"
+          "line"
+        ];
+      };
+      autosuggestion = {
+        enable = true;
+        strategy = ["completion"];
+      };
       oh-my-zsh = {
         enable = true;
         plugins = [

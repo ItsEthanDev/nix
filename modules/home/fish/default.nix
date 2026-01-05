@@ -1,4 +1,9 @@
-{...}: {
+{pkgs, ...}: let
+  copyCommand =
+    if pkgs.stdenv.isLinux
+    then "wl-copy"
+    else "pbcopy";
+in {
   programs.fish = {
     enable = true;
     binds = {
@@ -16,6 +21,24 @@
 
       # Sets the SHELL env variable to the fish location
       set -gx SHELL (which fish)
+
+      # History expansion with !!
+      function last_history_item
+        echo $history[1]
+      end
+      abbr -a !! --position anywhere --function last_history_item
+
+      # Auto ls after cd (using zoxide)
+      function cd
+        z $argv
+        ls
+      end
     '';
+    shellAbbrs = {
+      "C" = {
+        position = "anywhere";
+        expansion = copyCommand;
+      };
+    };
   };
 }
