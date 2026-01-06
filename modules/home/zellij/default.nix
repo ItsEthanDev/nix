@@ -66,6 +66,8 @@ in {
 
             bind "h" { GoToPreviousTab; }
             bind "l" { GoToNextTab; }
+            bind "Alt h" { MoveTab "Left"; }
+            bind "Alt l" { MoveTab "Right"; }
 
             bind "n" { NewTab; SwitchToMode "locked"; }
             bind "c" { SwitchToMode "renametab"; TabNameInput 0; }
