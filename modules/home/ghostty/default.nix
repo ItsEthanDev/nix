@@ -29,7 +29,7 @@ in {
       # }
       command = lib.mkIf hasFish "${pkgs.fish}/bin/fish";
       font-family = "JetBrainsMono NFM Regular";
-      font-size = 19;
+      font-size = 18;
       window-padding-color = "extend";
       window-padding-x = 4;
     };
