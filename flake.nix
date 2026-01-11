@@ -85,6 +85,7 @@
           ./modules/nixos/bluetooth
           ./modules/nixos/catppuccin
           ./modules/nixos/boot
+          ./modules/nixos/flatpak
           ./modules/nixos/font
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
