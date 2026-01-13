@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   home.file = {
     ".config/hypr/adjust-zoom.sh" = {
-      source = ./adjust_zoom.sh;
+      source = ./adjust-zoom.sh;
+      executable = true;
+    };
+    ".config/hypr/whisper-dictate.sh" = {
+      source = ./whisper-dictate.sh;
       executable = true;
     };
   };
@@ -44,12 +48,13 @@
         "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
 
         # TOGGLES
-        "SUPER_CTRL, D, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "SUPER_CTRL, D, exec, ~/.config/hypr/whisper-dictate.sh"
+        "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
-        "SUPER, mouse_up, exec, ~/.config/hypr/adjust_zoom.sh 0.8"
-        "SUPER, mouse_down, exec, ~/.config/hypr/adjust_zoom.sh 1.25"
-        "SUPER, mouse:274, exec, ~/.config/hypr/adjust_zoom.sh 0"
+        "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
+        "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
+        "SUPER, mouse:274, exec, ~/.config/hypr/adjust-zoom.sh 0"
 
         "SUPER, H, movefocus, l"
         "SUPER, J, movefocus, d"
@@ -112,7 +117,9 @@
     ffmpeg
     wl-clipboard
     satty
-    bc # for adjust_zoom.sh
+    bc # for adjust-zoom.sh
     libnotify
+    pulseaudio
+    wireplumber
   ];
 }
