@@ -110,5 +110,6 @@
     hyprsunset
     satty
     bc # for adjust_zoom.sh
+    libnotify
   ];
 }
