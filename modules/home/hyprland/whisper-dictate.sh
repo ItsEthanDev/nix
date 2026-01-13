@@ -117,6 +117,7 @@ stop_recording() {
     return
   fi
 
+  notify-send "Dictation stopped" "Transcribing…"
   whisper "$audio_file" --model base --output_format txt --output_dir "$state_dir" --fp16 False >>"$log_file" 2>&1
   local transcript="${audio_file%.*}.txt"
   local alt_transcript="${audio_file}.txt"
