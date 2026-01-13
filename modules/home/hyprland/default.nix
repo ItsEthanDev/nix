@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.file = {
-    ".config/hypr/adjust_zoom.sh" = {
+    ".config/hypr/adjust-zoom.sh" = {
       source = ./adjust_zoom.sh;
       executable = true;
     };
