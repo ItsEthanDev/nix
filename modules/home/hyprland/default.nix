@@ -108,6 +108,9 @@
     hyprpicker
     hyprshot
     hyprsunset
+    openai-whisper
+    ffmpeg
+    wl-clipboard
     satty
     bc # for adjust_zoom.sh
     libnotify
