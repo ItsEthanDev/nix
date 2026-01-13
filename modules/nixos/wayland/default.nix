@@ -12,9 +12,16 @@
   # Hints to electron and chromium apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  # Screen sharing support
+  # Screen sharing + OpenURI support
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    config.common.default = [
+      "hyprland"
+      "gtk"
+    ];
   };
 }
