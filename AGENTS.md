@@ -58,3 +58,4 @@
 - Keep changes within the existing structure.
 - Don’t assume missing directories or modules.
 - Ask questions when host or user names are unclear.
+- Run `hostname` to determine the current system host name if the user doesn't specify.
