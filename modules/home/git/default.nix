@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   gitAliases = {
@@ -82,5 +83,9 @@ in {
 
     programs.zsh.shellAliases = gitAliases;
     programs.fish.shellAbbrs = gitAliases;
+
+    home.packages = with pkgs; [
+      gh
+    ];
   };
 }
