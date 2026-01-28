@@ -81,6 +81,14 @@ in {
       };
     };
 
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        side-by-side = true;
+      };
+    };
+
     programs.zsh.shellAliases = gitAliases;
     programs.fish.shellAbbrs = gitAliases;
 
