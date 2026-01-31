@@ -31,7 +31,7 @@
 
         # LAUNCH
         "SUPER_SHIFT, return, exec, ghostty"
-        "SUPER_SHIFT, I, exec, vesktop"
+        "SUPER_SHIFT, I, exec, discord"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
         "SUPER_SHIFT, B, exec, zen"
         "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ~/Screenshots"
