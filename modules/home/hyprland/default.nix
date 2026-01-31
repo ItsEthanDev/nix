@@ -93,14 +93,14 @@
         "SUPER, mouse:272, movewindow"
         "SUPER, mouse:273, resizewindow"
       ];
-      windowrulev2 = [
+      windowrule = [
         # "stayfocused, title:pulsemixer"
         # "float, title:pulsemixer"
         # "pin, title:pulsemixer"
         # "size 37.5% 37.5%, title:pulsemixer"
         # "move 100%-w-8 48, title:pulsemixer"
 
-        "opacity 0.90, class:^com\.mitchellh\.ghostty$"
+        # "opacity 0.90, class:^com\.mitchellh\.ghostty$"
       ];
     };
   };
