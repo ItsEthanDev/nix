@@ -114,6 +114,7 @@
                   ./modules/home/banana-cursor
                   ./modules/home/catppuccin
                   ./modules/home/cli
+                  ./modules/home/direnv
                   ./modules/home/discord
                   ./modules/home/fish
                   ./modules/home/ghostty
