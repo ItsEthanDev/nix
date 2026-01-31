@@ -27,9 +27,5 @@
     steam-devices-udev-rules
   ];
 
-  services.pipewire = {
-    lowLatency.enable = true;
-  };
-
   # Refer here for retroarch https://wiki.nixos.org/wiki/Category:Gaming
 }
