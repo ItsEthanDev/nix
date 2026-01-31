@@ -96,13 +96,12 @@
         "SUPER, mouse:273, resizewindow"
       ];
       windowrule = [
-        # "stayfocused, title:pulsemixer"
-        # "float, title:pulsemixer"
-        # "pin, title:pulsemixer"
-        # "size 37.5% 37.5%, title:pulsemixer"
-        # "move 100%-w-8 48, title:pulsemixer"
+        "opacity 0.90, match:class com.mitchellh.ghostty"
 
-        # "opacity 0.90, class:^com\.mitchellh\.ghostty$"
+        "float on, match:initial_title ^Discord Popout$"
+        "pin on, match:initial_title ^Discord Popout$"
+        "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
+        "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
       ];
     };
   };
