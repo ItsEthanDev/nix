@@ -12,6 +12,8 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
+    # Conflicts with UWSM
+    systemd.enable = false;
     settings = {
       "general:gaps_out" = 8;
       "general:gaps_in" = 8;

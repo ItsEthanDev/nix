@@ -3,8 +3,18 @@
   pkgs,
   ...
 }: {
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = config.itsEthan.user.username;
+  # True auto-login with greetd (no greeter displayed)
+  services.greetd = {
+    enable = true;
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.bash}/bin/bash -lc 'exec uwsm start hyprland.desktop'";
+        user = config.itsEthan.user.username;
+      };
+      default_session = initial_session;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     wl-clipboard
   ];
