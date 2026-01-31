@@ -5,7 +5,7 @@
 
   catppuccin = {
     enable = true;
-    flavor = "mocha";
+    flavor = "frappe";
 
     # Overwrites mangohud configuration if enabled
     mangohud.enable = false;

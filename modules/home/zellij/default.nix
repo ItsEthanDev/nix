@@ -189,7 +189,7 @@ in {
     web_client {
         font "monospace"
     }
-    theme "catppuccin-mocha"
+    theme "catppuccin-frappe"
     default_mode "locked"
     default_layout "simple"
     pane_frames false
