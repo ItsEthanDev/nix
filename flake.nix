@@ -16,7 +16,6 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     lazyvim.url = "github:pfassina/lazyvim-nix";
-    walker.url = "github:abenz1267/walker";
   };
 
   outputs = {
@@ -115,6 +114,7 @@
                   ./modules/home/cli
                   ./modules/home/direnv
                   ./modules/home/discord
+                  ./modules/home/easy-effects
                   ./modules/home/fish
                   ./modules/home/ghostty
                   ./modules/home/git
@@ -127,6 +127,7 @@
                   ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/starship
+                  ./modules/home/walker
                   ./modules/home/zellij
                   ./modules/home/zsh
                 ];

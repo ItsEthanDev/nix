@@ -38,6 +38,7 @@
         "SUPER_SHIFT, S, exec, steam"
 
         # ACTIONS
+        "SUPER, space, exec, walker"
         "SUPER, W, killactive"
         "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
         "SUPER, V, sendshortcut, CTRL_SHIFT, V, activewindow"
