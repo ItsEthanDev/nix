@@ -8,4 +8,7 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  # Necessary for the easy-effects daemon to work correctly
+  programs.dconf.enable = true;
 }
