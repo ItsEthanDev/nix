@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     btop
+    pamixer
+    wiremix
   ];
 
   programs.waybar = {
@@ -57,7 +59,7 @@
         cpu = {
           interval = 5;
           format = "󰍛";
-          "on-click" = "ghostty btop";
+          "on-click" = "ghostty -e btop";
         };
 
         clock = {
@@ -93,7 +95,6 @@
           "tooltip-format-discharging" = "{power:>1.0f}W↓ {capacity}%";
           "tooltip-format-charging" = "{power:>1.0f}W↑ {capacity}%";
           interval = 5;
-          "on-click" = "omarchy-menu power";
           states = {
             warning = 20;
             critical = 10;
@@ -112,7 +113,7 @@
 
         pulseaudio = {
           format = "{icon}";
-          "on-click" = "omarchy-launch-audio";
+          "on-click" = "ghostty -e wiremix";
           "on-click-right" = "pamixer -t";
           "tooltip-format" = "Playing at {volume}%";
           "scroll-step" = 5;
