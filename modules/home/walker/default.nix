@@ -12,7 +12,7 @@
       hide_action_hints = true;
       placeholders.default = {
         input = "Search";
-        list = "No Results";
+        list = "";
       };
       columns = {
         symbols = 1;
