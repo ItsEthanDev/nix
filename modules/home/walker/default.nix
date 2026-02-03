@@ -7,19 +7,44 @@
 
     config = {
       theme = "my-theme";
+      force_keyboard_focus = true;
+      selection_wrap = true;
       hide_action_hints = true;
       placeholders.default = {
         input = "Search";
         list = "No Results";
       };
+      columns = {
+        symbols = 1;
+      };
+      providers = {
+        max_results = 256;
+        default = ["desktopapplications"];
+      };
       providers.prefixes = [
         {
-          provider = "websearch";
-          prefix = "+";
+          prefix = "/";
+          provider = "providerlist";
         }
         {
-          provider = "providerlist";
-          prefix = "_";
+          prefix = ".";
+          provider = "files";
+        }
+        {
+          prefix = ":";
+          provider = "symbols";
+        }
+        {
+          prefix = "=";
+          provider = "calc";
+        }
+        {
+          prefix = "@";
+          provider = "websearch";
+        }
+        {
+          prefix = "$";
+          provider = "clipboard";
         }
       ];
       keybinds = {
