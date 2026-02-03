@@ -1,3 +1,9 @@
+@define-color base #1f1f28;
+@define-color background #1f1f28;
+@define-color text #f2ecbc;
+@define-color border #54546d;
+@define-color selected-text #f2ecbc;
+
 * {
   all: unset;
 }
@@ -20,8 +26,13 @@ scrollbar {
   -gtk-icon-size: 32px;
 }
 
+window,
+.window {
+  background-color: @background;
+  background: @background;
+
 .box-wrapper {
-  background: alpha(@base, 0.95);
+  background: @background;
   padding: 20px;
   border: 2px solid @border;
 }
@@ -41,6 +52,10 @@ scrollbar {
   outline: none;
 }
 
+
+child:selected .item-box {
+  background: alpha(@border, 0.35);
+}
 
 child:selected .item-box * {
   color: @selected-text;
