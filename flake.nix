@@ -130,14 +130,15 @@
                   ./modules/home/mangohud
                   ./modules/home/nvim
                   ./modules/home/ollama
-                  ./modules/home/opencode
-                  ./modules/home/ssh
-                  ./modules/home/starship
-                  ./modules/home/walker
-                  ./modules/home/zellij
-                  ./modules/home/zsh
-                ];
-              };
+                   ./modules/home/opencode
+                   ./modules/home/ssh
+                   ./modules/home/starship
+                   ./modules/home/walker
+                   ./modules/home/waybar
+                   ./modules/home/zellij
+                   ./modules/home/zsh
+                 ];
+               };
             };
           }
         ];
