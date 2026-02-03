@@ -1,4 +1,8 @@
 {pkgs, ...}: {
+  home.packages = with pkgs; [
+    btop
+  ];
+
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
@@ -53,15 +57,13 @@
         cpu = {
           interval = 5;
           format = "󰍛";
-          "on-click" = "omarchy-launch-or-focus-tui btop";
-          "on-click-right" = "alacritty";
+          "on-click" = "ghostty btop";
         };
 
         clock = {
           format = "{:L%A %H:%M}";
           "format-alt" = "{:L%d %B %Y}";
           tooltip = false;
-          "on-click-right" = "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select";
         };
 
         network = {
