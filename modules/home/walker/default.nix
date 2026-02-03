@@ -18,8 +18,9 @@
         symbols = 1;
       };
       providers = {
-        max_results = 256;
         default = ["desktopapplications"];
+        empty = [];
+        max_results = 256;
       };
       providers.prefixes = [
         {
