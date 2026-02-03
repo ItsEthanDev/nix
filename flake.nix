@@ -124,6 +124,7 @@
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/hyprland
+                  ./modules/home/gtk
                   ./modules/home/javascript
                   ./modules/home/lazygit
                   ./modules/home/mangohud

@@ -6,6 +6,7 @@
   catppuccin = {
     enable = true;
     flavor = "frappe";
+    gtk.icon.enable = false;
 
     # Overwrites mangohud configuration if enabled
     mangohud.enable = false;
