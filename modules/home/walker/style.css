@@ -1,4 +1,5 @@
 @define-color base #1f1f28;
+@define-color base #1f1f28;
 @define-color background #1f1f28;
 @define-color text #f2ecbc;
 @define-color border #54546d;
@@ -28,8 +29,9 @@ scrollbar {
 
 window,
 .window {
-  background-color: @background;
-  background: @background;
+  background-color: transparent;
+  background: transparent;
+}
 
 .box-wrapper {
   background: @background;
