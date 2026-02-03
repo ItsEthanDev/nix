@@ -16,6 +16,11 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     zen-browser.url = "github:youwen5/zen-browser-flake";
     lazyvim.url = "github:pfassina/lazyvim-nix";
+    elephant.url = "github:abenz1267/elephant";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.elephant.follows = "elephant";
+    };
   };
 
   outputs = {
