@@ -34,10 +34,14 @@
       "aarch64-darwin"
     ];
     forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+    overlays = [
+      (import ./overlays/opencode.nix)
+    ];
   in {
     darwinConfigurations = {
       newton = nix-darwin.lib.darwinSystem {
         modules = [
+          {nixpkgs.overlays = overlays;}
           ./systems/aarch64-darwin/newton
           ./modules/darwin/aerospace
           ./modules/darwin/fish
@@ -84,6 +88,7 @@
           inherit inputs;
         };
         modules = [
+          {nixpkgs.overlays = overlays;}
           ./systems/x86_64-linux/turing
           ./modules/nixos/audio
           ./modules/nixos/bluetooth
@@ -130,15 +135,15 @@
                   ./modules/home/mangohud
                   ./modules/home/nvim
                   ./modules/home/ollama
-                   ./modules/home/opencode
-                   ./modules/home/ssh
-                   ./modules/home/starship
-                   ./modules/home/walker
-                   ./modules/home/waybar
-                   ./modules/home/zellij
-                   ./modules/home/zsh
-                 ];
-               };
+                  ./modules/home/opencode
+                  ./modules/home/ssh
+                  ./modules/home/starship
+                  ./modules/home/walker
+                  ./modules/home/waybar
+                  ./modules/home/zellij
+                  ./modules/home/zsh
+                ];
+              };
             };
           }
         ];
@@ -147,7 +152,9 @@
 
     devShells = forAllSystems (
       system: let
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = import nixpkgs {
+          inherit system overlays;
+        };
       in {
         js = import ./shells/js.nix {inherit pkgs;};
         lua = import ./shells/lua.nix {inherit pkgs;};
