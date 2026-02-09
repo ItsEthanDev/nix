@@ -11,8 +11,13 @@
     enable = true;
     configFiles = ./config;
 
-    extras.lang = {
-      typescript.enable = true;
+    extras = {
+      ai.supermaven.enable = true;
+      lang = {
+        json.enable = true;
+        nix.enable = true;
+        typescript.enable = true;
+      };
     };
 
     extraPackages = with pkgs; [
@@ -21,6 +26,7 @@
       copilot-language-server
       lua-language-server
       nil
+      statix
       shfmt
       stylua
       tailwindcss-language-server
