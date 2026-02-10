@@ -89,6 +89,9 @@
         "SUPER_CTRL, D, exec, ~/.config/hypr/whisper-dictate.sh"
         "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        "SUPER_CTRL, T, togglespecialworkspace, top"
+        "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
+        "SUPER_CTRL, N, togglespecialworkspace, network"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
@@ -106,6 +109,11 @@
         "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
         "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
       ];
+      workspace = [
+        "special:top, on-created-empty:ghostty -e btop, gapsout:96"
+        "special:bluetooth, on-created-empty:ghostty -e bluetui, gapsout:96"
+        "special:network, on-created-empty:ghostty -e impala, gapsout:96"
+      ];
     };
   };
 
@@ -114,6 +122,8 @@
   services.swaync.enable = true;
 
   home.packages = with pkgs; [
+    btop
+    bluetui
     hyprpicker
     hyprshot
     hyprsunset
