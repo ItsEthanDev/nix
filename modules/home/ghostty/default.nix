@@ -9,14 +9,24 @@
   hasFish = config.programs.fish.enable;
 in {
   options = {
-    my.terminal.command = lib.mkOption {
-      type = lib.types.str;
-      description = "Command-line string used to launch an app in my terminal.";
+    my = {
+      terminal = {
+        launch = lib.mkOption {
+          type = lib.types.str;
+          default = "ghostty";
+          description = "Command to launch a plain terminal.";
+        };
+
+        exec = lib.mkOption {
+          type = lib.types.str;
+          default = "ghostty -e";
+          description = "Command prefix used to run other commands inside the terminal.";
+        };
+      };
     };
   };
 
   config = {
-    my.terminal.command = lib.mkDefault "ghostty -e";
     programs.ghostty = {
       enable = true;
 

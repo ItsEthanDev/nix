@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   home.file = {
     ".config/hypr/adjust-zoom.sh" = {
       source = ./adjust-zoom.sh;
@@ -30,7 +34,7 @@
         # Find clients by looking for `class: <class>` in `hyprctl clients`
 
         # LAUNCH
-        "SUPER_SHIFT, return, exec, ghostty"
+        "SUPER_SHIFT, return, exec, ${config.my.terminal.launch}"
         "SUPER_SHIFT, I, exec, discord"
         "SUPER_SHIFT, C, exec, hyprpicker -a"
         "SUPER_SHIFT, B, exec, zen"
@@ -110,7 +114,7 @@
         "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
       ];
       workspace = [
-        "special:top, on-created-empty:ghostty -e btop, gapsout:96"
+        "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
         "special:bluetooth, on-created-empty:ghostty -e bluetui, gapsout:96"
         "special:network, on-created-empty:ghostty -e impala, gapsout:96"
       ];
