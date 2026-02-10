@@ -48,16 +48,10 @@
         "SUPER, T, togglefloating"
         "SUPER, O, pin"
         "SUPER, P, exec, hyprshot -m output -m active -o ~/Screenshots"
+
         "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
 
-        # TOGGLES
-        "SUPER_CTRL, D, exec, ~/.config/hypr/whisper-dictate.sh"
-        "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
-        "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
-        "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
-        "SUPER, mouse:274, exec, ~/.config/hypr/adjust-zoom.sh 0"
+        ## workspace
 
         "SUPER, H, movefocus, l"
         "SUPER, J, movefocus, d"
@@ -79,9 +73,6 @@
         "SUPER, 7, workspace, 7"
         "SUPER, 8, workspace, 8"
         "SUPER, 9, workspace, 9"
-
-        # "$mod_alt, space, movetoworkspace, special"
-        #
         "SUPER_ALT, 1, movetoworkspace, 1"
         "SUPER_ALT, 2, movetoworkspace, 2"
         "SUPER_ALT, 3, movetoworkspace, 3"
@@ -91,6 +82,17 @@
         "SUPER_ALT, 7, movetoworkspace, 7"
         "SUPER_ALT, 8, movetoworkspace, 8"
         "SUPER_ALT, 9, movetoworkspace, 9"
+
+        # "$mod_alt, space, movetoworkspace, special"
+
+        # TOGGLES
+        "SUPER_CTRL, D, exec, ~/.config/hypr/whisper-dictate.sh"
+        "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+        "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
+        "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
+        "SUPER, mouse:274, exec, ~/.config/hypr/adjust-zoom.sh 0"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
