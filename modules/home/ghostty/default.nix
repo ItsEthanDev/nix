@@ -8,31 +8,41 @@
   ghostty-mock = pkgs.writeShellScriptBin "ghostty-mock" "";
   hasFish = config.programs.fish.enable;
 in {
-  programs.ghostty = {
-    enable = true;
+  options = {
+    my.terminal.command = lib.mkOption {
+      type = lib.types.str;
+      description = "Command-line string used to launch an app in my terminal.";
+    };
+  };
 
-    # The Darwin implementation doesn't work here, so we use a mock instead if
-    # we are on a darwin system.
-    package = lib.mkIf isDarwin ghostty-mock;
+  config = {
+    my.terminal.command = lib.mkDefault "ghostty -e";
+    programs.ghostty = {
+      enable = true;
 
-    # Integrations
-    enableZshIntegration = true;
-    enableFishIntegration = true;
-    installBatSyntax = true;
+      # The Darwin implementation doesn't work here, so we use a mock instead if
+      # we are on a darwin system.
+      package = lib.mkIf isDarwin ghostty-mock;
 
-    settings = {
-      # Will check to make sure fish is installed before setting the shell to
-      # fish. The follow must be set in nixos/darwin modules
-      # {
-      #   programs.fish.enable = true;
-      #   environment.shells = [pkgs.fish];
-      # }
-      command = lib.mkIf hasFish "${pkgs.fish}/bin/fish";
-      confirm-close-surface = false;
-      font-family = "JetBrainsMono NFM Regular";
-      font-size = 18;
-      window-padding-color = "extend";
-      window-padding-x = 4;
+      # Integrations
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+      installBatSyntax = true;
+
+      settings = {
+        # Will check to make sure fish is installed before setting the shell to
+        # fish. The follow must be set in nixos/darwin modules
+        # {
+        #   programs.fish.enable = true;
+        #   environment.shells = [pkgs.fish];
+        # }
+        command = lib.mkIf hasFish "${pkgs.fish}/bin/fish";
+        confirm-close-surface = false;
+        font-family = "JetBrainsMono NFM Regular";
+        font-size = 18;
+        window-padding-color = "extend";
+        window-padding-x = 4;
+      };
     };
   };
 }
