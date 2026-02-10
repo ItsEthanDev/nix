@@ -115,6 +115,7 @@
                 imports = [
                   ./homes/x86_64-linux/turing
                   ./modules/home/banana-cursor
+                  ./modules/home/btop
                   ./modules/home/catppuccin
                   ./modules/home/cli
                   ./modules/home/direnv
@@ -130,15 +131,15 @@
                   ./modules/home/mangohud
                   ./modules/home/nvim
                   ./modules/home/ollama
-                   ./modules/home/opencode
-                   ./modules/home/ssh
-                   ./modules/home/starship
-                   ./modules/home/walker
-                   ./modules/home/waybar
-                   ./modules/home/zellij
-                   ./modules/home/zsh
-                 ];
-               };
+                  ./modules/home/opencode
+                  ./modules/home/ssh
+                  ./modules/home/starship
+                  ./modules/home/walker
+                  ./modules/home/waybar
+                  ./modules/home/zellij
+                  ./modules/home/zsh
+                ];
+              };
             };
           }
         ];
