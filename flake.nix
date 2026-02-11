@@ -120,6 +120,7 @@
                 imports = [
                   ./homes/x86_64-linux/turing
                   ./modules/home/banana-cursor
+                  ./modules/home/btop
                   ./modules/home/catppuccin
                   ./modules/home/cli
                   ./modules/home/direnv
