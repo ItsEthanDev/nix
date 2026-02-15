@@ -4,13 +4,19 @@
   lib,
   ...
 }: let
-  isDarwin = pkgs.stdenv.isDarwin;
+  inherit (pkgs.stdenv) isDarwin;
   ghostty-mock = pkgs.writeShellScriptBin "ghostty-mock" "";
   hasFish = config.programs.fish.enable;
 in {
   options = {
     my = {
       terminal = {
+        font-size = lib.mkOption {
+          type = lib.types.int;
+          default = 18;
+          description = "Font size for terminals.";
+        };
+
         launch = lib.mkOption {
           type = lib.types.str;
           default = "ghostty";
@@ -21,6 +27,12 @@ in {
           type = lib.types.str;
           default = "ghostty -e";
           description = "Command prefix used to run other commands inside the terminal.";
+        };
+
+        execWithTitle = lib.mkOption {
+          type = lib.types.functionTo lib.types.str;
+          default = title: "${config.my.terminal.launch} --title=${lib.escapeShellArg title} -e";
+          description = "Command prefix used to run commands inside the terminal with a custom title.";
         };
       };
     };
