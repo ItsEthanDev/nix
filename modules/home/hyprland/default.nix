@@ -96,6 +96,7 @@
         "SUPER_CTRL, T, togglespecialworkspace, top"
         "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
         "SUPER_CTRL, N, togglespecialworkspace, network"
+        "SUPER_CTRL, C, exec, ${config.my.stopwatch.launch}"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
@@ -112,6 +113,15 @@
         "pin on, match:initial_title ^Discord Popout$"
         "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
         "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
+
+        "float on, match:initial_title ^${config.my.stopwatch.title}$"
+        "pin on, match:initial_title ^${config.my.stopwatch.title}$"
+        "size 24*${toString config.my.terminal.font-size} 8*${toString config.my.terminal.font-size}, match:initial_title ^${config.my.stopwatch.title}$"
+        "move 0 (monitor_h-window_h-4), match:initial_title ^${config.my.stopwatch.title}$"
+        "border_size 0, match:initial_title ^${config.my.stopwatch.title}$"
+        "opacity 0.75, match:initial_title ^${config.my.stopwatch.title}$"
+        "rounding 0, match:initial_title ^${config.my.stopwatch.title}$"
+        "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
       ];
       workspace = [
         "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"

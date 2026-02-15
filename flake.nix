@@ -135,10 +135,12 @@
                   ./modules/home/lazygit
                   ./modules/home/mangohud
                   ./modules/home/nvim
+                  ./modules/home/obsidian
                   ./modules/home/ollama
                   ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/starship
+                  ./modules/home/stopwatch
                   ./modules/home/walker
                   ./modules/home/waybar
                   ./modules/home/zellij
