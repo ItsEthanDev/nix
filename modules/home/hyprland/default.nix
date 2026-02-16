@@ -116,12 +116,13 @@
 
         "float on, match:initial_title ^${config.my.stopwatch.title}$"
         "pin on, match:initial_title ^${config.my.stopwatch.title}$"
-        "size 24*${toString config.my.terminal.font-size} 8*${toString config.my.terminal.font-size}, match:initial_title ^${config.my.stopwatch.title}$"
-        "move 0 (monitor_h-window_h-4), match:initial_title ^${config.my.stopwatch.title}$"
+        "size 300 150, match:initial_title ^${config.my.stopwatch.title}$"
+        "move 0 (monitor_h-window_h), match:initial_title ^${config.my.stopwatch.title}$"
         "border_size 0, match:initial_title ^${config.my.stopwatch.title}$"
-        "opacity 0.75, match:initial_title ^${config.my.stopwatch.title}$"
         "rounding 0, match:initial_title ^${config.my.stopwatch.title}$"
+        "opacity 1, match:initial_title ^${config.my.stopwatch.title}$"
         "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
+        "no_blur on, match:initial_title ^${config.my.stopwatch.title}$"
       ];
       workspace = [
         "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"

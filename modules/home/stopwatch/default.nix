@@ -9,7 +9,7 @@
       mkdir -p "$out/ghostty"
       cat > "$out/ghostty/config" <<EOF
       background-opacity = 0
-      confirm-close-surface = false;
+      confirm-close-surface = false
       EOF
     '';
   in
