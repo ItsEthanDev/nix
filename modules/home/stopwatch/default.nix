@@ -9,7 +9,7 @@
       launch = lib.mkOption {
         type = lib.types.str;
         description = "Command-line string used to launch the stopwatch application";
-        default = "${config.my.terminal.execWithTitle "stopwatch"} stopwatch";
+        default = "${config.my.terminal.execWithTitle config.my.stopwatch.title} stopwatch";
       };
       title = lib.mkOption {
         type = lib.types.str;
@@ -53,6 +53,18 @@
           ln -s $out/bin/peaclock $out/bin/stopwatch
         '';
       })
+      (let
+        xdgConfigHome = pkgs.runCommand "ghostty-transparent-xdg-config-home" {} ''
+          mkdir -p "$out/ghostty"
+          cat > "$out/ghostty/config" <<EOF
+          background-opacity = 0
+          EOF
+        '';
+      in
+        pkgs.writeShellScriptBin "ghostty-transparent" ''
+          export XDG_CONFIG_HOME=${xdgConfigHome}
+          exec ${pkgs.ghostty}/bin/ghostty "$@"
+        '')
     ];
   };
 }
