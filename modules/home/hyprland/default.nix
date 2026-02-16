@@ -1,8 +1,19 @@
 {
   config,
   pkgs,
+  lib,
   ...
-}: {
+}: let
+  toggleStopwatch = pkgs.writeShellScript "toggle-stopwatch" ''
+    addr="$(${pkgs.hyprland}/bin/hyprctl -j clients | ${pkgs.jq}/bin/jq -r --arg title ${lib.escapeShellArg config.my.stopwatch.title} 'map(select(.initialTitle == $title))[0].address // empty')"
+
+    if [ -n "$addr" ]; then
+      ${pkgs.hyprland}/bin/hyprctl dispatch closewindow "address:$addr"
+    else
+      exec ${config.my.stopwatch.launch}
+    fi
+  '';
+in {
   home.file = {
     ".config/hypr/adjust-zoom.sh" = {
       source = ./adjust-zoom.sh;
@@ -96,7 +107,7 @@
         "SUPER_CTRL, T, togglespecialworkspace, top"
         "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
         "SUPER_CTRL, N, togglespecialworkspace, network"
-        "SUPER_CTRL, C, exec, ${config.my.stopwatch.launch}"
+        "SUPER_CTRL, C, exec, ${toggleStopwatch}"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
         "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
