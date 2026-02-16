@@ -9,17 +9,18 @@
 
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      "DP-4,2560x1440@164.80,1920x0,1"
+      "DP-4,2560x1440@164.80,1920x-360,1"
       "HDMI-A-1,1920x1080@60.00,0x0,1"
       ",preferred,auto,1"
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
-
-  home.username = "ethan";
-  home.homeDirectory = "/home/ethan";
-  home.stateVersion = "25.11";
+  home = {
+    username = "ethan";
+    homeDirectory = "/home/ethan";
+    stateVersion = "25.11";
+  };
   programs.home-manager.enable = true;
 
   xdg.desktopEntries.nemo = {
