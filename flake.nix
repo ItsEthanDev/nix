@@ -35,7 +35,7 @@
     ];
     forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
     overlays = [
-      (import ./overlays/opencode.nix)
+      # (import ./overlays/opencode.nix)
     ];
   in {
     darwinConfigurations = {
