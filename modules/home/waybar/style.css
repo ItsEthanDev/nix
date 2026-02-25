@@ -1,6 +1,6 @@
 * {
   background-color: transparent;
-  color: #e5c890;
+  color: #b5bfe2;
 
   border: none;
   border-radius: 0;
@@ -16,7 +16,7 @@
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: #232634;
+  background-color: #303446;
   border-radius: 999px;
   padding: 0 10px;
   margin-top: 0;
