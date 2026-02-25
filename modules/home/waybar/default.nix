@@ -23,6 +23,7 @@
         reload_style_on_change = true;
         layer = "top";
         position = "top";
+        margin = "8 8 0 8";
         spacing = 0;
         height = 26;
         "modules-left" = [
