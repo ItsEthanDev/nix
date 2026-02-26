@@ -32,6 +32,9 @@ in {
     settings = {
       "general:gaps_out" = 8;
       "general:gaps_in" = 8;
+      "general:border_size" = 2;
+      "general:col.inactive_border" = "0xff737994";
+      "general:col.active_border" = "0xffbabbf1";
       "cursor:inactive_timeout" = 3;
       "binds:scroll_event_delay" = 0;
       "decoration:rounding" = 8;
@@ -107,6 +110,7 @@ in {
         "SUPER_CTRL, T, togglespecialworkspace, top"
         "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
         "SUPER_CTRL, N, togglespecialworkspace, network"
+        "SUPER_CTRL, A, togglespecialworkspace, audio"
         "SUPER_CTRL, C, exec, ${toggleStopwatch}"
 
         "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
@@ -139,6 +143,7 @@ in {
         "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
         "special:bluetooth, on-created-empty:ghostty -e bluetui, gapsout:96"
         "special:network, on-created-empty:ghostty -e impala, gapsout:96"
+        "special:audio, on-created-empty:ghostty -e wiremix, gapsout:96"
       ];
     };
   };
@@ -161,5 +166,6 @@ in {
     libnotify
     pulseaudio
     wireplumber
+    wiremix
   ];
 }
