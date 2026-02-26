@@ -16,6 +16,7 @@ in {
     ripgrep
     fd
     jless
+    jq
   ];
 
   programs = {
