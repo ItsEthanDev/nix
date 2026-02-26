@@ -35,7 +35,7 @@
   }
 
   .box-wrapper {
-    background: @background;
+    background: alpha(@background, 0.9);
     padding: 20px;
     border: 2px solid @border;
     border-radius: 14px;
@@ -43,7 +43,7 @@
   }
 
   .search-container {
-    background: @base;
+    background: transparent;
     padding: 10px;
   }
 
@@ -67,12 +67,13 @@
   }
 
   .item-box {
+    margin-top: 6px;
     padding-left: 14px;
   }
 
   .item-text-box {
     all: unset;
-    padding: 14px 0;
+    padding: 0;
   }
 
   .item-subtext {

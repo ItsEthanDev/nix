@@ -25,7 +25,7 @@
             <property name="orientation">vertical</property>
             <property name="hexpand-set">true</property>
             <property name="hexpand">true</property>
-            <property name="spacing">10</property>
+            <property name="spacing">0</property>
             <child>
               <object class="GtkBox" id="SearchContainer">
                 <style>
