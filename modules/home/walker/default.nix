@@ -56,7 +56,7 @@
 
     themes = {
       "my-theme" = {
-        style = builtins.readFile ./style.css;
+        style = import ./style.nix;
         layouts = {
           "layout" = builtins.readFile ./layout.xml;
         };
