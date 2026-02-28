@@ -13,12 +13,36 @@
       exec ${config.my.stopwatch.launch}
     fi
   '';
+
+  zoom = pkgs.writeShellScript "zoom" ''
+    # Check if a delta is provided as an argument
+    if [ -z "$1" ]; then
+      echo "Usage: $0 <delta>"
+      exit 1
+    fi
+
+    # Validate that the provided delta is a number
+    if ! echo "$1" | ${pkgs.gnugrep}/bin/grep -Eq '^[+-]?[0-9]+(\.[0-9]+)?$'; then
+      echo "Error: Delta must be a number"
+      exit 1
+    fi
+
+    # Get the current cursor zoom factor
+    current=$(hyprctl getoption cursor:zoom_factor | head -n 1 | awk -F': ' '{print $2}')
+
+    # Calculate the new zoom factor
+    new_zoom=$(echo "$current * $1" | ${pkgs.bc}/bin/bc)
+
+    # Ensure the new zoom factor is at least 1.0
+    if [ "$(echo "$new_zoom < 1.0" | ${pkgs.bc}/bin/bc)" -eq 1 ]; then
+      new_zoom=1.0
+    fi
+
+    # Set the new cursor zoom factor
+    hyprctl keyword cursor:zoom_factor "$new_zoom"
+  '';
 in {
   home.file = {
-    ".config/hypr/adjust-zoom.sh" = {
-      source = ./adjust-zoom.sh;
-      executable = true;
-    };
     ".config/hypr/whisper-dictate.sh" = {
       source = ./whisper-dictate.sh;
       executable = true;
@@ -113,9 +137,9 @@ in {
         "SUPER_CTRL, A, togglespecialworkspace, audio"
         "SUPER_CTRL, C, exec, ${toggleStopwatch}"
 
-        "SUPER, mouse_up, exec, ~/.config/hypr/adjust-zoom.sh 0.8"
-        "SUPER, mouse_down, exec, ~/.config/hypr/adjust-zoom.sh 1.25"
-        "SUPER, mouse:274, exec, ~/.config/hypr/adjust-zoom.sh 0"
+        "SUPER, mouse_up, exec, ${zoom} 0.8"
+        "SUPER, mouse_down, exec, ${zoom} 1.25"
+        "SUPER, mouse:274, exec, ${zoom} 0"
       ];
       bindm = [
         "SUPER, mouse:272, movewindow"
@@ -141,9 +165,9 @@ in {
       ];
       workspace = [
         "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
-        "special:bluetooth, on-created-empty:ghostty -e bluetui, gapsout:96"
-        "special:network, on-created-empty:ghostty -e impala, gapsout:96"
-        "special:audio, on-created-empty:ghostty -e wiremix, gapsout:96"
+        "special:bluetooth, on-created-empty:ghostty -e ${pkgs.bluetui}/bin/bluetui, gapsout:96"
+        "special:network, on-created-empty:ghostty -e ${pkgs.impala}/bin/impala, gapsout:96"
+        "special:audio, on-created-empty:ghostty -e ${pkgs.wiremix}/bin/wiremix, gapsout:96"
       ];
     };
   };
@@ -158,8 +182,6 @@ in {
   };
 
   home.packages = with pkgs; [
-    btop
-    bluetui
     hyprpicker
     hyprshot
     hyprsunset
@@ -169,8 +191,5 @@ in {
     satty
     bc # for adjust-zoom.sh
     libnotify
-    pulseaudio
-    wireplumber
-    wiremix
   ];
 }
