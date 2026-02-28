@@ -150,7 +150,12 @@ in {
 
   services.cliphist.enable = true;
 
-  services.swaync.enable = true;
+  services.swaync = {
+    enable = true;
+    settings = {
+      notification-icon-size = 32;
+    };
+  };
 
   home.packages = with pkgs; [
     btop
