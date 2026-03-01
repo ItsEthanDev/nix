@@ -61,7 +61,7 @@ _: {
         tooltip = false;
       };
       mpd = {
-        format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
+        format = "{stateIcon} {title} ";
         format-disconnected = "Disconnected ";
         format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
         interval = 10;
