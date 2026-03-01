@@ -43,6 +43,16 @@
     hyprctl keyword cursor:zoom_factor "$new_zoom"
   '';
 in {
+  options.my = {
+    hyprland = {
+      wallpaper = lib.mkOption {
+        type = lib.types.path;
+        default = ../../../static/wallpapers/spirals-2560x2560.png;
+        description = "Path to the wallpaper to use for Hyprland";
+      };
+    };
+  };
+
   config =
     {
       home.file = {
@@ -174,13 +184,27 @@ in {
           ];
         };
       };
+      services = {
+        hyprpaper = {
+          enable = true;
+          settings = {
+            wallpaper = [
+              {
+                monitor = "";
+                path = "${config.my.hyprland.wallpaper}";
+                fit_mode = "cover";
+              }
+            ];
+          };
+        };
 
-      services.cliphist.enable = true;
+        cliphist.enable = true;
 
-      services.swaync = {
-        enable = true;
-        settings = {
-          notification-icon-size = 32;
+        swaync = {
+          enable = true;
+          settings = {
+            notification-icon-size = 32;
+          };
         };
       };
 

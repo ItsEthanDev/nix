@@ -3,14 +3,6 @@
   pkgs,
   ...
 }: {
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = "/home/ethan/nix/static/wallpapers/spirals-2560x2560.png";
-      wallpaper = ", /home/ethan/nix/static/wallpapers/spirals-2560x2560.png";
-    };
-  };
-
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-4,2560x1440@164.80,1920x-360,1"
