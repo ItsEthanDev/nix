@@ -1,9 +1,39 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
   options = {
+    my.waybar = {
+      audio = {
+        launch = lib.mkOption {
+          type = lib.types.str;
+          default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.wiremix}/bin/wiremix";
+          description = "Command to launch the audio module.";
+        };
+        mute = lib.mkOption {
+          type = lib.types.str;
+          default = "${pkgs.pamixer}/bin/pamixer -t";
+          description = "Command to mute the audio.";
+        };
+      };
+      bluetooth.launch = lib.mkOption {
+        type = lib.types.str;
+        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.bluetui}/bin/bluetui";
+        description = "Command to launch the bluetooth module.";
+      };
+      cpu.launch = lib.mkOption {
+        type = lib.types.str;
+        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.btop}/bin/btop";
+        description = "Command to launch the cpu module.";
+      };
+      network.launch = lib.mkOption {
+        type = lib.types.str;
+        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.impala}/bin/impala";
+        description = "Command to launch the network module.";
+      };
+    };
   };
 
   config = {
@@ -60,7 +90,7 @@
         cpu = {
           interval = 5;
           format = "󰍛";
-          on-click = "ghostty -e btop";
+          on-click = config.my.waybar.cpu.launch;
         };
 
         clock = {
@@ -109,7 +139,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           spacing = 1;
-          on-click = "omarchy-launch-wifi";
+          on-click = config.my.waybar.network.launch;
         };
 
         battery = {
@@ -138,13 +168,13 @@
           format-connected = "󰂱";
           format-no-controller = "";
           tooltip-format = "Devices connected: {num_connections}";
-          on-click = "omarchy-launch-bluetooth";
+          on-click = config.my.waybar.bluetooth.launch;
         };
 
         pulseaudio = {
           format = "{icon}";
-          on-click = "ghostty -e wiremix";
-          on-click-right = "pamixer -t";
+          on-click = config.my.waybar.audio.launch;
+          on-click-right = config.my.waybar.audio.mute;
           tooltip-format = "Playing at {volume}%";
           scroll-step = 5;
           format-muted = "";
