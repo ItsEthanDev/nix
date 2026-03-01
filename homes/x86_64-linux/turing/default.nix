@@ -29,7 +29,7 @@
 
   xdg.desktopEntries.nemo = {
     name = "Nemo";
-    exec = "${lib.getExe' pkgs.nemo-with-extensions "nemo"}";
+    exec = lib.getExe' pkgs.nemo-with-extensions "nemo";
   };
   xdg.mimeApps = {
     enable = true;

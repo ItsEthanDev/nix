@@ -59,7 +59,7 @@ in {
       launch = lib.mkOption {
         type = lib.types.str;
         description = "Command-line string used to launch the stopwatch application";
-        default = "${lib.getExe stopwatchLauncher}";
+        default = lib.getExe stopwatchLauncher;
       };
       title = lib.mkOption {
         type = lib.types.str;
