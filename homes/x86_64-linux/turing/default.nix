@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -25,7 +29,7 @@
 
   xdg.desktopEntries.nemo = {
     name = "Nemo";
-    exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+    exec = "${lib.getExe' pkgs.nemo-with-extensions "nemo"}";
   };
   xdg.mimeApps = {
     enable = true;

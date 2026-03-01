@@ -58,7 +58,7 @@ in {
         #   programs.fish.enable = true;
         #   environment.shells = [pkgs.fish];
         # }
-        command = lib.mkIf hasFish "${pkgs.fish}/bin/fish";
+        command = lib.mkIf hasFish "${lib.getExe pkgs.fish}";
         confirm-close-surface = false;
         font-family = "JetBrainsMono NFM Regular";
         font-size = 18;

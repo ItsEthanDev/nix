@@ -6,10 +6,10 @@
   ...
 }: let
   toggleStopwatch = pkgs.writeShellScript "toggle-stopwatch" ''
-    addr="$(${pkgs.hyprland}/bin/hyprctl -j clients | ${pkgs.jq}/bin/jq -r --arg title ${lib.escapeShellArg config.my.stopwatch.title} 'map(select(.initialTitle == $title))[0].address // empty')"
+    addr="$(${lib.getExe' pkgs.hyprland "hyprctl"} -j clients | ${lib.getExe pkgs.jq} -r --arg title ${lib.escapeShellArg config.my.stopwatch.title} 'map(select(.initialTitle == $title))[0].address // empty')"
 
     if [ -n "$addr" ]; then
-      ${pkgs.hyprland}/bin/hyprctl dispatch closewindow "address:$addr"
+      ${lib.getExe' pkgs.hyprland "hyprctl"} dispatch closewindow "address:$addr"
     else
       exec ${config.my.stopwatch.launch}
     fi
@@ -23,7 +23,7 @@
     fi
 
     # Validate that the provided delta is a number
-    if ! echo "$1" | ${pkgs.gnugrep}/bin/grep -Eq '^[+-]?[0-9]+(\.[0-9]+)?$'; then
+    if ! echo "$1" | ${lib.getExe pkgs.gnugrep} -Eq '^[+-]?[0-9]+(\.[0-9]+)?$'; then
       echo "Error: Delta must be a number"
       exit 1
     fi
@@ -32,10 +32,10 @@
     current=$(hyprctl getoption cursor:zoom_factor | head -n 1 | awk -F': ' '{print $2}')
 
     # Calculate the new zoom factor
-    new_zoom=$(echo "$current * $1" | ${pkgs.bc}/bin/bc)
+    new_zoom=$(echo "$current * $1" | ${lib.getExe pkgs.bc})
 
     # Ensure the new zoom factor is at least 1.0
-    if [ "$(echo "$new_zoom < 1.0" | ${pkgs.bc}/bin/bc)" -eq 1 ]; then
+    if [ "$(echo "$new_zoom < 1.0" | ${lib.getExe pkgs.bc})" -eq 1 ]; then
       new_zoom=1.0
     fi
 
@@ -168,9 +168,9 @@ in {
           ];
           workspace = [
             "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
-            "special:bluetooth, on-created-empty:ghostty -e ${pkgs.bluetui}/bin/bluetui, gapsout:96"
-            "special:network, on-created-empty:ghostty -e ${pkgs.impala}/bin/impala, gapsout:96"
-            "special:audio, on-created-empty:ghostty -e ${pkgs.wiremix}/bin/wiremix, gapsout:96"
+            "special:bluetooth, on-created-empty:ghostty -e ${lib.getExe pkgs.bluetui}, gapsout:96"
+            "special:network, on-created-empty:ghostty -e ${lib.getExe pkgs.impala}, gapsout:96"
+            "special:audio, on-created-empty:ghostty -e ${lib.getExe pkgs.wiremix}, gapsout:96"
           ];
         };
       };

@@ -15,7 +15,7 @@
   in
     pkgs.writeShellScriptBin "ghostty-transparent" ''
       export XDG_CONFIG_HOME=${xdgConfigHome}
-      exec ${pkgs.ghostty}/bin/ghostty "$@"
+      exec ${lib.getExe pkgs.ghostty} "$@"
     '';
   stopwatchApp = pkgs.symlinkJoin {
     name = "stopwatch-app";
@@ -43,15 +43,15 @@
     in ''
       wrapProgram $out/bin/peaclock \
         --argv0 stopwatch \
-        --run 'config_dir="/tmp/peaclock-stopwatch"; ${pkgs.coreutils}/bin/mkdir -p "$config_dir/history"' \
+        --run 'config_dir="/tmp/peaclock-stopwatch"; ${lib.getExe' pkgs.coreutils "mkdir"} -p "$config_dir/history"' \
         --append-flags "--config-dir /tmp/peaclock-stopwatch --config ${configFile}"
       ln -s $out/bin/peaclock $out/bin/stopwatch-app
     '';
   };
   stopwatchLauncher = pkgs.writeShellScriptBin "stopwatch" ''
-    exec ${ghosttyTransparent}/bin/ghostty-transparent \
+    exec ${lib.getExe ghosttyTransparent} \
       --title=${lib.escapeShellArg config.my.stopwatch.title} \
-      -e ${stopwatchApp}/bin/stopwatch-app "$@"
+      -e ${lib.getExe' stopwatchApp "stopwatch-app"} "$@"
   '';
 in {
   options = {
@@ -59,7 +59,7 @@ in {
       launch = lib.mkOption {
         type = lib.types.str;
         description = "Command-line string used to launch the stopwatch application";
-        default = "${stopwatchLauncher}/bin/stopwatch";
+        default = "${lib.getExe stopwatchLauncher}";
       };
       title = lib.mkOption {
         type = lib.types.str;

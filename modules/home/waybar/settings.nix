@@ -9,28 +9,28 @@
       audio = {
         launch = lib.mkOption {
           type = lib.types.str;
-          default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.wiremix}/bin/wiremix";
+          default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.wiremix}";
           description = "Command to launch the audio module.";
         };
         mute = lib.mkOption {
           type = lib.types.str;
-          default = "${pkgs.pamixer}/bin/pamixer -t";
+          default = "${lib.getExe pkgs.pamixer} -t";
           description = "Command to mute the audio.";
         };
       };
       bluetooth.launch = lib.mkOption {
         type = lib.types.str;
-        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.bluetui}/bin/bluetui";
+        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.bluetui}";
         description = "Command to launch the bluetooth module.";
       };
       cpu.launch = lib.mkOption {
         type = lib.types.str;
-        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.btop}/bin/btop";
+        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.btop}";
         description = "Command to launch the cpu module.";
       };
       network.launch = lib.mkOption {
         type = lib.types.str;
-        default = "${pkgs.ghostty}/bin/ghostty -e ${pkgs.impala}/bin/impala";
+        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.impala}";
         description = "Command to launch the network module.";
       };
     };
@@ -122,10 +122,10 @@
           };
           tooltip-format = "{album} - {artist} - {title} ({elapsedTime}/{totalTime})";
           tooltip-format-disconnected = "MPD (disconnected)";
-          on-click = "${pkgs.mpc}/bin/mpc toggle";
-          on-click-right = "${pkgs.mpc}/bin/mpc next";
-          on-scroll-up = "${pkgs.mpc}/bin/mpc volume +5";
-          on-scroll-down = "${pkgs.mpc}/bin/mpc volume -5";
+          on-click = "${lib.getExe pkgs.mpc} toggle";
+          on-click-right = "${lib.getExe pkgs.mpc} next";
+          on-scroll-up = "${lib.getExe pkgs.mpc} volume +5";
+          on-scroll-down = "${lib.getExe pkgs.mpc} volume -5";
         };
 
         network = {
