@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   programs.waybar.settings = [
     {
       reload_style_on_change = true;
@@ -61,7 +61,7 @@ _: {
         tooltip = false;
       };
       mpd = {
-        format = "{stateIcon} {title} ";
+        format = "{stateIcon} {title} ({volume}%) ";
         format-disconnected = "Disconnected ";
         format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
         interval = 10;
@@ -82,8 +82,12 @@ _: {
           paused = "";
           playing = "";
         };
-        tooltip-format = "MPD (connected)";
+        tooltip-format = "{album} - {artist} - {title} ({elapsedTime}/{totalTime})";
         tooltip-format-disconnected = "MPD (disconnected)";
+        on-click = "${pkgs.mpc}/bin/mpc toggle";
+        on-click-right = "${pkgs.mpc}/bin/mpc next";
+        on-scroll-up = "${pkgs.mpc}/bin/mpc volume +5";
+        on-scroll-down = "${pkgs.mpc}/bin/mpc volume -5";
       };
 
       network = {
