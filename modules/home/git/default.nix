@@ -36,9 +36,7 @@ in {
         enable = true;
         settings = {
           user = {
-            user = {
-              inherit (config.itsEthan.cli.git) email name;
-            };
+            inherit (config.itsEthan.cli.git) email name;
           };
           alias = {
             last = "log -1 HEAD";
