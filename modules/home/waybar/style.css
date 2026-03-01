@@ -1,27 +1,23 @@
 * {
   background-color: transparent;
   color: #b5bfe2;
-
-  border: none;
-  border-radius: 0;
-  min-height: 0;
   font-family: "JetBrainsMono Nerd Font", monospace;
   font-size: 12px;
 }
 
-#waybar {
-  background: transparent;
-}
-
 /* Each of these are the bubbles */
 .modules-left,
-#clock,
-#mpd,
+.modules-center > * > *,
 .modules-right {
   background-color: #303446;
   border-radius: 999px;
   padding: 0 10px;
   margin-top: 0;
+}
+
+/* Add spacing only between center module bubbles */
+.modules-center > * + * > * {
+  margin-left: 8px;
 }
 
 #workspaces button {
@@ -55,7 +51,10 @@
   margin-right: 18px;
 }
 #mpd {
-  margin-right: 16px;
+  padding-right: 16px;
+}
+#clock {
+  margin: 0 1.5px;
 }
 
 #tooltip {
@@ -70,12 +69,4 @@ menu {
 
 menuitem {
   background-color: transparent;
-}
-
-#clock {
-  margin: 0 1.5px;
-}
-
-.hidden {
-  opacity: 0;
 }
