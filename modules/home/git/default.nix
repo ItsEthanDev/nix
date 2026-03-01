@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   ...
 }: let
@@ -19,7 +20,7 @@ in {
   options.itsEthan.cli.git = {
     email = lib.mkOption {
       type = lib.types.str;
-      default = "git@ethanbrady.xyz";
+      default = "${osConfig.networking.hostName}@itsEthan.dev";
       description = "The email address to use for git commits";
     };
     name = lib.mkOption {
