@@ -13,8 +13,10 @@
   background: transparent;
 }
 
+/* Each of these are the bubbles */
 .modules-left,
-.modules-center,
+#clock,
+#mpd,
 .modules-right {
   background-color: #303446;
   border-radius: 999px;
@@ -33,27 +35,27 @@
   opacity: 0.5;
 }
 
+/* Improved icon spacing */
 #cpu,
 #battery,
 #pulseaudio {
   min-width: 12px;
   margin: 0 7.5px;
 }
-
 #tray {
   margin-right: 16px;
 }
-
 #bluetooth {
   margin-right: 17px;
 }
-
 #network {
   margin-right: 13px;
 }
-
 #custom-expand-icon {
   margin-right: 18px;
+}
+#mpd {
+  margin-right: 16px;
 }
 
 #tooltip {

@@ -189,6 +189,7 @@ in {
     ffmpeg
     wl-clipboard
     satty
+    pulseaudio
     bc # for adjust-zoom.sh
     libnotify
   ];

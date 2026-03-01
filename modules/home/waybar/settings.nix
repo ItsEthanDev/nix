@@ -7,11 +7,13 @@ _: {
       margin = "8 8 0 8";
       spacing = 0;
       height = 26;
+
       "modules-left" = [
         "hyprland/workspaces"
       ];
       "modules-center" = [
         "clock"
+        "mpd"
       ];
       "modules-right" = [
         "group/tray-expander"
@@ -57,6 +59,31 @@ _: {
         format = "{:L%A %H:%M}";
         "format-alt" = "{:L%d %B %Y}";
         tooltip = false;
+      };
+      mpd = {
+        format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
+        format-disconnected = "Disconnected ";
+        format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
+        interval = 10;
+        consume-icons = {
+          on = " ";
+        };
+        random-icons = {
+          off = "<span color=\"#f53c3c\"></span> ";
+          on = " ";
+        };
+        repeat-icons = {
+          on = " ";
+        };
+        single-icons = {
+          on = "1 ";
+        };
+        state-icons = {
+          paused = "";
+          playing = "";
+        };
+        tooltip-format = "MPD (connected)";
+        tooltip-format-disconnected = "MPD (disconnected)";
       };
 
       network = {
