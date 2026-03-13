@@ -43,6 +43,9 @@ _: {
     #tray {
       margin-right: 16px;
     }
+    #gamemode {
+      margin-right: 16px;
+    }
     #bluetooth {
       margin-right: 17px;
     }
@@ -50,7 +53,7 @@ _: {
       margin-right: 13px;
     }
     #custom-expand-icon {
-      margin-right: 18px;
+      margin-right: 16px;
     }
     #mpd {
       padding-right: 16px;
