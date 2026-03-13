@@ -42,6 +42,17 @@
     # Set the new cursor zoom factor
     hyprctl keyword cursor:zoom_factor "$new_zoom"
   '';
+
+  gamingWindowPatterns = import ./gaming.nix;
+  gamingWindowRules = builtins.concatLists (
+    map (pattern: [
+      "workspace special:gaming, match:initial_class ${pattern}"
+      "workspace special:gaming, match:initial_title ${pattern}"
+      "fullscreen on, match:initial_class ${pattern}"
+      "fullscreen on, match:initial_title ${pattern}"
+    ])
+    gamingWindowPatterns
+  );
 in {
   options.my = {
     hyprland = {
@@ -66,6 +77,9 @@ in {
         enable = true;
         # Conflicts with UWSM
         systemd.enable = false;
+        # plugins = with pkgs; [
+        #   # hyprlandPlugins.hyprwinwrap
+        # ];
         settings = {
           "general:gaps_out" = 8;
           "general:gaps_in" = 8;
@@ -76,6 +90,18 @@ in {
           "binds:scroll_event_delay" = 0;
           "decoration:rounding" = 8;
           "input:kb_options" = "compose:ralt";
+          # plugin = {
+          #   hyprwinwrap = {
+          #     title = "bg";
+          #     pos_x = 0;
+          #     pos_y = 0;
+          #     size_x = 100;
+          #     size_y = 100;
+          #   };
+          # };
+          # exec = [
+          #   "${lib.getExe pkgs.ghostty} --title=bg -e ${lib.getExe pkgs.cmatrix}"
+          # ];
           exec-once = [
             "wl-paste --type text --watch cliphist store"
             "wl-paste --type image --watch cliphist store"
@@ -128,6 +154,7 @@ in {
             "SUPER, 7, workspace, 7"
             "SUPER, 8, workspace, 8"
             "SUPER, 9, workspace, 9"
+            "SUPER, 0, workspace, 10"
             "SUPER_ALT, 1, movetoworkspace, 1"
             "SUPER_ALT, 2, movetoworkspace, 2"
             "SUPER_ALT, 3, movetoworkspace, 3"
@@ -137,6 +164,7 @@ in {
             "SUPER_ALT, 7, movetoworkspace, 7"
             "SUPER_ALT, 8, movetoworkspace, 8"
             "SUPER_ALT, 9, movetoworkspace, 9"
+            "SUPER_ALT, 0, movetoworkspace, 10"
 
             # "$mod_alt, space, movetoworkspace, special"
 
@@ -148,6 +176,8 @@ in {
             "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
             "SUPER_CTRL, N, togglespecialworkspace, network"
             "SUPER_CTRL, A, togglespecialworkspace, audio"
+            "SUPER_CTRL, G, togglespecialworkspace, gaming"
+            "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
             "SUPER_CTRL, C, exec, ${toggleStopwatch}"
 
             "SUPER, mouse_up, exec, ${zoom} 0.8"
@@ -158,24 +188,26 @@ in {
             "SUPER, mouse:272, movewindow"
             "SUPER, mouse:273, resizewindow"
           ];
-          windowrule = [
-            "opacity 0.90, match:class com.mitchellh.ghostty"
+          windowrule =
+            [
+              "opacity 0.90, match:class com.mitchellh.ghostty"
 
-            "float on, match:initial_title ^Discord Popout$"
-            "pin on, match:initial_title ^Discord Popout$"
-            "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
-            "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
+              "float on, match:initial_title ^Discord Popout$"
+              "pin on, match:initial_title ^Discord Popout$"
+              "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
+              "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
 
-            "float on, match:initial_title ^${config.my.stopwatch.title}$"
-            "pin on, match:initial_title ^${config.my.stopwatch.title}$"
-            "size 300 150, match:initial_title ^${config.my.stopwatch.title}$"
-            "move 0 (monitor_h-window_h), match:initial_title ^${config.my.stopwatch.title}$"
-            "border_size 0, match:initial_title ^${config.my.stopwatch.title}$"
-            "rounding 0, match:initial_title ^${config.my.stopwatch.title}$"
-            "opacity 1, match:initial_title ^${config.my.stopwatch.title}$"
-            "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
-            "no_blur on, match:initial_title ^${config.my.stopwatch.title}$"
-          ];
+              "float on, match:initial_title ^${config.my.stopwatch.title}$"
+              "pin on, match:initial_title ^${config.my.stopwatch.title}$"
+              "size 300 150, match:initial_title ^${config.my.stopwatch.title}$"
+              "move 0 (monitor_h-window_h), match:initial_title ^${config.my.stopwatch.title}$"
+              "border_size 0, match:initial_title ^${config.my.stopwatch.title}$"
+              "rounding 0, match:initial_title ^${config.my.stopwatch.title}$"
+              "opacity 1, match:initial_title ^${config.my.stopwatch.title}$"
+              "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
+              "no_blur on, match:initial_title ^${config.my.stopwatch.title}$"
+            ]
+            ++ gamingWindowRules;
           workspace = [
             "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
             "special:bluetooth, on-created-empty:ghostty -e ${lib.getExe pkgs.bluetui}, gapsout:96"
