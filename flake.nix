@@ -14,6 +14,9 @@
 
     catppuccin.url = "github:catppuccin/nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
     zen-browser.url = "github:youwen5/zen-browser-flake";
     lazyvim.url = "github:pfassina/lazyvim-nix";
     elephant.url = "github:abenz1267/elephant";
@@ -68,7 +71,7 @@
                   ./modules/home/git
                   ./modules/home/javascript
                   ./modules/home/lazygit
-                  ./modules/home/nvim
+                  ./modules/home/nixvim
                   ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/starship
