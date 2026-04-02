@@ -12,7 +12,7 @@ in {
     unzip
     zip
     tlrc
-    neofetch
+    fastfetch
     ripgrep
     fd
     jless
