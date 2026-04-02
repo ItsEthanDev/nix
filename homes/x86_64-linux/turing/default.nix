@@ -1,12 +1,8 @@
-{pkgs, ...}: {
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = "/home/ethan/nix/static/wallpapers/spirals-2560x2560.png";
-      wallpaper = ", /home/ethan/nix/static/wallpapers/spirals-2560x2560.png";
-    };
-  };
-
+{
+  lib,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-4,2560x1440@164.80,1920x-360,1"
@@ -25,7 +21,7 @@
 
   xdg.desktopEntries.nemo = {
     name = "Nemo";
-    exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+    exec = lib.getExe' pkgs.nemo-with-extensions "nemo";
   };
   xdg.mimeApps = {
     enable = true;

@@ -137,6 +137,7 @@
                   ./modules/home/javascript
                   ./modules/home/lazygit
                   ./modules/home/mangohud
+                  ./modules/home/mpd
                   ./modules/home/nvim
                   ./modules/home/obsidian
                   ./modules/home/ollama

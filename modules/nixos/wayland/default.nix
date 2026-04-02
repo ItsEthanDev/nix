@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }: {
@@ -8,7 +9,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.bash}/bin/bash -lc 'exec uwsm start hyprland.desktop'";
+        command = "${lib.getExe pkgs.bash} -lc 'exec uwsm start hyprland.desktop'";
         user = config.itsEthan.user.username;
       };
       default_session = initial_session;

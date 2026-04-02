@@ -6,7 +6,7 @@
 }: {
   home.activation.generateSSHKey = lib.hm.dag.entryAfter ["writeBoundary"] ''
     if [ ! -f ${config.home.homeDirectory}/.ssh/id_ed25519 ]; then
-      ${pkgs.openssh}/bin/ssh-keygen -t ed25519 -f ${config.home.homeDirectory}/.ssh/id_ed25519 -q -N ""
+      ${lib.getExe' pkgs.openssh "ssh-keygen"} -t ed25519 -f ${config.home.homeDirectory}/.ssh/id_ed25519 -q -N ""
     fi
   '';
 

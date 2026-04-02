@@ -1,7 +1,5 @@
 ''
-  @define-color base #1f1f28;
-  @define-color base #1f1f28;
-  @define-color background #1f1f28;
+  @define-color background #404458;
   @define-color text #f2ecbc;
   @define-color border #54546d;
   @define-color selected-text #f2ecbc;
