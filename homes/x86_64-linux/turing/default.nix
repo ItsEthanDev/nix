@@ -9,6 +9,19 @@
       "HDMI-A-1,1920x1080@60.00,0x0,1"
       ",preferred,auto,1"
     ];
+
+    workspace = [
+      "1, monitor:DP-4, default:true"
+      "2, monitor:DP-4"
+      "3, monitor:DP-4"
+      "4, monitor:DP-4"
+      "5, monitor:DP-4"
+      "6, monitor:HDMI-A-1"
+      "7, monitor:HDMI-A-1"
+      "8, monitor:HDMI-A-1"
+      "9, monitor:HDMI-A-1"
+      "0, monitor:HDMI-A-1"
+    ];
   };
 
   nixpkgs.config.allowUnfree = true;

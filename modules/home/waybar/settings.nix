@@ -55,6 +55,7 @@
         ];
         modules-right = [
           "group/tray-expander"
+          "gamemode"
           "bluetooth"
           "network"
           "pulseaudio"
@@ -76,6 +77,7 @@
             "7" = "7";
             "8" = "8";
             "9" = "9";
+            "10" = "0";
             active = "󱓻";
           };
           persistent-workspaces = {
@@ -84,6 +86,11 @@
             "3" = [];
             "4" = [];
             "5" = [];
+            "6" = [];
+            "7" = [];
+            "8" = [];
+            "9" = [];
+            "10" = [];
           };
         };
 
@@ -183,6 +190,19 @@
             headset = "";
             default = ["" "" ""];
           };
+        };
+
+        gamemode = {
+          format = "{glyph}";
+          format-alt = "{glyph}";
+          glyph = "🎮";
+          hide-not-running = true;
+          use-icon = true;
+          icon-name = "input-gaming-symbolic";
+          icon-spacing = 0;
+          icon-size = 12;
+          tooltip = true;
+          tooltip-format = "Games running: {count}";
         };
 
         "group/tray-expander" = {
