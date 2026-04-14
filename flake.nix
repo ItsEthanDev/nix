@@ -139,7 +139,7 @@
                   ./modules/home/lazygit
                   ./modules/home/mangohud
                   ./modules/home/mpd
-                  ./modules/home/nvim
+                  ./modules/home/nixvim
                   ./modules/home/obsidian
                   ./modules/home/ollama
                   ./modules/home/opencode
