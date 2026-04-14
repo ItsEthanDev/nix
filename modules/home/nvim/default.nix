@@ -32,8 +32,8 @@
       tailwindcss-language-server
       tree-sitter
       typescript-language-server
+      typescript-go
       vscode-json-languageserver
-      vtsls
     ];
   };
 
