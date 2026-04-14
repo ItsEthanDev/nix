@@ -73,6 +73,7 @@
                   ./modules/home/lazygit
                   ./modules/home/nixvim
                   ./modules/home/opencode
+                  ./modules/home/rust
                   ./modules/home/ssh
                   ./modules/home/starship
                   ./modules/home/zellij

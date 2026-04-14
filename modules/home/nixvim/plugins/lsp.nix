@@ -30,6 +30,7 @@ _: {
             nixpkgs.expr = "import <nixpkgs> { }";
           };
         };
+        rust_analyzer.enable = true;
         tailwindcss.enable = true;
         tsgo.enable = true;
       };
