@@ -13,7 +13,7 @@ in {
       terminal = {
         font-size = lib.mkOption {
           type = lib.types.int;
-          default = 18;
+          default = 16;
           description = "Font size for terminals.";
         };
 
@@ -52,6 +52,7 @@ in {
       installBatSyntax = true;
 
       settings = {
+        background-opacity = lib.mkIf isDarwin 0.875;
         # Will check to make sure fish is installed before setting the shell to
         # fish. The follow must be set in nixos/darwin modules
         # {
@@ -61,9 +62,9 @@ in {
         command = lib.mkIf hasFish (lib.getExe pkgs.fish);
         confirm-close-surface = false;
         font-family = "JetBrainsMono NFM Regular";
-        font-size = 18;
+        font-size = config.my.terminal.font-size;
         window-padding-color = "extend";
-        window-padding-x = 4;
+        window-padding-x = 8;
       };
     };
   };

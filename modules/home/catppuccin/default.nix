@@ -30,6 +30,10 @@
         colorschemes.catppuccin = {
           enable = true;
           flavor = "frappe";
+          settings = {
+            transparent_background = true;
+            float.transparent = true;
+          };
         };
       };
     };
