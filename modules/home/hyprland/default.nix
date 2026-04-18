@@ -95,6 +95,8 @@ in {
           "binds:scroll_event_delay" = 0;
           "decoration:rounding" = 8;
           "input:kb_options" = "compose:ralt";
+          "misc:disable_hyprland_logo" = true;
+          "misc:disable_splash_rendering" = true;
           # plugin = {
           #   hyprwinwrap = {
           #     title = "bg";
