@@ -64,7 +64,10 @@ in {
         font-family = "JetBrainsMono NFM Regular";
         font-size = config.my.terminal.font-size;
         window-padding-color = "extend";
-        window-padding-x = 8;
+        window-padding-x =
+          if isDarwin
+          then 8
+          else 4;
       };
     };
   };
