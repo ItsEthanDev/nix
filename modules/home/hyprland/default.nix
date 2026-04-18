@@ -55,6 +55,7 @@
   );
 in {
   imports = [
+    ./dynamic-cursors.nix
     ./idle.nix
   ];
 
