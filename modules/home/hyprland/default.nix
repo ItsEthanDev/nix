@@ -54,6 +54,10 @@
     gamingWindowPatterns
   );
 in {
+  imports = [
+    ./idle.nix
+  ];
+
   options.my = {
     hyprland = {
       wallpaper = lib.mkOption {
