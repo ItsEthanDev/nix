@@ -32,7 +32,7 @@ _: {
         };
         rust_analyzer.enable = true;
         tailwindcss.enable = true;
-        tsgo.enable = true;
+        ts_ls.enable = true;
       };
     };
   };
