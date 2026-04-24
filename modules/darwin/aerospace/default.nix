@@ -11,10 +11,10 @@
           vertical = 8;
         };
         outer = {
-          top = 4;
-          bottom = 4;
-          left = 4;
-          right = 4;
+          top = 8;
+          bottom = 8;
+          left = 8;
+          right = 8;
         };
       };
       mode.main.binding = {
