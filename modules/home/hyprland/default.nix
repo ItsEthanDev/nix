@@ -94,7 +94,7 @@ in {
           "cursor:inactive_timeout" = 3;
           "binds:scroll_event_delay" = 0;
           "decoration:rounding" = 8;
-          "input:kb_options" = "compose:ralt";
+          "input:kb_options" = "compose:ralt,caps:escape";
           "misc:disable_hyprland_logo" = true;
           "misc:disable_splash_rendering" = true;
           # plugin = {
@@ -197,7 +197,7 @@ in {
           ];
           windowrule =
             [
-              "opacity 0.90, match:class com.mitchellh.ghostty"
+              "opacity 0.875, match:class com.mitchellh.ghostty"
 
               "float on, match:initial_title ^Discord Popout$"
               "pin on, match:initial_title ^Discord Popout$"
