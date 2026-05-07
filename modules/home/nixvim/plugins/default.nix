@@ -12,6 +12,7 @@
     ./mini
     ./noice.nix
     ./oil.nix
+    ./opencode.nix
     ./telescope.nix
     ./toggleterm.nix
     ./treesitter.nix
