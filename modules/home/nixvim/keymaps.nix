@@ -28,7 +28,7 @@ in {
       {
         action = "<cmd>nohlsearch<CR>";
         key = "<Esc>";
-        mode = ["n" "i" "s"];
+        mode = ["n"];
         options = {
           desc = "clear search highlight";
           silent = true;
