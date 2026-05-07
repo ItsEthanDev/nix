@@ -1,10 +1,5 @@
 _: {
   programs.nixvim = {
-    opts = {
-      foldmethod = "expr";
-      foldexpr = "nvim_treesitter#foldexpr()";
-      foldlevel = 99;
-    };
     plugins.treesitter = {
       enable = true;
       settings = {
