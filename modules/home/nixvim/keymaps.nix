@@ -176,6 +176,10 @@ in {
       }
       {
         key = "gD";
+        lspBufAction = "declaration";
+      }
+      {
+        key = "gr";
         lspBufAction = "references";
       }
       {
@@ -183,12 +187,16 @@ in {
         lspBufAction = "type_definition";
       }
       {
-        key = "gi";
+        key = "gI";
         lspBufAction = "implementation";
       }
       {
         key = "K";
         lspBufAction = "hover";
+      }
+      {
+        key = "gK";
+        lspBufAction = "signature_help";
       }
       {
         key = "<leader>ca";
