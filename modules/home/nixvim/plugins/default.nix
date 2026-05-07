@@ -1,5 +1,8 @@
 {...}: {
   imports = [
+    ./blink.nix
+    ./ccc.nix
+    ./copilot.nix
     ./conform.nix
     ./indent-blankline.nix
     ./lazygit.nix
