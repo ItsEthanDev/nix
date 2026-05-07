@@ -4,6 +4,7 @@
     ./ccc.nix
     ./copilot.nix
     ./conform.nix
+    ./gitsigns.nix
     ./indent-blankline.nix
     ./lazygit.nix
     ./lsp.nix
@@ -17,7 +18,7 @@
   ];
 
   programs.nixvim.plugins = {
-    gitsigns.enable = true;
+    hardtime.enable = true;
     ts-comments.enable = true;
     web-devicons.enable = true;
   };
