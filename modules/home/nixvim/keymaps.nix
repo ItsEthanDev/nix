@@ -168,6 +168,15 @@ in {
           silent = true;
         };
       }
+      {
+        action = mkRaw ''function() require("actions-preview").code_actions() end'';
+        key = "<leader>ca";
+        mode = ["n" "v"];
+        options = {
+          desc = "Code Actions";
+          silent = true;
+        };
+      }
     ];
     lsp.keymaps = [
       {
@@ -197,10 +206,6 @@ in {
       {
         key = "gK";
         lspBufAction = "signature_help";
-      }
-      {
-        key = "<leader>ca";
-        lspBufAction = "code_action";
       }
       {
         key = "<leader>cr";
