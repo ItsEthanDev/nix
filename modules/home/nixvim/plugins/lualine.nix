@@ -1,6 +1,4 @@
-{config, ...}: let
-  inherit (config.lib.nixvim) mkRaw;
-in {
+_: {
   programs.nixvim.plugins.lualine = {
     enable = true;
     settings.sections = {

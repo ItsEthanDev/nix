@@ -1,15 +1,40 @@
-{...}: {
+{config, ...}: let
+  inherit (config.lib.nixvim) mkRaw;
+in {
   programs.nixvim = {
     keymaps = [
+      # Better up/down
+      {
+        action = "v:count == 0 ? 'gj' : 'j'";
+        key = "j";
+        mode = ["n" "x"];
+        options = {
+          desc = "Down";
+          expr = true;
+          silent = true;
+        };
+      }
+      {
+        action = "v:count == 0 ? 'gk' : 'k'";
+        key = "k";
+        mode = ["n" "x"];
+        options = {
+          desc = "Up";
+          expr = true;
+          silent = true;
+        };
+      }
+      # Clear highlights on escape
       {
         action = "<cmd>nohlsearch<CR>";
         key = "<Esc>";
-        mode = "n";
+        mode = ["n"];
         options = {
           desc = "clear search highlight";
           silent = true;
         };
       }
+      # Move to window using the <ctrl> hjkl keys
       {
         action = "<C-w>h";
         key = "<C-h>";
@@ -42,30 +67,113 @@
           silent = true;
         };
       }
+      # Better indent
       {
-        action = ":m '>+1<CR>gv=gv";
-        key = "J";
+        action = "<gv";
+        key = "<";
         mode = "x";
-        options = {
-          desc = "move selection down";
-          silent = true;
-        };
+        options.silent = true;
       }
       {
-        action = ":m '<-2<CR>gv=gv";
-        key = "K";
+        action = ">gv";
+        key = ">";
         mode = "x";
-        options = {
-          desc = "move selection up";
-          silent = true;
-        };
+        options.silent = true;
       }
+      # Diagnostics
       {
-        action = "<cmd>lua vim.diagnostic.open_float(nil, {scope = 'cursor'})<CR>";
+        action = mkRaw "vim.diagnostic.open_float";
         key = "<leader>cd";
         mode = "n";
         options = {
-          desc = "show cursor diagnostics";
+          desc = "Line Diagnostics";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = 1, float = true})
+          end
+        '';
+        key = "]d";
+        mode = "n";
+        options = {
+          desc = "Next Diagnostic";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = -1, float = true})
+          end
+        '';
+        key = "[d";
+        mode = "n";
+        options = {
+          desc = "Prev Diagnostic";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = 1, severity = vim.diagnostic.severity.ERROR, float = true})
+          end
+        '';
+        key = "]e";
+        mode = "n";
+        options = {
+          desc = "Next Error";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = -1, severity = vim.diagnostic.severity.ERROR, float = true})
+          end
+        '';
+        key = "[e";
+        mode = "n";
+        options = {
+          desc = "Prev Error";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = 1, severity = vim.diagnostic.severity.WARN, float = true})
+          end
+        '';
+        key = "]w";
+        mode = "n";
+        options = {
+          desc = "Next Warning";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''
+          function()
+            vim.diagnostic.jump({count = -1, severity = vim.diagnostic.severity.WARN, float = true})
+          end
+        '';
+        key = "[w";
+        mode = "n";
+        options = {
+          desc = "Prev Warning";
+          silent = true;
+        };
+      }
+      {
+        action = mkRaw ''function() require("actions-preview").code_actions() end'';
+        key = "<leader>ca";
+        mode = ["n" "v"];
+        options = {
+          desc = "Code Actions";
           silent = true;
         };
       }
@@ -77,6 +185,10 @@
       }
       {
         key = "gD";
+        lspBufAction = "declaration";
+      }
+      {
+        key = "gr";
         lspBufAction = "references";
       }
       {
@@ -84,7 +196,7 @@
         lspBufAction = "type_definition";
       }
       {
-        key = "gi";
+        key = "gI";
         lspBufAction = "implementation";
       }
       {
@@ -92,8 +204,8 @@
         lspBufAction = "hover";
       }
       {
-        key = "<leader>ca";
-        lspBufAction = "code_action";
+        key = "gK";
+        lspBufAction = "signature_help";
       }
       {
         key = "<leader>cr";

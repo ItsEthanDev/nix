@@ -17,6 +17,7 @@ in {
     fd
     jless
     jq
+    zk
   ];
 
   programs = {

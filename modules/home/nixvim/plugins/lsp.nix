@@ -1,38 +1,53 @@
-_: {
+{config, ...}: let
+  inherit (config.lib.nixvim) mkRaw;
+in {
   programs.nixvim.plugins = {
-    cmp = {
+    actions-preview = {
       enable = true;
-      autoEnableSources = true;
       settings = {
-        experimental.ghost_text = true;
-        mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-n>" = "cmp.mapping.select_next_item()";
-          "<C-p>" = "cmp.mapping.select_prev_item()";
-          "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-y>" = "cmp.mapping.confirm({ select = true })";
-        };
-        sources = [
-          {name = "nvim_lsp";}
-          {name = "luasnip";}
-          {name = "path";}
-        ];
+        backend = ["telescope"];
+        telescope = mkRaw ''
+          vim.tbl_extend("force", require("telescope.themes").get_dropdown(), {
+            sorting_strategy = "ascending",
+            layout_strategy = "vertical",
+            layout_config = {
+              width = 0.8,
+              height = 0.9,
+              prompt_position = "top",
+              preview_cutoff = 20,
+              preview_height = function(_, _, max_lines)
+                return max_lines - 15
+              end,
+            },
+          })
+        '';
       };
     };
+
     lsp = {
       enable = true;
       servers = {
+        # CSS
+        cssls.enable = true;
+        # JSON
         jsonnet_ls.enable = true;
+        # Nix
         nixd = {
           enable = true;
-          settings = {
+          config = {
             nixpkgs.expr = "import <nixpkgs> { }";
           };
         };
-        rust_analyzer.enable = true;
+        # Rust
+        rust_analyzer = {
+          enable = true;
+          installRustc = true;
+          installCargo = true;
+        };
+        # Tailwind
         tailwindcss.enable = true;
-        tsgo.enable = true;
+        # Typescript
+        ts_ls.enable = true;
       };
     };
   };
