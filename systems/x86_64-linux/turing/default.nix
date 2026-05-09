@@ -3,8 +3,6 @@
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_19;
-
   networking.firewall.enable = true;
 
   networking.firewall.allowedTCPPorts = [5520 38281];
