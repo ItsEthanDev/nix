@@ -16,6 +16,7 @@
     ./telescope.nix
     ./toggleterm.nix
     ./treesitter.nix
+    ./zk.nix
   ];
 
   programs.nixvim.plugins = {
