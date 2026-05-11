@@ -33,6 +33,10 @@
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
     javaPackages.compiler.temurin-bin.jre-17
+    snes9x
+    archipelago
+    wine
+    steam
   ];
 
   xdg.desktopEntries.nemo = {
