@@ -143,6 +143,7 @@
                   ./modules/home/obsidian
                   ./modules/home/ollama
                   ./modules/home/opencode
+                  ./modules/home/rust
                   ./modules/home/ssh
                   ./modules/home/starship
                   ./modules/home/stopwatch
