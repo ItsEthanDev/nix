@@ -7,21 +7,25 @@
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
-  hardware.uinput.enable = true;
   services.udev.packages = [pkgs.game-devices-udev-rules];
-
   programs.gamemode.enable = true;
 
-  hardware.xone.enable = true;
+  hardware = {
+    steam-hardware.enable = true;
+    uinput.enable = true;
+    xone.enable = true;
+  };
 
   programs.steam = {
     enable = true;
+    extest.enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [
+    gamescope
     protonup-qt
     vkbasalt
     steam-devices-udev-rules
