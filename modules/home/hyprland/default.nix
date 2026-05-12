@@ -141,14 +141,16 @@ in {
 
             ## workspace
 
-            "SUPER, H, movefocus, l"
-            "SUPER, J, movefocus, d"
-            "SUPER, K, movefocus, u"
-            "SUPER, L, movefocus, r"
-            "SUPER_ALT, H, movewindow, l"
-            "SUPER_ALT, J, movewindow, d"
-            "SUPER_ALt, K, movewindow, u"
-            "SUPER_ALt, L, movewindow, r"
+             "SUPER, H, movefocus, l"
+             "SUPER, J, movefocus, d"
+             "SUPER, K, movefocus, u"
+             "SUPER, L, movefocus, r"
+             "SUPER, Tab, focusmonitor, +1"
+             "SUPER_ALT, Tab, movewindow, mon:+1"
+             "SUPER_ALT, H, movewindow, l"
+             "SUPER_ALT, J, movewindow, d"
+             "SUPER_ALt, K, movewindow, u"
+             "SUPER_ALt, L, movewindow, r"
 
             # "$mod, space, togglespecialworkspace"
 
