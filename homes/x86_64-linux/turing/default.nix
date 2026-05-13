@@ -36,7 +36,6 @@
     snes9x
     archipelago
     wine
-    steam
   ];
 
   xdg.desktopEntries.nemo = {
