@@ -28,7 +28,6 @@
     gamescope
     protonup-qt
     vkbasalt
-    steam-devices-udev-rules
   ];
 
   # Refer here for retroarch https://wiki.nixos.org/wiki/Category:Gaming
