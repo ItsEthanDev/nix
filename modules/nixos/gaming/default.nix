@@ -28,7 +28,6 @@
     gamescope
     protonup-qt
     vkbasalt
+    retroarch-free
   ];
-
-  # Refer here for retroarch https://wiki.nixos.org/wiki/Category:Gaming
 }
