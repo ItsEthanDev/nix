@@ -50,7 +50,15 @@ in {
       installBatSyntax = true;
 
       settings = {
+        # Background
         background-opacity = lib.mkIf isDarwin 0.875;
+        # Copy
+        copy-on-select = true;
+        selection-clear-on-copy = true;
+        # Font
+        font-family = "JetBrainsMono NFM Regular";
+        font-size = 16;
+        # Shell
         # Will check to make sure fish is installed before setting the shell to
         # fish. The follow must be set in nixos/darwin modules
         # {
@@ -58,18 +66,17 @@ in {
         #   environment.shells = [pkgs.fish];
         # }
         command = lib.mkIf hasFish (lib.getExe pkgs.fish);
-        copy-on-select = true;
-        confirm-close-surface = false;
-        font-family = "JetBrainsMono NFM Regular";
-        font-size = 16;
         shell-integration = lib.mkIf hasFish "fish";
+        # Quick Terminal
         quick-terminal-position = "center";
         quick-terminal-size = "90%,90%";
+        # Window Padding Padding
         window-padding-color = "extend";
         window-padding-x =
           if isDarwin
           then 8
           else 4;
+        # Window Save State
         window-save-state = "always";
       };
     };
