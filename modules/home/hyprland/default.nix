@@ -141,16 +141,16 @@ in {
 
             ## workspace
 
-             "SUPER, H, movefocus, l"
-             "SUPER, J, movefocus, d"
-             "SUPER, K, movefocus, u"
-             "SUPER, L, movefocus, r"
-             "SUPER, Tab, focusmonitor, +1"
-             "SUPER_ALT, Tab, movewindow, mon:+1"
-             "SUPER_ALT, H, movewindow, l"
-             "SUPER_ALT, J, movewindow, d"
-             "SUPER_ALt, K, movewindow, u"
-             "SUPER_ALt, L, movewindow, r"
+            "SUPER, H, movefocus, l"
+            "SUPER, J, movefocus, d"
+            "SUPER, K, movefocus, u"
+            "SUPER, L, movefocus, r"
+            "SUPER, Tab, focusmonitor, +1"
+            "SUPER_ALT, Tab, movewindow, mon:+1"
+            "SUPER_ALT, H, movewindow, l"
+            "SUPER_ALT, J, movewindow, d"
+            "SUPER_ALt, K, movewindow, u"
+            "SUPER_ALt, L, movewindow, r"
 
             # "$mod, space, togglespecialworkspace"
 
@@ -185,9 +185,13 @@ in {
             "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
             "SUPER_CTRL, N, togglespecialworkspace, network"
             "SUPER_CTRL, A, togglespecialworkspace, audio"
+            "SUPER_CTRL, C, exec, ${toggleStopwatch}"
+
+            # Workspaces
             "SUPER_CTRL, G, togglespecialworkspace, gaming"
             "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
-            "SUPER_CTRL, C, exec, ${toggleStopwatch}"
+            "SUPER_CTRL, L, togglespecialworkspace, special:launchgame"
+            "SUPER_CTRL_ALT, L, movetoworkspace, special:launchgame"
 
             "SUPER, mouse_up, exec, ${zoom} 0.8"
             "SUPER, mouse_down, exec, ${zoom} 1.25"
