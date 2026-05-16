@@ -15,6 +15,13 @@ _: {
       desc = "Notify after reloading changed file";
       command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None";
     }
+    # JSON syntax can conceal quote characters when conceallevel is enabled.
+    {
+      event = "FileType";
+      pattern = ["json" "jsonc"];
+      desc = "Show JSON quotes";
+      command = "setlocal conceallevel=0";
+    }
     {
       event = "FileType";
       pattern = ["javascript" "javascriptreact" "typescript" "typescriptreact"];
