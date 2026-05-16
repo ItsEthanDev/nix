@@ -32,7 +32,7 @@
   };
   programs.home-manager.enable = true;
   home.packages = with pkgs; [
-    javaPackages.compiler.temurin-bin.jre-17
+    javaPackages.compiler.temurin-bin.jre-25
     snes9x
     archipelago
     wine
