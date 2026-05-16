@@ -8,15 +8,13 @@
   ghostty-mock = pkgs.writeShellScriptBin "ghostty-mock" "";
   hasFish = config.programs.fish.enable;
 in {
+  imports = [
+    ./keybind.nix
+  ];
+
   options = {
     my = {
       terminal = {
-        font-size = lib.mkOption {
-          type = lib.types.int;
-          default = 16;
-          description = "Font size for terminals.";
-        };
-
         launch = lib.mkOption {
           type = lib.types.str;
           default = "ghostty";
@@ -60,14 +58,19 @@ in {
         #   environment.shells = [pkgs.fish];
         # }
         command = lib.mkIf hasFish (lib.getExe pkgs.fish);
+        copy-on-select = true;
         confirm-close-surface = false;
         font-family = "JetBrainsMono NFM Regular";
-        font-size = config.my.terminal.font-size;
+        font-size = 16;
+        shell-integration = lib.mkIf hasFish "fish";
+        quick-terminal-position = "center";
+        quick-terminal-size = "90%,90%";
         window-padding-color = "extend";
         window-padding-x =
           if isDarwin
           then 8
           else 4;
+        window-save-state = "always";
       };
     };
   };
