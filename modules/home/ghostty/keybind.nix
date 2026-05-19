@@ -2,6 +2,9 @@ _: {
   config.programs.ghostty = {
     clearDefaultKeybinds = true;
     settings.keybind = [
+      # Quit
+      "super+q=quit"
+      "super+n=new_window"
       # Reload
       "ctrl+shift+,=reload_config"
       # Copy + Paste
@@ -14,10 +17,10 @@ _: {
       "ctrl+shift+==increase_font_size:1"
       "ctrl+shift+0=reset_font_size"
       # Activate
-      "all:ctrl+space=activate_key_table:vim"
+      "ctrl+space=activate_key_table:vim"
       # Deactivate
-      "all:vim/escape=deactivate_key_table"
-      "all:vim/i=deactivate_key_table"
+      "vim/escape=deactivate_key_table"
+      "vim/i=deactivate_key_table"
       # Scroll
       "vim/j=scroll_page_lines:1"
       "vim/k=scroll_page_lines:-1"
