@@ -3,9 +3,8 @@
     ./conform.nix
     ./lsp.nix
     ./lualine.nix
-    ./mini
+    ./mini.nix
     ./noice.nix
-    ./oil.nix
     ./telescope.nix
     ./toggleterm.nix
     ./treesitter.nix
