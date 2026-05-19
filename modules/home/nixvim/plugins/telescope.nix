@@ -1,4 +1,8 @@
-{config, pkgs, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   inherit (config.lib.nixvim) mkRaw;
 in {
   home.packages = [pkgs.ripgrep];
