@@ -17,8 +17,13 @@ _: {
         # Rust
         rust_analyzer = {
           enable = true;
-          installRustc = true;
-          installCargo = true;
+          installRustc = false;
+          installCargo = false;
+          settings = {
+            cargo = {
+              targetDir = "target/rust-analyzer";
+            };
+          };
         };
         # Tailwind
         tailwindcss.enable = true;
