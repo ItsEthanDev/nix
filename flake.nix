@@ -2,24 +2,35 @@
   description = "It's Ethan's configuration flake";
 
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    catppuccin = {
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    catppuccin.url = "github:catppuccin/nix";
-    nix-gaming.url = "github:fufexan/nix-gaming";
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim = {
       url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    lazyvim.url = "github:pfassina/lazyvim-nix";
-    elephant.url = "github:abenz1267/elephant";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    elephant = {
+      url = "github:abenz1267/elephant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     walker = {
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
@@ -70,7 +81,6 @@
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/javascript
-                  ./modules/home/lazygit
                   ./modules/home/nixvim
                   ./modules/home/opencode
                   ./modules/home/rust
