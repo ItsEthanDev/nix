@@ -222,7 +222,7 @@ in {
             ]
             ++ gamingWindowRules;
           workspace = [
-            "special:top, on-created-empty:${config.my.top.launch}, gapsout:96"
+            "special:top, on-created-empty:ghostty -e ${lib.getExe pkgs.btop}, gapsout:96"
             "special:bluetooth, on-created-empty:ghostty -e ${lib.getExe pkgs.bluetui}, gapsout:96"
             "special:network, on-created-empty:ghostty -e ${lib.getExe pkgs.impala}, gapsout:96"
             "special:audio, on-created-empty:ghostty -e ${lib.getExe pkgs.wiremix}, gapsout:96"

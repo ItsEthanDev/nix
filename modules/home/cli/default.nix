@@ -22,6 +22,11 @@ in {
 
   programs = {
     bat.enable = true;
+    btop.enable = true;
+    direnv = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     eza = {
       enable = true;
       enableZshIntegration = true;
@@ -42,6 +47,7 @@ in {
         "-e"
       ];
     };
+    lazygit.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;

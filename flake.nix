@@ -124,10 +124,8 @@
                 imports = [
                   ./homes/x86_64-linux/turing
                   ./modules/home/banana-cursor
-                  ./modules/home/btop
                   ./modules/home/catppuccin
                   ./modules/home/cli
-                  ./modules/home/direnv
                   ./modules/home/discord
                   ./modules/home/easy-effects
                   ./modules/home/fish
@@ -136,7 +134,6 @@
                   ./modules/home/hyprland
                   ./modules/home/gtk
                   ./modules/home/javascript
-                  ./modules/home/lazygit
                   ./modules/home/mangohud
                   ./modules/home/mpd
                   ./modules/home/nixvim
