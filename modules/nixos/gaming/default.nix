@@ -29,5 +29,6 @@
     protonup-qt
     vkbasalt
     retroarch-free
+    hidapi
   ];
 }

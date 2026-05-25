@@ -20,6 +20,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "input"
       ];
       shell = pkgs.zsh;
     };
