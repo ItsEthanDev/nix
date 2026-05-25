@@ -32,7 +32,7 @@ in {
       extraConfig = ''
         keybinds clear-defaults=true {
             locked {
-                bind "Ctrl space" { SwitchToMode "normal"; }
+                bind "Ctrl g" { SwitchToMode "normal"; }
             }
             pane {
                 bind "h" { MoveFocus "left"; }

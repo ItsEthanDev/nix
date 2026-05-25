@@ -1,6 +1,7 @@
 _: {
   programs.nixvim = {
     opts = {
+      autoindent = true;
       autoread = true;
       breakindent = true;
       clipboard = "unnamedplus";
@@ -21,6 +22,8 @@ _: {
       foldtext = "";
       inccommand = "split";
       ignorecase = true;
+      iskeyword = "@,48-57,_,192-255,-";
+      linebreak = true;
       laststatus = 3;
       list = true;
       listchars = {
@@ -46,6 +49,7 @@ _: {
       smartcase = true;
       splitbelow = true;
       splitright = true;
+      switchbuf = "usetab";
       tabstop = 2;
       termguicolors = true;
       timeoutlen = 400;

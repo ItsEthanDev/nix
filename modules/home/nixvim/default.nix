@@ -2,7 +2,7 @@
   imports = [
     inputs.nixvim.homeModules.nixvim
     ./autocmds.nix
-    ./keymaps.nix
+    ./keymaps
     ./opts.nix
     ./plugins
   ];
