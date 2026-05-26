@@ -1,11 +1,16 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    opencode
-    beads
-  ];
+{lib, ...}: {
+  programs.opencode = {
+    enable = true;
 
-  xdg.configFile."opencode/tui.json".text = builtins.toJSON {
-    "$schema" = "https://opencode.ai/tui.json";
-    theme = "system";
+    tui = {
+      "$schema" = "https://opencode.ai/tui.json";
+      theme = lib.mkForce "system";
+    };
+
+    web = {
+      enable = true;
+      environmentFile = "/home/ethan/.config/opencode/web.env";
+      extraArgs = ["--mdns"];
+    };
   };
 }
