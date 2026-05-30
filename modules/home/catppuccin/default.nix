@@ -18,6 +18,8 @@
         # Overwrites mangohud configuration if enabled
         mangohud.enable = false;
 
+        hyprland.enable = false;
+
         # Has weird side effects if enabled
         zsh-syntax-highlighting = {
           enable = false;

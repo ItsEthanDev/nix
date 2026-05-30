@@ -54,11 +54,6 @@
     gamingWindowPatterns
   );
 in {
-  imports = [
-    ./dynamic-cursors.nix
-    ./idle.nix
-  ];
-
   options.my = {
     hyprland = {
       wallpaper = lib.mkOption {
@@ -80,6 +75,7 @@ in {
 
       wayland.windowManager.hyprland = {
         enable = true;
+        configType = "hyprlang";
         # Conflicts with UWSM
         systemd.enable = false;
         # plugins = with pkgs; [
