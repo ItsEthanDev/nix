@@ -122,7 +122,7 @@ in {
             "SUPER_SHIFT, I, exec, discord"
             "SUPER_SHIFT, C, exec, hyprpicker -a"
             "SUPER_SHIFT, B, exec, zen"
-            "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ~/Screenshots"
+            "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}"
             "SUPER_SHIFT, S, exec, steam"
 
             # ACTIONS
@@ -135,7 +135,7 @@ in {
             "SUPER, F, fullscreen, 0"
             "SUPER, T, togglefloating"
             "SUPER, O, pin"
-            "SUPER, P, exec, hyprshot -m output -m active -o ~/Screenshots"
+            "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
 
             "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
 
