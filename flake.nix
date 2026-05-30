@@ -112,6 +112,7 @@
           ./modules/nixos/font
           ./modules/nixos/gaming
           ./modules/nixos/hyprland
+          ./modules/nixos/kde-connect
           ./modules/nixos/llama
           ./modules/nixos/locale
           ./modules/nixos/network
