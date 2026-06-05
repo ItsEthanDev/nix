@@ -54,6 +54,39 @@ _: {
         mode = "x";
         options.silent = true;
       }
+      # Better window navigation
+      {
+        action = "<C-w>h";
+        key = "<C-h>";
+        mode = ["n"];
+        options = {
+          desc = "Left window";
+        };
+      }
+      {
+        action = "<C-w>j";
+        key = "<C-j>";
+        mode = ["n"];
+        options = {
+          desc = "Lower window";
+        };
+      }
+      {
+        action = "<C-w>k";
+        key = "<C-k>";
+        mode = ["n"];
+        options = {
+          desc = "Upper window";
+        };
+      }
+      {
+        action = "<C-w>l";
+        key = "<C-l>";
+        mode = ["n"];
+        options = {
+          desc = "Right window";
+        };
+      }
     ];
   };
 }
