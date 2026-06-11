@@ -34,6 +34,9 @@ in {
     programs = {
       git = {
         enable = true;
+        lfs = {
+          enable = true;
+        };
         settings = {
           user = {
             inherit (config.itsEthan.cli.git) email name;
