@@ -52,6 +52,7 @@ _: {
       switchbuf = "usetab";
       tabstop = 2;
       termguicolors = true;
+      textwidth = 80;
       timeoutlen = 400;
       undofile = true;
     };
