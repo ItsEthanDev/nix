@@ -35,6 +35,7 @@
       url = "github:abenz1267/walker";
       inputs.elephant.follows = "elephant";
     };
+    zapp.url = "github:zsa/zapp";
   };
 
   outputs = {
