@@ -71,9 +71,6 @@ in {
         configType = "hyprlang";
         # Conflicts with UWSM
         systemd.enable = false;
-        # plugins = with pkgs; [
-        #   # hyprlandPlugins.hyprwinwrap
-        # ];
         settings = {
           "general:gaps_out" = 8;
           "general:gaps_in" = 8;
@@ -86,18 +83,6 @@ in {
           "input:kb_options" = "compose:ralt,caps:escape";
           "misc:disable_hyprland_logo" = true;
           "misc:disable_splash_rendering" = true;
-          # plugin = {
-          #   hyprwinwrap = {
-          #     title = "bg";
-          #     pos_x = 0;
-          #     pos_y = 0;
-          #     size_x = 100;
-          #     size_y = 100;
-          #   };
-          # };
-          # exec = [
-          #   "${lib.getExe pkgs.ghostty} --title=bg -e ${lib.getExe pkgs.cmatrix}"
-          # ];
           exec-once = [
             "wl-paste --type text --watch cliphist store"
             "wl-paste --type image --watch cliphist store"
