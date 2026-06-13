@@ -10,10 +10,6 @@
 
     tui = {
       "$schema" = "https://opencode.ai/tui.json";
-      # keybinds.input_paste = {
-      #   key = "super+v";
-      #   preventDefault = false;
-      # };
       theme = lib.mkForce "system";
     };
 

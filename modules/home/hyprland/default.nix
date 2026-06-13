@@ -125,7 +125,7 @@ in {
             "SUPER, space, exec, walker"
             "SUPER, W, killactive"
             "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
-            "SUPER, V, sendshortcut, CTRL_SHIFT, V, activewindow"
+            "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
             "SUPER, X, sendshortcut, CTRL, X, activewindow"
             "SUPER, A, sendshortcut, CTRL, A, activewindow"
             "SUPER, F, fullscreen, 0"

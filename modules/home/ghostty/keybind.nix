@@ -8,10 +8,8 @@ _: {
       # Reload
       "ctrl+shift+,=reload_config"
       # Copy + Paste
-      "super+c=copy_to_clipboard:mixed"
-      "super+v=paste_from_clipboard"
-      "copy=copy_to_clipboard:mixed"
-      "paste=paste_from_clipboard"
+      "shift+insert=paste_from_clipboard"
+      "ctrl+insert=copy_to_clipboard"
       # Font size
       "ctrl+shift+-=decrease_font_size:1"
       "ctrl+shift+==increase_font_size:1"
