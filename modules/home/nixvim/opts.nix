@@ -24,6 +24,7 @@ _: {
       ignorecase = true;
       iskeyword = "@,48-57,_,192-255,-";
       linebreak = true;
+      wrap = true;
       laststatus = 3;
       list = true;
       listchars = {
