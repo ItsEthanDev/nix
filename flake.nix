@@ -105,6 +105,7 @@
         modules = [
           {nixpkgs.overlays = overlays;}
           ./systems/x86_64-linux/turing
+          ./modules/nixos/1password
           ./modules/nixos/audio
           ./modules/nixos/bluetooth
           ./modules/nixos/catppuccin
