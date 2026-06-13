@@ -117,6 +117,7 @@
           ./modules/nixos/kde-connect
           ./modules/nixos/llama
           ./modules/nixos/locale
+          ./modules/nixos/localsend
           ./modules/nixos/network
           ./modules/nixos/nix
           ./modules/nixos/ssh
