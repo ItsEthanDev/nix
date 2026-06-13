@@ -66,13 +66,6 @@ in {
 
   config =
     {
-      home.file = {
-        ".config/hypr/whisper-dictate.sh" = {
-          source = ./whisper-dictate.sh;
-          executable = true;
-        };
-      };
-
       wayland.windowManager.hyprland = {
         enable = true;
         configType = "hyprlang";
@@ -141,15 +134,10 @@ in {
             "SUPER, J, movefocus, d"
             "SUPER, K, movefocus, u"
             "SUPER, L, movefocus, r"
-            "SUPER, Tab, focusmonitor, +1"
-            "SUPER_ALT, Tab, movewindow, mon:+1"
             "SUPER_ALT, H, movewindow, l"
             "SUPER_ALT, J, movewindow, d"
             "SUPER_ALt, K, movewindow, u"
             "SUPER_ALt, L, movewindow, r"
-
-            # "$mod, space, togglespecialworkspace"
-
             "SUPER, 1, workspace, 1"
             "SUPER, 2, workspace, 2"
             "SUPER, 3, workspace, 3"
@@ -170,18 +158,18 @@ in {
             "SUPER_ALT, 8, movetoworkspace, 8"
             "SUPER_ALT, 9, movetoworkspace, 9"
             "SUPER_ALT, 0, movetoworkspace, 10"
+            "SUPER, Tab, focusmonitor, +1"
+            "SUPER_ALT, Tab, movewindow, mon:+1"
 
-            # "$mod_alt, space, movetoworkspace, special"
-
-            # TOGGLES
-            "SUPER_CTRL, D, exec, ~/.config/hypr/whisper-dictate.sh"
-            "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-            "SUPER_CTRL, T, togglespecialworkspace, top"
+            # SYSTEM OVERLAYS
+            "SUPER_CTRL, A, togglespecialworkspace, audio"
             "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
             "SUPER_CTRL, N, togglespecialworkspace, network"
-            "SUPER_CTRL, A, togglespecialworkspace, audio"
-            "SUPER_CTRL, C, exec, ${toggleStopwatch}"
+            "SUPER_CTRL, T, togglespecialworkspace, top"
+
+            # TOGGLES
+            "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
 
             # Workspaces
             "SUPER_CTRL, G, togglespecialworkspace, gaming"
