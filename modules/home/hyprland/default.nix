@@ -106,30 +106,39 @@ in {
           bind = [
             # Find clients by looking for `class: <class>` in `hyprctl clients`
 
+            "SUPER, space, exec, walker"
+
             # LAUNCH
             "SUPER_SHIFT, return, exec, ${config.my.terminal.launch}"
-            "SUPER_SHIFT, I, exec, discord"
-            "SUPER_SHIFT, C, exec, hyprpicker -a"
-            "SUPER_SHIFT, B, exec, zen"
-            "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}"
-            "SUPER_SHIFT, S, exec, steam"
+            "SUPER_SHIFT, A, exec, ${lib.getExe pkgs.ghostty} -e opencode" # [A]I
+            "SUPER_SHIFT, I, exec, discord" # [I]nstant Messaging
+            "SUPER_SHIFT, C, exec, hyprpicker -a" # [C]olor Picker
+            "SUPER_SHIFT, B, exec, zen" # [B]rowser
+            "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}" # [P]ictures
+            "SUPER_SHIFT, S, exec, steam" # [S]team
 
-            # ACTIONS
-            "SUPER, space, exec, walker"
-            "SUPER, W, killactive"
+            # ZOOM
+            "SUPER, mouse_up, exec, ${zoom} 0.8"
+            "SUPER, mouse_down, exec, ${zoom} 1.25"
+            "SUPER, mouse:274, exec, ${zoom} 0"
+
+            # COPY/PASTE/CUT/SELECT
             "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
             "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
             "SUPER, X, sendshortcut, CTRL, X, activewindow"
             "SUPER, A, sendshortcut, CTRL, A, activewindow"
+
+            # WINDOWS
+            "SUPER, W, killactive"
             "SUPER, F, fullscreen, 0"
             "SUPER, T, togglefloating"
             "SUPER, O, pin"
-            "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
 
+            # SCREENSHOT
+            "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
             "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
 
-            ## workspace
-
+            ## WORKSPACE
             "SUPER, H, movefocus, l"
             "SUPER, J, movefocus, d"
             "SUPER, K, movefocus, u"
@@ -176,10 +185,6 @@ in {
             "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
             "SUPER_CTRL, L, togglespecialworkspace, special:launchgame"
             "SUPER_CTRL_ALT, L, movetoworkspace, special:launchgame"
-
-            "SUPER, mouse_up, exec, ${zoom} 0.8"
-            "SUPER, mouse_down, exec, ${zoom} 1.25"
-            "SUPER, mouse:274, exec, ${zoom} 0"
           ];
           bindm = [
             "SUPER, mouse:272, movewindow"
