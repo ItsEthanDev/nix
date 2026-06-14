@@ -40,7 +40,13 @@
         activate = "hyprctl dispatch togglespecialworkspace top";
       };
     };
-    clipboard.history.launch = "${config.my.apps.launcher.command} --provider clipboard";
+    clipboard = {
+      copy.command =
+        if pkgs.stdenv.isLinux
+        then "wl-copy"
+        else "pbcopy";
+      history.launch = "${config.my.apps.launcher.command} --provider clipboard";
+    };
     desktop.wallpaper = ../../static/wallpapers/spirals-2560x2560.png;
   };
 }

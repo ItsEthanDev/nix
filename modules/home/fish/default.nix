@@ -1,9 +1,8 @@
-{pkgs, ...}: let
-  copyCommand =
-    if pkgs.stdenv.isLinux
-    then "wl-copy"
-    else "pbcopy";
-in {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.fish = {
     enable = true;
     binds = {
@@ -35,9 +34,9 @@ in {
       end
     '';
     shellAbbrs = {
-      "C" = {
+      "C" = lib.mkIf (config.my.clipboard.copy.command != null) {
         position = "anywhere";
-        expansion = copyCommand;
+        expansion = config.my.clipboard.copy.command;
       };
     };
   };
