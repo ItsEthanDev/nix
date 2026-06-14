@@ -108,7 +108,7 @@ in {
 
           # SCREENSHOT
           "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
-          "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command wl-copy --initial-tool brush"
+          "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command ${config.my.clipboard.copy.command} --initial-tool brush"
 
           ## WORKSPACE
           "SUPER, H, movefocus, l"
