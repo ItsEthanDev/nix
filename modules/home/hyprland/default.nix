@@ -153,10 +153,10 @@ in {
           "SUPER_ALT, Tab, movewindow, mon:+1"
 
           # SYSTEM OVERLAYS
-          "SUPER_CTRL, A, togglespecialworkspace, audio"
-          "SUPER_CTRL, B, togglespecialworkspace, bluetooth"
-          "SUPER_CTRL, N, togglespecialworkspace, network"
-          "SUPER_CTRL, T, togglespecialworkspace, top"
+          "SUPER_CTRL, A, exec, ${config.my.apps.audio.activate}"
+          "SUPER_CTRL, B, exec, ${config.my.apps.bluetooth.activate}"
+          "SUPER_CTRL, N, exec, ${config.my.apps.network.activate}"
+          "SUPER_CTRL, T, exec, ${config.my.apps.top.activate}"
 
           # Workspaces
           "SUPER_CTRL, G, togglespecialworkspace, gaming"
