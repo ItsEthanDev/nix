@@ -137,6 +137,7 @@
               users.ethan = {
                 imports = [
                   ./homes/x86_64-linux/turing
+                  ./modules/home
                   ./modules/home/banana-cursor
                   ./modules/home/catppuccin
                   ./modules/home/cli

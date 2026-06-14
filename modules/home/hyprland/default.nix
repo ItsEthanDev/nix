@@ -91,16 +91,13 @@ in {
           bind = [
             # Find clients by looking for `class: <class>` in `hyprctl clients`
 
-            "SUPER, space, exec, walker"
+            "SUPER, space, exec, ${config.my.apps.launcher.command}"
 
             # LAUNCH
-            "SUPER_SHIFT, return, exec, ${config.my.terminal.launch}"
-            "SUPER_SHIFT, A, exec, ${lib.getExe pkgs.ghostty} --confirm-close-surface=false -e ${lib.getExe pkgs.opencode}" # [A]I
-            "SUPER_SHIFT, I, exec, discord" # [I]nstant Messaging
+            "SUPER_SHIFT, return, exec, ${config.my.apps.terminal.command}" # [A]I
             "SUPER_SHIFT, C, exec, hyprpicker -a" # [C]olor Picker
-            "SUPER_SHIFT, B, exec, zen" # [B]rowser
+            "SUPER_SHIFT, B, exec, ${config.my.apps.browser.command}" # [B]rowser
             "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}" # [P]ictures
-            "SUPER_SHIFT, S, exec, steam" # [S]team
 
             # ZOOM
             "SUPER, mouse_up, exec, ${zoom} 0.8"
@@ -161,10 +158,6 @@ in {
             "SUPER_CTRL, N, togglespecialworkspace, network"
             "SUPER_CTRL, T, togglespecialworkspace, top"
 
-            # TOGGLES
-            "SUPER_CTRL, S, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            "SUPER_CTRL, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
             # Workspaces
             "SUPER_CTRL, G, togglespecialworkspace, gaming"
             "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
@@ -196,10 +189,10 @@ in {
             ]
             ++ gamingWindowRules;
           workspace = [
-            "special:top, on-created-empty:ghostty -e ${lib.getExe pkgs.btop}, gapsout:96"
-            "special:bluetooth, on-created-empty:ghostty -e ${lib.getExe pkgs.bluetui}, gapsout:96"
-            "special:network, on-created-empty:ghostty -e ${lib.getExe pkgs.impala}, gapsout:96"
-            "special:audio, on-created-empty:ghostty -e ${lib.getExe pkgs.wiremix}, gapsout:96"
+            "special:audio, on-created-empty:${config.my.apps.audio.command}, gapsout:96"
+            "special:bluetooth, on-created-empty:${config.my.apps.bluetooth.command}, gapsout:96"
+            "special:network, on-created-empty:${config.my.apps.network.command}, gapsout:96"
+            "special:top, on-created-empty:${config.my.apps.top.command}, gapsout:96"
           ];
         };
       };
