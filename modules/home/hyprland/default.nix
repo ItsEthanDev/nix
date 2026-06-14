@@ -95,7 +95,7 @@ in {
 
             # LAUNCH
             "SUPER_SHIFT, return, exec, ${config.my.terminal.launch}"
-            "SUPER_SHIFT, A, exec, ${lib.getExe pkgs.ghostty} -e opencode" # [A]I
+            "SUPER_SHIFT, A, exec, ${lib.getExe pkgs.ghostty} --confirm-close-surface=false -e ${lib.getExe pkgs.opencode}" # [A]I
             "SUPER_SHIFT, I, exec, discord" # [I]nstant Messaging
             "SUPER_SHIFT, C, exec, hyprpicker -a" # [C]olor Picker
             "SUPER_SHIFT, B, exec, zen" # [B]rowser
