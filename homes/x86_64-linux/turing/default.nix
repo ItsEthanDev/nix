@@ -66,4 +66,5 @@
       "application/x-gnome-saved-search" = ["nemo.desktop"];
     };
   };
+  xdg.userDirs.enable = true;
 }

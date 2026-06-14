@@ -1,8 +1,7 @@
-{config, ...}: {
+_: {
   services = {
     mpd = {
       enable = true;
-      musicDirectory = "${config.home.homeDirectory}/Music";
       extraConfig = ''
         restore_paused "yes"
         audio_output {
