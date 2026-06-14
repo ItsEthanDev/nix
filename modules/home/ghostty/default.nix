@@ -12,30 +12,6 @@ in {
     ./keybind.nix
   ];
 
-  options = {
-    my = {
-      terminal = {
-        launch = lib.mkOption {
-          type = lib.types.str;
-          default = "ghostty";
-          description = "Command to launch a plain terminal.";
-        };
-
-        exec = lib.mkOption {
-          type = lib.types.str;
-          default = "ghostty -e";
-          description = "Command prefix used to run other commands inside the terminal.";
-        };
-
-        execWithTitle = lib.mkOption {
-          type = lib.types.functionTo lib.types.str;
-          default = title: "${config.my.terminal.launch} --title=${lib.escapeShellArg title} -e";
-          description = "Command prefix used to run commands inside the terminal with a custom title.";
-        };
-      };
-    };
-  };
-
   config = {
     programs.ghostty = {
       enable = true;
