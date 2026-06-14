@@ -4,38 +4,6 @@
   pkgs,
   ...
 }: {
-  options = {
-    my.waybar = {
-      audio = {
-        launch = lib.mkOption {
-          type = lib.types.str;
-          default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.wiremix}";
-          description = "Command to launch the audio module.";
-        };
-        mute = lib.mkOption {
-          type = lib.types.str;
-          default = "${lib.getExe pkgs.pamixer} -t";
-          description = "Command to mute the audio.";
-        };
-      };
-      bluetooth.launch = lib.mkOption {
-        type = lib.types.str;
-        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.bluetui}";
-        description = "Command to launch the bluetooth module.";
-      };
-      cpu.launch = lib.mkOption {
-        type = lib.types.str;
-        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.btop}";
-        description = "Command to launch the cpu module.";
-      };
-      network.launch = lib.mkOption {
-        type = lib.types.str;
-        default = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.impala}";
-        description = "Command to launch the network module.";
-      };
-    };
-  };
-
   config = {
     programs.waybar.settings = [
       {
@@ -97,7 +65,7 @@
         cpu = {
           interval = 5;
           format = "󰍛";
-          on-click = config.my.waybar.cpu.launch;
+          on-click = config.my.apps.top.activate;
         };
 
         clock = {
@@ -146,7 +114,7 @@
           tooltip-format-disconnected = "Disconnected";
           interval = 3;
           spacing = 1;
-          on-click = config.my.waybar.network.launch;
+          on-click = config.my.apps.network.activate;
         };
 
         battery = {
@@ -175,13 +143,13 @@
           format-connected = "󰂱";
           format-no-controller = "";
           tooltip-format = "Devices connected: {num_connections}";
-          on-click = config.my.waybar.bluetooth.launch;
+          on-click = config.my.apps.bluetooth.activate;
         };
 
         pulseaudio = {
           format = "{icon}";
-          on-click = config.my.waybar.audio.launch;
-          on-click-right = config.my.waybar.audio.mute;
+          on-click = config.my.apps.audio.activate;
+          on-click-right = "${lib.getExe pkgs.pamixer} -t";
           tooltip-format = "Playing at {volume}%";
           scroll-step = 5;
           format-muted = "";

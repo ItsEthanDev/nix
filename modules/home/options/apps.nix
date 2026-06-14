@@ -1,10 +1,19 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   appCommand = lib.types.submodule {
     options = {
       command = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
         default = null;
         description = "Command used to launch this app role";
+      };
+      activate = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = config.command;
+        description = "Command used by UI surfaces to open or activate this app role.";
       };
     };
   };
