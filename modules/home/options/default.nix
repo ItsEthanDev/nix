@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports = [
     ./apps.nix
+    ./desktop.nix
   ];
 
   options.my = {

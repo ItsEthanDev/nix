@@ -9,8 +9,6 @@
     ./options
   ];
 
-  options = {};
-
   config.my = {
     apps = {
       ai = {
@@ -43,5 +41,6 @@
       };
     };
     clipboard.history.launch = "${config.my.apps.launcher.command} --provider clipboard";
+    desktop.wallpaper = ../../static/wallpapers/spirals-2560x2560.png;
   };
 }

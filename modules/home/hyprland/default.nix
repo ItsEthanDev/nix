@@ -54,16 +54,6 @@
     gamingWindowPatterns
   );
 in {
-  options.my = {
-    hyprland = {
-      wallpaper = lib.mkOption {
-        type = lib.types.path;
-        default = ../../../static/wallpapers/spirals-2560x2560.png;
-        description = "Path to the wallpaper to use for Hyprland";
-      };
-    };
-  };
-
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
@@ -197,13 +187,13 @@ in {
       };
     };
     services = {
-      hyprpaper = {
+      hyprpaper = lib.mkIf (config.my.desktop.wallpaper != null) {
         enable = true;
         settings = {
           wallpaper = [
             {
               monitor = "";
-              path = "${config.my.hyprland.wallpaper}";
+              path = "${config.my.desktop.wallpaper}";
               fit_mode = "cover";
             }
           ];
@@ -223,8 +213,6 @@ in {
     home.packages = with pkgs; [
       hyprpicker
       hyprshot
-      hyprsunset
-      openai-whisper
       ffmpeg
       wl-clipboard
       satty
