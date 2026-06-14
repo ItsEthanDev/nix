@@ -43,7 +43,7 @@
     clipboard = {
       copy.command =
         if pkgs.stdenv.isLinux
-        then "wl-copy"
+        then lib.getExe' pkgs.wl-clipboard "wl-paste"
         else "pbcopy";
       history.launch = "${config.my.apps.launcher.command} --provider clipboard";
     };

@@ -214,7 +214,6 @@ in {
       hyprpicker
       hyprshot
       ffmpeg
-      wl-clipboard
       satty
       pulseaudio
       bc # for adjust-zoom.sh
