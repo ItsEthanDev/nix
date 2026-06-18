@@ -49,9 +49,11 @@
       "aarch64-darwin"
     ];
     forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
-    overlays = [
-      # (import ./overlays/opencode.nix)
-    ];
+
+    overlays = import ./overlays {
+      inherit inputs;
+      inherit (nixpkgs) lib;
+    };
   in {
     darwinConfigurations = {
       newton = nix-darwin.lib.darwinSystem {
@@ -130,6 +132,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {
                 inherit inputs;
