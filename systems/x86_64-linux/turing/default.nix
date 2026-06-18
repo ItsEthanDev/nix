@@ -14,6 +14,13 @@ _: {
     "mt7925_common.disable_clc=1"
   ];
 
+  my.hardware.camera.droidcam.enable = true;
+
+  programs.obs-studio = {
+    enable = true;
+    enableVirtualCamera = true;
+  };
+
   networking.hostName = "turing";
   nixpkgs.system = "x86_64-linux";
   system.stateVersion = "25.11";
