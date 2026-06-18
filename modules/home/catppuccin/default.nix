@@ -31,8 +31,8 @@
         colorscheme = "catppuccin-frappe";
         colorschemes.catppuccin = {
           enable = true;
-          flavor = "frappe";
           settings = {
+            flavour = "frappe";
             transparent_background = true;
             float.transparent = true;
           };

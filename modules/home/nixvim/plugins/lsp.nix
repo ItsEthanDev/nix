@@ -10,7 +10,7 @@ _: {
         # Nix
         nixd = {
           enable = true;
-          config = {
+          settings = {
             nixpkgs.expr = "import <nixpkgs> { }";
           };
         };
