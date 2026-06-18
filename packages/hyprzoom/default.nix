@@ -7,6 +7,8 @@ pkgs.stdenvNoCC.mkDerivation {
   pname = "hyprzoom";
   version = "0.1.0";
 
+  meta.mainProgram = "hyprzoom";
+
   dontUnpack = true;
 
   nativeBuildInputs = [
