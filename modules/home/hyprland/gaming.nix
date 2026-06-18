@@ -3,5 +3,5 @@
   "^Hollow Knight Silksong$"
   "^Hytale$"
   "^deadcells$"
-  "^Minecraft*$"
+  "^Minecraft.*$"
 ]
