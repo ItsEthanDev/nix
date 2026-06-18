@@ -44,7 +44,13 @@
     nix-darwin,
     nixpkgs,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    pkgsFor = system:
+      import nixpkgs {
+        inherit system;
+        overlays = [self.overlays.default];
+      };
+  in {
     lib = import ./lib {
       inherit (nixpkgs) lib;
       inherit inputs;
@@ -55,6 +61,14 @@
       inherit inputs;
       inherit (nixpkgs) lib;
     };
+
+    packages = self.lib.forAllSystems (
+      system: let
+        pkgs = pkgsFor system;
+      in {
+        hyprzoom = pkgs.hyprzoom;
+      }
+    );
 
     darwinConfigurations = {
       newton = nix-darwin.lib.darwinSystem {
