@@ -151,8 +151,8 @@ in {
           # Workspaces
           "SUPER_CTRL, G, togglespecialworkspace, gaming"
           "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
-          "SUPER_CTRL, L, togglespecialworkspace, special:launchgame"
-          "SUPER_CTRL_ALT, L, movetoworkspace, special:launchgame"
+          "SUPER_CTRL_SHIFT, G, togglespecialworkspace, launchgame"
+          "SUPER_CTRL_SHIFT_ALT, G, movetoworkspace, special:launchgame"
         ];
         bindm = [
           "SUPER, mouse:272, movewindow"
@@ -176,6 +176,9 @@ in {
             "opacity 1, match:initial_title ^${config.my.stopwatch.title}$"
             "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
             "no_blur on, match:initial_title ^${config.my.stopwatch.title}$"
+
+            "workspace special:launchgame silent, match:initial_class steam"
+            "fullscreen on, match:initial_class steam"
           ]
           ++ gamingWindowRules;
         workspace = [
