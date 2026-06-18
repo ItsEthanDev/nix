@@ -24,6 +24,8 @@
     ];
   };
 
+  my.desktop.monitors.primary = "DP-4";
+
   programs.opencode = {
     settings.provider = {
       ollama = {
