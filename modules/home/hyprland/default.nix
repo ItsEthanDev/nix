@@ -2,19 +2,8 @@
   config,
   pkgs,
   lib,
-  options,
   ...
 }: let
-  toggleStopwatch = pkgs.writeShellScript "toggle-stopwatch" ''
-    addr="$(${lib.getExe' pkgs.hyprland "hyprctl"} -j clients | ${lib.getExe pkgs.jq} -r --arg title ${lib.escapeShellArg config.my.stopwatch.title} 'map(select(.initialTitle == $title))[0].address // empty')"
-
-    if [ -n "$addr" ]; then
-      ${lib.getExe' pkgs.hyprland "hyprctl"} dispatch closewindow "address:$addr"
-    else
-      exec ${config.my.stopwatch.launch}
-    fi
-  '';
-
   zoom = pkgs.writeShellScript "zoom" ''
     # Check if a delta is provided as an argument
     if [ -z "$1" ]; then
@@ -42,18 +31,11 @@
     # Set the new cursor zoom factor
     hyprctl keyword cursor:zoom_factor "$new_zoom"
   '';
-
-  gamingWindowPatterns = import ./gaming.nix;
-  gamingWindowRules = builtins.concatLists (
-    map (pattern: [
-      "workspace special:gaming, match:initial_class ${pattern}"
-      "workspace special:gaming, match:initial_title ${pattern}"
-      "fullscreen on, match:initial_class ${pattern}"
-      "fullscreen on, match:initial_title ${pattern}"
-    ])
-    gamingWindowPatterns
-  );
 in {
+  imports = [
+    ./gaming.nix
+  ];
+
   config = {
     wayland.windowManager.hyprland = {
       enable = true;
@@ -102,6 +84,7 @@ in {
 
           # WINDOWS
           "SUPER, W, killactive"
+          "SUPER_CTRL, W, forcekillactive"
           "SUPER, F, fullscreen, 0"
           "SUPER, T, togglefloating"
           "SUPER, O, pin"
@@ -147,40 +130,19 @@ in {
           "SUPER_CTRL, B, exec, ${config.my.apps.bluetooth.activate}"
           "SUPER_CTRL, N, exec, ${config.my.apps.network.activate}"
           "SUPER_CTRL, T, exec, ${config.my.apps.top.activate}"
-
-          # Workspaces
-          "SUPER_CTRL, G, togglespecialworkspace, gaming"
-          "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
-          "SUPER_CTRL_SHIFT, G, togglespecialworkspace, launchgame"
-          "SUPER_CTRL_SHIFT_ALT, G, movetoworkspace, special:launchgame"
         ];
         bindm = [
           "SUPER, mouse:272, movewindow"
           "SUPER, mouse:273, resizewindow"
         ];
-        windowrule =
-          [
-            "opacity 0.875, match:class com.mitchellh.ghostty"
+        windowrule = [
+          "opacity 0.875, match:class com.mitchellh.ghostty"
 
-            "float on, match:initial_title ^Discord Popout$"
-            "pin on, match:initial_title ^Discord Popout$"
-            "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
-            "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
-
-            "float on, match:initial_title ^${config.my.stopwatch.title}$"
-            "pin on, match:initial_title ^${config.my.stopwatch.title}$"
-            "size 300 150, match:initial_title ^${config.my.stopwatch.title}$"
-            "move 0 (monitor_h-window_h), match:initial_title ^${config.my.stopwatch.title}$"
-            "border_size 0, match:initial_title ^${config.my.stopwatch.title}$"
-            "rounding 0, match:initial_title ^${config.my.stopwatch.title}$"
-            "opacity 1, match:initial_title ^${config.my.stopwatch.title}$"
-            "no_shadow on, match:initial_title ^${config.my.stopwatch.title}$"
-            "no_blur on, match:initial_title ^${config.my.stopwatch.title}$"
-
-            "workspace special:launchgame silent, match:initial_class steam"
-            "fullscreen on, match:initial_class steam"
-          ]
-          ++ gamingWindowRules;
+          "float on, match:initial_title ^Discord Popout$"
+          "pin on, match:initial_title ^Discord Popout$"
+          "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
+          "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
+        ];
         workspace = [
           "special:audio, on-created-empty:${config.my.apps.audio.command}, gapsout:96"
           "special:bluetooth, on-created-empty:${config.my.apps.bluetooth.command}, gapsout:96"
