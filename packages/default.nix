@@ -1,0 +1,3 @@
+{pkgs, ...}: {
+  hyprzoom = pkgs.hyprzoom;
+}

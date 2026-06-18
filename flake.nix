@@ -63,11 +63,10 @@
     };
 
     packages = self.lib.forAllSystems (
-      system: let
-        pkgs = pkgsFor system;
-      in {
-        hyprzoom = pkgs.hyprzoom;
-      }
+      system:
+        import ./packages {
+          pkgs = pkgsFor system;
+        }
     );
 
     darwinConfigurations = {
