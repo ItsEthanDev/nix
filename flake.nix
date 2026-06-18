@@ -190,10 +190,7 @@
 
     devShells = self.lib.forAllSystems (
       system: let
-        pkgs = import nixpkgs {
-          inherit system;
-          overlays = [self.overlays.default];
-        };
+        pkgs = pkgsFor system;
       in {
         js = import ./shells/js.nix {inherit pkgs;};
         lua = import ./shells/lua.nix {inherit pkgs;};
