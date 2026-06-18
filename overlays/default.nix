@@ -1,19 +1,12 @@
 {
+  self,
   inputs,
   lib,
   ...
-}: let
-  entries = builtins.readDir ./.;
+}: {
+  hyprzoom = import ./hyprzoom {
+    inherit inputs lib;
+  };
 
-  overlayFiles =
-    builtins.attrNames
-    (lib.filterAttrs (
-        name: type:
-          type
-          == "regular"
-          && lib.hasSuffix ".nix" name
-          && name != "default.nix"
-      )
-      entries);
-in
-  map (name: import (./. + "/${name}") {inherit inputs;}) overlayFiles
+  default = self.overlays.hyprzoom;
+}

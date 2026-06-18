@@ -39,26 +39,27 @@
   };
 
   outputs = {
+    self,
     home-manager,
     nix-darwin,
     nixpkgs,
     ...
-  } @ inputs: let
-    systems = [
-      "x86_64-linux"
-      "aarch64-darwin"
-    ];
-    forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f system);
+  } @ inputs: {
+    lib = import ./lib {
+      inherit (nixpkgs) lib;
+      inherit inputs;
+    };
 
     overlays = import ./overlays {
+      inherit self;
       inherit inputs;
       inherit (nixpkgs) lib;
     };
-  in {
+
     darwinConfigurations = {
       newton = nix-darwin.lib.darwinSystem {
         modules = [
-          {nixpkgs.overlays = overlays;}
+          {nixpkgs.overlays = [self.overlays.default];}
           ./systems/aarch64-darwin/newton
           ./modules/darwin/aerospace
           ./modules/darwin/fish
@@ -105,7 +106,7 @@
           inherit inputs;
         };
         modules = [
-          {nixpkgs.overlays = overlays;}
+          {nixpkgs.overlays = [self.overlays.default];}
           ./systems/x86_64-linux/turing
           ./modules/nixos/1password
           ./modules/nixos/audio
@@ -174,10 +175,11 @@
       };
     };
 
-    devShells = forAllSystems (
+    devShells = self.lib.forAllSystems (
       system: let
         pkgs = import nixpkgs {
-          inherit system overlays;
+          inherit system;
+          overlays = [self.overlays.default];
         };
       in {
         js = import ./shells/js.nix {inherit pkgs;};
