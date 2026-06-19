@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -6,7 +6,7 @@ _: {
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [5520 38281];
+      allowedTCPPorts = [5520 38281]; # Hytale and archipelago
       allowedUDPPorts = [5520 38281];
     };
   };
@@ -19,10 +19,20 @@ _: {
     };
   };
 
-  programs.obs-studio = {
-    enable = true;
-    enableVirtualCamera = true;
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
+
+  programs = {
+    _1password.enable = true;
+    _1password-gui.enable = true;
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+    };
   };
+
+  services.flatpak.enable = true;
 
   networking.hostName = "turing";
   nixpkgs.system = "x86_64-linux";
