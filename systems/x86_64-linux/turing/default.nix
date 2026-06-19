@@ -36,6 +36,9 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   my = {
+    desktop = {
+      audio.enable = true;
+    };
     gaming.enable = true;
     hardware = {
       camera.droidcam.enable = true;

@@ -129,7 +129,6 @@
           {nixpkgs.overlays = [self.overlays.default];}
           ./systems/x86_64-linux/turing
           ./modules/nixos
-          ./modules/nixos/audio
           home-manager.nixosModules.home-manager
           {
             home-manager = {
