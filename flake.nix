@@ -130,20 +130,6 @@
           ./systems/x86_64-linux/turing
           ./modules/nixos
           ./modules/nixos/audio
-          ./modules/nixos/bluetooth
-          ./modules/nixos/catppuccin
-          ./modules/nixos/boot
-          ./modules/nixos/kde-connect
-          ./modules/nixos/llama
-          ./modules/nixos/locale
-          ./modules/nixos/localsend
-          ./modules/nixos/network
-          ./modules/nixos/nix
-          ./modules/nixos/ssh
-          ./modules/nixos/sunshine
-          ./modules/nixos/tailscale
-          ./modules/nixos/user
-          ./modules/nixos/zen
           home-manager.nixosModules.home-manager
           {
             home-manager = {

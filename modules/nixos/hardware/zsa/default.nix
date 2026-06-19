@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  cfg = config.my.harware.zsa;
+  cfg = config.my.hardware.zsa;
 in {
   imports = [
     inputs.zapp.nixosModules.default

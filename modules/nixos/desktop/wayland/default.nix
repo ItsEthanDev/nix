@@ -10,7 +10,7 @@
     settings = rec {
       initial_session = {
         command = "${lib.getExe pkgs.bash} -lc 'exec uwsm start hyprland.desktop'";
-        user = config.itsEthan.user.username;
+        user = config.my.system.users.primary.username;
       };
       default_session = initial_session;
     };
