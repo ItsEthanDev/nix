@@ -128,14 +128,11 @@
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
           ./systems/x86_64-linux/turing
-          ./modules/nixos/1password
+          ./modules/nixos
           ./modules/nixos/audio
           ./modules/nixos/bluetooth
           ./modules/nixos/catppuccin
           ./modules/nixos/boot
-          ./modules/nixos/flatpak
-          ./modules/nixos/font
-          ./modules/nixos/hyprland
           ./modules/nixos/kde-connect
           ./modules/nixos/llama
           ./modules/nixos/locale
@@ -146,9 +143,7 @@
           ./modules/nixos/sunshine
           ./modules/nixos/tailscale
           ./modules/nixos/user
-          ./modules/nixos/wayland
           ./modules/nixos/zen
-          ./modules/nixos/zsa
           home-manager.nixosModules.home-manager
           {
             home-manager = {
