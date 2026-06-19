@@ -10,7 +10,10 @@ _: {
 
   my = {
     gaming.enable = true;
-    hardware.camera.droidcam.enable = true;
+    hardware = {
+      camera.droidcam.enable = true;
+      zsa.enable = true;
+    };
   };
 
   programs.obs-studio = {
