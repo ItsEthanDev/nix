@@ -1,12 +1,8 @@
-{
-  self,
-  inputs,
-  lib,
-  ...
-}: {
-  hyprzoom = import ./hyprzoom {
-    inherit inputs lib;
-  };
+{lib, ...}: {
+  hyprzoom =
+    import ./hyprzoom;
 
-  default = self.overlays.hyprzoom;
+  default = lib.composeManyExtensions [
+    (import ./hyprzoom)
+  ];
 }

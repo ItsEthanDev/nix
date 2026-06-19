@@ -1,3 +1,3 @@
-_: final: prev: {
+final: prev: {
   hyprzoom = final.callPackage ../../packages/hyprzoom {};
 }

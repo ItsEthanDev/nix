@@ -54,8 +54,6 @@
     nixosModules = import ./modules/nixos;
 
     overlays = import ./overlays {
-      inherit self;
-      inherit inputs;
       inherit (nixpkgs) lib;
     };
 
