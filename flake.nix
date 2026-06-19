@@ -56,6 +56,8 @@
       inherit inputs;
     };
 
+    nixosModules = import ./modules/nixos;
+
     overlays = import ./overlays {
       inherit self;
       inherit inputs;
@@ -127,8 +129,8 @@
         };
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
+          self.nixosModules.default
           ./systems/x86_64-linux/turing
-          ./modules/nixos
           home-manager.nixosModules.home-manager
           {
             home-manager = {
