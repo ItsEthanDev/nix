@@ -49,7 +49,6 @@
   in {
     lib = import ./lib {
       inherit (nixpkgs) lib;
-      inherit inputs;
     };
 
     nixosModules = import ./modules/nixos;
