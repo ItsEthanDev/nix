@@ -135,8 +135,6 @@
           ./modules/nixos/boot
           ./modules/nixos/flatpak
           ./modules/nixos/font
-          ./modules/nixos/gaming
-          ./modules/nixos/hardware
           ./modules/nixos/hyprland
           ./modules/nixos/kde-connect
           ./modules/nixos/llama
