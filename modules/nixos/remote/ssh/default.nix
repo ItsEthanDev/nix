@@ -14,7 +14,7 @@ in {
     };
     user = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
-      default = config.my.system.users.primary.username;
+      default = null;
       description = "The username of the account to set up remote access for";
     };
     keyDirectory = lib.mkOption {
