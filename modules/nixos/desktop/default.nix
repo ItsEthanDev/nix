@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./audio
-    ./hyprland
-    ./wayland
+    ./graphics
   ];
 }

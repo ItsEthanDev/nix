@@ -1,9 +1,10 @@
 {
-  config,
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  user = "ethan";
+in {
   imports = [
     ./hardware-configuration.nix
     inputs.catppuccin.nixosModules.catppuccin
@@ -38,6 +39,15 @@
   my = {
     desktop = {
       audio.enable = true;
+      graphics = {
+        enable = true;
+        autoLogin = {
+          enable = true;
+          user = user;
+        };
+        defaultSession = "hyprland-uwsm";
+        hintWayland = true;
+      };
     };
     gaming.enable = true;
     hardware = {
@@ -48,7 +58,7 @@
       enable = true;
       keyDirectory = ../../../static/ssh;
     };
-    system.users.primary.username = "ethan";
+    system.users.primary.username = user;
   };
 
   networking = {
@@ -76,6 +86,11 @@
   programs = {
     _1password.enable = true;
     _1password-gui.enable = true;
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+    };
     kdeconnect.enable = true;
     localsend = {
       enable = true;
@@ -85,6 +100,11 @@
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
+    };
+    weylus = {
+      enable = true;
+      openFirewall = true;
+      users = [user];
     };
     zsh.enable = true;
   };
@@ -106,7 +126,7 @@
 
   time.timeZone = "America/Denver";
 
-  users.users."${config.my.system.users.primary.username}" = {
+  users.users."${user}" = {
     isNormalUser = true;
     extraGroups = [
       "networkmanager"
