@@ -27,14 +27,15 @@
         "misc:disable_hyprland_logo" = true;
         "misc:disable_splash_rendering" = true;
         exec-once = [
-          "wl-paste --type text --watch cliphist store"
-          "wl-paste --type image --watch cliphist store"
+          "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch cliphist store"
+          "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch cliphist store"
           "swaync"
         ];
         bind = [
           # Find clients by looking for `class: <class>` in `hyprctl clients`
 
           "SUPER, space, exec, ${config.my.apps.launcher.command}"
+          "SUPER_CTRL, L, exec, ${lib.getExe pkgs.hyprshutdown}"
 
           # LAUNCH
           "SUPER_SHIFT, return, exec, ${config.my.apps.terminal.command}" # [A]I
