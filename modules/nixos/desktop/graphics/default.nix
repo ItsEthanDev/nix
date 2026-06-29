@@ -15,7 +15,11 @@ in {
         description = "User to auto login";
       };
     };
-    defaultSession = lib.types.nullOr lib.types.str;
+    defaultSession = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "Session name of the session to use by default";
+    };
     hintWayland = lib.mkEnableOption "Hint electron and chromium apps to use wayland";
   };
 
@@ -28,7 +32,6 @@ in {
         user = lib.mkIf (cfg.autoLogin.user != null) cfg.autoLogin.user;
       };
       defaultSession = cfg.defaultSession;
-      ly.enable = true;
     };
     environment.sessionVariables.NIXOS_OZONE_WL = lib.mkIf cfg.hintWayland "1";
   };

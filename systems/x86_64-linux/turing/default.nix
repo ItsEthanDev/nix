@@ -10,12 +10,25 @@ in {
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      limine.enable = true;
+
+      # Hide the OS choice for bootloaders.
+      # It's still possible to open the bootloader list by pressing any key
+      # It will just not appear on screen unless a key is pressed
+      timeout = 0;
+    };
+
+    plymouth = {
       enable = true;
-      efiSupport = true;
-      device = "nodev";
+      # theme = "rings";
+      # themePackages = with pkgs; [
+      #   (adi1090x-plymouth-themes.override {
+      #     selected_themes = ["rings"];
+      #   })
+      # ];
     };
   };
 
@@ -24,7 +37,8 @@ in {
     flavor = "frappe";
   };
 
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
+    gamescope
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
@@ -37,6 +51,7 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   my = {
+    boot.silent = true;
     desktop = {
       audio.enable = true;
       graphics = {
@@ -57,6 +72,7 @@ in {
     remote.ssh = {
       enable = true;
       keyDirectory = ../../../static/ssh;
+      user = user;
     };
     system.users.primary.username = user;
   };
@@ -112,6 +128,10 @@ in {
   security.sudo.wheelNeedsPassword = false;
 
   services = {
+    ly = {
+      enable = true;
+      settings.session_log = null;
+    };
     flatpak.enable = true;
     sunshine = {
       enable = true;
