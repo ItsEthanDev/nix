@@ -1,4 +1,5 @@
 {
+  boot = import ./boot;
   desktop = import ./desktop;
   hardware = import ./hardware;
   gaming = import ./gaming;
@@ -7,6 +8,7 @@
 
   default = {
     imports = [
+      ./boot
       ./desktop
       ./hardware
       ./gaming
