@@ -6,6 +6,8 @@
     commands = ./commands;
     skills = ./skills;
 
+    context = builtins.readFile ./context.md;
+
     settings.permission.task.commit = "deny";
 
     tui = {
