@@ -123,7 +123,7 @@ in {
   security.sudo.wheelNeedsPassword = false;
 
   services = {
-    ly = {
+    displayManager.ly = {
       enable = true;
       settings.session_log = null;
     };
