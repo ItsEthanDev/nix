@@ -117,11 +117,6 @@ in {
       enable = true;
       enableVirtualCamera = true;
     };
-    weylus = {
-      enable = true;
-      openFirewall = true;
-      users = [user];
-    };
     zsh.enable = true;
   };
 
