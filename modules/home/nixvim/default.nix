@@ -14,6 +14,7 @@
       maplocalleader = "\\";
     };
     defaultEditor = true;
+    nixpkgs.useGlobalPackages = true;
     viAlias = true;
     vimAlias = true;
   };

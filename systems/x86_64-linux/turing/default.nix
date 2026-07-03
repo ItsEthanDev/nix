@@ -34,6 +34,7 @@ in {
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     flavor = "frappe";
   };
 
@@ -95,7 +96,6 @@ in {
   };
 
   nixpkgs = {
-    system = "x86_64-linux";
     config.allowUnfree = true;
   };
 

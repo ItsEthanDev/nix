@@ -12,6 +12,7 @@
     {
       catppuccin = {
         enable = true;
+        autoEnable = true;
         flavor = "frappe";
         gtk.icon.enable = true;
 

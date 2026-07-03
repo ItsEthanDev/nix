@@ -43,7 +43,6 @@
     };
   };
 
-  nixpkgs.config.allowUnfree = true;
   home = {
     username = "ethan";
     homeDirectory = "/home/ethan";
