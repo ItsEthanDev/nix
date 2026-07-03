@@ -50,6 +50,8 @@
 
     nixosModules = import ./modules/nixos;
 
+    homeManagerModules = import ./modules/home;
+
     overlays = import ./overlays {
       inherit (nixpkgs) lib;
     };
@@ -91,19 +93,11 @@
               users.ethan = {
                 imports = [
                   ./homes/aarch64-darwin/newton
-                  ./modules/home/catppuccin
                   ./modules/home/cli
-                  ./modules/home/fish
-                  ./modules/home/ghostty
                   ./modules/home/git
-                  ./modules/home/javascript
                   ./modules/home/nixvim
                   ./modules/home/opencode
-                  ./modules/home/rust
                   ./modules/home/ssh
-                  ./modules/home/starship
-                  ./modules/home/zellij
-                  ./modules/home/zsh
                 ];
               };
             };
@@ -131,25 +125,17 @@
               };
               users.ethan = {
                 imports = [
+                  self.homeManagerModules.default
                   ./homes/x86_64-linux/turing
                   ./modules/home/defaults.nix
-                  ./modules/home/catppuccin
                   ./modules/home/cli
-                  ./modules/home/fish
-                  ./modules/home/ghostty
                   ./modules/home/git
-                  ./modules/home/hyprland
                   ./modules/home/mangohud
                   ./modules/home/mpd
                   ./modules/home/nixvim
                   ./modules/home/opencode
                   ./modules/home/ssh
-                  ./modules/home/starship
                   ./modules/home/stopwatch
-                  ./modules/home/walker
-                  ./modules/home/waybar
-                  ./modules/home/zellij
-                  ./modules/home/zsh
                 ];
               };
             };

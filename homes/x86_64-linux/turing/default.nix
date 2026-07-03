@@ -3,6 +3,23 @@
   pkgs,
   ...
 }: {
+  catppuccin = {
+    enable = true;
+    autoEnable = true;
+    flavor = "frappe";
+    gtk.icon.enable = true;
+
+    # Overwrites mangohud configuration if enabled
+    mangohud.enable = false;
+
+    hyprland.enable = false;
+
+    # Has weird side effects if enabled
+    zsh-syntax-highlighting = {
+      enable = false;
+    };
+  };
+
   gtk.enable = true;
 
   home = {
@@ -20,26 +37,45 @@
     };
 
     packages = with pkgs; [
-      javaPackages.compiler.temurin-bin.jre-25
-      snes9x
       archipelago
-      wine
-      discord
-      nodejs
-      pnpm
-      bun
       biome
-      gcc
+      bun
       cargo
-      rustc
+      discord
+      fastfetch
+      fd
+      gcc
+      javaPackages.compiler.temurin-bin.jre-25
+      jq
+      nodejs
       pkg-config
+      pnpm
+      ripgrep
+      rustc
+      snes9x
+      tlrc
+      unzip
+      wine
+      zip
+      zk
     ];
   };
 
-  my.desktop.monitors.primary = "DP-4";
+  my = {
+    applications = {
+      ghostty.enable = true;
+    };
+    desktop.monitors.primary = "DP-4";
+  };
 
   programs = {
+    btop.enable = true;
+    direnv = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     home-manager.enable = true;
+    lazygit.enable = true;
     opencode = {
       settings.provider = {
         ollama = {

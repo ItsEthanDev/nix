@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{...}: let
   shellAliases = {
     cat = "bat";
     cd = "z";
@@ -8,25 +8,8 @@
     tree = "eza -T";
   };
 in {
-  home.packages = with pkgs; [
-    unzip
-    zip
-    tlrc
-    fastfetch
-    ripgrep
-    fd
-    jless
-    jq
-    zk
-  ];
-
   programs = {
     bat.enable = true;
-    btop.enable = true;
-    direnv = {
-      enable = true;
-      enableFishIntegration = true;
-    };
     eza = {
       enable = true;
       enableZshIntegration = true;
@@ -47,7 +30,6 @@ in {
         "-e"
       ];
     };
-    lazygit.enable = true;
     zoxide = {
       enable = true;
       enableZshIntegration = true;

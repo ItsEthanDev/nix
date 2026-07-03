@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  cfg = config.my.applications.ghostty;
   inherit (pkgs.stdenv) isDarwin;
   ghostty-mock = pkgs.writeShellScriptBin "ghostty-mock" "";
   hasFish = config.programs.fish.enable;
@@ -12,7 +13,11 @@ in {
     ./keybind.nix
   ];
 
-  config = {
+  options.my.applications.ghostty = {
+    enable = lib.mkEnableOption "Ghostty terminal";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
 
