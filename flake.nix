@@ -132,25 +132,17 @@
               users.ethan = {
                 imports = [
                   ./homes/x86_64-linux/turing
-                  ./modules/home
-                  ./modules/home/banana-cursor
+                  ./modules/home/defaults.nix
                   ./modules/home/catppuccin
                   ./modules/home/cli
-                  ./modules/home/discord
-                  ./modules/home/easy-effects
                   ./modules/home/fish
                   ./modules/home/ghostty
                   ./modules/home/git
                   ./modules/home/hyprland
-                  ./modules/home/gtk
-                  ./modules/home/javascript
                   ./modules/home/mangohud
                   ./modules/home/mpd
                   ./modules/home/nixvim
-                  ./modules/home/obsidian
-                  ./modules/home/ollama
                   ./modules/home/opencode
-                  ./modules/home/rust
                   ./modules/home/ssh
                   ./modules/home/starship
                   ./modules/home/stopwatch

@@ -43,18 +43,45 @@
     };
   };
 
+  gtk.enable = true;
+
   home = {
     username = "ethan";
     homeDirectory = "/home/ethan";
     stateVersion = "25.11";
+
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      hyprcursor.enable = true;
+      name = "Banana";
+      package = pkgs.banana-cursor;
+      size = 24;
+    };
+
+    packages = with pkgs; [
+      javaPackages.compiler.temurin-bin.jre-25
+      snes9x
+      archipelago
+      wine
+      discord
+      nodejs
+      pnpm
+      bun
+      biome
+      gcc
+      cargo
+      rustc
+      pkg-config
+    ];
   };
+
+  services = {
+    easyeffects.enable = true;
+    ollama.enable = true;
+  };
+
   programs.home-manager.enable = true;
-  home.packages = with pkgs; [
-    javaPackages.compiler.temurin-bin.jre-25
-    snes9x
-    archipelago
-    wine
-  ];
 
   xdg.desktopEntries.nemo = {
     name = "Nemo";
