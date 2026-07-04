@@ -92,11 +92,11 @@
               };
               users.ethan = {
                 imports = [
+                  self.homeManagerModules.default
                   ./homes/aarch64-darwin/newton
+                  ./modules/home/defaults.nix
                   ./modules/home/cli
                   ./modules/home/git
-                  ./modules/home/nixvim
-                  ./modules/home/opencode
                   ./modules/home/ssh
                 ];
               };
@@ -132,8 +132,6 @@
                   ./modules/home/git
                   ./modules/home/mangohud
                   ./modules/home/mpd
-                  ./modules/home/nixvim
-                  ./modules/home/opencode
                   ./modules/home/ssh
                   ./modules/home/stopwatch
                 ];

@@ -1,4 +1,10 @@
-_: let
+{
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.my.desktop.hyprland;
+
   gamingWindowPatterns = [
     "^steam_app_.*$"
     "^Hollow Knight Silksong$"
@@ -17,7 +23,7 @@ _: let
     gamingWindowPatterns
   );
 in {
-  config = {
+  config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       bind = [
         "SUPER_CTRL, G, togglespecialworkspace, gaming"

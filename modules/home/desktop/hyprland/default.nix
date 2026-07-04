@@ -3,12 +3,18 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  cfg = config.my.desktop.hyprland;
+in {
   imports = [
     ./gaming.nix
   ];
 
-  config = {
+  options.my.desktop.hyprland = {
+    enable = lib.mkEnableOption "hyprland configuration";
+  };
+
+  config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "hyprlang";
