@@ -62,10 +62,30 @@
   };
 
   my = {
-    applications = {
-      ghostty.enable = true;
+    cli = {
+      bat.enable = true;
+      eza.enable = true;
+      fzf.enable = true;
+      zoxide.enable = true;
     };
-    desktop.monitors.primary = "DP-4";
+    desktop = {
+      waybar.enable = true;
+    };
+    development = {
+      git.enable = true;
+      nixvim.enable = true;
+      opencode.enable = true;
+    };
+    gaming.mangohud.enable = true;
+    media.mpd.enable = true;
+    remote.ssh.enable = true;
+    terminal = {
+      fish.enable = true;
+      ghostty.enable = true;
+      starship.enable = true;
+      zellij.enable = true;
+      zsh.enable = true;
+    };
   };
 
   programs = {

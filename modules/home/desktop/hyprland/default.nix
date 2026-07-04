@@ -2,9 +2,19 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }: let
   cfg = config.my.desktop.hyprland;
+  audioCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.wiremix}";
+  bluetoothCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.bluetui}";
+  browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  copyCommand = lib.getExe' pkgs.wl-clipboard "wl-paste";
+  launcherCommand = lib.getExe pkgs.walker;
+  networkCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.impala}";
+  terminalCommand = lib.getExe pkgs.ghostty;
+  topCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.btop}";
+  wallpaper = ../../../../static/wallpapers/spirals-2560x2560.png;
 in {
   imports = [
     ./gaming.nix
@@ -40,13 +50,13 @@ in {
         bind = [
           # Find clients by looking for `class: <class>` in `hyprctl clients`
 
-          "SUPER, space, exec, ${config.my.apps.launcher.command}"
+          "SUPER, space, exec, ${launcherCommand}"
           "SUPER_CTRL, L, exec, ${lib.getExe pkgs.hyprshutdown}"
 
           # LAUNCH
-          "SUPER_SHIFT, return, exec, ${config.my.apps.terminal.command}" # [A]I
+          "SUPER_SHIFT, return, exec, ${terminalCommand}" # [A]I
           "SUPER_SHIFT, C, exec, hyprpicker -a" # [C]olor Picker
-          "SUPER_SHIFT, B, exec, ${config.my.apps.browser.command}" # [B]rowser
+          "SUPER_SHIFT, B, exec, ${browserCommand}" # [B]rowser
           "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}" # [P]ictures
 
           # ZOOM
@@ -57,7 +67,7 @@ in {
           # COPY/PASTE/CUT/SELECT
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
           "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
-          "SUPER_CTRL, V, exec, ${config.my.clipboard.history.launch}"
+          "SUPER_CTRL, V, exec, ${launcherCommand} --provider clipboard"
           "SUPER, X, sendshortcut, CTRL, X, activewindow"
           "SUPER, A, sendshortcut, CTRL, A, activewindow"
 
@@ -70,7 +80,7 @@ in {
 
           # SCREENSHOT
           "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
-          "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command ${config.my.clipboard.copy.command} --initial-tool brush"
+          "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command ${copyCommand} --initial-tool brush"
 
           ## WORKSPACE
           "SUPER, H, movefocus, l"
@@ -105,10 +115,10 @@ in {
           "SUPER_ALT, Tab, movewindow, mon:+1"
 
           # SYSTEM OVERLAYS
-          "SUPER_CTRL, A, exec, ${config.my.apps.audio.activate}"
-          "SUPER_CTRL, B, exec, ${config.my.apps.bluetooth.activate}"
-          "SUPER_CTRL, N, exec, ${config.my.apps.network.activate}"
-          "SUPER_CTRL, T, exec, ${config.my.apps.top.activate}"
+          "SUPER_CTRL, A, exec, hyprctl dispatch togglespecialworkspace audio"
+          "SUPER_CTRL, B, exec, hyprctl dispatch togglespecialworkspace bluetooth"
+          "SUPER_CTRL, N, exec, hyprctl dispatch togglespecialworkspace network"
+          "SUPER_CTRL, T, exec, hyprctl dispatch togglespecialworkspace top"
         ];
         bindm = [
           "SUPER, mouse:272, movewindow"
@@ -123,21 +133,21 @@ in {
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
         ];
         workspace = [
-          "special:audio, on-created-empty:${config.my.apps.audio.command}, gapsout:96"
-          "special:bluetooth, on-created-empty:${config.my.apps.bluetooth.command}, gapsout:96"
-          "special:network, on-created-empty:${config.my.apps.network.command}, gapsout:96"
-          "special:top, on-created-empty:${config.my.apps.top.command}, gapsout:96"
+          "special:audio, on-created-empty:${audioCommand}, gapsout:96"
+          "special:bluetooth, on-created-empty:${bluetoothCommand}, gapsout:96"
+          "special:network, on-created-empty:${networkCommand}, gapsout:96"
+          "special:top, on-created-empty:${topCommand}, gapsout:96"
         ];
       };
     };
     services = {
-      hyprpaper = lib.mkIf (config.my.desktop.wallpaper != null) {
+      hyprpaper = {
         enable = true;
         settings = {
           wallpaper = [
             {
               monitor = "";
-              path = "${config.my.desktop.wallpaper}";
+              path = "${wallpaper}";
               fit_mode = "cover";
             }
           ];

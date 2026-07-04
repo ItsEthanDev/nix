@@ -1,13 +1,21 @@
 {
-  applications = import ./applications;
+  cli = import ./cli;
+  development = import ./development;
   desktop = import ./desktop;
-  shell = import ./shell;
+  gaming = import ./gaming;
+  media = import ./media;
+  remote = import ./remote;
+  terminal = import ./terminal;
 
   default = {
     imports = [
-      ./applications
+      ./cli
+      ./development
       ./desktop
-      ./shell
+      ./gaming
+      ./media
+      ./remote
+      ./terminal
     ];
   };
 }

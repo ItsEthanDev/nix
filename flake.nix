@@ -94,10 +94,6 @@
                 imports = [
                   self.homeManagerModules.default
                   ./homes/aarch64-darwin/newton
-                  ./modules/home/defaults.nix
-                  ./modules/home/cli
-                  ./modules/home/git
-                  ./modules/home/ssh
                 ];
               };
             };
@@ -125,15 +121,9 @@
               };
               users.ethan = {
                 imports = [
+                  inputs.catppuccin.homeModules.catppuccin
                   self.homeManagerModules.default
                   ./homes/x86_64-linux/turing
-                  ./modules/home/defaults.nix
-                  ./modules/home/cli
-                  ./modules/home/git
-                  ./modules/home/mangohud
-                  ./modules/home/mpd
-                  ./modules/home/ssh
-                  ./modules/home/stopwatch
                 ];
               };
             };
