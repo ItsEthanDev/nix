@@ -18,6 +18,8 @@ Gather and document requirements for a project. Use your `grilling` skill and `d
 
 The docs you write will be considered the source of truth for the application, so ensure they are comprehensive, precise, and suitable for downstream SDLC-V design, implementation, integration, verification, and validation work.
 
+Requirements artifacts are the canonical home for stakeholder needs, obligations, constraints, acceptance criteria, and verification intent. Downstream design artifacts should reference these docs instead of duplicating their content, so write requirements with stable IDs and link targets that are easy for humans and agents to cite.
+
 Before asking questions, inspect existing `AGENTS.md`, `README.md`, `REQUIREMENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md`, and `docs/` content when present. Do not ask questions that can be answered from existing project documentation or code.
 
 Ask the user where they would like to store these documents. Suggest `docs/requirements`.
@@ -25,13 +27,15 @@ Ask the user where they would like to store these documents. Suggest `docs/requi
 Create or maintain the following requirement artifacts in the chosen directory:
 
 - `README.md`: index of requirements artifacts and how to use them.
-- `requirements.md`: confirmed functional, non-functional, interface, data, operational, safety, security, and compliance requirements.
+- `requirements.md`: confirmed functional, non-functional, interface, data, operational, safety, security, and compliance requirements, each with a stable ID and GitHub-compatible link target.
 - `use-cases.md`: actors, goals, scenarios, alternate flows, and failure paths.
 - `verification.md`: SDLC-V verification and validation guidance, including how requirements should be inspected, analyzed, demonstrated, or tested.
 - `assumptions.md`: assumptions, constraints, out-of-scope items, and open questions.
 - `diagrams/`: Mermaid source files linked from the markdown docs.
 
 Requirements must be atomic, unambiguous, testable, and written as obligations, not implementation ideas. Do not treat a design choice as a requirement unless the user confirms it as a constraint or desired behavior.
+
+Use stable requirement IDs in headings so GitHub-compatible Markdown links can target them. Prefer headings like `### REQ-FUNC-001` or `### CON-001` and link with relative Markdown links like `[REQ-FUNC-001](requirements.md#req-func-001)` or `[CON-001](assumptions.md#con-001)`. Keep canonical requirement text in the requirements artifacts; when another document needs the same information, link to the canonical section instead of copying it.
 
 For the SDLC-V model, capture both sides of the V:
 

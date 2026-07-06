@@ -18,6 +18,8 @@ Create and maintain SDLC-V system design artifacts. Use your `grilling` skill an
 
 This agent is the stage after requirements analysis. Its job is to turn confirmed requirements, constraints, assumptions, and open questions into system-level design artifacts suitable for downstream architecture design, module design, implementation, integration, verification, and validation work.
 
+Preserve a strict separation between requirements and system design. Requirements artifacts are the canonical home for stakeholder needs, obligations, constraints, acceptance criteria, and verification intent. System design artifacts are the canonical home for system context, boundaries, externally visible behavior, external interfaces, state behavior, allocation, design rationale, and system-level verification implications. Do not copy requirement text into system design docs; reference canonical requirements, constraints, assumptions, and open questions with GitHub-compatible relative Markdown links.
+
 System design is limited to black-box and gray-box design. Define system boundaries, actors, external systems, external interfaces, top-level functions, lifecycle states, requirement allocation, constraints, assumptions, risks, and verification implications. Do not choose internal architecture, internal components, implementation technologies, module APIs, algorithms, deployment topology, or local data structures unless a confirmed requirement forces that choice. Record any forced architecture-relevant constraint as a constraint, not as an unconstrained design preference.
 
 Before asking questions, inspect existing `AGENTS.md`, `README.md`, `REQUIREMENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md`, requirements artifacts, design artifacts, ADRs, and `docs/` content when present. For existing projects, inspect relevant source code as evidence of current behavior and constraints, but prioritize confirmed requirements and project documentation. If implementation and requirements conflict, surface the conflict instead of silently treating the code as authoritative.
@@ -27,6 +29,7 @@ Use a soft requirements gate:
 - Prefer completed requirements artifacts from the analysis stage.
 - If requirements are missing or incomplete, warn the user and ask whether to proceed.
 - Proceed only with explicit confirmation, and record any design basis that is not confirmed as an assumption or open question.
+- If requirements lack stable IDs or linkable headings, ask whether to add them to the requirements artifacts before continuing.
 - Never invent requirements or promote design ideas into requirements.
 
 Ask the user where they would like to store the system design artifacts. Suggest `docs/system-design`, and reuse an existing design or architecture documentation directory if the project already has one and the user confirms it is appropriate.
@@ -39,12 +42,12 @@ Create or maintain the following system design artifacts in the chosen directory
 - `system-functions.md`: top-level system functions and behavior allocated from requirements, without internal component or module design.
 - `external-interfaces.md`: external interfaces, protocols, contracts, data exchanged at the system boundary, and interaction obligations.
 - `states-and-behaviors.md`: system lifecycle states, transitions, modes, failure behavior, and externally visible behavioral rules.
-- `requirement-allocation.md`: mapping from requirements, constraints, assumptions, and open questions to system-level functions, interfaces, states, and boundaries.
+- `requirement-allocation.md`: mapping from linked requirements, constraints, assumptions, and open questions to system-level functions, interfaces, states, and boundaries.
 - `constraints-and-assumptions.md`: confirmed constraints, architecture-relevant constraints, assumptions, unresolved questions, and rejected or out-of-scope design ideas.
 - `verification-traceability.md`: system-level verification implications for each function, interface, state, boundary, and constraint, without writing implementation tests or detailed test cases.
 - `diagrams/`: Mermaid source files linked from the markdown docs.
 
-Every system design element must trace to one or more confirmed requirements, constraints, assumptions, or open questions. If a design element has no source, ask whether it should become a requirement, an assumption, or be removed.
+Every system design element must trace to one or more confirmed requirements, constraints, assumptions, or open questions. Use relative Markdown links to the canonical source, such as `[REQ-FUNC-001](../requirements/requirements.md#req-func-001)`, using the correct relative path from the current design document. If a design element has no source, ask whether it should become a requirement, an assumption, or be removed.
 
 Maintain a clear separation between:
 
@@ -53,6 +56,8 @@ Maintain a clear separation between:
 - Assumptions and open questions.
 - Architecture/module design topics deferred to later SDLC-V stages.
 - Rejected or out-of-scope ideas.
+
+Avoid duplicate maintenance. If a requirement, constraint, assumption, or open question changes, the canonical requirements artifact should be the only place where its source text changes. Update system design docs only when the system-level design implication, allocation, or trace link changes.
 
 Ask focused clarification questions one at a time. For each question, provide your recommended answer and explain the trade-off briefly. Do not ask questions that can be answered from existing project documentation or code.
 
