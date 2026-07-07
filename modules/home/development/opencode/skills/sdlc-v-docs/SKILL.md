@@ -111,6 +111,7 @@ Recommended ID prefixes:
 | `ARCH-RUN-001` | `docs/architecture/runtime.md` | Runtime or deployment element |
 | `ARCH-DATA-001` | `docs/architecture/data.md` | Architecture-level data or persistence decision |
 | `ARCH-QA-001` | `docs/architecture/quality-attributes.md` | Quality-attribute strategy |
+| `ARCH-ITEST-001` | `docs/architecture/integration-tests.md` | Architecture integration test scenario |
 | `MOD-001` | `docs/modules/catalog.md` | Module |
 | `MOD-IFACE-001` | `docs/modules/interfaces.md` | Internal module interface |
 | `MOD-BEH-001` | `docs/modules/behavior.md` | Module behavior, algorithm, or invariant |
@@ -170,6 +171,7 @@ Stage-specific files:
 | `data.md` | Data ownership, persistence boundaries, consistency model, retention, migration, and architecture-level schemas | Requirements state data obligations; modules own local structures; architecture owns shared persistence strategy |
 | `runtime.md` | Deployment topology, environments, scaling, resilience, observability, and operational architecture | Runtime topology is an architectural choice unless it is a confirmed requirement constraint |
 | `quality-attributes.md` | Strategies for performance, security, reliability, maintainability, accessibility, privacy, and compliance | Requirements define quality targets; architecture defines how the system will meet them |
+| `integration-tests.md` | Integration seams, architecture-level test scenarios, harness assumptions, and links to runnable integration tests | Architecture owns component/subsystem seams and integration strategy; detailed unit/module tests belong in module or verification stages |
 | `decisions.md` | Architecture decisions, alternatives considered, trade-offs, and links to ADRs when used | Durable internal choices belong here or in linked ADRs, not in requirements |
 
 Keep out:
@@ -177,6 +179,7 @@ Keep out:
 - Stakeholder needs and requirement source text.
 - External black-box contracts that belong in `docs/system/interfaces.md`.
 - Function-level algorithms, private data structures, and module-local invariants.
+- Test assertions that belong to detailed verification artifacts, unless they are architecture-level integration scenarios or links to runnable integration tests.
 
 ## `docs/modules`
 
@@ -208,7 +211,7 @@ Each stage links upstream and records local implications:
 | --- | --- | --- | --- |
 | Requirements | Stakeholder needs and use cases | Requirements and acceptance criteria | Validation intent |
 | System | Requirements, constraints, assumptions | System functions, boundaries, interfaces, states | System verification implications |
-| Architecture | System design elements and quality constraints | Components, interactions, runtime, data, decisions | Integration and architecture verification implications |
+| Architecture | System design elements and quality constraints | Components, interactions, runtime, data, decisions, integration test scenarios | Integration and architecture verification implications |
 | Modules | Architecture components and decisions | Module APIs, behavior, dependencies, data structures | Unit/module verification implications |
 
 Use traceability tables with links rather than copied paragraphs. A typical row should include source link, local artifact link, rationale or implication, and status.

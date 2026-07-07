@@ -12,7 +12,10 @@ permission:
     "**/CONTEXT.md": "allow"
   bash:
     "*": ask
-    "git *": "allow"
+    "git diff *": "allow"
+    "git log *": "allow"
+    "git ls-files *": "allow"
+    "git status *": "allow"
     "grep *": "allow"
     "rg *": "allow"
     "mkdir *": "allow"
