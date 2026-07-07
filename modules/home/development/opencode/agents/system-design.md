@@ -12,6 +12,10 @@ permission:
     "**/CONTEXT.md": "allow"
   bash:
     "*": ask
+    "git *": "allow"
+    "grep *": "allow"
+    "rg *": "allow"
+    "mkdir *": "allow"
 ---
 
 Create and maintain SDLC-V system design artifacts. Use your `sdlc-v-docs`, `grilling`, and `domain-modeling` skills before doing anything else.

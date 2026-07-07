@@ -17,7 +17,10 @@ in {
 
       context = builtins.readFile ./context.md;
 
-      settings.permission.task.commit = "deny";
+      settings = {
+        plugin = ["@mohak34/opencode-notifier@latest"];
+        permission.task.commit = "deny";
+      };
 
       tui = {
         "$schema" = "https://opencode.ai/tui.json";
