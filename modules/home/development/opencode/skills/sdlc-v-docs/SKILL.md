@@ -117,6 +117,7 @@ Recommended ID prefixes:
 | `MOD-BEH-001` | `docs/modules/behavior.md` | Module behavior, algorithm, or invariant |
 | `MOD-DATA-001` | `docs/modules/data-structures.md` | Module-local data structure |
 | `MOD-DEP-001` | `docs/modules/dependencies.md` | Module dependency rule |
+| `MOD-TEST-001` | `docs/modules/module-tests.md` | Module-level test scenario |
 
 ## `docs/requirements`
 
@@ -194,12 +195,14 @@ Stage-specific files:
 | `dependencies.md` | Allowed dependencies, layering rules, coupling constraints, and forbidden imports | Architecture sets broad structure; modules define precise dependency contracts |
 | `behavior.md` | Module-local behavior, algorithms, state machines, edge cases, and invariants | These details are too specific for architecture and too implementation-oriented for system design |
 | `data-structures.md` | Module-local data structures, schemas, invariants, validation rules, and transformations | Architecture owns shared data strategy; modules own local representations |
+| `module-tests.md` | Module-level public seams, TDD scenarios, harness assumptions, and links to runnable tests | Modules own code-facing behavior and public module contracts; architecture owns integration seams and verification agents own full test suites |
 
 Keep out:
 
 - New requirements or changes to requirement meaning.
 - New architecture-wide components or runtime topology.
 - External system contracts unless documenting how a module implements a linked system interface.
+- Tests coupled to private implementation details instead of public module seams.
 
 For large projects, add one file per module under `docs/modules/` only when the shared files become hard to navigate. Keep the common files as the index and traceability layer.
 
@@ -212,7 +215,7 @@ Each stage links upstream and records local implications:
 | Requirements | Stakeholder needs and use cases | Requirements and acceptance criteria | Validation intent |
 | System | Requirements, constraints, assumptions | System functions, boundaries, interfaces, states | System verification implications |
 | Architecture | System design elements and quality constraints | Components, interactions, runtime, data, decisions, integration test scenarios | Integration and architecture verification implications |
-| Modules | Architecture components and decisions | Module APIs, behavior, dependencies, data structures | Unit/module verification implications |
+| Modules | Architecture components and decisions | Module APIs, behavior, dependencies, data structures, module test scenarios | Unit/module verification implications |
 
 Use traceability tables with links rather than copied paragraphs. A typical row should include source link, local artifact link, rationale or implication, and status.
 
