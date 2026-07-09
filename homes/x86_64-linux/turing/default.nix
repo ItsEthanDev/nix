@@ -69,6 +69,8 @@
       zoxide.enable = true;
     };
     desktop = {
+      hyprland.enable = true;
+      walker.enable = true;
       waybar.enable = true;
     };
     development = {
