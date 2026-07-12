@@ -11,6 +11,7 @@
     "^Hytale$"
     "^deadcells$"
     "^Minecraft.*$"
+    "^MinaTheHollower$"
   ];
 
   gamingWindowRules = builtins.concatLists (
@@ -34,7 +35,6 @@ in {
       windowrule =
         [
           "workspace special:launchgame silent, match:initial_class steam"
-          "fullscreen on, match:initial_class steam"
         ]
         ++ gamingWindowRules;
     };
