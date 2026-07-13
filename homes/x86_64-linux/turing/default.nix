@@ -69,9 +69,15 @@
       zoxide.enable = true;
     };
     desktop = {
+      noctalia = {
+        enable = true;
+        compositors.hyprland = {
+          enable-integration = true;
+          enable-keybindings = true;
+          enable-recommended-styling = true;
+        };
+      };
       hyprland.enable = true;
-      walker.enable = true;
-      waybar.enable = true;
     };
     development = {
       git.enable = true;

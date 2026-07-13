@@ -6,15 +6,8 @@
   ...
 }: let
   cfg = config.my.desktop.hyprland;
-  audioCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.wiremix}";
-  bluetoothCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.bluetui}";
   browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  copyCommand = lib.getExe' pkgs.wl-clipboard "wl-paste";
-  launcherCommand = lib.getExe pkgs.walker;
-  networkCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.impala}";
   terminalCommand = lib.getExe pkgs.ghostty;
-  topCommand = "${lib.getExe pkgs.ghostty} -e ${lib.getExe pkgs.btop}";
-  wallpaper = ../../../../static/wallpapers/spirals-2560x2560.png;
 in {
   imports = [
     ./gaming.nix
@@ -31,34 +24,23 @@ in {
       # Conflicts with UWSM
       systemd.enable = false;
       settings = {
-        "general:gaps_out" = 8;
-        "general:gaps_in" = 8;
         "general:border_size" = 2;
         "general:col.inactive_border" = "0xff737994";
         "general:col.active_border" = "0xffbabbf1";
+
         "cursor:inactive_timeout" = 3;
+
         "binds:scroll_event_delay" = 0;
-        "decoration:rounding" = 8;
-        "input:kb_options" = "compose:ralt,caps:escape";
+
         "misc:disable_hyprland_logo" = true;
         "misc:disable_splash_rendering" = true;
-        exec-once = [
-          "noctalia"
-          "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch cliphist store"
-          "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch cliphist store"
-          "swaync"
-        ];
         bind = [
           # Find clients by looking for `class: <class>` in `hyprctl clients`
 
-          "SUPER, space, exec, ${launcherCommand}"
-          "SUPER_CTRL, L, exec, ${lib.getExe pkgs.hyprshutdown}"
-
           # LAUNCH
-          "SUPER_SHIFT, return, exec, ${terminalCommand}" # [A]I
-          "SUPER_SHIFT, C, exec, hyprpicker -a" # [C]olor Picker
+          "SUPER_SHIFT, return, exec, ${terminalCommand}" # Terminal
+          "SUPER_SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} -a" # [C]olor Picker
           "SUPER_SHIFT, B, exec, ${browserCommand}" # [B]rowser
-          "SUPER_SHIFT, P, exec, hyprshot -z -m region -o ${config.xdg.userDirs.pictures}" # [P]ictures
 
           # ZOOM
           "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
@@ -68,7 +50,6 @@ in {
           # COPY/PASTE/CUT/SELECT
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
           "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
-          "SUPER_CTRL, V, exec, ${launcherCommand} --provider clipboard"
           "SUPER, X, sendshortcut, CTRL, X, activewindow"
           "SUPER, A, sendshortcut, CTRL, A, activewindow"
 
@@ -78,10 +59,6 @@ in {
           "SUPER, F, fullscreen, 0"
           "SUPER, T, togglefloating"
           "SUPER, O, pin"
-
-          # SCREENSHOT
-          "SUPER, P, exec, hyprshot -m output -m active -o ${config.xdg.userDirs.pictures}"
-          "SUPER_ALT, P, exec, hyprshot -m output -m active --raw | satty -f - --fullscreen --actions-on-escape save-to-clipboard --early-exit --copy-command ${copyCommand} --initial-tool brush"
 
           ## WORKSPACE
           "SUPER, H, movefocus, l"
@@ -114,12 +91,6 @@ in {
           "SUPER_ALT, 0, movetoworkspace, 10"
           "SUPER, Tab, focusmonitor, +1"
           "SUPER_ALT, Tab, movewindow, mon:+1"
-
-          # SYSTEM OVERLAYS
-          "SUPER_CTRL, A, exec, hyprctl dispatch togglespecialworkspace audio"
-          "SUPER_CTRL, B, exec, hyprctl dispatch togglespecialworkspace bluetooth"
-          "SUPER_CTRL, N, exec, hyprctl dispatch togglespecialworkspace network"
-          "SUPER_CTRL, T, exec, hyprctl dispatch togglespecialworkspace top"
         ];
         bindm = [
           "SUPER, mouse:272, movewindow"
@@ -133,45 +104,7 @@ in {
           "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
         ];
-        workspace = [
-          "special:audio, on-created-empty:${audioCommand}, gapsout:96"
-          "special:bluetooth, on-created-empty:${bluetoothCommand}, gapsout:96"
-          "special:network, on-created-empty:${networkCommand}, gapsout:96"
-          "special:top, on-created-empty:${topCommand}, gapsout:96"
-        ];
       };
     };
-    services = {
-      hyprpaper = {
-        enable = true;
-        settings = {
-          wallpaper = [
-            {
-              monitor = "";
-              path = "${wallpaper}";
-              fit_mode = "cover";
-            }
-          ];
-        };
-      };
-
-      cliphist.enable = true;
-
-      swaync = {
-        enable = true;
-        settings = {
-          notification-icon-size = 32;
-        };
-      };
-    };
-
-    home.packages = with pkgs; [
-      hyprpicker
-      hyprshot
-      ffmpeg
-      satty
-      pulseaudio
-      libnotify
-    ];
   };
 }
