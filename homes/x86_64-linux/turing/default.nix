@@ -1,24 +1,12 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
 }: {
-  catppuccin = {
-    enable = true;
-    autoEnable = true;
-    flavor = "frappe";
-    gtk.icon.enable = true;
-
-    # Overwrites mangohud configuration if enabled
-    mangohud.enable = false;
-
-    hyprland.enable = false;
-
-    # Has weird side effects if enabled
-    zsh-syntax-highlighting = {
-      enable = false;
-    };
-  };
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
 
   gtk.enable = true;
 
@@ -120,11 +108,17 @@
         };
       };
     };
+    vesktop.enable = true;
   };
 
   services = {
     easyeffects.enable = true;
     ollama.enable = true;
+  };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
   };
 
   wayland.windowManager.hyprland.settings = {

@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    catppuccin = {
-      url = "github:catppuccin/nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,6 +14,10 @@
     nixvim.url = "github:nix-community/nixvim";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
@@ -117,7 +117,6 @@
               };
               users.ethan = {
                 imports = [
-                  inputs.catppuccin.homeModules.catppuccin
                   self.homeManagerModules.default
                   ./homes/x86_64-linux/turing
                 ];

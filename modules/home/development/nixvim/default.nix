@@ -18,15 +18,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      colorscheme = "catppuccin-frappe";
-      colorschemes.catppuccin = {
-        enable = true;
-        settings = {
-          flavour = "frappe";
-          transparent_background = true;
-          float.transparent = true;
-        };
-      };
       enable = true;
       globals = {
         mapleader = " ";

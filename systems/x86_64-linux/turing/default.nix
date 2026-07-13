@@ -7,7 +7,6 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    inputs.catppuccin.nixosModules.catppuccin
     inputs.noctalia.nixosModules.default
   ];
 
@@ -31,12 +30,6 @@ in {
       #   })
       # ];
     };
-  };
-
-  catppuccin = {
-    enable = true;
-    autoEnable = true;
-    flavor = "frappe";
   };
 
   environment.systemPackages = with pkgs; [
