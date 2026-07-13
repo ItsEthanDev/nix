@@ -43,6 +43,7 @@ in {
         "misc:disable_hyprland_logo" = true;
         "misc:disable_splash_rendering" = true;
         exec-once = [
+          "noctalia"
           "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type text --watch cliphist store"
           "${lib.getExe' pkgs.wl-clipboard "wl-paste"} --type image --watch cliphist store"
           "swaync"

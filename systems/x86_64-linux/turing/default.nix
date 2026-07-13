@@ -8,6 +8,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     inputs.catppuccin.nixosModules.catppuccin
+    inputs.noctalia.nixosModules.default
   ];
 
   boot = {
@@ -113,6 +114,10 @@ in {
       openFirewall = true;
     };
     nix-ld.enable = true;
+    noctalia = {
+      enable = true;
+      recommendedServices.enable = true;
+    };
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
