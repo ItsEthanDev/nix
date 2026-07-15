@@ -62,6 +62,7 @@ Include the project-specific information that is useful:
 - A directory map and suggested high-level reading order.
 - Which artifacts are canonical for requirements, design, assumptions, and other
   project knowledge.
+- Where domain context files and system-wide or context-specific ADRs live.
 - File naming, placement, status, ID, heading, linking, and traceability
   conventions.
 - Assumption lifecycle and diagram location or format conventions.
@@ -71,6 +72,10 @@ Include the project-specific information that is useful:
 Keep this file focused on project-wide documentation practice. Put stage-specific
 artifact indexes in the stage README files, product behavior in requirements, and
 technical decisions in design documentation.
+
+When present, link to the root `CONTEXT.md` or `CONTEXT-MAP.md` and the system-wide
+`docs/adr/` index or directory. Explain context-specific ADR locations when the
+project uses multiple bounded contexts.
 
 Read and follow `docs/README.md` before writing or maintaining files under
 `docs/`. Applicable local `AGENTS.md` instructions take priority. If the two

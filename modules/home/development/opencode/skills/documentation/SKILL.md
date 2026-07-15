@@ -1,6 +1,6 @@
 ---
 name: documentation
-description: Helps maintain brief, usable project documentation through collaboration with the user. Use proactively and repeatedly when starting work, receiving instructions, changing behavior or design, learning how a project works, answering project questions, detecting documentation drift, or creating and reviewing documentation.
+description: Helps maintain brief, usable project documentation through collaboration with the user. Use proactively and repeatedly when starting work, receiving instructions, changing behavior, terminology, or design, resolving domain language, making consequential architectural decisions, learning how a project works, answering project questions, detecting documentation drift, or creating and reviewing documentation.
 ---
 
 # Documentation
@@ -15,6 +15,8 @@ place, and make the result easy to use.
 - Keep documentation brief enough to scan and complete enough to act on.
 - Preserve the user's intent without inventing facts or decisions.
 - Make confirmed facts, assumptions, decisions, and open questions distinct.
+- Keep domain language precise and preserve the rationale for consequential
+  architectural decisions.
 - Keep documentation and implementation aligned.
 - Involve the user when intent or the source of truth is unclear.
 
@@ -49,6 +51,9 @@ Apply this workflow:
   `docs/README.md` and find canonical project context.
 - Whenever the user gives or changes an instruction about behavior, constraints,
   setup, operation, terminology, architecture, or documentation preferences.
+- When domain terms or bounded-context relationships are clarified, challenged,
+  or introduced.
+- When a hard-to-reverse, non-obvious architectural trade-off is resolved.
 - While implementation reveals a durable fact, decision, limitation, or mismatch.
 - Before completing a change, to update affected documentation and check for
   drift.
@@ -63,10 +68,10 @@ will not help future readers.
 
 ### 1. Establish Context
 
-Read applicable `AGENTS.md` files, `docs/README.md`, and relevant existing
-documentation before asking questions. Inspect the implementation when needed to
-verify current behavior. Do not ask the user for information already available
-in the project.
+Read applicable `AGENTS.md` files, `docs/README.md`, `CONTEXT-MAP.md`, the
+applicable `CONTEXT.md`, and relevant existing documentation when they exist
+before asking questions. Inspect the implementation when needed to verify current
+behavior. Do not ask the user for information already available in the project.
 
 Treat documentation as the source of confirmed intent and implementation as
 evidence of current behavior. Neither silently overrides the other.
@@ -102,8 +107,11 @@ Make the smallest documentation change that preserves the durable information:
 | --- | --- |
 | Project purpose, setup, basic usage, and navigation | Root `README.md` |
 | Documentation structure, rules, conventions, and maintenance | `docs/README.md` |
+| Domain vocabulary and bounded-context meaning | Applicable `CONTEXT.md` |
+| Bounded contexts, locations, and relationships | Root `CONTEXT-MAP.md` |
 | Expected behavior, obligations, constraints, and acceptance intent | Requirements documentation |
 | Architecture, interfaces, data flow, and implementation decisions | Design documentation |
+| Rationale for a consequential architectural decision | Applicable ADR |
 | Agent workflow and documentation preferences | Applicable local `AGENTS.md` |
 | Unconfirmed information | Clearly labeled assumptions or open questions |
 
@@ -132,6 +140,21 @@ tree. If it is missing, recommend creating it when establishing or substantially
 changing the documentation structure, but do not block unrelated work. Keep it
 current whenever project-wide documentation rules or structure change.
 
+Create domain context and ADR artifacts lazily:
+
+| Path | Role |
+| --- | --- |
+| `CONTEXT.md` | Ubiquitous language for a single-context repository |
+| `CONTEXT-MAP.md` | Index and relationships for multiple bounded contexts |
+| `{context}/CONTEXT.md` | Ubiquitous language for one bounded context |
+| `docs/adr/` | System-wide architectural decision records |
+| `{context}/docs/adr/` | Context-specific architectural decision records |
+
+Create the first `CONTEXT.md` when a domain term is resolved. Create an ADR
+directory only when the first qualifying architectural decision is confirmed.
+Current design documentation owns how the system works; an ADR owns why a
+consequential decision was made.
+
 Give assumptions stable, stage-scoped IDs. Follow an established ID scheme;
 otherwise use `ASM-REQ-001` for requirements assumptions and `ASM-DES-001` for
 design assumptions. Preserve an ID when wording changes. When an assumption is
@@ -149,6 +172,8 @@ Use the focused guidance when relevant:
 - [README guidance](readme.md)
 - [Requirements guidance](requirements.md)
 - [Design guidance](design.md)
+- [Context guidance](context.md)
+- [ADR guidance](adr.md)
 
 ### 5. Detect And Resolve Drift
 
@@ -185,6 +210,8 @@ Before finishing:
   decision.
 - Prefer a focused link over repeating canonical text.
 - Preserve established project terminology.
+- Use canonical domain terms from the applicable `CONTEXT.md`; challenge conflicts
+  or ambiguity instead of introducing synonyms silently.
 - Describe current and proposed behavior explicitly; do not mix them.
 - Avoid generic introductions, exhaustive templates, empty headings, and content
   that merely restates code.

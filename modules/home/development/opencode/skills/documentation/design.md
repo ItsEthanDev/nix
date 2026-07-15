@@ -20,6 +20,7 @@ Update design documentation when the user confirms or implementation changes:
 - Significant algorithms, state transitions, security controls, or operational
   behavior.
 - A consequential decision, rejected alternative, trade-off, or known limitation.
+- Domain boundaries or relationships between bounded contexts.
 
 Do not wait for a separate documentation request. Do not document routine code
 structure unless it helps a future reader reason about or safely change the
@@ -58,6 +59,9 @@ boundaries and responsibilities unambiguous.
 
 - Link to requirements or quote only the short context needed to understand the
   decision; do not restate requirements as design.
+- Use canonical language from the applicable `CONTEXT.md`. Resolve conflicting or
+  overloaded terms with the user and update the glossary inline using
+  [context guidance](context.md).
 - Distinguish the current design from a proposal or migration target.
 - Describe responsibilities and contracts rather than listing every file or
   function.
@@ -70,6 +74,9 @@ boundaries and responsibilities unambiguous.
   preferred format or established convention; otherwise prefer Mermaid.
 - Keep details synchronized with implementation. Follow the drift workflow in
   [`SKILL.md`](SKILL.md) when they disagree.
+- Offer an ADR only for a hard-to-reverse, non-obvious decision produced by a real
+  trade-off. Follow [ADR guidance](adr.md), and link the current design to the ADR
+  rather than duplicating its full rationale.
 
 ## Collaboration
 
@@ -95,6 +102,7 @@ Include only what helps explain the design:
 - Interfaces, data, control flow, and failure behavior.
 - Quality attributes and operational concerns.
 - Alternatives considered and the decisive trade-off.
+- Links to applicable ADRs for consequential decision rationale.
 - Consequences, risks, migration, and open questions.
 
 Every design directory must also contain:
@@ -111,11 +119,15 @@ changes and record when an assumption is confirmed, rejected, or superseded.
 
 - Every design statement is supported by confirmed intent or labeled as proposed.
 - Requirements and design are clearly separated and linked where useful.
+- Design terminology matches the applicable context documentation.
 - Boundaries, ownership, interfaces, data flow, and failure behavior are clear at
   the necessary level.
 - Architecture, modules, components, interfaces, and data shapes are defined at
   the level needed to implement and safely change the system.
-- Consequential decisions include rationale and trade-offs.
+- Consequential decisions include a brief rationale or link to an ADR that owns
+  the full trade-off.
+- Qualifying architectural decisions have been offered as ADRs, and current design
+  links to accepted ADRs where useful.
 - Design assumptions have stable, unique IDs and visible resolution status.
 - The stage README indexes current artifacts in a suggested reading order.
 - Diagrams are stored under `design/diagrams/` in the preferred or established

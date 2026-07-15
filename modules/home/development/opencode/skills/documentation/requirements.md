@@ -21,7 +21,9 @@ with documented or newly stated intent, follow the drift workflow in
 - **Functional:** Observable behavior or capability the system must provide.
 - **Non-functional:** A measurable quality, performance target, operational
   property, or technical constraint.
-- **Domain:** A rule, term, standard, or obligation imposed by the problem domain.
+- **Domain:** A rule, standard, or obligation imposed by the problem domain. Keep
+  domain term definitions in the applicable `CONTEXT.md` and use those canonical
+  terms here.
 
 A design choice belongs in requirements only when the user confirms it as a
 mandatory constraint. Otherwise, record it in design documentation.
@@ -38,6 +40,9 @@ mandatory constraint. Otherwise, record it in design documentation.
 - Keep confirmed requirements separate from assumptions, open questions,
   rejected ideas, and out-of-scope behavior.
 - Never invent a requirement to fill a perceived gap.
+- Use the ubiquitous language in the applicable `CONTEXT.md`. When requirement
+  wording conflicts with or exposes a gap in the glossary, resolve the term with
+  the user and update the context inline using [context guidance](context.md).
 
 ## Collaboration
 
@@ -104,6 +109,7 @@ a format.
 - Every requirement comes from confirmed intent.
 - Each requirement is atomic, unambiguous, and testable.
 - Requirements describe obligations rather than design preferences.
+- Domain terminology matches the applicable context documentation.
 - Acceptance intent covers meaningful success and failure behavior.
 - Assumptions and open questions are visibly non-normative.
 - Requirements assumptions have stable, unique IDs and visible resolution status.
