@@ -1,62 +1,126 @@
-# Design
+# Design Guidance
 
-Turn requirements documentation into design artifacts. Design should be broken
-down into three classifications: Interface, architecture, and detailed. Design
-elements should only be recorded if there is a meaningful distinction
-between the design element and the requirement it's referencing. Design should
-not record requirements just in different words, but rather be a valuable
-addition to the requirements.
+## Goal
 
-## Big Picture
+Clearly define the system's architecture, modules, components, interfaces, and
+data, including data shape. Explain the decisions, boundaries, and trade-offs
+needed to implement and change the system while tracing them to confirmed
+requirements or user intent.
 
-By the end of the design phase, we should have a clear understanding of the
-following.
+Design documentation must add information beyond the requirement. It explains
+how the system will satisfy intent and why consequential choices were made.
 
-Architecture: This is the conceptual model that defines the structure, behavior, and views of a system. We can use flowcharts to represent and illustrate the architecture.
+## When To Update
 
-A solid architecture verify the system is flexible, stable, and easy to maintain over time.
+Update design documentation when the user confirms or implementation changes:
 
-Modules: Modules as the building blocks of the system. Each one handles a specific task or feature. Breaking a system into smaller modules makes it easier to develop, test, and maintain the system.
+- System boundaries, responsibilities, dependencies, or component interactions.
+- External or internal interfaces and contracts.
+- Data ownership, schema, lifecycle, or flow.
+- Significant algorithms, state transitions, security controls, or operational
+  behavior.
+- A consequential decision, rejected alternative, trade-off, or known limitation.
 
-These are components that handle one specific task in a system. A combination of the modules makes up the system.
+Do not wait for a separate documentation request. Do not document routine code
+structure unless it helps a future reader reason about or safely change the
+system.
 
-Components: This provides a particular function or group of related functions. They are made up of modules. Organising the system into components helps keep the code clean and makes the system more adaptable.
+## Design Levels
 
-Interfaces: These are smaller units within modules that focus on specific functions. This is the shared boundary across which the components of a system exchange information and relate.
+- **Interface design:** Interactions between the system and users, devices, or
+  other systems, including events, messages, formats, errors, ordering, and
+  timing.
+- **Architectural design:** Major components, responsibilities, boundaries,
+  dependencies, interactions, and allocation of quality constraints.
+- **Detailed design:** Internal states, algorithms, data structures, processing,
+  and collaboration within a component when those details are consequential.
 
-Data: Data is at the heart of any system. It’s all about how information is stored, accessed, and shared. This is the management of the information and data flow.
+Use only the levels needed for the decision. A small change may need one focused
+section rather than separate documents for every level.
 
-## Levels of Design
+Across the applicable levels, make these concepts clear:
 
-### Interface Design
+- **Architecture:** The system's overall structure, boundaries, major patterns,
+  deployment context, and interactions.
+- **Modules:** Cohesive implementation units, their responsibilities, and their
+  dependencies.
+- **Components:** Runtime or deployable building blocks, their ownership, and how
+  they collaborate.
+- **Interfaces:** Contracts between users, systems, components, or modules,
+  including inputs, outputs, errors, ordering, and timing.
+- **Data:** Ownership, shape, constraints, lifecycle, storage, access, and flow.
 
-Interface Design is the specification of the interaction between a system and its environment. This phase proceeds at a high level of abstraction with respect to the inner workings of the system i.e, during interface design, the internal of the systems are completely ignored, and the system is treated as a black box. Attention is focused on the dialogue between the target system and the users, devices, and other systems with which it interacts. The design problem statement produced during the problem analysis step should identify the people, other systems, and devices which are collectively called agents.
+Use the project's terminology when it defines modules or components differently.
+Do not force a distinction that the project does not use, but make the relevant
+boundaries and responsibilities unambiguous.
 
-Interface design should include the following details:
-- Precise description of events in the environment, or messages from agents to which the system must respond.
-- Precise description of the events or messages that the system must produce.
-- Specification of the data, and the formats of the data coming into and going out of the system.
-- Specification of the ordering and timing relationships between incoming events or messages, and outgoing events or outputs.
+## Writing Rules
 
+- Link to requirements or quote only the short context needed to understand the
+  decision; do not restate requirements as design.
+- Distinguish the current design from a proposal or migration target.
+- Describe responsibilities and contracts rather than listing every file or
+  function.
+- Explain rationale and trade-offs for decisions that are expensive to reverse or
+  surprising to a maintainer.
+- Record assumptions, unresolved decisions, risks, and known limitations
+  explicitly.
+- Keep diagrams focused on a question the text needs to answer. Store editable
+  source under `design/diagrams/` and link it with a relative path. Use the user's
+  preferred format or established convention; otherwise prefer Mermaid.
+- Keep details synchronized with implementation. Follow the drift workflow in
+  [`SKILL.md`](SKILL.md) when they disagree.
 
-### Architectural Design
+## Collaboration
 
-Architectural design is the specification of the major components of a system, their responsibilities, properties, interfaces, and the relationships and interactions between them. In architectural design, the overall structure of the system is chosen, but the internal details of major components are ignored. Issues in architectural design includes:
-- Gross decomposition of the systems into major components.
-- Allocation of functional responsibilities to components.
-- Component Interfaces.
-- Component scaling and performance properties, resource consumption properties, reliability properties, and so forth.
-- Communication and interaction between components.
+Confirm intent before committing undocumented choices to design. A formal
+requirements file is not required for every small change, but the relevant user
+intent must be known.
 
-The architectural design adds important details ignored during the interface design. Design of the internals of the major components is ignored until the last phase of the design.
+For a meaningful unresolved decision, present the viable options, recommend one,
+and explain the primary trade-off. Ask one focused question at a time. Record the
+user's answer as the decision and remove any assumption it resolves.
 
-### Detailed Design
+After editing, ask the user to verify that the documented decisions and
+trade-offs reflect their intent.
 
-Detailed design is the specification of the internal elements of all major system components, their properties, relationships, processing, and often their algorithms and the data structures. The detailed design may include:
-- Decomposition of major system components into program units.
-- Allocation of functional responsibilities to units.
-- User interfaces.
-- Unit states and state changes.
-- Data and control interaction between units.
-- Data packaging and implementation, including issues of scope and visibility of program elements.
-- Algorithms and data structures.
+## Suggested Content
+
+Include only what helps explain the design:
+
+- Context and scope.
+- Linked requirements, constraints, or confirmed user intent.
+- The decision or proposed design.
+- Boundaries and responsibilities.
+- Interfaces, data, control flow, and failure behavior.
+- Quality attributes and operational concerns.
+- Alternatives considered and the decisive trade-off.
+- Consequences, risks, migration, and open questions.
+
+Every design directory must also contain:
+
+- `README.md`, which indexes the design artifacts and gives a suggested reading
+  order.
+- `assumptions.md`, which records design assumptions and open questions.
+
+Give each design assumption a stable ID. Follow the project's established scheme
+or use `ASM-DES-001`, incrementing the numeric suffix. Preserve IDs when wording
+changes and record when an assumption is confirmed, rejected, or superseded.
+
+## Completion Check
+
+- Every design statement is supported by confirmed intent or labeled as proposed.
+- Requirements and design are clearly separated and linked where useful.
+- Boundaries, ownership, interfaces, data flow, and failure behavior are clear at
+  the necessary level.
+- Architecture, modules, components, interfaces, and data shapes are defined at
+  the level needed to implement and safely change the system.
+- Consequential decisions include rationale and trade-offs.
+- Design assumptions have stable, unique IDs and visible resolution status.
+- The stage README indexes current artifacts in a suggested reading order.
+- Diagrams are stored under `design/diagrams/` in the preferred or established
+  format.
+- Current implementation and current-state documentation agree, or unresolved
+  drift has been raised with the user.
+- Stale alternatives, diagrams, links, and implementation details are removed or
+  explicitly historical.

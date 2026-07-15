@@ -1,85 +1,205 @@
 ---
 name: documentation
-description: Defines the recommended documentation directories, file roles, boundaries, IDs, and Markdown traceability links. Use when making changes, asked questions about the system, creating or updating docs, or learning something new about how the system should work. This skill should be called liberally and regularly.
+description: Helps maintain brief, usable project documentation through collaboration with the user. Use proactively and repeatedly when starting work, receiving instructions, changing behavior or design, learning how a project works, answering project questions, detecting documentation drift, or creating and reviewing documentation.
 ---
 
 # Documentation
 
-This skill defines where information belongs, which file owns each kind of information, and how documents link without duplicating source text.
+Maintain documentation as part of the work, not as a separate task the user must
+remember to request. Capture confirmed intent, keep each fact in one canonical
+place, and make the result easy to use.
 
-The goal is that a human or agent can answer three questions quickly:
+## Goals
 
-- Where is the canonical source for this fact or decision?
-- Which downstream documents depend on it?
-- If it changes, which single source document must be edited?
+- Help a reader understand, use, verify, and safely change the project.
+- Keep documentation brief enough to scan and complete enough to act on.
+- Preserve the user's intent without inventing facts or decisions.
+- Make confirmed facts, assumptions, decisions, and open questions distinct.
+- Keep documentation and implementation aligned.
+- Involve the user when intent or the source of truth is unclear.
 
-## Big Picture
+## Instruction Priority
 
-- Be comprehensive, but brief. Don't omit details, but don't be overly wordy.
-Each artifact should be digestable.
-- The docs will be considered the source of truth for the application.
-- Before asking questions, inspect existing `AGENTS.md`, `README.md`, `REQUIREMENTS.md`, `CONTEXT.md`, `CONTEXT-MAP.md`, and `docs/` content when present. Do not ask questions that can be answered from existing project documentation or code.
-- Ask focused clarification questions one at a time. For each question, provide your recommended answer and explain the trade-off briefly.
-- Ask the user to review the changes you make in the docs to make sure you are capturing the user intent correctly.
-- If you notice that documentation and implementation have deviated from one
-another, call it out to the user and ask how they would like to resolve it. Do
-not assume that the docs or code should be updated.
-- If documentation is missing, incomplete, or lack stable IDs/linkable headings, warn the user and ask whether to fix first or proceed with explicit assumptions.
-- Never invent documentation not given to you by the user. If you have questions
-about the software record it as an assumption or ask the user.
-- Avoid writing design documentation without requirements documentation.
+Apply guidance in this order:
 
-## AGENTS.md
+1. The user's current instruction.
+2. Documentation preferences in applicable `AGENTS.md` files, with the file
+   closest to the documented artifact taking priority.
+3. Documentation rules and conventions in `docs/README.md`.
+4. Established project documentation conventions.
+5. This skill's defaults.
 
-If the user has any documentation preferences that deviate from this skill,
-record those preferences in the project `AGENTS.md` file. Create one if it
-doesn't exist.
+Before editing documentation, read the applicable `AGENTS.md` files from the
+project root through the target directory and `docs/README.md` when it exists.
+Follow their terminology, structure, scope, and collaboration preferences even
+when they differ from this skill. If `docs/README.md` conflicts with an applicable
+`AGENTS.md`, follow `AGENTS.md` and raise the conflict as documentation drift.
 
-## Canoncial Directories
+Record durable project documentation conventions in `docs/README.md` when that
+documentation tree exists. Record agent-specific workflow instructions in the
+appropriate local `AGENTS.md` unless the user says they apply only to the current
+task. Keep the files consistent, but do not duplicate detailed rules without a
+need. Do not put product requirements or design decisions in `AGENTS.md`.
 
-All agile docs live under `docs/`:
+## When To Apply This Skill
 
-| Directory | Stage | Owns |
-| --- | --- | --- |
-| `docs/requirements` | Requirements analysis | Stakeholder needs, obligations, constraints, use cases, acceptance criteria, validation intent |
-| `docs/design` | System Design | Interface design, architecture design, and
-detailed design |
+Apply this workflow:
 
-## Common Skeleton
+- At the start of a task, to learn local documentation rules from `AGENTS.md` and
+  `docs/README.md` and find canonical project context.
+- Whenever the user gives or changes an instruction about behavior, constraints,
+  setup, operation, terminology, architecture, or documentation preferences.
+- While implementation reveals a durable fact, decision, limitation, or mismatch.
+- Before completing a change, to update affected documentation and check for
+  drift.
+- When answering questions whose answer should already be project knowledge.
 
-Each canonical directory uses this skeleton:
+Do not wait for the user to ask for a documentation update. If a new instruction
+changes durable project knowledge, update its canonical documentation in the
+same task. Do not document transient commands, experiments, or conversation that
+will not help future readers.
 
-| File | Role | Why it belongs in every stage |
-| --- | --- | --- |
-| `README.md` | Directory index, stage purpose, artifact status, reading order, and handoff notes | Gives humans and agents a predictable entry point |
-| `assumptions.md` | Assumptions, open questions, rejected ideas, and deferred topics for that stage | Keeps uncertainty visible without promoting it to fact |
-| `diagrams/` | Mermaid source files linked from markdown docs | Keeps diagrams reviewable in GitHub and easy to update |
+## Workflow
 
-Common files are stage-local. For example, `docs/system/assumptions.md` contains system-design assumptions, not requirements assumptions. If an assumption becomes a requirement, move its source text to `docs/requirements` and leave a link behind where useful.
+### 1. Establish Context
 
-## Linking Rules
+Read applicable `AGENTS.md` files, `docs/README.md`, and relevant existing
+documentation before asking questions. Inspect the implementation when needed to
+verify current behavior. Do not ask the user for information already available
+in the project.
 
-Use GitHub-compatible relative Markdown links for cross-document references.
+Treat documentation as the source of confirmed intent and implementation as
+evidence of current behavior. Neither silently overrides the other.
 
-Use stable ID-only headings for link targets:
+### 2. Classify The Information
 
-```markdown
-### REQ-FUNC-001
+Decide whether new information is:
 
-**Summary:** Users can authenticate with an approved identity provider.
-```
+- Confirmed intent from the user or an existing canonical source.
+- Current implementation behavior verified in the project.
+- An assumption that still needs confirmation.
+- An open question.
+- A rejected or deferred idea.
 
-Link to the heading with a relative path from the current document:
+Never turn an inference, implementation accident, or suggestion into a
+requirement or decision. Label uncertainty explicitly.
 
-```markdown
-[REQ-FUNC-001](../requirements/requirements.md#req-func-001)
-```
+### 3. Collaborate On Intent
 
-Rules:
+An explicit user instruction is sufficient input; document it without asking for
+separate permission. If intent is ambiguous or a meaningful choice remains, ask
+one focused question at a time. Include a recommended answer and its main
+trade-off.
 
-- The canonical source text for any fact, requirement, constraint, design element, or decision lives in exactly one document.
-- Downstream documents link to canonical sources instead of copying their source text.
-- Downstream documents may include a short label for readability, but the normative text must remain upstream.
-- If an upstream source changes, edit the upstream source first, then update downstream trace links or local implications only when they actually changed.
-- Prefer relative links that work in GitHub, not absolute filesystem paths.
-- Keep heading IDs stable. If the human-readable title changes, the link target should not change.
+Use the user's answer to revise the documentation. Do not produce a large
+specification from assumptions and ask the user to correct it afterward.
+
+### 4. Update The Canonical Artifact
+
+Make the smallest documentation change that preserves the durable information:
+
+| Information | Usual owner |
+| --- | --- |
+| Project purpose, setup, basic usage, and navigation | Root `README.md` |
+| Documentation structure, rules, conventions, and maintenance | `docs/README.md` |
+| Expected behavior, obligations, constraints, and acceptance intent | Requirements documentation |
+| Architecture, interfaces, data flow, and implementation decisions | Design documentation |
+| Agent workflow and documentation preferences | Applicable local `AGENTS.md` |
+| Unconfirmed information | Clearly labeled assumptions or open questions |
+
+Follow the project's existing structure. When no convention exists, prefer a
+root `README.md` and focused files under `docs/`. Do not create a requirements or
+design stage merely to satisfy a template, but use the following structure when
+that stage exists:
+
+| Path | Role |
+| --- | --- |
+| `docs/README.md` | Documentation guide, directory map, rules, conventions, and maintenance workflow |
+| `docs/requirements/README.md` | Requirements index, artifact status, and suggested reading order |
+| `docs/requirements/assumptions.md` | Requirements assumptions and open questions |
+| `docs/requirements/diagrams/` | Requirements diagram source |
+| `docs/design/README.md` | Design index, artifact status, and suggested reading order |
+| `docs/design/assumptions.md` | Design assumptions and open questions |
+| `docs/design/diagrams/` | Design diagram source |
+
+Every existing requirements or design stage directory must have its stage
+`README.md` and `assumptions.md`. Create a `diagrams/` directory when the stage
+has diagrams. Keep each stage README current as artifacts are added, removed, or
+renamed.
+
+A root `docs/README.md` is recommended whenever the project has a documentation
+tree. If it is missing, recommend creating it when establishing or substantially
+changing the documentation structure, but do not block unrelated work. Keep it
+current whenever project-wide documentation rules or structure change.
+
+Give assumptions stable, stage-scoped IDs. Follow an established ID scheme;
+otherwise use `ASM-REQ-001` for requirements assumptions and `ASM-DES-001` for
+design assumptions. Preserve an ID when wording changes. When an assumption is
+confirmed, move the normative information to its canonical artifact and retain
+the ID or a resolution link according to project convention.
+
+Store requirements and design diagrams in their respective `diagrams/`
+directories. Follow the user's preference first and established project
+convention second. When neither specifies a format, prefer Mermaid because its
+source is text-based and reviewable. Link diagrams with relative paths and keep
+editable source under version control.
+
+Use the focused guidance when relevant:
+
+- [README guidance](readme.md)
+- [Requirements guidance](requirements.md)
+- [Design guidance](design.md)
+
+### 5. Detect And Resolve Drift
+
+Drift exists when documentation and implementation make conflicting claims
+about current or intended behavior. When found:
+
+1. Show the conflict precisely, citing the relevant documents and implementation.
+2. Explain the user-visible or engineering consequence.
+3. Ask whether to update the implementation, update the documentation, or
+   redefine both. Recommend an option when the latest confirmed intent supports
+   one, but do not silently choose.
+4. Record unresolved drift as an open issue or assumption if work must continue.
+
+Do not interrupt an explicitly requested change merely because its implementation
+and documentation are temporarily out of sync. Complete both parts of the change
+unless a pre-existing conflict makes the intended result unclear.
+
+### 6. Review With The User
+
+Before finishing:
+
+- Check that instructions, examples, paths, commands, links, and terminology are
+  consistent with the project.
+- Remove duplication, stale statements, filler, and unsupported claims.
+- State which documentation changed and ask the user to review whether it captures
+  their intent. The review request should not block completion unless confirmation
+  is required to resolve ambiguity.
+
+## Writing Standard
+
+- Lead with what the reader needs to know or do.
+- Use short sections, concrete language, and copyable commands.
+- Include rationale only when it prevents misuse or preserves an important
+  decision.
+- Prefer a focused link over repeating canonical text.
+- Preserve established project terminology.
+- Describe current and proposed behavior explicitly; do not mix them.
+- Avoid generic introductions, exhaustive templates, empty headings, and content
+  that merely restates code.
+- Keep documentation proportional to the project and change.
+- Keep stage README indexes and suggested reading orders synchronized with their
+  directories.
+
+## Linking And Ownership
+
+The canonical source text for a fact, requirement, constraint, or decision lives
+in one document. Other documents use GitHub-compatible relative Markdown links
+and may include a short, non-normative label for readability.
+
+Use existing stable IDs and headings. Assumptions always require stable IDs; use
+the stage defaults above when the project has no established scheme. Introduce
+IDs for other artifact types only when the project needs durable traceability,
+and agree on the scheme with the user before applying it broadly. Do not change a
+stable ID merely because its title changes.
