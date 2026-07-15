@@ -53,6 +53,8 @@ Apply this workflow:
   setup, operation, terminology, architecture, or documentation preferences.
 - When domain terms or bounded-context relationships are clarified, challenged,
   or introduced.
+- When a module interface, seam, adapter, dependency boundary, or test surface is
+  introduced or materially changed.
 - When a hard-to-reverse, non-obvious architectural trade-off is resolved.
 - While implementation reveals a durable fact, decision, limitation, or mismatch.
 - Before completing a change, to update affected documentation and check for
@@ -110,7 +112,7 @@ Make the smallest documentation change that preserves the durable information:
 | Domain vocabulary and bounded-context meaning | Applicable `CONTEXT.md` |
 | Bounded contexts, locations, and relationships | Root `CONTEXT-MAP.md` |
 | Expected behavior, obligations, constraints, and acceptance intent | Requirements documentation |
-| Architecture, interfaces, data flow, and implementation decisions | Design documentation |
+| Architecture, module boundaries, interfaces, data flow, test surfaces, and implementation decisions | Design documentation |
 | Rationale for a consequential architectural decision | Applicable ADR |
 | Agent workflow and documentation preferences | Applicable local `AGENTS.md` |
 | Unconfirmed information | Clearly labeled assumptions or open questions |

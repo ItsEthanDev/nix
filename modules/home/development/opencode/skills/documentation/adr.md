@@ -35,6 +35,9 @@ alternative have no trade-off to preserve.
 - **Boundary and scope decisions:** One context owns Customer data and other
   contexts reference it only by ID. Explicit exclusions can be as important as
   included responsibilities.
+- **Module, interface, and seam placement:** A consequential choice about where
+  complexity is hidden, which contract callers depend on, or where behavior can
+  vary when moving that boundary later would be expensive.
 - **Deliberate deviations from the obvious path:** Manual SQL instead of an ORM
   for a specific reason. These records prevent a future maintainer from
   "correcting" an intentional choice.

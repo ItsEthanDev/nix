@@ -15,7 +15,7 @@ how the system will satisfy intent and why consequential choices were made.
 Update design documentation when the user confirms or implementation changes:
 
 - System boundaries, responsibilities, dependencies, or component interactions.
-- External or internal interfaces and contracts.
+- External or internal interfaces, seams, adapters, test surfaces, and contracts.
 - Data ownership, schema, lifecycle, or flow.
 - Significant algorithms, state transitions, security controls, or operational
   behavior.
@@ -48,12 +48,48 @@ Across the applicable levels, make these concepts clear:
 - **Components:** Runtime or deployable building blocks, their ownership, and how
   they collaborate.
 - **Interfaces:** Contracts between users, systems, components, or modules,
-  including inputs, outputs, errors, ordering, and timing.
+  including operations, inputs, outputs, invariants, errors, configuration, side
+  effects, ordering, timing, and performance characteristics.
 - **Data:** Ownership, shape, constraints, lifecycle, storage, access, and flow.
 
 Use the project's terminology when it defines modules or components differently.
 Do not force a distinction that the project does not use, but make the relevant
 boundaries and responsibilities unambiguous.
+
+## Module And Interface Quality
+
+Use these as design heuristics, not as a vocabulary override. Preserve the
+project's established terms.
+
+- Prefer deep modules: substantial behavior behind a small, coherent interface.
+  Depth means leverage for callers, not a ratio of implementation lines to
+  interface lines.
+- Treat the interface as everything a caller must know to use the module
+  correctly, not only its type signature or public method names. Document
+  operations, inputs, outputs, invariants, ordering constraints, error modes,
+  required configuration, side effects, and relevant performance characteristics.
+- Seek leverage for callers and locality for maintainers. Shared complexity
+  should be solved behind one interface instead of repeated across callers and
+  tests.
+- Use the deletion test when evaluating a module. If removing it spreads its
+  complexity across callers, it is earning its place. If its complexity simply
+  disappears, it may be a shallow pass-through.
+- Treat a seam as a location where behavior can vary without editing the caller,
+  and an adapter as an implementation selected at that seam. Document the
+  distinction only when it helps explain meaningful variation.
+- Avoid speculative seams and adapters. One adapter may indicate a hypothetical
+  variation; multiple real adapters are stronger evidence that the seam is
+  useful. Treat this as a heuristic, not an absolute rule.
+- Treat the external interface as the primary caller and test surface. Internal
+  seams may support implementation tests without becoming part of the public
+  contract.
+- Prefer accepting dependencies over constructing them inside behavior that must
+  be tested or varied. Prefer explicit results over hidden side effects when that
+  makes behavior easier to reason about and verify.
+
+When designing an interface, ask whether it can expose fewer operations, use
+simpler inputs, or hide more complexity without obscuring behavior callers need
+to understand.
 
 ## Writing Rules
 
@@ -126,6 +162,14 @@ changes and record when an assumption is confirmed, rejected, or superseded.
   the level needed to implement and safely change the system.
 - Consequential decisions include a brief rationale or link to an ADR that owns
   the full trade-off.
+- Interfaces document the invariants, errors, configuration, side effects,
+  ordering, timing, and performance characteristics callers need to know.
+- Module boundaries provide meaningful leverage and locality rather than merely
+  passing complexity through to callers.
+- Seams correspond to meaningful variation, and public interfaces form practical
+  caller and test surfaces.
+- Dependency ownership and observable results support the required level of
+  testability.
 - Qualifying architectural decisions have been offered as ADRs, and current design
   links to accepted ADRs where useful.
 - Design assumptions have stable, unique IDs and visible resolution status.
