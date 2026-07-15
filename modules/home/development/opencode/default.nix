@@ -11,7 +11,6 @@ in {
     programs.opencode = {
       enable = true;
 
-      agents = ./agents;
       commands = ./commands;
       skills = ./skills;
 
