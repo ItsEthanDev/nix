@@ -46,6 +46,8 @@
 
     nixosModules = import ./modules/nixos;
 
+    darwinModules = import ./modules/darwin;
+
     homeManagerModules = import ./modules/home;
 
     overlays = import ./overlays {
@@ -70,14 +72,8 @@
       newton = nix-darwin.lib.darwinSystem {
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
+          self.darwinModules.default
           ./systems/aarch64-darwin/newton
-          ./modules/darwin/aerospace
-          ./modules/darwin/fish
-          ./modules/darwin/ghostty
-          ./modules/darwin/homebrew
-          ./modules/darwin/network
-          ./modules/darwin/nix
-          ./modules/darwin/settings
           home-manager.darwinModules.home-manager
           {
             home-manager = {
