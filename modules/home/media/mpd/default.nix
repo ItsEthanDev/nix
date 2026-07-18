@@ -23,7 +23,6 @@ in {
 
       mpdris2 = {
         enable = true;
-        notifications = true;
       };
     };
     programs.rmpc.enable = true;
