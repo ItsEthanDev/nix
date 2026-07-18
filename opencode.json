@@ -8,6 +8,7 @@
     }
   },
   "permission": {
+    "external_directory": "allow",
     "read": {
       "*": "allow",
       "/nix/store/**": "allow"
