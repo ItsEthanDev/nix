@@ -13,6 +13,7 @@ in {
         ai.enable = true;
         basics.enable = true;
         bracketed.enable = true;
+        bufremove.enable = true;
         clue = {
           clues = [
             {

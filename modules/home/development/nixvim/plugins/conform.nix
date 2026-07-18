@@ -1,19 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.my.development.nixvim;
   inherit (config.lib.nixvim) mkRaw;
 in {
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      biome
-      rustfmt
-      alejandra
-    ];
-
     programs.nixvim = {
       globals.autoformat = true;
 
@@ -53,6 +46,7 @@ in {
       ];
 
       plugins.conform-nvim = {
+        autoInstall.enable = true;
         enable = true;
         settings = {
           format_on_save = mkRaw ''

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.my.development.nixvim;
@@ -18,7 +19,7 @@ in {
           nixd = {
             enable = true;
             settings = {
-              nixpkgs.expr = "import <nixpkgs> { }";
+              nixpkgs.expr = "import ${pkgs.path} { }";
             };
           };
           # Rust
