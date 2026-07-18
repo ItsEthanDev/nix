@@ -107,6 +107,13 @@
           };
         };
       };
+
+      # https://opencode.ai/docs/server/
+      web = {
+        enable = true;
+        environmentFile = "/home/ethan/.config/opencode/web.env";
+        extraArgs = ["--mdns"];
+      };
     };
     vesktop.enable = true;
   };
