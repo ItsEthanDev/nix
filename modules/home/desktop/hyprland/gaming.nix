@@ -12,6 +12,7 @@
     "^deadcells$"
     "^Minecraft.*$"
     "^MinaTheHollower$"
+    "^UltimateChickenHorse.*$"
   ];
 
   gamingWindowRules = builtins.concatLists (
