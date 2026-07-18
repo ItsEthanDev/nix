@@ -27,6 +27,7 @@
 - Follow existing formatting and indentation (two spaces, no tabs).
 - Keep module files declarative and side-effect free.
 - Avoid adding comments unless the user requests them.
+- Do not add external API documentation URLs as code comments; this repository overrides the parent instruction requiring them.
 - Do not introduce unrelated refactors.
 
 ## Nix style
