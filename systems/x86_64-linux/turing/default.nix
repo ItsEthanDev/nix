@@ -75,8 +75,9 @@ in {
   networking = {
     firewall = {
       enable = true;
-      allowedTCPPorts = [5520 38281]; # Hytale and archipelago
-      allowedUDPPorts = [5520 38281];
+      # Vite (5173) Hytale (5520) archipelago (38281)
+      allowedTCPPorts = [5173 5520 38281];
+      allowedUDPPorts = [5173 5520 38281];
     };
     hostName = "turing";
     networkmanager = {
