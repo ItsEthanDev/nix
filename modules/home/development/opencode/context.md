@@ -42,3 +42,14 @@ Only update `AGENTS.md` if you have **genuinely reusable knowledge** that would 
 
 Whenever editing make sure that `AGENTS.md`, `README.md`, `REQUIREMENTS.md`, and
 `docs` are up to date and reflect the project accurately.
+
+### Commit Command
+
+After editing files, end the final response with a copyable, optional one-line
+command that stages only the files changed for the task and commits them with an
+appropriate commit message and description. Combine the commands with `&&`, for
+example: `git add -- <paths> && git commit -m '<message>' -m '<description>'`.
+
+Never stage or commit the changes yourself, and never require the user to run the
+command. Do not introduce, explain, or otherwise comment on the command or its
+commit message; output the command as the final line of the response.
