@@ -6,6 +6,8 @@
 - Works primarily through Nix modules and flake outputs.
 
 ## Directory overview
+- `README.md` describes the flake outputs, repository map, and deployment commands.
+- `docs/README.md` is the canonical guide to the intended repository and module organization.
 - Root contains the flake entry (`flake.nix`) and flake lock (`flake.lock`).
 - Configuration is organized by platform and layer (system vs. user).
 - Supporting directories group reusable modules, overlays, and dev shells.
@@ -17,7 +19,7 @@
 - `modules/` contains reusable Nix modules grouped by platform.
 - `shells/` contains development shell definitions for tooling.
 - `overlays/` contains nixpkgs overlays.
-- `static/` contains static assets used by configuration.
+- `static/` contains non-secret static assets used by configuration.
 
 ## Editing guidelines
 - Prefer small, focused changes; keep diffs minimal.
@@ -40,7 +42,8 @@
 - Prefer `config`/`options` separation when authoring new modules.
 
 ## Naming conventions
-- Use lowercase, dash-separated attribute names when defining options.
+- Use lowercase kebab-case for directories and filenames.
+- Use lower camelCase for multi-word option names.
 - Hostnames and user names should match the existing directory layout.
 - Keep module file names descriptive and consistent.
 
@@ -50,9 +53,10 @@
 - Keep lists and attribute sets trailing commas consistent with existing style.
 
 ## Common commands
-- Build the system: `nixos-rebuild build --flake ~/nix#<hostname>`
+- See `README.md` for deployment commands.
 
 ## Agent guidance
+- Follow the target organization and module boundaries in `docs/README.md`.
 - Read relevant `.nix` files before editing.
 - Don’t create new files unless requested.
 - Keep changes within the existing structure.
