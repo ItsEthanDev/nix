@@ -1,5 +1,5 @@
 final: prev: let
-  version = "1.17.13";
+  version = "1.18.2";
   src = final.fetchFromGitHub {
     owner = "anomalyco";
     repo = "opencode";
