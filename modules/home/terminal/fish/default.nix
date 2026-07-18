@@ -7,7 +7,7 @@
   cfg = config.my.terminal.fish;
   copyCommand =
     if pkgs.stdenv.isLinux
-    then lib.getExe' pkgs.wl-clipboard "wl-paste"
+    then lib.getExe' pkgs.wl-clipboard "wl-copy"
     else "pbcopy";
 in {
   options.my.terminal.fish.enable = lib.mkEnableOption "fish configuration";

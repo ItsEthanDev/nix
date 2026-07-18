@@ -7,7 +7,7 @@
   cfg = config.my.terminal.zellij;
   copyCommand =
     if pkgs.stdenv.isLinux
-    then "wl-copy"
+    then lib.getExe' pkgs.wl-clipboard "wl-copy"
     else "pbcopy";
 in {
   options.my.terminal.zellij.enable = lib.mkEnableOption "zellij configuration";

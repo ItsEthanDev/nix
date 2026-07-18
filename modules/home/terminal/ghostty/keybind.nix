@@ -38,7 +38,7 @@ in {
       # Search
       "vim/slash=start_search"
       "performable:vim/n=navigate_search:previous"
-      "perfomable:vim/shift+n=navigate_search:next"
+      "performable:vim/shift+n=navigate_search:next"
       "performable:escape=end_search"
       # Command Pallete
       "vim/shift+;=toggle_command_palette"
