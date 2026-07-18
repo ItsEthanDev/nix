@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.my.development.opencode;
@@ -8,6 +9,8 @@ in {
   options.my.development.opencode.enable = lib.mkEnableOption "opencode configuration";
 
   config = lib.mkIf cfg.enable {
+    home.packages = lib.optionals pkgs.stdenv.isLinux [pkgs.libnotify];
+
     programs.opencode = {
       enable = true;
 
