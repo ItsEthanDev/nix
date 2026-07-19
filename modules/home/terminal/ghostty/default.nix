@@ -40,12 +40,6 @@ in {
         font-family = lib.mkDefault "JetBrainsMono NFM Regular";
         font-size = lib.mkDefault 16;
         # Shell
-        # Will check to make sure fish is installed before setting the shell to
-        # fish. The follow must be set in nixos/darwin modules
-        # {
-        #   programs.fish.enable = true;
-        #   environment.shells = [pkgs.fish];
-        # }
         command = lib.mkIf hasFish (lib.mkDefault (lib.getExe pkgs.fish));
         shell-integration = lib.mkIf hasFish (lib.mkDefault "fish");
         # Quick Terminal
