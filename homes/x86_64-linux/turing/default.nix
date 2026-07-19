@@ -83,9 +83,9 @@ in {
       noctalia = {
         enable = true;
         compositors.hyprland = {
-          enable-integration = true;
-          enable-keybindings = true;
-          enable-recommended-styling = true;
+          enableIntegration = true;
+          enableKeybindings = true;
+          enableRecommendedStyling = true;
         };
       };
       hyprland.enable = true;

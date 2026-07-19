@@ -14,13 +14,28 @@ in {
   options.my.desktop.noctalia = {
     enable = lib.mkEnableOption "noctalia configuration";
     compositors.hyprland = {
-      enable-integration = lib.mkEnableOption "integration with hyprland";
-      enable-keybindings = lib.mkEnableOption "default keybindings for hyprland";
-      enable-recommended-styling = lib.mkEnableOption "noctalia's recommended styling for hyprland";
+      enableIntegration = lib.mkEnableOption "integration with Hyprland";
+      enableKeybindings = lib.mkEnableOption "default keybindings for Hyprland";
+      enableRecommendedStyling = lib.mkEnableOption "Noctalia's recommended styling for Hyprland";
     };
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = !cfg.compositors.hyprland.enableIntegration || config.wayland.windowManager.hyprland.enable;
+        message = "Noctalia Hyprland integration requires Hyprland to be enabled.";
+      }
+      {
+        assertion = !cfg.compositors.hyprland.enableKeybindings || cfg.compositors.hyprland.enableIntegration;
+        message = "Noctalia Hyprland keybindings require Noctalia Hyprland integration.";
+      }
+      {
+        assertion = !cfg.compositors.hyprland.enableRecommendedStyling || config.wayland.windowManager.hyprland.enable;
+        message = "Noctalia Hyprland styling requires Hyprland to be enabled.";
+      }
+    ];
+
     programs.noctalia = {
       enable = lib.mkDefault true;
       settings = {
@@ -33,11 +48,11 @@ in {
     };
 
     wayland.windowManager.hyprland.settings = lib.mkMerge [
-      (lib.mkIf cfg.compositors.hyprland.enable-integration {
+      (lib.mkIf cfg.compositors.hyprland.enableIntegration {
         exec-once = [
           "noctalia"
         ];
-        bind = lib.mkIf cfg.compositors.hyprland.enable-keybindings [
+        bind = lib.mkIf cfg.compositors.hyprland.enableKeybindings [
           "SUPER, space, exec, ${ipc} panel-toggle launcher"
           "SUPER_SHIFT, space, exec, ${ipc} bar-toggle"
           "SUPER_CTRL, V, exec, ${ipc} panel-toggle clipboard"
@@ -67,7 +82,7 @@ in {
           "size 1080 920, match:class ^dev\\.noctalia\\.Noctalia$"
         ];
       })
-      (lib.mkIf cfg.compositors.hyprland.enable-recommended-styling {
+      (lib.mkIf cfg.compositors.hyprland.enableRecommendedStyling {
         "general:gaps_out" = lib.mkDefault 10;
         "general:gaps_in" = lib.mkDefault 5;
 
