@@ -54,6 +54,7 @@ in {
       fastfetch
       fd
       gcc
+      gh
       javaPackages.compiler.temurin-bin.jre-25
       jq
       nodejs
@@ -75,6 +76,7 @@ in {
       bat.enable = true;
       eza.enable = true;
       fzf.enable = true;
+      git-shortcuts.enable = true;
       zoxide.enable = true;
     };
     desktop = {
@@ -97,7 +99,10 @@ in {
       nixvim.enable = true;
       opencode.enable = true;
     };
-    gaming.mangohud.enable = true;
+    gaming.mangohud = {
+      enable = true;
+      enableSessionWide = true;
+    };
     media.mpd.enable = true;
     remote.ssh.enable = true;
     terminal = {

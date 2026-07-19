@@ -5,12 +5,15 @@
 }: let
   cfg = config.my.gaming.mangohud;
 in {
-  options.my.gaming.mangohud.enable = lib.mkEnableOption "MangoHud configuration";
+  options.my.gaming.mangohud = {
+    enable = lib.mkEnableOption "MangoHud configuration";
+    enableSessionWide = lib.mkEnableOption "MangoHud session-wide injection";
+  };
 
   config = lib.mkIf cfg.enable {
     programs.mangohud = {
       enable = lib.mkDefault true;
-      enableSessionWide = lib.mkDefault true;
+      enableSessionWide = lib.mkDefault cfg.enableSessionWide;
       settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
         no_display = true;
         toggle_hud = "Super_L+Control_L+H";

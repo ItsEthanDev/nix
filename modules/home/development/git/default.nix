@@ -1,21 +1,9 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }: let
   cfg = config.my.development.git;
-  gitAliases = {
-    gd = "git diff";
-    ga = "git add";
-    gap = "git add -p";
-    gc = "git commit";
-    gp = "git push";
-    gu = "git pull";
-    gl = "git log --all --graph";
-    gs = "git status -s";
-    gcl = "git clone";
-  };
 in {
   options.my.development.git = {
     enable = lib.mkEnableOption "git configuration";
@@ -91,13 +79,6 @@ in {
           side-by-side = lib.mkDefault true;
         };
       };
-
-      zsh.shellAliases = gitAliases;
-      fish.shellAbbrs = gitAliases;
     };
-
-    home.packages = with pkgs; [
-      gh
-    ];
   };
 }

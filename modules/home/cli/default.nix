@@ -3,6 +3,7 @@ _: {
     ./bat
     ./eza
     ./fzf
+    ./git-shortcuts
     ./zoxide
   ];
 }

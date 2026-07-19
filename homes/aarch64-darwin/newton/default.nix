@@ -1,14 +1,20 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home = {
     stateVersion = "24.05";
     username = lib.mkForce "ethan";
     homeDirectory = lib.mkForce "/Users/ethan";
+    packages = [pkgs.gh];
   };
   my = {
     cli = {
       bat.enable = true;
       eza.enable = true;
       fzf.enable = true;
+      git-shortcuts.enable = true;
       zoxide.enable = true;
     };
     development = {
