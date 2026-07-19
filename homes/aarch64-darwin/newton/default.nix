@@ -28,7 +28,10 @@
     };
     remote.ssh.enable = true;
     terminal = {
-      fish.enable = true;
+      fish = {
+        enable = true;
+        listOnDirectoryChange = true;
+      };
       starship.enable = true;
       zellij.enable = true;
       zsh.enable = true;

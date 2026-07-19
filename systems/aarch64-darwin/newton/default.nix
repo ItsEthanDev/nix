@@ -12,8 +12,6 @@
 
   my = {
     aerospace.enable = true;
-    fish.enable = true;
-    homebrew.enable = true;
   };
 
   networking = {

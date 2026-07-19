@@ -104,7 +104,10 @@ in {
     };
     remote.ssh.enable = true;
     terminal = {
-      fish.enable = true;
+      fish = {
+        enable = true;
+        listOnDirectoryChange = true;
+      };
       ghostty.enable = true;
       starship.enable = true;
       zellij.enable = true;

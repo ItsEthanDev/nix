@@ -9,8 +9,16 @@
     if pkgs.stdenv.isLinux
     then lib.getExe' pkgs.wl-clipboard "wl-copy"
     else "pbcopy";
+  autoListDirectory = lib.optionalString cfg.listOnDirectoryChange ''
+    function __list_directory_on_change --on-variable PWD
+      status is-interactive; and ls
+    end
+  '';
 in {
-  options.my.terminal.fish.enable = lib.mkEnableOption "fish configuration";
+  options.my.terminal.fish = {
+    enable = lib.mkEnableOption "Fish configuration";
+    listOnDirectoryChange = lib.mkEnableOption "listing the current directory after an interactive directory change";
+  };
 
   config = lib.mkIf cfg.enable {
     programs.fish = {
@@ -35,11 +43,7 @@ in {
         end
         abbr -a !! --position anywhere --function last_history_item
 
-        # Auto ls after cd (using zoxide)
-        function cd
-          z $argv
-          ls
-        end
+        ${autoListDirectory}
       '';
       shellAbbrs."C" = {
         position = "anywhere";
