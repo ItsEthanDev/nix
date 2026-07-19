@@ -202,7 +202,6 @@ in {
           "workspace special:launchgame silent, match:initial_class steam"
           "workspace special:presentation silent, match:initial_title ^Projector - Preview$"
           "fullscreen on, match:initial_title ^Projector - Preview$"
-          "no_focus on, match:initial_title ^Projector - Preview$"
         ]
         ++ gamingWindowRules;
       workspace = [
