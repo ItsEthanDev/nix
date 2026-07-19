@@ -1,18 +1,10 @@
 {
   config,
-  pkgs,
   lib,
-  inputs,
   ...
 }: let
   cfg = config.my.desktop.hyprland;
-  browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
-  terminalCommand = lib.getExe pkgs.ghostty;
 in {
-  imports = [
-    ./gaming.nix
-  ];
-
   options.my.desktop.hyprland = {
     enable = lib.mkEnableOption "hyprland configuration";
   };
@@ -21,8 +13,6 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "hyprlang";
-      # Conflicts with UWSM
-      systemd.enable = false;
       settings = {
         "general:border_size" = 2;
         "general:col.inactive_border" = "0xff737994";
@@ -35,18 +25,6 @@ in {
         "misc:disable_hyprland_logo" = true;
         "misc:disable_splash_rendering" = true;
         bind = [
-          # Find clients by looking for `class: <class>` in `hyprctl clients`
-
-          # LAUNCH
-          "SUPER_SHIFT, return, exec, ${terminalCommand}" # Terminal
-          "SUPER_SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} -a" # [C]olor Picker
-          "SUPER_SHIFT, B, exec, ${browserCommand}" # [B]rowser
-
-          # ZOOM
-          "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
-          "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
-          "SUPER, mouse:274, exec, ${lib.getExe pkgs.hyprzoom} 0"
-
           # COPY/PASTE/CUT/SELECT
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
           "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
@@ -95,14 +73,6 @@ in {
         bindm = [
           "SUPER, mouse:272, movewindow"
           "SUPER, mouse:273, resizewindow"
-        ];
-        windowrule = [
-          "opacity 0.875, match:class com.mitchellh.ghostty"
-
-          "float on, match:initial_title ^Discord Popout$"
-          "pin on, match:initial_title ^Discord Popout$"
-          "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
-          "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
         ];
       };
     };

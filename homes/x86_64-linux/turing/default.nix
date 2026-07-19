@@ -3,7 +3,28 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  terminalCommand = lib.getExe pkgs.ghostty;
+  gamingWindowPatterns = [
+    "^steam_app_.*$"
+    "^Hollow Knight Silksong$"
+    "^Hytale$"
+    "^deadcells$"
+    "^Minecraft.*$"
+    "^MinaTheHollower$"
+    "^UltimateChickenHorse.*$"
+  ];
+  gamingWindowRules = builtins.concatLists (
+    map (pattern: [
+      "workspace special:gaming, match:initial_class ${pattern}"
+      "workspace special:gaming, match:initial_title ${pattern}"
+      "fullscreen on, match:initial_class ${pattern}"
+      "fullscreen on, match:initial_title ${pattern}"
+    ])
+    gamingWindowPatterns
+  );
+in {
   imports = [
     inputs.stylix.homeModules.stylix
   ];
@@ -131,25 +152,49 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
   };
 
-  wayland.windowManager.hyprland.settings = {
-    monitor = [
-      "DP-4,2560x1440@164.80,1920x-360,1"
-      "HDMI-A-1,1920x1080@60.00,0x0,1"
-      ",preferred,auto,1"
-    ];
-
-    workspace = [
-      "1, monitor:DP-4, persistent:true, default:true"
-      "2, monitor:DP-4, persistent:true"
-      "3, monitor:DP-4, persistent:true"
-      "4, monitor:DP-4, persistent:true"
-      "5, monitor:DP-4, persistent:true"
-      "6, monitor:HDMI-A-1, persistent:true, default:true"
-      "7, monitor:HDMI-A-1, persistent:true"
-      "8, monitor:HDMI-A-1, persistent:true"
-      "9, monitor:HDMI-A-1, persistent:true"
-      "10, monitor:HDMI-A-1, persistent:true"
-    ];
+  wayland.windowManager.hyprland = {
+    systemd.enable = false;
+    settings = {
+      bind = [
+        "SUPER_SHIFT, return, exec, ${terminalCommand}"
+        "SUPER_SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} -a"
+        "SUPER_SHIFT, B, exec, ${browserCommand}"
+        "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
+        "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
+        "SUPER, mouse:274, exec, ${lib.getExe pkgs.hyprzoom} 0"
+        "SUPER_CTRL, G, togglespecialworkspace, gaming"
+        "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
+        "SUPER_CTRL_SHIFT, G, togglespecialworkspace, launchgame"
+        "SUPER_CTRL_SHIFT_ALT, G, movetoworkspace, special:launchgame"
+      ];
+      monitor = [
+        "DP-4,2560x1440@164.80,1920x-360,1"
+        "HDMI-A-1,1920x1080@60.00,0x0,1"
+        ",preferred,auto,1"
+      ];
+      windowrule =
+        [
+          "opacity 0.875, match:class com.mitchellh.ghostty"
+          "float on, match:initial_title ^Discord Popout$"
+          "pin on, match:initial_title ^Discord Popout$"
+          "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
+          "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
+          "workspace special:launchgame silent, match:initial_class steam"
+        ]
+        ++ gamingWindowRules;
+      workspace = [
+        "1, monitor:DP-4, persistent:true, default:true"
+        "2, monitor:DP-4, persistent:true"
+        "3, monitor:DP-4, persistent:true"
+        "4, monitor:DP-4, persistent:true"
+        "5, monitor:DP-4, persistent:true"
+        "6, monitor:HDMI-A-1, persistent:true, default:true"
+        "7, monitor:HDMI-A-1, persistent:true"
+        "8, monitor:HDMI-A-1, persistent:true"
+        "9, monitor:HDMI-A-1, persistent:true"
+        "10, monitor:HDMI-A-1, persistent:true"
+      ];
+    };
   };
 
   xdg = {
