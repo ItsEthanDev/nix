@@ -185,6 +185,7 @@ in {
         "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
         "SUPER_CTRL_SHIFT, G, togglespecialworkspace, launchgame"
         "SUPER_CTRL_SHIFT_ALT, G, movetoworkspace, special:launchgame"
+        "SUPER_CTRL, R, togglespecialworkspace, presentation"
       ];
       monitor = [
         "DP-4,2560x1440@164.80,1920x-360,1"
@@ -199,6 +200,9 @@ in {
           "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
           "workspace special:launchgame silent, match:initial_class steam"
+          "workspace special:presentation silent, match:initial_title ^Projector - Preview$"
+          "fullscreen on, match:initial_title ^Projector - Preview$"
+          "no_focus on, match:initial_title ^Projector - Preview$"
         ]
         ++ gamingWindowRules;
       workspace = [
