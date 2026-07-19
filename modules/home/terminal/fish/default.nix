@@ -23,11 +23,11 @@ in {
   config = lib.mkIf cfg.enable {
     programs.fish = {
       enable = lib.mkDefault true;
-      binds."\\cy" = lib.mkDefault {
+      binds."\\cy" = {
         command = "accept-autosuggestion";
         mode = "insert";
       };
-      interactiveShellInit = lib.mkDefault ''
+      interactiveShellInit = ''
         # Vi bindings
         fish_vi_key_bindings
 
