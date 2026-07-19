@@ -3,7 +3,6 @@
   development = import ./development;
   desktop = import ./desktop;
   gaming = import ./gaming;
-  media = import ./media;
   remote = import ./remote;
   terminal = import ./terminal;
 
@@ -13,7 +12,6 @@
       ./development
       ./desktop
       ./gaming
-      ./media
       ./remote
       ./terminal
     ];

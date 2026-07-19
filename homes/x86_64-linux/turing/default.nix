@@ -103,7 +103,6 @@ in {
       enable = true;
       enableSessionWide = true;
     };
-    media.mpd.enable = true;
     remote.ssh.enable = true;
     terminal = {
       fish.enable = true;
@@ -144,11 +143,24 @@ in {
         extraArgs = ["--mdns"];
       };
     };
+    rmpc.enable = true;
     vesktop.enable = true;
   };
 
   services = {
     easyeffects.enable = true;
+    mpd = {
+      enable = true;
+      extraConfig = ''
+        restore_paused "yes"
+        audio_output {
+          type "pulse"
+          name "PipeWire Pulse"
+          mixer_type "software"
+        }
+      '';
+    };
+    mpdris2.enable = true;
     ollama.enable = true;
   };
 
