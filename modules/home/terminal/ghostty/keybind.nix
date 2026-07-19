@@ -6,8 +6,8 @@
   cfg = config.my.terminal.ghostty;
 in {
   config.programs.ghostty = lib.mkIf cfg.enable {
-    clearDefaultKeybinds = true;
-    settings.keybind = [
+    clearDefaultKeybinds = lib.mkDefault true;
+    settings.keybind = lib.mkDefault [
       # Quit
       "super+q=quit"
       "super+n=new_window"

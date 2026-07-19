@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      globals.autoformat = true;
+      globals.autoformat = lib.mkDefault true;
 
       keymaps = [
         {
@@ -46,9 +46,9 @@ in {
       ];
 
       plugins.conform-nvim = {
-        autoInstall.enable = true;
-        enable = true;
-        settings = {
+        autoInstall.enable = lib.mkDefault true;
+        enable = lib.mkDefault true;
+        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           format_on_save = mkRaw ''
             function(bufnr)
               if vim.g.autoformat == false or vim.b[bufnr].autoformat == false then

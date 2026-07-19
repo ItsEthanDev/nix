@@ -12,21 +12,21 @@ in {
     home.packages = lib.optionals pkgs.stdenv.isLinux [pkgs.libnotify];
 
     programs.opencode = {
-      enable = true;
+      enable = lib.mkDefault true;
 
-      commands = ./commands;
-      skills = ./skills;
+      commands = lib.mkDefault ./commands;
+      skills = lib.mkDefault ./skills;
 
-      context = builtins.readFile ./context.md;
+      context = lib.mkDefault (builtins.readFile ./context.md);
 
       settings = {
         plugin = ["@mohak34/opencode-notifier@latest"];
-        permission.task.commit = "deny";
+        permission.task.commit = lib.mkDefault "deny";
       };
 
       tui = {
-        "$schema" = "https://opencode.ai/tui.json";
-        theme = lib.mkForce "system";
+        "$schema" = lib.mkDefault "https://opencode.ai/tui.json";
+        theme = lib.mkDefault "system";
       };
     };
   };

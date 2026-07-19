@@ -9,11 +9,11 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.starship = {
-      enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-      enableTransience = true;
-      settings = {
+      enable = lib.mkDefault true;
+      enableZshIntegration = lib.mkDefault true;
+      enableFishIntegration = lib.mkDefault true;
+      enableTransience = lib.mkDefault true;
+      settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
         bun.disabled = true;
         cmd_duration.disabled = true;
         gcloud.disabled = true;

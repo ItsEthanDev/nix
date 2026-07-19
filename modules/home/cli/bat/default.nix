@@ -9,7 +9,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs = {
-      bat.enable = true;
+      bat.enable = lib.mkDefault true;
       fish.shellAliases.cat = "bat";
       zsh.shellAliases.cat = "bat";
     };

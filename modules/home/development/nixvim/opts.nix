@@ -7,7 +7,7 @@
 in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      opts = {
+      opts = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
         autoindent = true;
         autoread = true;
         breakindent = true;

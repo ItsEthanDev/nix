@@ -9,8 +9,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       plugins.zk = {
-        enable = true;
-        settings = {
+        enable = lib.mkDefault true;
+        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           lsp = {
             auto_attach = {
               enabled = true;

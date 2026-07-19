@@ -18,15 +18,15 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
-      enable = true;
-      globals = {
+      enable = lib.mkDefault true;
+      globals = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
         mapleader = " ";
         maplocalleader = "\\";
       };
-      defaultEditor = true;
-      nixpkgs.useGlobalPackages = true;
-      viAlias = true;
-      vimAlias = true;
+      defaultEditor = lib.mkDefault true;
+      nixpkgs.useGlobalPackages = lib.mkDefault true;
+      viAlias = lib.mkDefault true;
+      vimAlias = lib.mkDefault true;
     };
   };
 }

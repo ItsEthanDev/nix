@@ -8,8 +8,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       plugins.noice = {
-        enable = true;
-        settings = {
+        enable = lib.mkDefault true;
+        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           # Use Noice's markdown rendering for LSP hover/signature and cmp docs.
           lsp.override = {
             "vim.lsp.util.convert_input_to_markdown_lines" = true;

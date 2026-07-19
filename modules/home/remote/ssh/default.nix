@@ -10,7 +10,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.ssh = {
       enable = lib.mkDefault true;
-      enableDefaultConfig = false;
+      enableDefaultConfig = lib.mkDefault false;
       settings = {
         "*" = {
           ForwardAgent = lib.mkDefault false;

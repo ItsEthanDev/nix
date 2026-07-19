@@ -11,7 +11,7 @@ in {
     home.packages = [pkgs.ripgrep];
 
     programs.nixvim = {
-      plugins.telescope.enable = true;
+      plugins.telescope.enable = lib.mkDefault true;
 
       # keymaps = [
       #   {

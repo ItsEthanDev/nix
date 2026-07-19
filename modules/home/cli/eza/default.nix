@@ -16,11 +16,11 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       eza = {
-        enable = true;
-        enableZshIntegration = true;
-        enableFishIntegration = true;
-        git = true;
-        icons = "auto";
+        enable = lib.mkDefault true;
+        enableZshIntegration = lib.mkDefault true;
+        enableFishIntegration = lib.mkDefault true;
+        git = lib.mkDefault true;
+        icons = lib.mkDefault "auto";
       };
 
       fish.shellAliases = shellAliases;

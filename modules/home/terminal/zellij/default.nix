@@ -15,12 +15,12 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       zellij = {
-        enable = true;
+        enable = lib.mkDefault true;
 
         layouts = {
           simple = {
             layout = {
-              _children = [
+              _children = lib.mkDefault [
                 {
                   pane = {
                     size = 1;
@@ -38,7 +38,7 @@ in {
           };
         };
 
-        extraConfig = ''
+        extraConfig = lib.mkDefault ''
           keybinds clear-defaults=true {
               locked {
                   bind "Ctrl g" { SwitchToMode "normal"; }

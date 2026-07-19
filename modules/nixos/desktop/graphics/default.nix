@@ -24,15 +24,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    xdg.portal.enable = true;
+    xdg.portal.enable = lib.mkDefault true;
     services.displayManager = {
-      enable = true;
+      enable = lib.mkDefault true;
       autoLogin = lib.mkIf cfg.autoLogin.enable {
-        enable = true;
-        user = lib.mkIf (cfg.autoLogin.user != null) cfg.autoLogin.user;
+        enable = lib.mkDefault true;
+        user = lib.mkIf (cfg.autoLogin.user != null) (lib.mkDefault cfg.autoLogin.user);
       };
-      defaultSession = cfg.defaultSession;
+      defaultSession = lib.mkDefault cfg.defaultSession;
     };
-    environment.sessionVariables.NIXOS_OZONE_WL = lib.mkIf cfg.hintWayland "1";
+    environment.sessionVariables.NIXOS_OZONE_WL = lib.mkIf cfg.hintWayland (lib.mkDefault "1");
   };
 }

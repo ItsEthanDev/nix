@@ -10,10 +10,10 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       zsh = {
-        enable = true;
+        enable = lib.mkDefault true;
         syntaxHighlighting = {
-          enable = true;
-          highlighters = [
+          enable = lib.mkDefault true;
+          highlighters = lib.mkDefault [
             "main"
             "brackets"
             "pattern"
@@ -24,16 +24,16 @@ in {
           ];
         };
         autosuggestion = {
-          enable = true;
-          strategy = ["completion"];
+          enable = lib.mkDefault true;
+          strategy = lib.mkDefault ["completion"];
         };
         oh-my-zsh = {
-          enable = true;
-          plugins = [
+          enable = lib.mkDefault true;
+          plugins = lib.mkDefault [
             "vi-mode"
           ];
         };
-        initContent = ''
+        initContent = lib.mkDefault ''
           # Autosuggestion completion
           bindkey '^Y' autosuggest-accept
         '';

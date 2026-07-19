@@ -119,6 +119,11 @@ override priority before applying a type's merge behavior, so wrapping an
 additive list in `lib.mkDefault` would allow any normal-priority definition to
 discard the module's entire contribution.
 
+The same applies to dynamically keyed attribute sets such as shell aliases.
+Their entries are merged by the option type rather than declared as independent
+module options, so keep additive entries at normal priority and resolve
+intentional key conflicts in the owning capability.
+
 ### Module Shape
 
 The following NixOS module illustrates the expected shape. The package list is

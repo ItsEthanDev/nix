@@ -10,8 +10,8 @@ in {
   config = lib.mkIf cfg.enable {
     services = {
       mpd = {
-        enable = true;
-        extraConfig = ''
+        enable = lib.mkDefault true;
+        extraConfig = lib.mkDefault ''
           restore_paused "yes"
           audio_output {
             type "pulse"
@@ -22,9 +22,9 @@ in {
       };
 
       mpdris2 = {
-        enable = true;
+        enable = lib.mkDefault true;
       };
     };
-    programs.rmpc.enable = true;
+    programs.rmpc.enable = lib.mkDefault true;
   };
 }

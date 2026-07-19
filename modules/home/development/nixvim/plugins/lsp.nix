@@ -9,8 +9,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.nixvim.plugins = {
       lsp = {
-        enable = true;
-        servers = {
+        enable = lib.mkDefault true;
+        servers = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           # CSS
           cssls.enable = true;
           # JSON

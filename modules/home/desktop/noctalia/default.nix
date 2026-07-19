@@ -22,13 +22,13 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.noctalia = {
-      enable = true;
+      enable = lib.mkDefault true;
       settings = {
         keybinds = {
-          down = ["Down" "Ctrl+n"];
-          up = ["Up" "Ctrl+p"];
+          down = lib.mkDefault ["Down" "Ctrl+n"];
+          up = lib.mkDefault ["Up" "Ctrl+p"];
         };
-        shell.launcher.categories = false;
+        shell.launcher.categories = lib.mkDefault false;
       };
     };
 

@@ -13,7 +13,7 @@ in {
   options.my.hardware.zsa.enable = lib.mkEnableOption "Enables support for ZSA hardware";
 
   config = lib.mkIf cfg.enable {
-    hardware.keyboard.zsa.enable = true;
-    programs.zapp.enable = true;
+    hardware.keyboard.zsa.enable = lib.mkDefault true;
+    programs.zapp.enable = lib.mkDefault true;
   };
 }

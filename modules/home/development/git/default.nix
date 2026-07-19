@@ -32,11 +32,11 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       git = {
-        enable = true;
+        enable = lib.mkDefault true;
         lfs = {
-          enable = true;
+          enable = lib.mkDefault true;
         };
-        settings = {
+        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           user = {
             inherit (cfg) email name;
           };
@@ -85,10 +85,10 @@ in {
       };
 
       delta = {
-        enable = true;
-        enableGitIntegration = true;
+        enable = lib.mkDefault true;
+        enableGitIntegration = lib.mkDefault true;
         options = {
-          side-by-side = true;
+          side-by-side = lib.mkDefault true;
         };
       };
 

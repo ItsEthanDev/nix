@@ -9,9 +9,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.mangohud = {
-      enable = true;
-      enableSessionWide = true;
-      settings = {
+      enable = lib.mkDefault true;
+      enableSessionWide = lib.mkDefault true;
+      settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
         no_display = true;
         toggle_hud = "Super_L+Control_L+H";
 

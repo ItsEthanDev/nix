@@ -14,14 +14,12 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.fish = {
-      enable = true;
-      binds = {
-        "\\cy" = {
-          command = "accept-autosuggestion";
-          mode = "insert";
-        };
+      enable = lib.mkDefault true;
+      binds."\\cy" = lib.mkDefault {
+        command = "accept-autosuggestion";
+        mode = "insert";
       };
-      interactiveShellInit = ''
+      interactiveShellInit = lib.mkDefault ''
         # Vi bindings
         fish_vi_key_bindings
 
@@ -43,11 +41,9 @@ in {
           ls
         end
       '';
-      shellAbbrs = {
-        "C" = {
-          position = "anywhere";
-          expansion = copyCommand;
-        };
+      shellAbbrs."C" = {
+        position = "anywhere";
+        expansion = copyCommand;
       };
     };
   };

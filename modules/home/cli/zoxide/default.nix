@@ -10,9 +10,9 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       zoxide = {
-        enable = true;
-        enableZshIntegration = true;
-        enableFishIntegration = true;
+        enable = lib.mkDefault true;
+        enableZshIntegration = lib.mkDefault true;
+        enableFishIntegration = lib.mkDefault true;
       };
 
       fish.shellAliases.cd = "z";

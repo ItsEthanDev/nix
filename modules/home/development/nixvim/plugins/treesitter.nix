@@ -8,8 +8,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       plugins.treesitter = {
-        enable = true;
-        settings = {
+        enable = lib.mkDefault true;
+        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
           auto_install = true;
           highlight.enable = true;
           indent.enable = true;

@@ -9,14 +9,14 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
-      enableFishIntegration = true;
-      fileWidgetOptions = [
+      enable = lib.mkDefault true;
+      enableZshIntegration = lib.mkDefault true;
+      enableFishIntegration = lib.mkDefault true;
+      fileWidgetOptions = lib.mkDefault [
         "-i"
         "-e"
       ];
-      historyWidgetOptions = [
+      historyWidgetOptions = lib.mkDefault [
         "-i"
         "-e"
       ];

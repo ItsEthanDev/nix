@@ -38,7 +38,7 @@ in {
 
       wireplumber.extraConfig."default-app-volume" = {
         "wireplumber.settings" = {
-          "node.stream.default-playback-volume" = cfg.defaultPlaybackVolume;
+          "node.stream.default-playback-volume" = lib.mkDefault cfg.defaultPlaybackVolume;
         };
       };
     };

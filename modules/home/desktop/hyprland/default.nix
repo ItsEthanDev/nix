@@ -11,19 +11,19 @@ in {
 
   config = lib.mkIf cfg.enable {
     wayland.windowManager.hyprland = {
-      enable = true;
-      configType = "hyprlang";
+      enable = lib.mkDefault true;
+      configType = lib.mkDefault "hyprlang";
       settings = {
-        "general:border_size" = 2;
+        "general:border_size" = lib.mkDefault 2;
 
-        "cursor:inactive_timeout" = 3;
+        "cursor:inactive_timeout" = lib.mkDefault 3;
 
-        "binds:scroll_event_delay" = 0;
+        "binds:scroll_event_delay" = lib.mkDefault 0;
 
-        "misc:disable_hyprland_logo" = true;
-        "misc:disable_splash_rendering" = true;
-        "misc:focus_on_activate" = true;
-        "misc:middle_click_paste" = false;
+        "misc:disable_hyprland_logo" = lib.mkDefault true;
+        "misc:disable_splash_rendering" = lib.mkDefault true;
+        "misc:focus_on_activate" = lib.mkDefault true;
+        "misc:middle_click_paste" = lib.mkDefault false;
         bind = [
           # COPY/PASTE/CUT/SELECT
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"

@@ -7,9 +7,9 @@
 in {
   config = lib.mkIf cfg.enable {
     programs.nixvim.plugins.lualine = {
-      enable = true;
+      enable = lib.mkDefault true;
       settings.sections = {
-        lualine_x = [
+        lualine_x = lib.mkDefault [
           # Shows pending command keys
           "%S"
         ];
