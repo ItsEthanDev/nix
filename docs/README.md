@@ -98,6 +98,8 @@ The module trees follow these rules:
   activate that feature.
 - Imports of third-party modules belong to the repository module that owns the
   integration. Importing the third-party module must itself remain inert.
+- A host may directly import a third-party module when it owns all of that
+  module's configuration and no reusable capability needs it.
 - Required prerequisites and unsupported platforms fail evaluation with clear
   assertions. Optional integrations may degrade conditionally.
 - Modules do not hard-code usernames, home directories, hostnames, hardware
