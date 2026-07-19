@@ -46,7 +46,7 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   my = {
-    boot.silent = true;
+    boot.silent.enable = true;
     desktop = {
       audio.enable = true;
       graphics = {
@@ -89,6 +89,11 @@ in {
       settings.General.Country = "US";
     };
   };
+
+  nix.settings.experimental-features = [
+    "flakes"
+    "nix-command"
+  ];
 
   nixpkgs = {
     config.allowUnfree = true;

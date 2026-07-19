@@ -15,10 +15,5 @@
       ./remote
       ./options
     ];
-
-    nix.settings.experimental-features = [
-      "flakes"
-      "nix-command"
-    ];
   };
 }

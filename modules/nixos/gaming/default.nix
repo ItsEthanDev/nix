@@ -32,7 +32,7 @@ in {
         retroarch-free
       ];
     })
-    (lib.mkIf cfg.gamepads.enable {
+    (lib.mkIf (cfg.enable && cfg.gamepads.enable) {
       services.udev.packages = [pkgs.game-devices-udev-rules];
       hardware = {
         steam-hardware.enable = true;
