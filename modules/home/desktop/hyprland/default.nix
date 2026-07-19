@@ -15,8 +15,6 @@ in {
       configType = "hyprlang";
       settings = {
         "general:border_size" = 2;
-        "general:col.inactive_border" = "0xff737994";
-        "general:col.active_border" = "0xffbabbf1";
 
         "cursor:inactive_timeout" = 3;
 
