@@ -1,5 +1,14 @@
-{...}: {
+{config, ...}: {
+  environment.shells = [config.programs.fish.package];
+
   homebrew.casks = ["ghostty"];
+
+  homebrew = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
 
   my = {
     aerospace.enable = true;
@@ -18,8 +27,12 @@
     "flakes"
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = "aarch64-darwin";
+  };
+
+  programs.fish.enable = true;
 
   security.pam.services.sudo_local = {
     touchIdAuth = true;
