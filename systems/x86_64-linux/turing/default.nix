@@ -34,7 +34,9 @@ in {
 
   environment.systemPackages = with pkgs; [
     gamescope
+    retroarch-free
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    vkbasalt
   ];
 
   fonts.packages = with pkgs; [
@@ -59,9 +61,10 @@ in {
         hintWayland = true;
       };
     };
-    gaming.enable = true;
+    gaming.steam.enable = true;
     hardware = {
       camera.droidcam.enable = true;
+      gamepads.enable = true;
       zsa.enable = true;
     };
     remote.ssh = {
@@ -102,6 +105,7 @@ in {
   programs = {
     _1password.enable = true;
     _1password-gui.enable = true;
+    gamemode.enable = true;
     hyprland = {
       enable = true;
       withUWSM = true;
@@ -120,6 +124,11 @@ in {
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
+    };
+    steam = {
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+      remotePlay.openFirewall = true;
     };
     zsh.enable = true;
   };
