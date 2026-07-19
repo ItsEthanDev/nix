@@ -22,6 +22,8 @@ in {
 
         "misc:disable_hyprland_logo" = true;
         "misc:disable_splash_rendering" = true;
+        "misc:focus_on_activate" = true;
+        "misc:middle_click_paste" = false;
         bind = [
           # COPY/PASTE/CUT/SELECT
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
