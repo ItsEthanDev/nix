@@ -6,8 +6,8 @@
   cfg = config.my.gaming.mangohud;
 in {
   options.my.gaming.mangohud = {
-    enable = lib.mkEnableOption "MangoHud configuration";
-    enableSessionWide = lib.mkEnableOption "MangoHud session-wide injection";
+    enable = lib.mkEnableOption "MangoHud with the repository's display defaults";
+    enableSessionWide = lib.mkEnableOption "injecting MangoHud into every graphical process";
   };
 
   config = lib.mkIf cfg.enable {

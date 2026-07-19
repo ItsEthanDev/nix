@@ -6,21 +6,21 @@
   cfg = config.my.desktop.graphics;
 in {
   options.my.desktop.graphics = {
-    enable = lib.mkEnableOption "Desktop display manager";
+    enable = lib.mkEnableOption "the display manager and XDG portal defaults";
     autoLogin = {
-      enable = lib.mkEnableOption "Auto login";
+      enable = lib.mkEnableOption "automatic display-manager login";
       user = lib.mkOption {
         type = lib.types.nullOr lib.types.str;
         default = null;
-        description = "User to auto login";
+        description = "User assigned to services.displayManager.autoLogin.user.";
       };
     };
     defaultSession = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
-      description = "Session name of the session to use by default";
+      description = "Session passed to services.displayManager.defaultSession.";
     };
-    hintWayland = lib.mkEnableOption "Hint electron and chromium apps to use wayland";
+    hintWayland = lib.mkEnableOption "setting NIXOS_OZONE_WL=1 for Chromium and Electron Wayland support";
   };
 
   config = lib.mkIf cfg.enable {

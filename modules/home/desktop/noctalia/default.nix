@@ -12,11 +12,11 @@ in {
   ];
 
   options.my.desktop.noctalia = {
-    enable = lib.mkEnableOption "noctalia configuration";
+    enable = lib.mkEnableOption "Noctalia Wayland shell configuration";
     compositors.hyprland = {
-      enableIntegration = lib.mkEnableOption "integration with Hyprland";
-      enableKeybindings = lib.mkEnableOption "default keybindings for Hyprland";
-      enableRecommendedStyling = lib.mkEnableOption "Noctalia's recommended styling for Hyprland";
+      enableIntegration = lib.mkEnableOption "starting Noctalia and applying its window rules in Hyprland";
+      enableKeybindings = lib.mkEnableOption "Noctalia's launcher, control-center, screenshot, and media bindings in Hyprland";
+      enableRecommendedStyling = lib.mkEnableOption "Noctalia's gaps, rounding, shadow, blur, and layer-rule defaults in Hyprland";
     };
   };
 

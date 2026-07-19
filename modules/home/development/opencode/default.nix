@@ -14,7 +14,6 @@ in {
     programs.opencode = {
       enable = lib.mkDefault true;
 
-      commands = lib.mkDefault ./commands;
       skills = lib.mkDefault ./skills;
 
       context = lib.mkDefault (builtins.readFile ./context.md);

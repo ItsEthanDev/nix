@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.my.cli.git-shortcuts;
+  cfg = config.my.cli.gitShortcuts;
   aliases = {
     gd = "git diff";
     ga = "git add";
@@ -16,7 +16,7 @@
     gcl = "git clone";
   };
 in {
-  options.my.cli.git-shortcuts.enable = lib.mkEnableOption "Git shell shortcuts";
+  options.my.cli.gitShortcuts.enable = lib.mkEnableOption "Git shell shortcuts for Fish and Zsh";
 
   config = lib.mkIf cfg.enable {
     programs = {

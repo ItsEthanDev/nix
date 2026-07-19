@@ -14,5 +14,5 @@ x 2026-07-18 (C) RF-011 [P2] Add explicit platform and prerequisite contracts fo
 x 2026-07-18 (C) RF-012 [P2] Move reusable third-party module imports such as NixOS Noctalia and Home Manager Stylix into their owning inert repository modules, or record deliberate host-only exceptions. +refactor +modules +integrations
 x 2026-07-18 (C) RF-013 [P2] Add Linux platform metadata to Hyprzoom; retain overlay-backed package outputs. +refactor +packages +portability
 (C) RF-014 [P2] Tighten reproducibility and runtime dependency ownership by pinning mutable OpenCode plugins, removing imperative Treesitter installation, consolidating Nixvim tools, and owning required fonts. +refactor +reproducibility +dependencies
-(D) RF-015 [P3] Clean up option APIs and dead abstractions by renaming Noctalia options to lower camelCase, removing the unused primary-user option, and improving option descriptions after paths stabilize. +refactor +options +cleanup
-(D) RF-016 [P3] Resolve low-risk package ownership duplication and stale OpenCode assets, including unmanaged agent and skill references. +refactor +cleanup +opencode
+x 2026-07-18 (D) RF-015 [P3] Clean up option APIs and dead abstractions by using lower camelCase options, removing the unused primary-user option, and improving behavior-rich option descriptions. +refactor +options +cleanup
+x 2026-07-18 (D) RF-016 [P3] Resolve low-risk package ownership duplication and stale OpenCode assets, including unmanaged agent and skill references. +refactor +cleanup +opencode

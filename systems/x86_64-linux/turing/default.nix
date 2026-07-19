@@ -72,7 +72,6 @@ in {
       keyDirectory = ../../../static/ssh;
       user = user;
     };
-    system.users.primary.username = user;
   };
 
   networking = {

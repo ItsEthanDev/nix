@@ -4,7 +4,6 @@
   hardware = import ./hardware;
   gaming = import ./gaming;
   remote = import ./remote;
-  options = import ./options;
 
   default = {
     imports = [
@@ -13,7 +12,6 @@
       ./hardware
       ./gaming
       ./remote
-      ./options
     ];
   };
 }

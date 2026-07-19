@@ -14,7 +14,7 @@
       bat.enable = true;
       eza.enable = true;
       fzf.enable = true;
-      git-shortcuts.enable = true;
+      gitShortcuts.enable = true;
       zoxide.enable = true;
     };
     development = {

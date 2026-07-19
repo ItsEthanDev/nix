@@ -9,8 +9,6 @@ Consider all information gathered with the specified priority
 
 Call skills liberally. If you have a skill in your skillset that could possible be useful to your current objectives, call and use it. Never assume you know what a skill says before reading it.
 
-If you need to interact with external APIs, always use your web search tool to find documentation for how the API expects data. Leave a comment before files/functions that use external apis that link to the api documentation being used. If you notice that an existing file/function uses an external api without the api documentation being linked, then add the link. Generally, create boundaries between api calls and processing of the data, so that this link accurately describes the function. This will help future developers and agents know where they can go to reference the api details.
-
 If you ever notice that any code does not follow the guidelines outlined in this file, alert the user of this deviation. Ask the user if you should update the code so that it matches the guidelines. If the user does not want to make this update, make note of this in a local `AGENTS.md` file so that you remember the user's decision to override the guideline in that instance.
 
 ### AGENTS.md

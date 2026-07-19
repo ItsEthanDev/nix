@@ -60,7 +60,6 @@ in {
       nodejs
       pkg-config
       pnpm
-      ripgrep
       rustc
       snes9x
       tlrc
@@ -76,7 +75,7 @@ in {
       bat.enable = true;
       eza.enable = true;
       fzf.enable = true;
-      git-shortcuts.enable = true;
+      gitShortcuts.enable = true;
       zoxide.enable = true;
     };
     desktop = {

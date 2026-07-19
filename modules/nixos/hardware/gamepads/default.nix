@@ -6,7 +6,7 @@
 }: let
   cfg = config.my.hardware.gamepads;
 in {
-  options.my.hardware.gamepads.enable = lib.mkEnableOption "broad gamepad support";
+  options.my.hardware.gamepads.enable = lib.mkEnableOption "Steam hardware, uinput, Xbox, Joy-Con, udev, and HID gamepad support";
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [pkgs.hidapi];

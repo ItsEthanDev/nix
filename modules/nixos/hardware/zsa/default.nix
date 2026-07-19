@@ -11,7 +11,7 @@ in {
     inputs.zapp.nixosModules.default
   ];
 
-  options.my.hardware.zsa.enable = lib.mkEnableOption "Enables support for ZSA hardware";
+  options.my.hardware.zsa.enable = lib.mkEnableOption "ZSA keyboard udev rules and the Linux-only Zapp flashing tool";
 
   config = lib.mkIf cfg.enable {
     assertions = [

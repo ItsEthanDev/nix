@@ -10,17 +10,17 @@ in {
     passwordAuthentication = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Whether to allow password authentication via ssh";
+      description = "Whether to allow OpenSSH password and keyboard-interactive authentication.";
     };
     user = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
-      description = "The username of the account to set up remote access for";
+      description = "User whose OpenSSH authorized_keys receives the public keys.";
     };
     keyDirectory = lib.mkOption {
       type = lib.types.nullOr lib.types.path;
       default = null;
-      description = "The directory containing public keys which should be used to authorize access";
+      description = "Directory of regular *.pub files installed when both user and keyDirectory are set.";
     };
   };
 
