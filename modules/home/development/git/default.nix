@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  osConfig,
   pkgs,
   ...
 }: let
@@ -22,12 +21,10 @@ in {
     enable = lib.mkEnableOption "git configuration";
     email = lib.mkOption {
       type = lib.types.str;
-      default = "${osConfig.networking.hostName}@itsEthan.dev";
       description = "The email address to use for git commits";
     };
     name = lib.mkOption {
       type = lib.types.str;
-      default = "Ethan Brady";
       description = "The name to use for git commits";
     };
   };

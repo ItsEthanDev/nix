@@ -68,7 +68,11 @@
       hyprland.enable = true;
     };
     development = {
-      git.enable = true;
+      git = {
+        enable = true;
+        email = "turing@itsEthan.dev";
+        name = "Ethan Brady";
+      };
       nixvim.enable = true;
       opencode.enable = true;
     };

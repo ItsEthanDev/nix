@@ -12,7 +12,11 @@
       zoxide.enable = true;
     };
     development = {
-      git.enable = true;
+      git = {
+        enable = true;
+        email = "newton@itsEthan.dev";
+        name = "Ethan Brady";
+      };
       nixvim.enable = true;
       opencode.enable = true;
     };
