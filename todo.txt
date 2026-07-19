@@ -12,7 +12,7 @@ x 2026-07-18 (B) RF-009 [P1] Normalize module definition priorities after bounda
 x 2026-07-18 (C) RF-010 [P2] Clarify broad Home Manager capability boundaries for Git tooling, MPD services, and MangoHud injection. +refactor +home-manager +boundaries
 x 2026-07-18 (C) RF-011 [P2] Add explicit platform and prerequisite contracts for Noctalia and ZSA, retain Ghostty's Darwin mock configuration, and keep MPD host-owned. +refactor +assertions +portability
 x 2026-07-18 (C) RF-012 [P2] Move reusable third-party module imports such as NixOS Noctalia and Home Manager Stylix into their owning inert repository modules, or record deliberate host-only exceptions. +refactor +modules +integrations
-(C) RF-013 [P2] Correct platform-specific package outputs by restricting Hyprzoom to Linux, adding platform metadata, and constructing package outputs independently of the default overlay. +refactor +packages +portability
+x 2026-07-18 (C) RF-013 [P2] Add Linux platform metadata to Hyprzoom; retain overlay-backed package outputs. +refactor +packages +portability
 (C) RF-014 [P2] Tighten reproducibility and runtime dependency ownership by pinning mutable OpenCode plugins, removing imperative Treesitter installation, consolidating Nixvim tools, and owning required fonts. +refactor +reproducibility +dependencies
 (D) RF-015 [P3] Clean up option APIs and dead abstractions by renaming Noctalia options to lower camelCase, removing the unused primary-user option, and improving option descriptions after paths stabilize. +refactor +options +cleanup
 (D) RF-016 [P3] Resolve low-risk package ownership duplication and stale OpenCode assets, including unmanaged agent and skill references. +refactor +cleanup +opencode

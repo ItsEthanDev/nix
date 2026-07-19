@@ -7,7 +7,10 @@ pkgs.stdenvNoCC.mkDerivation {
   pname = "hyprzoom";
   version = "0.1.0";
 
-  meta.mainProgram = "hyprzoom";
+  meta = {
+    mainProgram = "hyprzoom";
+    platforms = lib.platforms.linux;
+  };
 
   dontUnpack = true;
 
