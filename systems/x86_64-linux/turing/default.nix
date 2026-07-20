@@ -115,7 +115,13 @@ in {
       enable = true;
       openFirewall = true;
     };
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+        icu
+        stdenv.cc.cc.lib
+      ];
+    };
     noctalia = {
       enable = true;
       recommendedServices.enable = true;
