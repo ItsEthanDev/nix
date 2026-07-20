@@ -109,22 +109,21 @@ The module trees follow these rules:
 
 ### Definition Priorities
 
-Enabled modules provide overridable behavior. Use `lib.mkDefault` wherever
-possible for default-like definitions, including values derived from the
-module's own options. A normal-priority host definition can then replace the
-module's choice without `lib.mkForce`.
+Enabled modules provide overridable scalar behavior. Use `lib.mkDefault` for
+scalar default-like definitions, including values derived from the module's own
+options. A normal-priority host definition can then replace the module's choice
+without `lib.mkForce`.
 
-Intentionally additive definitions are the exception. Lists such as package or
-plugin contributions should remain at normal priority when they are meant to
-merge with definitions from hosts and other modules. Nix filters definitions by
-override priority before applying a type's merge behavior, so wrapping an
-additive list in `lib.mkDefault` would allow any normal-priority definition to
-discard the module's entire contribution.
+Do not use `lib.mkDefault` for lists or dynamically keyed attribute sets. Nix
+filters definitions by override priority before applying a type's merge
+behavior, so a normal-priority definition can discard a default-priority
+collection before it can merge.
 
-The same applies to dynamically keyed attribute sets such as shell aliases.
-Their entries are merged by the option type rather than declared as independent
-module options, so keep additive entries at normal priority and resolve
-intentional key conflicts in the owning capability.
+Keep intentionally additive collections, such as package or plugin lists and
+shell aliases, at normal priority so they merge with host and module
+definitions. Resolve intentional key conflicts in the owning capability. An
+owned replacement collection may use `lib.mkForce` only when an upstream or
+third-party definition would otherwise suppress it; document that exception.
 
 ### Module Shape
 
