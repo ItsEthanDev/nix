@@ -7,7 +7,7 @@
 in {
   config.programs.ghostty = lib.mkIf cfg.enable {
     clearDefaultKeybinds = lib.mkDefault true;
-    settings.keybind = lib.mkDefault [
+    settings.keybind = [
       # Quit
       "super+q=quit"
       "super+n=new_window"
