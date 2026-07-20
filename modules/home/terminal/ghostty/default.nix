@@ -38,7 +38,6 @@ in {
         selection-clear-on-copy = lib.mkDefault true;
         # Font
         font-family = lib.mkDefault "JetBrainsMono NFM Regular";
-        font-size = lib.mkDefault 16;
         # Shell
         command = lib.mkIf hasFish (lib.mkDefault (lib.getExe pkgs.fish));
         shell-integration = lib.mkIf hasFish (lib.mkDefault "fish");

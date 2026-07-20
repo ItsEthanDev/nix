@@ -169,6 +169,7 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+    fonts.sizes.terminal = 16;
   };
 
   wayland.windowManager.hyprland = {
