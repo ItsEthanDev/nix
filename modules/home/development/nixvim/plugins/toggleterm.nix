@@ -9,7 +9,7 @@ in {
     programs.nixvim = {
       plugins.toggleterm = {
         enable = lib.mkDefault true;
-        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+        settings = {
           direction = "float";
           open_mapping = "[[<C-/>]]";
           insert_mappings = true;

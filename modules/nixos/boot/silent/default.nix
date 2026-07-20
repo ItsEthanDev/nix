@@ -11,7 +11,7 @@ in {
     boot = {
       consoleLogLevel = lib.mkDefault 3;
       initrd.verbose = lib.mkDefault false;
-      kernelParams = lib.mkDefault [
+      kernelParams = [
         "quiet"
         "rd.udev.log_level=3"
         "rd.systemd.show_status=auto"

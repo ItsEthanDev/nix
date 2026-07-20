@@ -9,7 +9,7 @@ in {
     programs.nixvim.plugins.mini = {
       enable = lib.mkDefault true;
       mockDevIcons = lib.mkDefault true;
-      modules = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+      modules = {
         ai.enable = true;
         basics.enable = true;
         bracketed.enable = true;

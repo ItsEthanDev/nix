@@ -13,7 +13,7 @@ in {
       enableZshIntegration = lib.mkDefault true;
       enableFishIntegration = lib.mkDefault true;
       enableTransience = lib.mkDefault true;
-      settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+      settings = {
         bun.disabled = true;
         cmd_duration.disabled = true;
         gcloud.disabled = true;

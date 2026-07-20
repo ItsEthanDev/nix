@@ -24,7 +24,7 @@ in {
         lfs = {
           enable = lib.mkDefault true;
         };
-        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+        settings = {
           user = {
             inherit (cfg) email name;
           };

@@ -9,7 +9,7 @@ in {
     programs.nixvim = {
       plugins.treesitter = {
         enable = lib.mkDefault true;
-        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+        settings = {
           auto_install = true;
           highlight.enable = true;
           indent.enable = true;

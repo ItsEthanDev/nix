@@ -13,7 +13,7 @@ in {
         enable = lib.mkDefault true;
         syntaxHighlighting = {
           enable = lib.mkDefault true;
-          highlighters = lib.mkDefault [
+          highlighters = [
             "main"
             "brackets"
             "pattern"
@@ -25,11 +25,11 @@ in {
         };
         autosuggestion = {
           enable = lib.mkDefault true;
-          strategy = lib.mkDefault ["completion"];
+          strategy = ["completion"];
         };
         oh-my-zsh = {
           enable = lib.mkDefault true;
-          plugins = lib.mkDefault [
+          plugins = [
             "vi-mode"
           ];
         };

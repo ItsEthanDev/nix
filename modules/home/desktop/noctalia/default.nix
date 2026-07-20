@@ -40,8 +40,8 @@ in {
       enable = lib.mkDefault true;
       settings = {
         keybinds = {
-          down = lib.mkDefault ["Down" "Ctrl+n"];
-          up = lib.mkDefault ["Up" "Ctrl+p"];
+          down = ["Down" "Ctrl+n"];
+          up = ["Up" "Ctrl+p"];
         };
         shell.launcher.categories = lib.mkDefault false;
       };
@@ -97,7 +97,7 @@ in {
         "decoration:blur:passes" = lib.mkDefault 2;
         "decoration:blur:vibrancy" = lib.mkDefault 0.1696;
 
-        layerrule = lib.mkDefault {
+        layerrule = {
           name = "noctalia";
           "match:namespace" = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$";
           no_anim = true;

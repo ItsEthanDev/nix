@@ -19,7 +19,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = lib.mkDefault true;
-      globals = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+      globals = {
         mapleader = " ";
         maplocalleader = "\\";
       };

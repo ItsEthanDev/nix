@@ -48,7 +48,7 @@ in {
       plugins.conform-nvim = {
         autoInstall.enable = lib.mkDefault true;
         enable = lib.mkDefault true;
-        settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+        settings = {
           format_on_save = mkRaw ''
             function(bufnr)
               if vim.g.autoformat == false or vim.b[bufnr].autoformat == false then

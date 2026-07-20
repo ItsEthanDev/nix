@@ -20,7 +20,7 @@ in {
         layouts = {
           simple = {
             layout = {
-              _children = lib.mkDefault [
+              _children = [
                 {
                   pane = {
                     size = 1;

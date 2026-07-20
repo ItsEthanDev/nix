@@ -10,7 +10,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.aerospace = {
       enable = lib.mkDefault true;
-      settings = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+      settings = {
         automatically-unhide-macos-hidden-apps = true;
         default-root-container-layout = "tiles";
         default-root-container-orientation = "auto";

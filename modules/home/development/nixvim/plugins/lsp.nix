@@ -10,7 +10,7 @@ in {
     programs.nixvim.plugins = {
       lsp = {
         enable = lib.mkDefault true;
-        servers = lib.mapAttrsRecursive (_: value: lib.mkDefault value) {
+        servers = {
           # CSS
           cssls.enable = true;
           # JSON
