@@ -120,6 +120,10 @@ in {
       libraries = with pkgs; [
         icu
         stdenv.cc.cc.lib
+        fontconfig
+        libx11
+        libice
+        libsm
       ];
     };
     noctalia = {
