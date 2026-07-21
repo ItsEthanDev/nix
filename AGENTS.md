@@ -59,6 +59,7 @@
 
 ## Agent guidance
 - Follow the target organization and module boundaries in `docs/README.md`.
+- Treat repository documentation as intended target state; do not rewrite it solely to match incomplete implementation.
 - Preserve `RF-###` identifiers when updating `todo.txt` and mark completed work using todo.txt conventions.
 - Read relevant `.nix` files before editing.
 - Don’t create new files unless requested.
