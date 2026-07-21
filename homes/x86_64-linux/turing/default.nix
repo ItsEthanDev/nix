@@ -195,12 +195,16 @@ in {
       ];
       windowrule =
         [
+          # Ghostty
           "opacity 0.875, match:class com.mitchellh.ghostty"
+          # Discord
           "float on, match:initial_title ^Discord Popout$"
           "pin on, match:initial_title ^Discord Popout$"
           "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
+          # Steam
           "workspace special:launchgame silent, match:initial_class steam"
+          # OBS
           "workspace special:presentation silent, match:initial_title ^Projector - Preview$"
           "fullscreen on, match:initial_title ^Projector - Preview$"
         ]
