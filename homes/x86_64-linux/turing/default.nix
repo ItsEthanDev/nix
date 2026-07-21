@@ -203,7 +203,12 @@ in {
           "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
           # Steam
-          "workspace special:launchgame silent, match:initial_class steam"
+          "workspace special:launchgame silent, match:initial_class ^steam$, match:initial_title negative:^Steam Input On-screen Keyboard$"
+          "workspace unset, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
+          "float on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
+          "no_focus on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
+          "pin on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
+          "move ((monitor_w-window_w)/2) (monitor_h-window_h), match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
           # OBS
           "workspace special:presentation silent, match:initial_title ^Projector - Preview$"
           "fullscreen on, match:initial_title ^Projector - Preview$"
