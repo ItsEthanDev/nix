@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "barnyard": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784784543,
+        "narHash": "sha256-IBf40taRQNjxVgcluf1yxACbSKAMzhUzmddUj+xK4Ts=",
+        "owner": "ItsEthanDev",
+        "repo": "barnyard-flake",
+        "rev": "ddfd8fd75d98793d71398d449fbc00ca4e609d23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ItsEthanDev",
+        "repo": "barnyard-flake",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -316,6 +336,7 @@
     },
     "root": {
       "inputs": {
+        "barnyard": "barnyard",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",

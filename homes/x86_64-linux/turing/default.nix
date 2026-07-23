@@ -55,6 +55,7 @@ in {
       fd
       gcc
       gh
+      inputs.barnyard.packages.${pkgs.stdenv.hostPlatform.system}.barnyard
       javaPackages.compiler.temurin-bin.jre-25
       jq
       nodejs
