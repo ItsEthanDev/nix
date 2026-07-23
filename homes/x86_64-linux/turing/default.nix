@@ -170,6 +170,12 @@ in {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
     fonts.sizes.terminal = 16;
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus-Light";
+      dark = "Papirus-Dark";
+    };
   };
 
   wayland.windowManager.hyprland = {
