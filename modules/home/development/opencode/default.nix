@@ -20,7 +20,11 @@ in {
 
       settings = {
         plugin = ["@mohak34/opencode-notifier@latest"];
-        permission.task.commit = lib.mkDefault "deny";
+        permission = {
+          external_directory."/nix/store/**" = lib.mkDefault "allow";
+          read."/nix/store/**" = lib.mkDefault "allow";
+          task.commit = lib.mkDefault "deny";
+        };
       };
 
       tui = {
