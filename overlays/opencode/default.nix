@@ -1,10 +1,10 @@
 final: prev: let
-  version = "1.18.2";
+  version = "1.18.4";
   src = final.fetchFromGitHub {
     owner = "anomalyco";
     repo = "opencode";
     tag = "v${version}";
-    hash = "sha256-WE8+O+Od8M71fKoOOhE9CbTsJ0JMAi0ZajmYd//VG2k=";
+    hash = "sha256-tGMO5JktINO8kXAHFQftn+JCrzwvpmNipTa8V0aIfNI=";
   };
 in {
   opencode = prev.opencode.overrideAttrs (oldAttrs: {
@@ -12,7 +12,7 @@ in {
 
     node_modules = oldAttrs.node_modules.overrideAttrs {
       inherit version src;
-      outputHash = "sha256-SUNfdHtASPh1mpxKvIKJ2GrDHAxmv7Gu7B7vr3PX5W4=";
+      outputHash = "sha256-jMZSDlqNObSmWJZ0Xn0IwfYC2+mBbRYorfgD5Y2sHWs=";
     };
   });
 }
