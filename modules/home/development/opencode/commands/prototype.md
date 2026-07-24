@@ -1,20 +1,34 @@
 ---
-name: prototype
 description: Build a throwaway prototype to answer a design question.
+agent: build
 ---
 
 # Prototype
 
 A prototype is **throwaway code that answers a question**. The question decides the shape.
 
+## Input
+
+Arguments: $ARGUMENTS
+
+Treat the arguments as the question the prototype must answer. If the first argument is `logic` or `ui`, use it as the branch and treat the remaining arguments as the question. Otherwise, infer the branch from the question and surrounding project.
+
+When no arguments are supplied, identify the question from the current conversation. Ask one focused question if neither the prototype question nor branch can be determined confidently.
+
+Supported forms:
+
+- `/prototype logic <question>`
+- `/prototype ui <question>`
+- `/prototype <question>`
+
 ## Pick a branch
 
-Identify which question is being answered — from the user's prompt, the surrounding code, or by asking if the user is around:
+Identify which question is being answered from the arguments, current conversation, and surrounding code:
 
 - **"Does this logic / state model feel right?"** → Logic. Build a tiny interactive terminal app that pushes the state machine through cases that are hard to reason about on paper.
 - **"What should this look like?"** → UI. Generate several radically different UI variations on a single route, switchable via a URL search param and a floating bottom bar.
 
-The two branches produce very different artifacts — getting this wrong wastes the whole prototype. If the question is genuinely ambiguous and the user isn't reachable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.
+The two branches produce very different artifacts — getting this wrong wastes the whole prototype. An explicit `logic` or `ui` argument selects the branch. Otherwise, ask when the choice is genuinely ambiguous; if the user is unavailable, default to whichever branch better matches the surrounding code (a backend module → logic; a page or component → UI) and state the assumption at the top of the prototype.
 
 ## Rules that apply to both
 
@@ -23,7 +37,7 @@ The two branches produce very different artifacts — getting this wrong wastes 
 3. **No persistence by default.** State lives in memory. Persistence is the thing the prototype is _checking_, not something it should depend on. If the question explicitly involves a database, hit a scratch DB or a local file with a clear "PROTOTYPE — wipe me" name.
 4. **Skip the polish.** No tests, no error handling beyond what makes the prototype _runnable_, no abstractions. The point is to learn something fast.
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
-6. **Capture it when done.** Fold any validated decision into the real code. Capture the answer — the verdict and the question it settled — in the docs, ticket, issue, or a commit.
+6. **Stop for evaluation.** Deliver the runnable prototype, its question, and the evidence the user should inspect. Leave promotion, cleanup, and durable decision capture until the user has evaluated the result.
 
 # Logic Prototype
 
@@ -93,9 +107,9 @@ If the host project has no task runner, just put the command at the top of the p
 
 Give the user the run command. They'll drive it themselves; the interesting moments are when they say "wait, that shouldn't be possible" or "huh, I assumed X would be different" — those are the bugs in the _idea_, which is the whole point. If they want new actions added, add them. Prototypes evolve.
 
-### 7. Capture the answer and the prototype
+### 7. Stop for evaluation
 
-Once the prototype has answered its question, capture the answer, then capture the prototype the way the [SKILL](SKILL.md) describes. The logic-specific mapping: the validated reducer / machine / function set lifts into the real module (the decision, absorbed); the TUI shell rides along to the throwaway branch that keeps the prototype as a primary source.
+State the prototype question, its location, the run command, and the cases the user should exercise. Stop before promoting the logic module, deleting the prototype, or recording a verdict. Those actions require the user's evaluation.
 
 ## Anti-patterns
 
@@ -109,7 +123,7 @@ Once the prototype has answered its question, capture the answer, then capture t
 
 Generate **several radically different UI variations** on a single route, switchable from a floating bottom bar. The user flips between variants in the browser, picks one (or steals bits from each), then throws the rest away.
 
-If the question is about logic/state rather than what something looks like — wrong branch. Use [LOGIC.md](LOGIC.md).
+If the question is about logic or state rather than what something looks like — wrong branch. Use the Logic Prototype branch.
 
 ## When this is the right shape
 
@@ -202,14 +216,9 @@ Put the switcher in a single shared component so both sub-shapes can reuse it. L
 
 Surface the URL (and the `?variant=` keys). The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"** — that's the actual design they want.
 
-### 6. Capture the answer and clean up
+### 6. Stop for evaluation
 
-Once a variant has won, capture the answer — which variant and why — then capture the prototype the way the [SKILL](SKILL.md) describes. Fold the winner into the real code and move the rest onto the throwaway branch, not into main:
-
-- **Sub-shape A** — fold the winner into the existing page; drop the losing variants and the switcher from main.
-- **Sub-shape B** — promote the winning variant to a real route; drop the throwaway route and the switcher from main.
-
-The full set of variants is the primary source, so it lands on the throwaway branch, not the bin — variant components and the switcher left in the main branch rot fast and confuse the next reader.
+State the prototype question, route, run command, variant keys, and what differs among the variants. Stop before selecting or promoting a winner, deleting variants, moving code to another branch, or recording a verdict. Those actions require the user's evaluation.
 
 ## Anti-patterns
 
