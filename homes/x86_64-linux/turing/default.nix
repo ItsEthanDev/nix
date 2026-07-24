@@ -1,11 +1,25 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
   ...
 }: let
   browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  colors = config.lib.stylix.colors;
+  mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   terminalCommand = lib.getExe pkgs.ghostty;
+  wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
+    ${mandelbrust}/bin/mandelbrust render \
+      --preset spirals \
+      --size 3840x2160 \
+      --color-stop 0:${colors.base00} \
+      --color-stop 0.35:${colors.base0D} \
+      --color-stop 0.7:${colors.base0E} \
+      --color-stop 1:${colors.base05} \
+      --output "$out" \
+      --quiet
+  '';
   gamingWindowPatterns = [
     "^steam_app_.*$"
     "^Hollow Knight Silksong$"
@@ -35,6 +49,8 @@ in {
     username = "ethan";
     homeDirectory = "/home/ethan";
     stateVersion = "25.11";
+
+    file."Pictures/Wallpapers/default.png".source = wallpaper;
 
     pointerCursor = {
       gtk.enable = true;
