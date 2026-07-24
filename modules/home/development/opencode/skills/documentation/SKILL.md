@@ -66,6 +66,8 @@ Make the smallest change that preserves the knowledge. Use just-in-time structur
 
 Follow established placement and format first. Link to canonical text instead of duplicating it. Introduce stable IDs only when durable cross-document traceability needs them; persistent tickets always require IDs because their dependencies and lifecycle refer to them.
 
+Before completing work, identify durable knowledge discovered during implementation and route it to its canonical owner. Record it in the applicable `AGENTS.md` only when it is an agent-specific instruction, local maintenance guardrail, or non-obvious operational gotcha that lacks a useful human-facing owner. Prefer normal project documentation when the knowledge would also help human developers.
+
 Lead with what the intended reader needs to know or do. Use concise, concrete language. Include rationale when it prevents misuse or preserves a confirmed trade-off; omit empty templates, filler, and prose that merely restates code.
 
 Use a diagram when relationships, flow, state, sequence, or structure become clearer than they would be in concise text and that clarity justifies another artifact to maintain. Follow project convention; otherwise prefer Mermaid so the source remains text-based and reviewable.
