@@ -13,10 +13,8 @@
     ${mandelbrust}/bin/mandelbrust render \
       --preset spirals \
       --size 3840x2160 \
-      --color-stop 0:${colors.base00} \
-      --color-stop 0.35:${colors.base0D} \
-      --color-stop 0.7:${colors.base0E} \
-      --color-stop 1:${colors.base05} \
+      --outside-color ${colors.base05} \
+      --inside-color ${colors.base01} \
       --output "$out" \
       --quiet
   '';
@@ -198,6 +196,8 @@ in {
   wayland.windowManager.hyprland = {
     systemd.enable = false;
     settings = {
+      "misc:mouse_move_enables_dpms" = true;
+
       bind = [
         "SUPER_SHIFT, return, exec, ${terminalCommand}"
         "SUPER_SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} -a"
