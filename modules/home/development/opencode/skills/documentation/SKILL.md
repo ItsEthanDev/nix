@@ -1,234 +1,159 @@
 ---
 name: documentation
-description: Helps maintain brief, usable project documentation through collaboration with the user. Use proactively and repeatedly when starting work, receiving instructions, changing behavior, terminology, or design, resolving domain language, making consequential architectural decisions, learning how a project works, answering project questions, detecting documentation drift, or creating and reviewing documentation.
+description: Documentation maintenance for durable project knowledge. Use proactively when work changes project intent or current behavior, terminology, architecture, setup, ticket state, or documentation conventions; when documentation drifts from implementation; or when another skill needs artifact ownership or writing guidance.
 ---
 
 # Documentation
 
-Maintain documentation as part of the work, not as a separate task the user must
-remember to request. Capture confirmed intent, keep each fact in one canonical
-place, and make the result easy to use.
+Keep documentation living: update it as part of the work that changes project
+knowledge. Keep each meaning in one canonical owner, grow structure just in time,
+and surface drift instead of guessing which conflicting claim is correct.
 
-## Goals
-
-- Help a reader understand, use, verify, and safely change the project.
-- Keep documentation brief enough to scan and complete enough to act on.
-- Preserve the user's intent without inventing facts or decisions.
-- Make confirmed facts, assumptions, decisions, and open questions distinct.
-- Keep domain language precise and preserve the rationale for consequential
-  architectural decisions.
-- Keep documentation and implementation aligned.
-- Involve the user when intent or the source of truth is unclear.
-
-## Instruction Priority
+## Priority
 
 Apply guidance in this order:
 
-1. The user's current instruction.
-2. Documentation preferences in applicable `AGENTS.md` files, with the file
-   closest to the documented artifact taking priority.
-3. Documentation rules and conventions in `docs/README.md`.
-4. Established project documentation conventions.
-5. This skill's defaults.
+1. The user's current request.
+2. Existing project documentation, using its declared hierarchy and artifact
+   ownership.
+3. Established project convention.
+4. This skill's defaults.
 
-Before editing documentation, read the applicable `AGENTS.md` files from the
-project root through the target directory and `docs/README.md` when it exists.
-Follow their terminology, structure, scope, and collaboration preferences even
-when they differ from this skill. If `docs/README.md` conflicts with an applicable
-`AGENTS.md`, follow `AGENTS.md` and raise the conflict as documentation drift.
+Applicable `AGENTS.md` files own agent-specific instructions, not product facts.
+When existing documents conflict, use a project-defined authority rule if one
+exists. Otherwise, use the canonical owner for the subject and treat unresolved
+conflicts as drift. No filename, modification time, or document type wins every
+conflict.
 
-Record durable project documentation conventions in `docs/README.md` when that
-documentation tree exists. Record agent-specific workflow instructions in the
-appropriate local `AGENTS.md` unless the user says they apply only to the current
-task. Keep the files consistent, but do not duplicate detailed rules without a
-need. Do not put product requirements or design decisions in `AGENTS.md`.
+## 1. Establish Authority
 
-## When To Apply This Skill
+Read applicable `AGENTS.md` files, the root `README.md`, `docs/README.md`, and the
+documents relevant to the work when they exist. Follow their terminology,
+structure, scope, and collaboration rules. Inspect implementation and tests when
+needed to verify current behavior; do not ask the user for facts available in the
+project.
 
-Apply this workflow:
+Treat confirmed documentation as intent and implementation as evidence of
+current behavior. Neither silently overrides the other.
 
-- At the start of a task, to learn local documentation rules from `AGENTS.md` and
-  `docs/README.md` and find canonical project context.
-- Whenever the user gives or changes an instruction about behavior, constraints,
-  setup, operation, terminology, architecture, or documentation preferences.
-- When domain terms or bounded-context relationships are clarified, challenged,
-  or introduced.
-- When a module interface, seam, adapter, dependency boundary, or test surface is
-  introduced or materially changed.
-- When a hard-to-reverse, non-obvious architectural trade-off is resolved.
-- While implementation reveals a durable fact, decision, limitation, or mismatch.
-- Before completing a change, to update affected documentation and check for
-  drift.
-- When answering questions whose answer should already be project knowledge.
+This step is complete when the applicable owners and any conflicting claims are
+known.
 
-Do not wait for the user to ask for a documentation update. If a new instruction
-changes durable project knowledge, update its canonical documentation in the
-same task. Do not document transient commands, experiments, or conversation that
-will not help future readers.
+## 2. Classify Knowledge
 
-## Workflow
+Classify durable information before writing it:
 
-### 1. Establish Context
+- **Confirmed intent:** A user decision or claim from its canonical target-state
+  owner.
+- **Verified fact:** Current behavior demonstrated by implementation, tests, or
+  another authoritative source.
+- **Work-state:** Progress, dependencies, blockers, or evaluation state on the
+  path from current behavior to confirmed intent.
+- **Uncertainty:** An assumption or open question that still needs confirmation.
+- **Source material:** Non-normative input such as a prototype, image, PDF, or
+  research artifact.
 
-Read applicable `AGENTS.md` files, `docs/README.md`, `CONTEXT-MAP.md`, the
-applicable `CONTEXT.md`, and relevant existing documentation when they exist
-before asking questions. Inspect the implementation when needed to verify current
-behavior. Do not ask the user for information already available in the project.
+Use target-state, current-state, and work-state labels only when a real
+distinction exists. A specification may change when intent changes, but it does
+not track implementation progress. Verified behavior may be documented as a
+current fact, but it does not become a requirement merely because the code does
+it. Source material becomes normative only when the user or a canonical artifact
+adopts it.
 
-Treat documentation as the source of confirmed intent and implementation as
-evidence of current behavior. Neither silently overrides the other.
+Never turn an inference, suggestion, implementation accident, or source artifact
+into a requirement or decision. Co-locate a small assumption or open question
+with its subject; split it into a dedicated file and add stable IDs only when
+volume, sharing, or traceability makes that useful.
 
-### 2. Classify The Information
+When a meaningful choice remains, call out anything surprising, recommend an
+answer with its main trade-off, and ask one focused question. Do not draft a
+large body of guessed documentation for the user to correct afterward.
 
-Decide whether new information is:
+This step is complete when every proposed statement has a known source and
+classification.
 
-- Confirmed intent from the user or an existing canonical source.
-- Current implementation behavior verified in the project.
-- An assumption that still needs confirmation.
-- An open question.
-- A rejected or deferred idea.
+## 3. Update The Canonical Owner
 
-Never turn an inference, implementation accident, or suggestion into a
-requirement or decision. Label uncertainty explicitly.
+When the user confirms a durable change and applicable documentation exists,
+update its canonical owner before implementation and reconcile it after
+verification. Do not wait for a separate documentation request.
 
-### 3. Collaborate On Intent
+Make the smallest change that preserves the knowledge. Use just-in-time
+structure: create a root `README.md` by default when initializing documentation,
+then create other artifacts promptly when each has useful content to own. If an
+unrelated task encounters a project without a root README, offer to initialize
+one once without blocking the task. Record a durable opt-out in `AGENTS.md` so
+future agents do not keep asking.
 
-An explicit user instruction is sufficient input; document it without asking for
-separate permission. If intent is ambiguous or a meaningful choice remains, ask
-one focused question at a time. Include a recommended answer and its main
-trade-off.
-
-Use the user's answer to revise the documentation. Do not produce a large
-specification from assumptions and ask the user to correct it afterward.
-
-### 4. Update The Canonical Artifact
-
-Make the smallest documentation change that preserves the durable information:
-
-| Information | Usual owner |
+| Knowledge | Usual canonical owner |
 | --- | --- |
-| Project purpose, setup, basic usage, and navigation | Root `README.md` |
-| Documentation structure, rules, conventions, and maintenance | `docs/README.md` |
+| Project purpose, status, setup, current usage, and navigation | Root `README.md` |
+| Documentation map, ownership, conventions, and maintenance | `docs/README.md` |
+| A nested documentation area's index, reading order, or local rules | Applicable `docs/**/README.md` |
 | Domain vocabulary and bounded-context meaning | Applicable `CONTEXT.md` |
-| Bounded contexts, locations, and relationships | Root `CONTEXT-MAP.md` |
 | Expected behavior, obligations, constraints, and acceptance intent | Requirements documentation |
-| Architecture, module boundaries, interfaces, data flow, test surfaces, and implementation decisions | Design documentation |
-| Rationale for a consequential architectural decision | Applicable ADR |
-| Agent workflow and documentation preferences | Applicable local `AGENTS.md` |
-| Unconfirmed information | Clearly labeled assumptions or open questions |
+| Architecture, interfaces, data, modules, and technical decisions | Design documentation |
+| Why a consequential architectural trade-off was selected | Applicable ADR |
+| Agent-only workflow, local gotchas, and durable preferences without a human-facing owner | Applicable `AGENTS.md` |
+| Normative identity, voice, and visual direction | Brand documentation |
+| Non-normative prototypes, images, PDFs, and research | Source material area established by the project |
+| Implementation progress, dependencies, blockers, and evaluation | Ticket documentation |
 
-Follow the project's existing structure. When no convention exists, prefer a
-root `README.md` and focused files under `docs/`. Do not create a requirements or
-design stage merely to satisfy a template, but use the following structure when
-that stage exists:
+Follow established placement and format first. Link to canonical text instead of
+duplicating it. Introduce stable IDs only when durable cross-document
+traceability needs them; persistent tickets always require IDs because their
+dependencies and lifecycle refer to them.
 
-| Path | Role |
-| --- | --- |
-| `docs/README.md` | Documentation guide, directory map, rules, conventions, and maintenance workflow |
-| `docs/requirements/README.md` | Requirements index, artifact status, and suggested reading order |
-| `docs/requirements/assumptions.md` | Requirements assumptions and open questions |
-| `docs/requirements/diagrams/` | Requirements diagram source |
-| `docs/design/README.md` | Design index, artifact status, and suggested reading order |
-| `docs/design/assumptions.md` | Design assumptions and open questions |
-| `docs/design/diagrams/` | Design diagram source |
+Lead with what the intended reader needs to know or do. Use concise, concrete
+language. Include rationale when it prevents misuse or preserves a confirmed
+trade-off; omit empty templates, filler, and prose that merely restates code.
 
-Every existing requirements or design stage directory must have its stage
-`README.md` and `assumptions.md`. Create a `diagrams/` directory when the stage
-has diagrams. Keep each stage README current as artifacts are added, removed, or
-renamed.
+Use a diagram when relationships, flow, state, sequence, or structure become
+clearer than they would be in concise text and that clarity justifies another
+artifact to maintain. Follow project convention; otherwise prefer Mermaid so the
+source remains text-based and reviewable.
 
-A root `docs/README.md` is recommended whenever the project has a documentation
-tree. If it is missing, recommend creating it when establishing or substantially
-changing the documentation structure, but do not block unrelated work. Keep it
-current whenever project-wide documentation rules or structure change.
+Load the focused reference only when its branch applies:
 
-Create domain context and ADR artifacts lazily:
+- [README guidance](readme.md) for a root, documentation, or nested directory
+  README.
+- [Requirements guidance](requirements.md) for externally meaningful target
+  behavior and constraints.
+- [Design guidance](design.md) for architecture, interfaces, data, or technical
+  decisions.
+- [Domain language guidance](domain-language.md) when terminology or bounded
+  contexts are introduced or clarified.
+- [ADR guidance](adr.md) for a hard-to-reverse, surprising architectural choice
+  produced by a real trade-off.
+- [Ticket guidance](tickets.md) when the project keeps persistent work-state in
+  Markdown.
 
-| Path | Role |
-| --- | --- |
-| `CONTEXT.md` | Ubiquitous language for a single-context repository |
-| `CONTEXT-MAP.md` | Index and relationships for multiple bounded contexts |
-| `{context}/CONTEXT.md` | Ubiquitous language for one bounded context |
-| `docs/adr/` | System-wide architectural decision records |
-| `{context}/docs/adr/` | Context-specific architectural decision records |
+This step is complete when the durable information exists in one useful owner
+and any indexes or links affected by the change are current.
 
-Create the first `CONTEXT.md` when a domain term is resolved. Create an ADR
-directory only when the first qualifying architectural decision is confirmed.
-Current design documentation owns how the system works; an ADR owns why a
-consequential decision was made.
+## 4. Reconcile Drift
 
-Give assumptions stable, stage-scoped IDs. Follow an established ID scheme;
-otherwise use `ASM-REQ-001` for requirements assumptions and `ASM-DES-001` for
-design assumptions. Preserve an ID when wording changes. When an assumption is
-confirmed, move the normative information to its canonical artifact and retain
-the ID or a resolution link according to project convention.
+Drift is an unaccounted mismatch among confirmed intent, documented current
+behavior, implementation, and work-state. A temporary implementation/specification
+gap explained by an active ticket is expected work, not drift.
 
-Store requirements and design diagrams in their respective `diagrams/`
-directories. Follow the user's preference first and established project
-convention second. When neither specifies a format, prefer Mermaid because its
-source is text-based and reviewable. Link diagrams with relative paths and keep
-editable source under version control.
+When drift exists:
 
-Use the focused guidance when relevant:
-
-- [README guidance](readme.md)
-- [Requirements guidance](requirements.md)
-- [Design guidance](design.md)
-- [Context guidance](context.md)
-- [ADR guidance](adr.md)
-
-### 5. Detect And Resolve Drift
-
-Drift exists when documentation and implementation make conflicting claims
-about current or intended behavior. When found:
-
-1. Show the conflict precisely, citing the relevant documents and implementation.
+1. Cite the conflicting claims precisely.
 2. Explain the user-visible or engineering consequence.
-3. Ask whether to update the implementation, update the documentation, or
-   redefine both. Recommend an option when the latest confirmed intent supports
-   one, but do not silently choose.
-4. Record unresolved drift as an open issue or assumption if work must continue.
+3. Ask whether implementation, documentation, or both should change, and provide
+   a recommendation when confirmed intent supports one.
+4. Record unresolved drift as an open question or ticket if work must continue.
 
-Do not interrupt an explicitly requested change merely because its implementation
-and documentation are temporarily out of sync. Complete both parts of the change
-unless a pre-existing conflict makes the intended result unclear.
+Do not interrupt a requested change for the temporary mismatch created by that
+same change. Reconcile its documentation, implementation, and ticket state before
+finishing. For pre-existing or ambiguous drift, wait for the user's decision
+instead of silently selecting a source of truth.
 
-### 6. Review With The User
+Before completion, remove unsupported claims, stale text, duplicated ownership,
+and structure that no longer earns its maintenance cost. Check changed paths,
+commands, links, examples, and terminology. Summarize documentation changes;
+request review only when meaningful interpretation or ambiguity remains.
 
-Before finishing:
-
-- Check that instructions, examples, paths, commands, links, and terminology are
-  consistent with the project.
-- Remove duplication, stale statements, filler, and unsupported claims.
-- State which documentation changed and ask the user to review whether it captures
-  their intent. The review request should not block completion unless confirmation
-  is required to resolve ambiguity.
-
-## Writing Standard
-
-- Lead with what the reader needs to know or do.
-- Use short sections, concrete language, and copyable commands.
-- Include rationale only when it prevents misuse or preserves an important
-  decision.
-- Prefer a focused link over repeating canonical text.
-- Preserve established project terminology.
-- Use canonical domain terms from the applicable `CONTEXT.md`; challenge conflicts
-  or ambiguity instead of introducing synonyms silently.
-- Describe current and proposed behavior explicitly; do not mix them.
-- Avoid generic introductions, exhaustive templates, empty headings, and content
-  that merely restates code.
-- Keep documentation proportional to the project and change.
-- Keep stage README indexes and suggested reading orders synchronized with their
-  directories.
-
-## Linking And Ownership
-
-The canonical source text for a fact, requirement, constraint, or decision lives
-in one document. Other documents use GitHub-compatible relative Markdown links
-and may include a short, non-normative label for readability.
-
-Use existing stable IDs and headings. Assumptions always require stable IDs; use
-the stage defaults above when the project has no established scheme. Introduce
-IDs for other artifact types only when the project needs durable traceability,
-and agree on the scheme with the user before applying it broadly. Do not change a
-stable ID merely because its title changes.
+The work is complete when every relevant difference is either reconciled or
+explicitly accounted for.
