@@ -182,27 +182,9 @@ in {
     ollama.enable = true;
   };
 
-  systemd.user = {
-    paths.mandelbrust-wallpaper-refresh = {
-      Unit.Description = "Refresh the Mandelbrust wallpaper in Noctalia";
-      Path = {
-        PathChanged = wallpaperPath;
-        Unit = "mandelbrust-wallpaper-refresh.service";
-      };
-      Install.WantedBy = ["default.target"];
-    };
-    services.mandelbrust-wallpaper-refresh = {
-      Unit.Description = "Apply the updated Mandelbrust wallpaper in Noctalia";
-      Service = {
-        Type = "oneshot";
-        ExecStart = "${lib.getExe config.programs.noctalia.package} msg wallpaper-set ${wallpaperPath}";
-      };
-    };
-  };
-
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
     fonts.sizes.terminal = 16;
     icons = {
       enable = true;
