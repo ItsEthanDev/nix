@@ -9,6 +9,7 @@
   colors = config.lib.stylix.colors;
   mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   terminalCommand = lib.getExe pkgs.ghostty;
+  wallpaperPath = "${config.home.homeDirectory}/Pictures/Wallpapers/default.png";
   wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
     ${mandelbrust}/bin/mandelbrust render \
       --preset spirals \
@@ -179,6 +180,24 @@ in {
     };
     mpdris2.enable = true;
     ollama.enable = true;
+  };
+
+  systemd.user = {
+    paths.mandelbrust-wallpaper-refresh = {
+      Unit.Description = "Refresh the Mandelbrust wallpaper in Noctalia";
+      Path = {
+        PathChanged = wallpaperPath;
+        Unit = "mandelbrust-wallpaper-refresh.service";
+      };
+      Install.WantedBy = ["default.target"];
+    };
+    services.mandelbrust-wallpaper-refresh = {
+      Unit.Description = "Apply the updated Mandelbrust wallpaper in Noctalia";
+      Service = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe config.programs.noctalia.package} msg wallpaper-set ${wallpaperPath}";
+      };
+    };
   };
 
   stylix = {
