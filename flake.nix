@@ -92,6 +92,7 @@
               };
               users.ethan = {
                 imports = [
+                  inputs.catppuccin.homeModules.catppuccin
                   self.homeManagerModules.default
                   ./homes/aarch64-darwin/newton
                 ];
