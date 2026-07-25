@@ -67,10 +67,13 @@ in {
       gamepads.enable = true;
       zsa.enable = true;
     };
-    remote.ssh = {
-      enable = true;
-      keyDirectory = ../../../static/ssh;
-      user = user;
+    remote = {
+      kimaki.enable = true;
+      ssh = {
+        enable = true;
+        keyDirectory = ../../../static/ssh;
+        user = user;
+      };
     };
   };
 
