@@ -13,7 +13,10 @@ in {
   boot = {
     loader = {
       efi.canTouchEfiVariables = true;
-      limine.enable = true;
+      limine = {
+        enable = true;
+        maxGenerations = 20;
+      };
 
       # Hide the OS choice for bootloaders.
       # It's still possible to open the bootloader list by pressing any key
