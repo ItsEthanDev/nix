@@ -45,11 +45,17 @@ Whenever editing make sure that `AGENTS.md`, `README.md`, `REQUIREMENTS.md`, and
 
 ### Commit Command
 
-After editing files, end the final response with a copyable, optional one-line
-command that stages only the files changed for the task and commits them with an
-appropriate commit message and description. Combine the commands with `&&`, for
+The first time a session is ready to commit changes, ask the user whether to
+automatically stage and commit task changes for the rest of the session.
+
+If the user agrees, remember the decision for the rest of the session. Stage
+only the files changed for the task with `git add -- <paths>` and create an
+appropriate commit with `git commit`; do not print a proposed commit command in
+the final response. If the user declines, remember that decision for the rest of
+the session and end each response after edits with a copyable one-line command
+that stages only the files changed for the task and commits them with an
+appropriate message and description. Combine the commands with `&&`, for
 example: `git add -- <paths> && git commit -m '<message>' -m '<description>'`.
 
-Never stage or commit the changes yourself, and never require the user to run the
-command. Do not introduce, explain, or otherwise comment on the command or its
-commit message; output the command as the final line of the response.
+Never run `git push`, `git pull`, `git fetch`, or any other remote-changing Git
+operation unless the user explicitly requests it.
