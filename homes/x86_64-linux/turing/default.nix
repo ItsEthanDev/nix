@@ -155,11 +155,6 @@ in {
         };
       };
 
-      web = {
-        enable = true;
-        environmentFile = "/home/ethan/.config/opencode/web.env";
-        extraArgs = ["--mdns"];
-      };
     };
     rmpc.enable = true;
     vesktop.enable = true;
