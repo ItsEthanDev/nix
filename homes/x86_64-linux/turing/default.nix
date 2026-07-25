@@ -260,6 +260,9 @@ in {
         "application/x-gnome-saved-search" = ["nemo.desktop"];
       };
     };
-    userDirs.enable = true;
+    userDirs = {
+      enable = true;
+      setSessionVariables = false;
+    };
   };
 }
