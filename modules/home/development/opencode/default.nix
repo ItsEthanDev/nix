@@ -25,6 +25,10 @@ in {
           read."/nix/store/**" = lib.mkDefault "allow";
           task.commit = lib.mkDefault "deny";
         };
+        agent.build.permission.bash = {
+          sudo = lib.mkDefault "ask";
+          "sudo *" = lib.mkDefault "ask";
+        };
       };
 
       tui = {
