@@ -38,11 +38,12 @@ in
     ];
 
     buildPhase = ''
-      runHook preBuild
+        runHook preBuild
       pnpm run prepare
       rm -rf cli/dist
       pnpm --filter kimaki generate
       pnpm --filter kimaki exec tsc --noCheck
+      cp -r skills cli/skills
       runHook postBuild
     '';
 

@@ -38,9 +38,16 @@ in {
       wants = ["network-online.target"];
       wantedBy = ["default.target"];
 
-      path = [
-        pkgs.git
-        pkgs.opencode
+      environment.PATH = lib.concatStringsSep ":" [
+        "%h/.nix-profile/bin"
+        "/etc/profiles/per-user/%u/bin"
+        "/run/current-system/sw/bin"
+        (lib.makeBinPath [
+          pkgs.bun
+          pkgs.git
+          pkgs.opencode
+          pkgs.which
+        ])
       ];
 
       serviceConfig = {
