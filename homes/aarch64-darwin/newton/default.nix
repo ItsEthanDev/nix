@@ -7,8 +7,26 @@
     stateVersion = "24.05";
     username = lib.mkForce "ethan";
     homeDirectory = lib.mkForce "/Users/ethan";
-    packages = [pkgs.gh];
+    packages = with pkgs; [
+      biome
+      bun
+      cargo
+      discord
+      fastfetch
+      fd
+      gh
+      jq
+      nodejs
+      pnpm
+      ripgrep
+      rustc
+      tlrc
+      unzip
+      zip
+      zk
+    ];
   };
+
   my = {
     cli = {
       bat.enable = true;
@@ -37,5 +55,9 @@
       zsh.enable = true;
     };
   };
-  programs.home-manager.enable = true;
+
+  programs = {
+    home-manager.enable = true;
+    lazygit.enable = true;
+  };
 }

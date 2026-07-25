@@ -1,121 +1,56 @@
 # Requirements Guidance
 
-## Goal
+## Purpose
 
-Record confirmed, externally meaningful obligations so humans and agents can
-decide what to build and how to verify it without prescribing unnecessary
-implementation details.
+Requirements are target-state documentation. They record confirmed, externally meaningful obligations so a reader can determine what the completed project must do and how satisfaction can be observed without prescribing unnecessary implementation details.
 
-## When To Update
+## Ownership
 
-Update requirements whenever the user confirms or changes expected behavior,
-quality attributes, constraints, domain rules, scope, or acceptance intent. Do
-not wait for the user to request documentation separately.
+Requirements may own:
 
-Implementation behavior alone does not establish a requirement. If it conflicts
-with documented or newly stated intent, follow the drift workflow in
-[`SKILL.md`](SKILL.md).
+- Functional behavior and capabilities.
+- Measurable quality attributes and operational constraints.
+- Rules imposed by the problem domain.
+- Explicit scope and exclusions.
+- Acceptance intent and externally observable scenarios.
 
-## Requirement Types
+Definitions of domain terms belong in `CONTEXT.md`. Architecture, module boundaries, interfaces, data shape, and implementation choices belong in design unless the user confirms one as a mandatory externally imposed constraint. Implementation progress belongs in tickets.
 
-- **Functional:** Observable behavior or capability the system must provide.
-- **Non-functional:** A measurable quality, performance target, operational
-  property, or technical constraint.
-- **Domain:** A rule, standard, or obligation imposed by the problem domain. Keep
-  domain term definitions in the applicable `CONTEXT.md` and use those canonical
-  terms here.
+## Writing
 
-A design choice belongs in requirements only when the user confirms it as a
-mandatory constraint. Otherwise, record it in design documentation.
+- Derive every obligation from confirmed user intent or an existing canonical source.
+- Write one obligation at a time with a precise actor, condition, behavior, limit, and outcome where applicable.
+- Make acceptance observable or measurable. Replace undefined terms such as `fast`, `easy`, or `user-friendly` with the actual criterion.
+- Describe what is required rather than how to implement it.
+- Keep confirmed requirements separate from assumptions, questions, rejected ideas, and source material.
+- Use the canonical domain language from the applicable `CONTEXT.md`.
 
-## Writing Rules
+Use cases are optional. Add one when an actor, precondition, trigger, main flow, alternate or failure flow, and outcome communicate behavior more clearly than an atomic statement alone.
 
-- Write each requirement as one obligation.
-- Use precise actors, conditions, behavior, limits, and outcomes.
-- Make acceptance observable or measurable.
-- Use `must` or `shall` for obligations. Avoid ambiguous `should`, `fast`,
-  `easy`, or `user-friendly` unless defined by measurable criteria.
-- State what is required, not how to implement it.
-- Link each requirement to acceptance or validation intent when useful.
-- Keep confirmed requirements separate from assumptions, open questions,
-  rejected ideas, and out-of-scope behavior.
-- Never invent a requirement to fill a perceived gap.
-- Use the ubiquitous language in the applicable `CONTEXT.md`. When requirement
-  wording conflicts with or exposes a gap in the glossary, resolve the term with
-  the user and update the context inline using [context guidance](context.md).
+Acceptance criteria are evidence of satisfaction, not an implementation plan. Cover meaningful success, boundary, alternate, and failure behavior.
 
-## Collaboration
+## Structure
 
-Use explicit user instructions directly. When a requirement is incomplete, ask
-one question about the highest-impact ambiguity. Recommend concrete wording and
-briefly explain the trade-off. Do not create a complete specification from
-guesses.
+Follow the project's established format. A small project may keep requirements as a section in `docs/README.md` or one focused file. Split artifacts only when that makes ownership or navigation clearer.
 
-After editing, ask the user to verify that the obligations and scope capture
-their intent.
-
-## Suggested Format
-
-Follow the existing project format. If none exists, a requirement can use:
+Stable IDs are optional until tickets, tests, compliance, or cross-document links need durable traceability. When an ID is useful and no convention exists, use a simple scheme such as:
 
 ```markdown
-### REQ-FUNC-001
+### REQ-001: Checkout a valid cart
 
-**Requirement:** The system shall ...
+**Requirement:** A customer shall be able to checkout a valid cart.
 
-**Acceptance:** Given ..., when ..., then ...
+**Acceptance:** Given a valid cart, when the customer checks out, then an order is created and its identifier is returned.
 ```
 
-Add rationale, source, or dependencies only when they improve understanding or
-traceability. Preserve existing IDs. Agree with the user before introducing a
-new ID scheme across an established project.
-
-## Use Cases And Acceptance
-
-Use cases describe externally observable scenarios: actor, preconditions,
-trigger, main flow, alternate or failure flows, and outcome. Add one only when a
-scenario communicates behavior more clearly than atomic requirements alone.
-
-Acceptance criteria define observable evidence that an obligation is satisfied.
-Cover important success, boundary, alternate, and failure behavior without
-turning acceptance criteria into an implementation plan.
-
-Requirements stage artifacts include:
-
-| File | Owns |
-| --- | --- |
-| `README.md` | Directory index, artifact status, and suggested reading order |
-| `requirements.md` | Atomic functional, non-functional, and domain obligations |
-| `use-cases.md` | Actor scenarios, flows, and outcomes |
-| `acceptance.md` | Acceptance criteria and validation intent |
-| `assumptions.md` | Unconfirmed information and open questions |
-| `diagrams/` | Requirements diagram source |
-
-Every requirements directory must include `README.md` and `assumptions.md`. Other
-artifacts remain optional; use the smallest structure that keeps the project
-clear.
-
-Give each requirements assumption a stable ID. Follow the project's established
-scheme or use `ASM-REQ-001`, incrementing the numeric suffix. Preserve IDs when
-wording changes and record when an assumption is confirmed, rejected, or
-superseded.
-
-Place requirements diagrams in `requirements/diagrams/`. Use the user's preferred
-format or the established project convention. Prefer Mermaid when neither defines
-a format.
+Preserve established IDs when wording changes. Co-locate a short assumptions or open-questions section with the relevant requirements; split it only when it needs an independent lifecycle.
 
 ## Completion Check
 
-- Every requirement comes from confirmed intent.
-- Each requirement is atomic, unambiguous, and testable.
-- Requirements describe obligations rather than design preferences.
-- Domain terminology matches the applicable context documentation.
-- Acceptance intent covers meaningful success and failure behavior.
-- Assumptions and open questions are visibly non-normative.
-- Requirements assumptions have stable, unique IDs and visible resolution status.
-- Stable IDs and relative links resolve correctly.
-- The stage README indexes current artifacts in a suggested reading order.
-- Diagrams are stored under `requirements/diagrams/` in the preferred or
-  established format.
-- Superseded requirements are removed or explicitly marked according to project
-  convention.
+- Every requirement represents confirmed target-state intent.
+- Each obligation is unambiguous and independently observable.
+- Requirements do not silently prescribe design.
+- Acceptance covers the behavior that matters without inventing scope.
+- Domain terminology is canonical.
+- Uncertainty and source material are visibly non-normative.
+- Structure and IDs exist only where they provide useful navigation or traceability.

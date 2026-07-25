@@ -1,117 +1,53 @@
 # ADR Guidance
 
-## Goal
+## Purpose
 
-Record that a consequential architectural decision was made and why. Preserve
-the trade-off that led to the choice so a future reader does not unknowingly
-reverse a deliberate decision.
+An architecture decision record preserves that a consequential technical choice was made and why, so a future reader does not unknowingly reverse it or reopen the same trade-off without its context.
 
-Keep ADRs exceptionally brief. An ADR may be a single paragraph; its value comes
-from the decision and rationale, not from filling out a template.
+Current design documentation owns how the system is structured. An ADR owns why a qualifying decision was made and remains as historical context when the design later changes.
 
-## When To Offer An ADR
+## Qualification
 
-Offer an ADR only when all three conditions are true:
+Capture an ADR only when all three conditions are true:
 
-1. **Hard to reverse:** Changing the decision later would have meaningful cost.
-2. **Surprising without context:** A future reader is likely to wonder why the
-   system was built this way.
-3. **The result of a real trade-off:** Genuine alternatives existed and one was
-   chosen for specific reasons.
+1. **Hard to reverse:** Changing the decision later has meaningful cost.
+2. **Surprising without context:** A future maintainer is likely to question or accidentally undo it.
+3. **A real trade-off:** Genuine alternatives existed and the selection has a confirmed reason.
 
-If any condition is absent, skip the ADR. Easy-to-reverse choices can simply be
-reversed, obvious choices need no special explanation, and choices without a real
-alternative have no trade-off to preserve.
+If any condition is absent, keep the information in current design when it is useful or omit it. Do not create an ADR merely because a decision occurred.
 
-## Decisions That Qualify
-
-- **Architectural shape:** A monorepo, event sourcing, or a separately projected
-  read model.
-- **Integration patterns between contexts:** Domain events instead of synchronous
-  HTTP between Ordering and Billing.
-- **Technology choices with meaningful lock-in:** A database, message bus,
-  identity provider, or deployment target that would be expensive to replace,
-  not every library.
-- **Boundary and scope decisions:** One context owns Customer data and other
-  contexts reference it only by ID. Explicit exclusions can be as important as
-  included responsibilities.
-- **Module, interface, and seam placement:** A consequential choice about where
-  complexity is hidden, which contract callers depend on, or where behavior can
-  vary when moving that boundary later would be expensive.
-- **Deliberate deviations from the obvious path:** Manual SQL instead of an ORM
-  for a specific reason. These records prevent a future maintainer from
-  "correcting" an intentional choice.
-- **Constraints not visible in code:** A compliance restriction on cloud vendors
-  or a latency limit imposed by a partner contract. Keep the normative constraint
-  in requirements and use the ADR to preserve its architectural consequence and
-  trade-off.
-- **Non-obvious rejected alternatives:** A subtle reason REST was selected over
-  GraphQL that would otherwise be debated again later.
+Qualifying subjects may include architectural shape, cross-context integration, technology with meaningful lock-in, ownership boundaries, a consequential interface or seam, an externally imposed architectural constraint, or a deliberate deviation from the obvious design.
 
 ## Location And Numbering
 
-System-wide ADRs live in `docs/adr/`:
+Create the ADR directory just in time for the first qualifying decision. System-wide ADRs usually live in `docs/adr/`. A project with bounded contexts may keep context-specific ADRs in that context's `docs/adr/` and cross-context decisions at the root.
 
-```text
-docs/adr/
-|-- 0001-event-sourced-orders.md
-`-- 0002-postgres-for-write-model.md
-```
-
-In a multi-context repository, context-specific ADRs live in that context's
-`docs/adr/` directory. Keep cross-context or system-wide decisions in the root
-`docs/adr/`.
-
-Create an ADR directory lazily when the first qualifying decision is confirmed.
-Before naming a new ADR, scan the target directory for its highest existing
-number and increment it. Use `NNNN-short-slug.md`, such as
-`0003-domain-events-for-billing.md`.
-
-## Collaboration Workflow
-
-1. Identify the decision, alternatives, and decisive trade-off while discussing
-   design with the user.
-2. Check all three qualification conditions. Do not propose an ADR merely because
-   a decision exists.
-3. Offer to capture the ADR and confirm the selected option and rationale with the
-   user.
-4. Write the shortest record that would prevent a future reader from reopening or
-   accidentally undoing the decision for lack of context.
-5. Link current design documentation to the ADR instead of duplicating its full
-   rationale.
-
-ADRs preserve why a decision was made. Current-state design documentation owns
-how the system is structured now. When an ADR is deprecated or superseded, keep
-it as historical context and use status metadata to point to the newer decision.
+Follow established naming first. Otherwise scan the target directory for the highest number and use `NNNN-short-slug.md` with the next number, such as `0003-domain-events-for-billing.md`.
 
 ## Format
 
-```markdown
-# {Short title of the decision}
+Keep the record as short as the decision allows:
 
-{One to three sentences stating the context, decision, and reason.}
+```markdown
+# {Short decision title}
+
+{One to three sentences stating the context, selected option, and decisive reason.}
 ```
 
-That is sufficient for most decisions.
+Add only sections that preserve useful information:
 
-## Optional Sections
+- Status such as `proposed`, `accepted`, `deprecated`, or `superseded by
+  ADR-NNNN` when lifecycle matters.
+- Considered options when a rejected alternative is likely to be raised again.
+- Consequences when non-obvious downstream effects must remain visible.
 
-Add these only when they provide genuine value:
-
-- **Status frontmatter:** `proposed`, `accepted`, `deprecated`, or
-  `superseded by ADR-NNNN`, when decisions may be revisited.
-- **Considered Options:** When rejected alternatives are worth remembering.
-- **Consequences:** When non-obvious downstream effects must be explicit.
-
-Most ADRs should not need these sections.
+When a decision is superseded, preserve the old ADR and point it to its replacement. Link current design to the accepted ADR where its rationale helps; do not duplicate the full trade-off.
 
 ## Completion Check
 
-- The decision satisfies all three ADR qualification conditions.
-- The user confirmed the selected option and decisive rationale.
-- The ADR is in the correct system-wide or context-specific directory.
-- Its number is the next available number in that directory.
-- The record states the context, decision, and reason without template filler.
-- Optional sections contain information worth preserving.
-- Current design links to the ADR where the rationale matters.
-- Superseded decisions remain discoverable and point to their replacement.
+- The decision satisfies all three qualification conditions.
+- The selected option and decisive reason come from confirmed intent.
+- The ADR is in the correct scope and follows project naming.
+- The record states context, decision, and reason without template filler.
+- Optional sections earn their maintenance cost.
+- Superseded decisions remain discoverable and current design links to relevant rationale.
