@@ -12,11 +12,11 @@ in {
       enable = lib.mkDefault true;
       enableZshIntegration = lib.mkDefault true;
       enableFishIntegration = lib.mkDefault true;
-      fileWidgetOptions = [
+      fileWidget.options = [
         "-i"
         "-e"
       ];
-      historyWidgetOptions = [
+      historyWidget.options = [
         "-i"
         "-e"
       ];
