@@ -39,10 +39,28 @@ in {
       wantedBy = ["default.target"];
 
       path = [
+        pkgs.bash
         pkgs.bun
+        pkgs.curl
+        pkgs.fd
+        pkgs.file
         pkgs.git
+        pkgs.gh
+        pkgs.gnutar
+        pkgs.gzip
+        pkgs.jq
+        config.nix.package
+        pkgs.nodejs
         pkgs.opencode
+        pkgs.openssh
+        pkgs.pnpm
+        pkgs.procps
+        pkgs.python3
+        pkgs.ripgrep
+        pkgs.unzip
+        pkgs.wget
         pkgs.which
+        pkgs.zip
       ];
 
       serviceConfig = {
