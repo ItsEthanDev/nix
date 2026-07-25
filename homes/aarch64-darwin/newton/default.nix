@@ -3,15 +3,6 @@
   pkgs,
   ...
 }: {
-  catppuccin = {
-    enable = true;
-    autoEnable = true;
-    flavor = "frappe";
-    zsh-syntax-highlighting = {
-      enable = false;
-    };
-  };
-
   home = {
     stateVersion = "24.05";
     username = lib.mkForce "ethan";
