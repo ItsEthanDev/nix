@@ -5,11 +5,10 @@
   pkgs,
   ...
 }: let
-  browserCommand = lib.getExe inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  browserCommand = lib.getExe config.programs.zen-browser.finalPackage;
   colors = config.lib.stylix.colors;
   mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   terminalCommand = lib.getExe pkgs.ghostty;
-  wallpaperPath = "${config.home.homeDirectory}/Pictures/Wallpapers/default.png";
   wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
     ${mandelbrust}/bin/mandelbrust render \
       --preset spirals \
@@ -40,6 +39,7 @@
 in {
   imports = [
     inputs.stylix.homeModules.stylix
+    inputs.zen-browser.homeModules.default
   ];
 
   gtk.enable = true;
@@ -48,8 +48,6 @@ in {
     username = "ethan";
     homeDirectory = "/home/ethan";
     stateVersion = "25.11";
-
-    file."Pictures/Wallpapers/default.png".source = wallpaper;
 
     pointerCursor = {
       enable = true;
@@ -155,7 +153,14 @@ in {
           };
         };
       };
-
+    };
+    zen-browser = {
+      enable = true;
+      configPath = "${config.home.homeDirectory}/.zen";
+      profiles."Default Profile" = {
+        isDefault = true;
+        path = "75qjbewr.Default Profile";
+      };
     };
     rmpc.enable = true;
     vesktop.enable = true;
@@ -180,7 +185,7 @@ in {
 
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/espresso.yaml";
     fonts.sizes.terminal = 16;
     icons = {
       enable = true;
@@ -188,6 +193,8 @@ in {
       light = "Papirus-Light";
       dark = "Papirus-Dark";
     };
+    image = wallpaper;
+    targets.zen-browser.profileNames = ["Default Profile"];
   };
 
   wayland.windowManager.hyprland = {

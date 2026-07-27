@@ -29,7 +29,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zapp.url = "github:zsa/zapp";
@@ -114,6 +115,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              backupFileExtension = "hm-backup";
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = {

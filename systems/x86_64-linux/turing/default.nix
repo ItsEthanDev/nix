@@ -38,7 +38,6 @@ in {
   environment.systemPackages = with pkgs; [
     gamescope
     retroarch-free
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     vkbasalt
   ];
 
