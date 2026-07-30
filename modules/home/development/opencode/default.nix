@@ -24,6 +24,7 @@ in {
         permission = {
           external_directory."/nix/store/**" = lib.mkDefault "allow";
           read."/nix/store/**" = lib.mkDefault "allow";
+          skill.customize-opencode = lib.mkDefault "deny";
           task.commit = lib.mkDefault "deny";
         };
         agent.build.permission.bash = {
