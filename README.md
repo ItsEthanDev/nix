@@ -6,7 +6,8 @@ repository's reusable modules, overlays, packages, development shells, and
 library helpers.
 
 The organization and module design rules are documented in
-[`docs/README.md`](docs/README.md).
+[`docs/README.md`](docs/README.md). The target Linux global keybinding strategy
+is documented in [`docs/keybinds.md`](docs/keybinds.md).
 
 ## Flake Outputs
 
@@ -37,7 +38,7 @@ The organization and module design rules are documented in
 | `packages/` | Packages exposed by the flake. |
 | `shells/` | Development shell definitions. |
 | `static/` | Non-secret static assets referenced by configuration. |
-| `docs/` | Repository organization and contributor guidance. |
+| `docs/` | Target-state repository and interaction design guidance. |
 
 ## Deployment
 
