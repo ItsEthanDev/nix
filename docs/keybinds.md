@@ -125,6 +125,22 @@ applications use the launcher. Bar visibility, individual settings panels,
 notifications, color picking, session locking, and power actions use the
 launcher or control center instead of dedicated global chords.
 
+### Gaming
+
+The active game and game launcher are separate, directly addressable targets on
+the host's dedicated gaming display. Invoking either target while the other is
+visible switches directly between them. Invoking the visible target dismisses
+it and restores the underlying workspace.
+
+| Binding | Action |
+| --- | --- |
+| `Super+G` | Summon or dismiss the active game; remain in place and notify when no game is active. |
+| `Super+Ctrl+G` | Summon or dismiss the game launcher, starting it when necessary. |
+
+Games and the game launcher route to their targets automatically, so this family
+does not provide manual window-transfer variants. Controller macros invoke the
+same canonical chords rather than defining a separate control scheme.
+
 ### Capture
 
 `Shift` narrows the capture from the active monitor to a selected region. `Ctrl`
