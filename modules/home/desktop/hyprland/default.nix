@@ -67,7 +67,7 @@ in {
           "SUPER_SHIFT, 9, movetoworkspacesilent, 9"
           "SUPER_SHIFT, 0, movetoworkspacesilent, 10"
           "SUPER, Tab, focusmonitor, +1"
-          "SUPER_ALT, Tab, movewindow, mon:+1"
+          "SUPER_SHIFT, Tab, movewindow, mon:+1"
         ];
         bindm = [
           "SUPER, mouse:272, movewindow"
