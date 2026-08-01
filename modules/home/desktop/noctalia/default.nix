@@ -54,22 +54,14 @@ in {
         ];
         bind = lib.mkIf cfg.compositors.hyprland.enableKeybindings [
           "SUPER, space, exec, ${ipc} panel-toggle launcher"
-          "SUPER_SHIFT, space, exec, ${ipc} bar-toggle"
           "SUPER_CTRL, V, exec, ${ipc} panel-toggle clipboard"
 
           # Control Center
           "SUPER_CTRL, space, exec, ${ipc} panel-toggle control-center"
-          "SUPER_CTRL, A, exec, ${ipc} panel-toggle control-center audio"
-          "SUPER_CTRL, B, exec, ${ipc} panel-toggle control-center bluetooth"
-          "SUPER_CTRL, N, exec, ${ipc} panel-toggle control-center network"
 
           # Screenshots
           "SUPER, P, exec, ${ipc} screenshot-fullscreen"
           "SUPER_SHIFT, P, exec, ${ipc} screenshot-region"
-
-          # Notifications
-          "SUPER, comma, exec, ${ipc} notification-clear-active"
-          "SUPER_SHIFT, comma, exec, ${ipc} notification-invoke-latest"
 
           ", XF86AudioRaiseVolume, exec, ${ipc} volume-up"
           ", XF86AudioLowerVolume, exec, ${ipc} volume-down"

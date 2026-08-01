@@ -25,28 +25,27 @@ in {
         "misc:focus_on_activate" = lib.mkDefault true;
         "misc:middle_click_paste" = lib.mkDefault false;
         bind = [
-          # COPY/PASTE/CUT/SELECT
+          # Editing
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
           "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
           "SUPER, X, sendshortcut, CTRL, X, activewindow"
           "SUPER, A, sendshortcut, CTRL, A, activewindow"
 
-          # WINDOWS
+          # Windows
           "SUPER, W, killactive"
           "SUPER_CTRL, W, forcekillactive"
           "SUPER, F, fullscreen, 0"
           "SUPER, T, togglefloating"
-          "SUPER, O, pin"
 
-          ## WORKSPACE
+          ## Navigation
           "SUPER, H, movefocus, l"
           "SUPER, J, movefocus, d"
           "SUPER, K, movefocus, u"
           "SUPER, L, movefocus, r"
-          "SUPER_ALT, H, movewindow, l"
-          "SUPER_ALT, J, movewindow, d"
-          "SUPER_ALt, K, movewindow, u"
-          "SUPER_ALt, L, movewindow, r"
+          "SUPER_SHIFT, H, movewindow, l"
+          "SUPER_SHIFT, J, movewindow, d"
+          "SUPER_SHIFT, K, movewindow, u"
+          "SUPER_SHIFT, L, movewindow, r"
           "SUPER, 1, workspace, 1"
           "SUPER, 2, workspace, 2"
           "SUPER, 3, workspace, 3"
@@ -57,16 +56,16 @@ in {
           "SUPER, 8, workspace, 8"
           "SUPER, 9, workspace, 9"
           "SUPER, 0, workspace, 10"
-          "SUPER_ALT, 1, movetoworkspace, 1"
-          "SUPER_ALT, 2, movetoworkspace, 2"
-          "SUPER_ALT, 3, movetoworkspace, 3"
-          "SUPER_ALT, 4, movetoworkspace, 4"
-          "SUPER_ALT, 5, movetoworkspace, 5"
-          "SUPER_ALT, 6, movetoworkspace, 6"
-          "SUPER_ALT, 7, movetoworkspace, 7"
-          "SUPER_ALT, 8, movetoworkspace, 8"
-          "SUPER_ALT, 9, movetoworkspace, 9"
-          "SUPER_ALT, 0, movetoworkspace, 10"
+          "SUPER_SHIFT, 1, movetoworkspacesilent, 1"
+          "SUPER_SHIFT, 2, movetoworkspacesilent, 2"
+          "SUPER_SHIFT, 3, movetoworkspacesilent, 3"
+          "SUPER_SHIFT, 4, movetoworkspacesilent, 4"
+          "SUPER_SHIFT, 5, movetoworkspacesilent, 5"
+          "SUPER_SHIFT, 6, movetoworkspacesilent, 6"
+          "SUPER_SHIFT, 7, movetoworkspacesilent, 7"
+          "SUPER_SHIFT, 8, movetoworkspacesilent, 8"
+          "SUPER_SHIFT, 9, movetoworkspacesilent, 9"
+          "SUPER_SHIFT, 0, movetoworkspacesilent, 10"
           "SUPER, Tab, focusmonitor, +1"
           "SUPER_ALT, Tab, movewindow, mon:+1"
         ];
