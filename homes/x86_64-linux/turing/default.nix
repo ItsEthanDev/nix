@@ -260,7 +260,7 @@ in {
       pick-color = {
         name = "Pick Color";
         comment = "Pick a screen color and copy it to the clipboard";
-        exec = "${lib.getExe pkgs.hyprpicker} -a";
+        exec = "${lib.getExe pkgs.hyprpicker} --format hex | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}";
         terminal = false;
         startupNotify = false;
         categories = ["Utility"];
