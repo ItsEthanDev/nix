@@ -82,9 +82,9 @@ in {
   networking = {
     firewall = {
       enable = true;
-      # Vite (5173) Hytale (5520) archipelago (38281)
-      allowedTCPPorts = [5173 5520 38281];
-      allowedUDPPorts = [5173 5520 38281];
+      # TanStack Start (3000) Vite (5173) Hytale (5520) archipelago (38281)
+      allowedTCPPorts = [3000 5173 5520 38281];
+      allowedUDPPorts = [3000 5173 5520 38281];
     };
     hostName = "turing";
     networkmanager = {
@@ -205,7 +205,12 @@ in {
       "networkmanager"
       "wheel"
       "input"
+      "docker"
     ];
     shell = pkgs.zsh;
+  };
+
+  virtualisation.docker = {
+    enable = true;
   };
 }
