@@ -134,7 +134,7 @@ it and restores the underlying workspace.
 
 | Binding | Action |
 | --- | --- |
-| `Super+G` | Summon or dismiss the active game; remain in place and notify when no game is active. |
+| `Super+G` | Summon or dismiss the active game |
 | `Super+Ctrl+G` | Summon or dismiss the game launcher, starting it when necessary. |
 
 Games and the game launcher route to their targets automatically, so this family

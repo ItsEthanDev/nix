@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  browserCommand = lib.getExe config.programs.zen-browser.finalPackage;
   colors = config.lib.stylix.colors;
   mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   terminalCommand = lib.getExe pkgs.ghostty;
@@ -204,17 +203,12 @@ in {
       "misc:mouse_move_enables_dpms" = true;
 
       bind = [
-        "SUPER_SHIFT, return, exec, ${terminalCommand}"
-        "SUPER_SHIFT, C, exec, ${lib.getExe pkgs.hyprpicker} -a"
-        "SUPER_SHIFT, B, exec, ${browserCommand}"
+        "SUPER, return, exec, ${terminalCommand}"
         "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
         "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
         "SUPER, mouse:274, exec, ${lib.getExe pkgs.hyprzoom} 0"
-        "SUPER_CTRL, G, togglespecialworkspace, gaming"
-        "SUPER_CTRL_ALT, G, movetoworkspace, special:gaming"
-        "SUPER_CTRL_SHIFT, G, togglespecialworkspace, launchgame"
-        "SUPER_CTRL_SHIFT_ALT, G, movetoworkspace, special:launchgame"
-        "SUPER_CTRL, R, togglespecialworkspace, presentation"
+        "SUPER, G, togglespecialworkspace, gaming"
+        "SUPER_CTRL, G, togglespecialworkspace, launchgame"
       ];
       monitor = [
         "DP-4,2560x1440@164.80,1920x-360,1"
@@ -258,9 +252,29 @@ in {
   };
 
   xdg = {
-    desktopEntries.nemo = {
-      name = "Nemo";
-      exec = lib.getExe' pkgs.nemo-with-extensions "nemo";
+    desktopEntries = {
+      nemo = {
+        name = "Nemo";
+        exec = lib.getExe' pkgs.nemo-with-extensions "nemo";
+      };
+      pick-color = {
+        name = "Pick Color";
+        comment = "Pick a screen color and copy it to the clipboard";
+        exec = "${lib.getExe pkgs.hyprpicker} -a";
+        terminal = false;
+        startupNotify = false;
+        categories = ["Utility"];
+        settings.Keywords = "color;picker;eyedropper;clipboard;";
+      };
+      toggle-projector = {
+        name = "Show or Hide Projector";
+        comment = "Toggle the projector special workspace";
+        exec = "${lib.getExe' config.wayland.windowManager.hyprland.package "hyprctl"} dispatch togglespecialworkspace presentation";
+        terminal = false;
+        startupNotify = false;
+        categories = ["Utility"];
+        settings.Keywords = "projector;presentation;OBS;workspace;";
+      };
     };
     mimeApps = {
       enable = true;
