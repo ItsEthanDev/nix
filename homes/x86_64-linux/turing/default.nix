@@ -238,8 +238,8 @@ in {
           "pin on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
           "move ((monitor_w-window_w)/2) (monitor_h-window_h), match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
           # OBS
-          "workspace special:presentation silent, match:initial_title ^Projector - Preview$"
-          "fullscreen on, match:initial_title ^Projector - Preview$"
+          "workspace special:presentation silent, match:initial_title ^Projector.*$"
+          "fullscreen on, match:initial_title ^Projector.*$"
         ]
         ++ gamingWindowRules;
       workspace = [
