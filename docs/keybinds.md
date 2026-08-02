@@ -125,6 +125,16 @@ applications use the launcher. Bar visibility, individual settings panels,
 notifications, color picking, session locking, and power actions use the
 launcher or control center instead of dedicated global chords.
 
+### Audio
+
+| Binding | Action |
+| --- | --- |
+| `Super+M` | Toggle microphone mute. |
+
+Speaker volume and mute use their self-identifying hardware keys. The ordinary
+chord for microphone mute accommodates keyboards that cannot emit a dedicated
+microphone key.
+
 ### Gaming
 
 The active game and game launcher are separate, directly addressable targets on
@@ -143,15 +153,13 @@ same canonical chords rather than defining a separate control scheme.
 
 ### Capture
 
-`Shift` narrows the capture from the active monitor to a selected region. `Ctrl`
-adds persistent storage, and combining them preserves both meanings.
+`Shift` narrows the capture from the active monitor to a selected region.
+Capture destinations follow the configured screenshot behavior.
 
 | Binding | Action |
 | --- | --- |
-| `Print` | Copy the active monitor to the clipboard. |
-| `Shift+Print` | Copy a selected region to the clipboard. |
-| `Ctrl+Print` | Copy the active monitor to the clipboard and save it in the screenshots folder. |
-| `Ctrl+Shift+Print` | Copy a selected region to the clipboard and save it in the screenshots folder. |
+| `Super+P` | Capture the active monitor. |
+| `Super+Shift+P` | Capture a selected region. |
 
 Other self-identifying hardware keys invoke their matching action without
 `Super`, but machine-specific hardware controls are not cataloged here.

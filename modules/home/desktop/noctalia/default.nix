@@ -63,6 +63,8 @@ in {
           "SUPER, P, exec, ${ipc} screenshot-fullscreen"
           "SUPER_SHIFT, P, exec, ${ipc} screenshot-region"
 
+          "SUPER, M, exec, ${ipc} mic-mute"
+
           ", XF86AudioRaiseVolume, exec, ${ipc} volume-up"
           ", XF86AudioLowerVolume, exec, ${ipc} volume-down"
           ", XF86AudioMute, exec, ${ipc} volume-mute"
