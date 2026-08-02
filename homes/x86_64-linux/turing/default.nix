@@ -73,6 +73,7 @@ in {
       biome
       bun
       cargo
+      celluloid
       discord
       fastfetch
       fd
@@ -82,7 +83,9 @@ in {
       inputs.barnyard.packages.${pkgs.stdenv.hostPlatform.system}.barnyard
       javaPackages.compiler.temurin-bin.jre-25
       jq
+      loupe
       nodejs
+      papers
       pkg-config
       pnpm
       rustc
@@ -288,9 +291,56 @@ in {
     };
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        "inode/directory" = ["nemo.desktop"];
-        "application/x-gnome-saved-search" = ["nemo.desktop"];
+      defaultApplications = let
+        browser = ["zen-beta.desktop"];
+        documentViewer = ["org.gnome.Papers.desktop"];
+        fileManager = ["nemo.desktop"];
+        imageViewer = ["org.gnome.Loupe.desktop"];
+        mediaPlayer = ["io.github.celluloid_player.Celluloid.desktop"];
+      in {
+        # Browser
+        "text/html" = browser;
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+
+        # Files
+        "inode/directory" = fileManager;
+        "application/x-gnome-saved-search" = fileManager;
+
+        # Documents
+        "application/pdf" = documentViewer;
+
+        # Images
+        "image/apng" = imageViewer;
+        "image/avif" = imageViewer;
+        "image/bmp" = imageViewer;
+        "image/gif" = imageViewer;
+        "image/heic" = imageViewer;
+        "image/jpeg" = imageViewer;
+        "image/jxl" = imageViewer;
+        "image/png" = imageViewer;
+        "image/svg+xml" = imageViewer;
+        "image/tiff" = imageViewer;
+        "image/webp" = imageViewer;
+
+        # Audio
+        "audio/aac" = mediaPlayer;
+        "audio/flac" = mediaPlayer;
+        "audio/m4a" = mediaPlayer;
+        "audio/mpeg" = mediaPlayer;
+        "audio/ogg" = mediaPlayer;
+        "audio/opus" = mediaPlayer;
+        "audio/wav" = mediaPlayer;
+        "audio/webm" = mediaPlayer;
+
+        # Video
+        "video/mp4" = mediaPlayer;
+        "video/mpeg" = mediaPlayer;
+        "video/ogg" = mediaPlayer;
+        "video/quicktime" = mediaPlayer;
+        "video/webm" = mediaPlayer;
+        "video/x-matroska" = mediaPlayer;
+        "video/x-msvideo" = mediaPlayer;
       };
     };
     userDirs = {
