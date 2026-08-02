@@ -297,11 +297,18 @@ in {
         fileManager = ["nemo.desktop"];
         imageViewer = ["org.gnome.Loupe.desktop"];
         mediaPlayer = ["io.github.celluloid_player.Celluloid.desktop"];
+        textEditor = ["nvim.desktop"];
       in {
         # Browser
         "text/html" = browser;
         "x-scheme-handler/http" = browser;
         "x-scheme-handler/https" = browser;
+
+        # Text
+        "text/plain" = textEditor;
+        "text/markdown" = textEditor;
+        "application/json" = textEditor;
+        "application/x-shellscript" = textEditor;
 
         # Files
         "inode/directory" = fileManager;
