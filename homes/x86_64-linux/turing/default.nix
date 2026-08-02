@@ -7,6 +7,16 @@
 }: let
   colors = config.lib.stylix.colors;
   mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  pickColor = pkgs.writeShellApplication {
+    name = "pick-color";
+    runtimeInputs = [
+      pkgs.hyprpicker
+      pkgs.wl-clipboard
+    ];
+    text = ''
+      hyprpicker --format hex | wl-copy
+    '';
+  };
   terminalCommand = lib.getExe pkgs.ghostty;
   wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
     ${mandelbrust}/bin/mandelbrust render \
@@ -260,7 +270,7 @@ in {
       pick-color = {
         name = "Pick Color";
         comment = "Pick a screen color and copy it to the clipboard";
-        exec = "${lib.getExe pkgs.hyprpicker} --format hex | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}";
+        exec = lib.getExe pickColor;
         terminal = false;
         startupNotify = false;
         categories = ["Utility"];
