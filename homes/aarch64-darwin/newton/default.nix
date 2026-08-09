@@ -1,8 +1,13 @@
 {
+  inputs,
   lib,
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.stylix.homeModules.stylix
+  ];
+
   home = {
     stateVersion = "24.05";
     username = lib.mkForce "ethan";
@@ -15,6 +20,7 @@
       fastfetch
       fd
       gh
+      hunk
       jq
       nodejs
       pnpm
@@ -57,7 +63,15 @@
   };
 
   programs = {
+    herdr.enable = true;
     home-manager.enable = true;
     lazygit.enable = true;
+    pi-coding-agent.enable = true;
+  };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+    fonts.sizes.terminal = 16;
   };
 }

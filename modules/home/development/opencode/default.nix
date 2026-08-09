@@ -15,7 +15,7 @@ in {
       enable = lib.mkDefault true;
 
       commands = lib.mkDefault ./commands;
-      skills = lib.mkDefault ./skills;
+      skills = lib.mkDefault ../../../../static/skills;
 
       context = lib.mkDefault (builtins.readFile ./context.md);
 
