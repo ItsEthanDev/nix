@@ -49,6 +49,7 @@
       };
       nixvim.enable = true;
       opencode.enable = true;
+      pi.enable = true;
     };
     remote.ssh.enable = true;
     terminal = {
@@ -66,7 +67,6 @@
     herdr.enable = true;
     home-manager.enable = true;
     lazygit.enable = true;
-    pi-coding-agent.enable = true;
   };
 
   stylix = {
