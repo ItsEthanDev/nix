@@ -3,5 +3,6 @@ _: {
     ./git
     ./nixvim
     ./opencode
+    ./pi
   ];
 }
