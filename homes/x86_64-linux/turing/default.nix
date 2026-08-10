@@ -137,6 +137,7 @@ in {
         listOnDirectoryChange = true;
       };
       ghostty.enable = true;
+      herdr.enable = true;
       starship.enable = true;
       zellij.enable = true;
       zsh.enable = true;
