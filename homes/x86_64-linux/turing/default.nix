@@ -125,6 +125,7 @@ in {
       };
       nixvim.enable = true;
       opencode.enable = true;
+      pi.enable = true;
     };
     gaming.mangohud = {
       enable = true;
