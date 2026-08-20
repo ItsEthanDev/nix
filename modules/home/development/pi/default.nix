@@ -11,9 +11,17 @@ in {
   config = lib.mkIf cfg.enable {
     programs.pi-coding-agent = {
       enable = true;
-      settings.skills = [
-        ../../../../static/skills
-      ];
+      extraPackages = [pkgs.nodejs];
+      settings = {
+        defaultProvider = "openai-codex";
+        defaultModel = "gpt-5.6-sol";
+        packages = [
+          "npm:pi-web-access"
+        ];
+        skills = [
+          ../../../../static/skills
+        ];
+      };
     };
   };
 }
