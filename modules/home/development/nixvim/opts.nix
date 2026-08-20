@@ -16,6 +16,7 @@ in {
         cursorline = true;
         cursorlineopt = "number";
         expandtab = true;
+        exrc = true;
         fillchars = {
           foldopen = "";
           foldclose = "";

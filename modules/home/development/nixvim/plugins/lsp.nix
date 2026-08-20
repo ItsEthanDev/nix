@@ -36,7 +36,7 @@ in {
           # Tailwind
           tailwindcss.enable = true;
           # Typescript
-          ts_ls.enable = true;
+          tsgo.enable = true;
         };
       };
     };
