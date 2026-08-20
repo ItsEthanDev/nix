@@ -17,6 +17,11 @@ in {
       context = lib.mkDefault (builtins.readFile ./context.md);
 
       settings = {
+        mcp.mobbin = {
+          enable = false;
+          type = lib.mkDefault "remote";
+          url = lib.mkDefault "https://api.mobbin.com/mcp";
+        };
         permission = {
           external_directory."/nix/store/**" = lib.mkDefault "allow";
           read."/nix/store/**" = lib.mkDefault "allow";
