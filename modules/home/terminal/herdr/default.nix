@@ -15,7 +15,10 @@ in {
 
     programs.herdr = {
       enable = lib.mkDefault true;
-      settings.theme.name = lib.mkDefault "terminal";
+      settings = {
+        theme.name = lib.mkDefault "terminal";
+        ui.toast.delivery = lib.mkDefault "system";
+      };
     };
   };
 }
