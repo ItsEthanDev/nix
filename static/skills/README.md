@@ -1,0 +1,5 @@
+# Agent skills
+
+This directory contains reusable workflows and guidance for my coding agents. The collection draws inspiration from [Matt Pocock's agent skills](https://github.com/mattpocock/skills), Poteto's [Pstack](https://github.com/backnotprop/pstack), [GitHub Spec Kit](https://github.com/github/spec-kit), and [Agent Templates](https://github.com/lionbenjamin/agent-templates). Their influence includes focused skills, explicit task routing, progressive disclosure, and spec-driven development. These files are local adaptations rather than mirrors of the source projects.
+
+Each skill lives in its own directory. Its `SKILL.md` frontmatter provides the name and activation description that an agent sees during discovery. When a request matches that description, the agent reads the full skill and follows its process. Supporting Markdown files keep specialized guidance out of the initial context and are loaded only when the skill routes to them; `engineering-principles` is the clearest example of this router pattern. Skills with `disable-model-invocation: true`, such as `wait-what`, are available only when explicitly invoked.
