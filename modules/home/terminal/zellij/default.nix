@@ -6,7 +6,7 @@
 }: let
   cfg = config.my.terminal.zellij;
   copyCommand =
-    if pkgs.stdenv.isLinux
+    if pkgs.stdenv.hostPlatform.isLinux
     then lib.getExe' pkgs.wl-clipboard "wl-copy"
     else "pbcopy";
 in {

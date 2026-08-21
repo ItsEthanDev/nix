@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = lib.optionals pkgs.stdenv.isLinux [pkgs.libnotify];
+    home.packages = lib.optionals pkgs.stdenv.hostPlatform.isLinux [pkgs.libnotify];
 
     programs.herdr = {
       enable = lib.mkDefault true;

@@ -6,7 +6,7 @@
 }: let
   cfg = config.my.terminal.fish;
   copyCommand =
-    if pkgs.stdenv.isLinux
+    if pkgs.stdenv.hostPlatform.isLinux
     then lib.getExe' pkgs.wl-clipboard "wl-copy"
     else "pbcopy";
   autoListDirectory = lib.optionalString cfg.listOnDirectoryChange ''

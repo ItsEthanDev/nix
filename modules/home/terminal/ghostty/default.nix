@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.my.terminal.ghostty;
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin;
   ghostty-mock = pkgs.writeShellScriptBin "ghostty-mock" "";
   hasFish = config.programs.fish.enable;
 in {
