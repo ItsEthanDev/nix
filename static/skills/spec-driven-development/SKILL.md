@@ -1,6 +1,6 @@
 ---
 name: spec-driven-development
-description: Run a four-phase spec-driven development workflow: constitute project constraints, specify behavior, plan technical work, and implement in verified slices. Use when establishing project governance, writing a feature specification, turning an approved specification into a plan, or implementing work from spec artifacts.
+description: "Run a four-phase spec-driven development workflow: constitute project constraints, specify behavior, plan technical work, and implement in verified slices. Use when establishing project governance, writing a feature specification, turning an approved specification into a plan, or implementing work from spec artifacts."
 ---
 
 # Spec-Driven Development
