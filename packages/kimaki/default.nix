@@ -4,13 +4,16 @@
   lib,
   makeWrapper,
   nodejs_22,
-  pnpm_9,
+  pnpm_10,
   pnpmConfigHook,
   stdenv,
 }: let
-  pnpm = pnpm_9.overrideAttrs (old: {
-    meta = old.meta // {knownVulnerabilities = [];};
-  });
+  lockfilePatch = ''
+    substituteInPlace pnpm-lock.yaml \
+      --replace-fail \
+      "packageExtensionsChecksum: 12a00ea3a37f088c14786963e400c96c" \
+      "packageExtensionsChecksum: sha256-/VTHs9J0RGLH2lU39U6Ra5aj1bwTgDrArdwh46iKBWY="
+  '';
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "kimaki";
@@ -23,17 +26,20 @@ in
       fetchSubmodules = true;
     };
 
+    postPatch = lockfilePatch;
+
     pnpmDeps = fetchPnpmDeps {
       inherit (finalAttrs) pname version src;
-      hash = "sha256-F61RmkawJftmj5EO7/4DP0ppTAGkOgQR7xXVAtu+p1w=";
+      hash = "sha256-QqShao72D5506+nAeNBD940twaoISorbfxGwfeg13Ts=";
       fetcherVersion = 3;
-      inherit pnpm;
+      pnpm = pnpm_10;
+      postPatch = lockfilePatch;
     };
 
     nativeBuildInputs = [
       makeWrapper
       nodejs_22
-      pnpm
+      pnpm_10
       pnpmConfigHook
     ];
 

@@ -10,9 +10,11 @@ in {
   opencode = prev.opencode.overrideAttrs (oldAttrs: {
     inherit version src;
 
-    node_modules = oldAttrs.node_modules.overrideAttrs {
-      inherit version src;
-      outputHash = "sha256-jMZSDlqNObSmWJZ0Xn0IwfYC2+mBbRYorfgD5Y2sHWs=";
+    passthru = oldAttrs.passthru // {
+      node_modules = oldAttrs.passthru.node_modules.overrideAttrs {
+        inherit version src;
+        outputHash = "sha256-jMZSDlqNObSmWJZ0Xn0IwfYC2+mBbRYorfgD5Y2sHWs=";
+      };
     };
   });
 }
