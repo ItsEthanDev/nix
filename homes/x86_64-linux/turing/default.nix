@@ -5,8 +5,6 @@
   pkgs,
   ...
 }: let
-  colors = config.lib.stylix.colors;
-  mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   pickColor = pkgs.writeShellApplication {
     name = "pick-color";
     runtimeInputs = [
@@ -18,15 +16,6 @@
     '';
   };
   terminalCommand = lib.getExe pkgs.ghostty;
-  wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
-    ${mandelbrust}/bin/mandelbrust render \
-      --preset spirals \
-      --size 3840x2160 \
-      --outside-color ${colors.base05} \
-      --inside-color ${colors.base01} \
-      --output "$out" \
-      --quiet
-  '';
   gamingWindowPatterns = [
     "^steam_app_.*$"
     "^Hollow Knight Silksong$"
@@ -47,7 +36,6 @@
   );
 in {
   imports = [
-    inputs.stylix.homeModules.stylix
     inputs.zen-browser.homeModules.default
   ];
 
@@ -198,19 +186,7 @@ in {
     ollama.enable = true;
   };
 
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/espresso.yaml";
-    fonts.sizes.terminal = 16;
-    icons = {
-      enable = true;
-      package = pkgs.papirus-icon-theme;
-      light = "Papirus-Light";
-      dark = "Papirus-Dark";
-    };
-    image = wallpaper;
-    targets.zen-browser.profileNames = ["Default Profile"];
-  };
+  stylix.targets.zen-browser.profileNames = ["Default Profile"];
 
   wayland.windowManager.hyprland = {
     systemd.enable = false;

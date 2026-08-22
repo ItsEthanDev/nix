@@ -1,9 +1,21 @@
 {
+  config,
   inputs,
   pkgs,
   ...
 }: let
+  colors = config.lib.stylix.colors;
+  mandelbrust = inputs.mandelbrust.packages.${pkgs.stdenv.hostPlatform.system}.default;
   user = "ethan";
+  wallpaper = pkgs.runCommand "mandelbrust-spirals-wallpaper.png" {} ''
+    ${mandelbrust}/bin/mandelbrust render \
+      --preset spirals \
+      --size 3840x2160 \
+      --outside-color ${colors.base05} \
+      --inside-color ${colors.base01} \
+      --output "$out" \
+      --quiet
+  '';
 in {
   imports = [
     ./hardware-configuration.nix
@@ -193,6 +205,19 @@ in {
       openFirewall = true;
     };
     tailscale.enable = true;
+  };
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/espresso.yaml";
+    fonts.sizes.terminal = 16;
+    icons = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      light = "Papirus-Light";
+      dark = "Papirus-Dark";
+    };
+    image = wallpaper;
   };
 
   system.stateVersion = "25.11";

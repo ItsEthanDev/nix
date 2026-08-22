@@ -81,6 +81,7 @@
       newton = nix-darwin.lib.darwinSystem {
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
+          inputs.stylix.darwinModules.stylix
           self.darwinModules.default
           ./systems/aarch64-darwin/newton
           home-manager.darwinModules.home-manager
@@ -110,6 +111,7 @@
         };
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
+          inputs.stylix.nixosModules.stylix
           self.nixosModules.default
           ./systems/x86_64-linux/turing
           home-manager.nixosModules.home-manager

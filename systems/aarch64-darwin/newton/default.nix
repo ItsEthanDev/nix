@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   environment.shells = [config.programs.fish.package];
 
   homebrew.casks = ["ghostty"];
@@ -43,6 +47,12 @@
       run = ["layout tiling"];
     }
   ];
+
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-soft.yaml";
+    fonts.sizes.terminal = 16;
+  };
 
   system = {
     defaults = {
