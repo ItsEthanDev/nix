@@ -19,7 +19,7 @@ in {
           "npm:pi-web-access"
         ];
         skills = [
-          ../../../../static/skills
+          ../../../../static/ai/skills
         ];
       };
     };

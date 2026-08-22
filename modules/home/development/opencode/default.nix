@@ -12,7 +12,7 @@ in {
       enable = lib.mkDefault true;
 
       commands = lib.mkDefault ./commands;
-      skills = lib.mkDefault ../../../../static/skills;
+      skills = lib.mkDefault ../../../../static/ai/skills;
 
       context = lib.mkDefault (builtins.readFile ./context.md);
 
