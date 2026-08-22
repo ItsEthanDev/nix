@@ -1,6 +1,6 @@
 # Spec Kit conventions for new projects
 
-Use this reference when a project has no established specification workflow or when its existing artifacts follow [GitHub Spec Kit](https://github.com/github/spec-kit) conventions. For a new project, these defaults establish a Spec Kit–aligned artifact model without requiring its CLI, generated commands, scripts, hooks, extensions, or branch automation. For an existing project, use them to preserve its established Spec Kit structure and traceability.
+Use this reference when a project has no established specification workflow or when its existing artifacts follow [GitHub Spec Kit](https://github.com/github/spec-kit) conventions. For a new project, these defaults adapt Spec Kit's core artifacts without adopting its settings directory, CLI, generated commands, scripts, hooks, extensions, or branch automation. For an existing project, use them to preserve its established Spec Kit structure and traceability.
 
 Non-Spec-Kit project conventions take precedence. Treat this as convention alignment, not a compatibility guarantee. When a project is initialized by Spec Kit, use its installed constitution, templates, and commands as the authority because they may differ by version or preset.
 
@@ -9,10 +9,8 @@ Non-Spec-Kit project conventions take precedence. Treat this as convention align
 Use one directory per feature:
 
 ```text
-.specify/
-└── memory/
-    └── constitution.md       # only when one consolidated governance owner is needed
 specs/
+├── constitution.md           # only when one consolidated governance owner is needed
 └── 001-short-feature-name/
     ├── spec.md               # what and why
     ├── plan.md               # how and verification strategy
@@ -31,7 +29,7 @@ The three core artifacts are `spec.md`, `plan.md`, and `tasks.md`. Create option
 
 ## Constitution
 
-Spec Kit uses `.specify/memory/constitution.md` for project principles and governance constraints that later phases must check. For a new project, use that path only when a consolidated constitution is genuinely useful. Otherwise keep principles in the project's existing canonical documentation and do not duplicate them into `.specify`.
+When a new project needs a consolidated constitution, prefer `specs/constitution.md` so project governance remains alongside its specification artifacts. Keep principles in the project's existing canonical documentation when it already has a suitable owner.
 
 A principle must state an actionable rule and how compliance can be checked. Put agent-only operational instructions in the applicable agent instruction file rather than in the constitution. Amend the constitution deliberately when a durable project rule changes; do not weaken it inside a feature plan to make a violation pass.
 
