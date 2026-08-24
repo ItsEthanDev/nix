@@ -18,6 +18,10 @@ in {
       settings = {
         theme.name = lib.mkDefault "terminal";
         ui.toast.delivery = lib.mkDefault "system";
+        keys = {
+          navigate_workspace_down = lib.mkDefault "j";
+          navigate_workspace_up = lib.mkDefault "k";
+        };
       };
     };
   };
