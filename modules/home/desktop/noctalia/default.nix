@@ -43,7 +43,10 @@ in {
           down = ["Down" "Ctrl+n"];
           up = ["Up" "Ctrl+p"];
         };
-        shell.launcher.categories = lib.mkDefault false;
+        shell = {
+          font_family = lib.mkDefault config.stylix.fonts.sansSerif.name;
+          launcher.categories = lib.mkDefault false;
+        };
       };
     };
 
