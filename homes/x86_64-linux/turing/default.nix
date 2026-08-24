@@ -67,7 +67,6 @@ in {
       fd
       gcc
       gh
-      hunk
       inputs.barnyard.packages.${pkgs.stdenv.hostPlatform.system}.barnyard
       javaPackages.compiler.temurin-bin.jre-25
       jq
@@ -111,6 +110,7 @@ in {
         email = "turing@itsEthan.dev";
         name = "Ethan Brady";
       };
+      hunk.enable = true;
       nixvim.enable = true;
       opencode.enable = true;
       pi.enable = true;
