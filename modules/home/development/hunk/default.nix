@@ -27,7 +27,7 @@ in {
         line_numbers = true
         wrap_lines = true
         hunk_headers = true
-        menu_bar = true
+        menu_bar = false
         agent_notes = false
         copy_decorations = false
         cursor_line = "row"
