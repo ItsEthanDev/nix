@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mandelbrust = {
-      url = "github:ItsEthanDev/mandelbrust";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +18,14 @@
     nixvim.url = "github:nix-community/nixvim";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia-greeter = {
+      url = "github:noctalia-dev/noctalia-greeter";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mandelbrust = {
+      url = "github:ItsEthanDev/mandelbrust";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
@@ -111,6 +115,7 @@
         };
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
+          inputs.noctalia-greeter.nixosModules.default
           inputs.stylix.nixosModules.stylix
           self.nixosModules.default
           ./systems/x86_64-linux/turing

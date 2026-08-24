@@ -147,6 +147,43 @@ in {
       enable = true;
       recommendedServices.enable = true;
     };
+    noctalia-greeter = {
+      enable = true;
+      settings = {
+        session.default = "hyprland-uwsm";
+        appearance = {
+          scheme = "Synced";
+          hide_logo = false;
+          theme_mode =
+            if config.stylix.polarity == "light"
+            then "light"
+            else "dark";
+          font_family = config.stylix.fonts.sansSerif.name;
+          palette = with colors.withHashtag; {
+            primary = base0D;
+            on_primary = base00;
+            secondary = base0E;
+            on_secondary = base00;
+            tertiary = base0C;
+            on_tertiary = base00;
+            error = base08;
+            on_error = base00;
+            surface = base00;
+            on_surface = base05;
+            surface_variant = base01;
+            on_surface_variant = base04;
+            outline = base03;
+            shadow = base00;
+            hover = base0C;
+            on_hover = base00;
+          };
+          wallpaper = {
+            path = "${wallpaper}";
+            fill_mode = "crop";
+          };
+        };
+      };
+    };
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
@@ -162,10 +199,6 @@ in {
   security.sudo.wheelNeedsPassword = false;
 
   services = {
-    displayManager.ly = {
-      enable = true;
-      settings.session_log = null;
-    };
     flatpak.enable = true;
     restic.backups.r2 = {
       repository = "s3:https://7be572932f308ef922603015d775fdd2.r2.cloudflarestorage.com/backup/turing";
