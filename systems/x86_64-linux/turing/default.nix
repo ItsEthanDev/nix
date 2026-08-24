@@ -53,10 +53,6 @@ in {
     vkbasalt
   ];
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
   hardware.bluetooth.enable = true;
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -243,7 +239,13 @@ in {
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/espresso.yaml";
-    fonts.sizes.terminal = 16;
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+      sizes.terminal = 16;
+    };
     icons = {
       enable = true;
       package = pkgs.papirus-icon-theme;
