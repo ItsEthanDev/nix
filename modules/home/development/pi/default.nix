@@ -12,9 +12,16 @@ in {
     programs.pi-coding-agent = {
       enable = true;
       extraPackages = [pkgs.nodejs];
+      keybindings = {
+        "app.model.cycleForward" = [];
+        "tui.select.down" = ["down" "ctrl+n"];
+        "tui.select.up" = ["up" "ctrl+p"];
+      };
       settings = {
+        branchSummary.skipPrompt = true;
         defaultProvider = "openai-codex";
         defaultModel = "gpt-5.6-sol";
+        enabledModels = ["openai-codex/gpt-5.6-*"];
         packages = [
           "npm:pi-web-access"
         ];
