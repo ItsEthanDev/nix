@@ -14,7 +14,8 @@ Turn an accepted specification into a technical approach, verification strategy,
    - Every accepted requirement maps to planned changes and evidence.
    - Every task maps to a requirement, necessary scaffold, or documented delivery concern.
    - Task dependencies and parallel markers do not conflict.
-   - The plan complies with constituted rules.
+   - The plan complies with constituted rules without treating an unapproved technical choice as project policy.
+   - The plan introduces no user-visible behavior absent from the specification.
    - Terminology and technical decisions are consistent across artifacts.
 8. **Resolve the gate.** Fix findings in the artifact that owns them. Obtain approval before implementation unless the user explicitly requested autonomous progression and no consequential architecture decision remains.
 
@@ -27,4 +28,5 @@ Plan is complete when:
 - Every requirement maps to implementation work and direct verification evidence.
 - Work is ordered into small, independently verifiable vertical slices.
 - Risks, migrations, rollback needs, and unresolved technical decisions are explicit when applicable.
+- New user-visible behavior has been routed to the specification, and new durable project rules have been routed to constitute.
 - A read-only consistency pass finds no blocking gap or contradiction.

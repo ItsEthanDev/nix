@@ -46,7 +46,7 @@ Do not create a second rules file merely to satisfy this workflow. When no suita
 
 ## Maintain traceability
 
-Give each functional requirement a stable `FR-###` ID and each measurable success criterion a stable `SC-###` ID. Carry those IDs into plan sections, tasks, and final verification. A downstream artifact may refine an upstream decision but must not silently contradict it.
+Give each functional requirement a stable `FR-###` ID and each measurable success criterion a stable `SC-###` ID. Carry those IDs into plan sections, tasks, and final verification. Reference each applicable project rule by stable ID when its canonical owner provides one; otherwise use its canonical path and heading. Do not invent a parallel ID scheme for rules distributed across existing documentation. A downstream artifact may refine an upstream decision but must not duplicate or silently contradict it.
 
 Route discoveries back to their owner:
 

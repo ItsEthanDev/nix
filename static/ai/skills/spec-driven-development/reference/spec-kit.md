@@ -31,11 +31,11 @@ The three core artifacts are `spec.md`, `plan.md`, and `tasks.md`. Create option
 
 When a new project needs a consolidated constitution, prefer `specs/constitution.md` so project governance remains alongside its specification artifacts. Keep principles in the project's existing canonical documentation when it already has a suitable owner.
 
-A principle must state an actionable rule and how compliance can be checked. Put agent-only operational instructions in the applicable agent instruction file rather than in the constitution. Amend the constitution deliberately when a durable project rule changes; do not weaken it inside a feature plan to make a violation pass.
+A principle must state an actionable rule and a compliance signal. Keep feature acceptance scenarios, exact thresholds, paths, tools, and implementation mechanics downstream unless they are themselves accepted project policy. Put agent-only operational instructions in the applicable agent instruction file rather than in the constitution. Amend the constitution deliberately when a durable project rule changes; do not weaken it inside a feature plan to make a violation pass.
 
 ## Specification conventions
 
-`spec.md` describes user value and observable behavior without choosing implementation details.
+`spec.md` describes user value and observable behavior without choosing implementation details. Reference applicable constitutional constraints by their stable IDs, or by canonical path and heading when their owner does not provide IDs. Do not copy a project invariant into a feature requirement unchanged; add a requirement only when it refines the invariant into observable behavior for the feature.
 
 Use these identifiers:
 

@@ -22,7 +22,7 @@
 
 | Principle or constraint | Status | Evidence or justification |
 | --- | --- | --- |
-| [Canonical project rule] | Pass | [How this plan complies] |
+| [Stable principle ID, or canonical path and heading] | Pass | [How this plan complies] |
 
 Resolve unjustified violations before implementation. Record an accepted consequential exception in its canonical owner or an ADR.
 

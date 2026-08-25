@@ -4,6 +4,10 @@
 **Created:** [Date]
 **Status:** Draft
 
+## Applicable Project Constraints
+
+- [Stable principle ID, or canonical path and heading]
+
 ## User Scenarios & Testing
 
 ### User Story 1 — [Title] (Priority: P1)
