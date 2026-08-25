@@ -2,7 +2,7 @@
 
 Elicit and accept what should change and why without choosing how to implement it.
 
-Load the `project-documentation` skill's feature-specification guidance before creating or changing the specification. It owns location, format, normative requirement language, identifiers, status, and readiness criteria.
+Before creating or changing the specification, load the `project-documentation` feature-specification guidance and follow its location, format, normative language, identifier, status, and readiness rules.
 
 ## Process
 

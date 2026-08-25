@@ -1,7 +1,5 @@
 # Feature Artifacts
 
-Use this reference for feature specifications and their downstream planning artifacts.
-
 ## Fallback organization
 
 When the user and repository establish no feature-documentation convention, colocate one feature's artifacts in a three-digit sequential directory:

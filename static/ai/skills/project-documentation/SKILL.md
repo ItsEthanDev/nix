@@ -5,7 +5,7 @@ description: Establish and maintain a repository's documentation system. Use whe
 
 # Project Documentation
 
-Maintain a coherent documentation system in which every durable project fact has one canonical owner, predictable organization, and explicit relationships to dependent artifacts. This skill owns artifact selection, factual ownership, structure, traceability, and maintenance. The `writing` skill owns expression and readability; delivery workflows own when artifacts are produced or approved.
+Give every durable project fact one canonical owner, predictable location, and explicit relationships to dependent artifacts.
 
 ## Apply conventions in order
 
@@ -13,9 +13,9 @@ When selecting or organizing documentation:
 
 1. Follow the user's explicit request.
 2. Follow established repository conventions.
-3. Use this skill's fallback conventions.
+3. Use the fallback conventions below.
 
-Surface rather than silently resolve a material conflict between those authorities. Treat logical artifact roles separately from filenames: an established `docs/principles.md` can own project governance even though this skill's fallback is `specs/constitution.md`.
+Surface rather than silently resolve a material conflict between those authorities. Treat logical artifact roles separately from filenames: an established `docs/principles.md` can own project governance even when the fallback path below is `specs/constitution.md`.
 
 ## Select the artifact guidance
 
@@ -57,8 +57,6 @@ Put each fact in one canonical owner. Other artifacts reference that owner inste
 3. Update the smallest set of canonical artifacts that fully records the change.
 4. Reconcile direct dependents using the change rules in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md).
 5. Check that references resolve, identifiers remain stable, placeholders match lifecycle state, and no dependent artifact contradicts its sources.
-
-This skill may require reconciliation needed to preserve documentation integrity. It does not prescribe a constitute, specify, plan, implement, or other delivery workflow.
 
 ## Completion criteria
 

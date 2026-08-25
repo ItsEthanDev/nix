@@ -5,7 +5,7 @@ description: Create or review durable technical prose for humans or coding agent
 
 # Writing
 
-Write for the artifact's reader and purpose. This skill owns expression, information hierarchy, and readability. The `project-documentation` skill owns artifact selection, factual ownership, document schemas, and maintenance when it applies.
+Write for the artifact's reader and purpose. When `project-documentation` applies, use it to select the artifact, canonical owner, schema, and maintenance rules before improving the information hierarchy and prose.
 
 ## Choose the reader
 

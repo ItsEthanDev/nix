@@ -2,7 +2,7 @@
 
 Establish or amend the durable rules that govern later specifications, plans, and implementations. This is a project-level phase, not a feature ceremony.
 
-Load the `project-documentation` skill's project-governance guidance before changing durable documentation. It owns governance classification, canonical location, format, identifiers, and readiness criteria.
+Before changing durable governance, load the `project-documentation` project-governance guidance and follow its classification, canonical-location, format, identifier, and readiness rules.
 
 ## Process
 

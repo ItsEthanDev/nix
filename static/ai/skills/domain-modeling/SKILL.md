@@ -5,9 +5,9 @@ description: Build and sharpen a project's domain model. Use when resolving doma
 
 # Domain Modeling
 
-Actively sharpen the project's domain model while designing. This skill owns the elicitation discipline: challenging terms, testing concepts with concrete scenarios, and resolving ambiguity. The `project-documentation` skill owns the location, structure, lifecycle, and readiness of `CONTEXT.md`, `CONTEXT-MAP.md`, and ADRs.
+Challenge domain terms, test concepts with concrete scenarios, and resolve ambiguity while designing. Before persisting a result in `CONTEXT.md`, `CONTEXT-MAP.md`, or an ADR, load the corresponding `project-documentation` guidance.
 
-Merely reading domain context for established vocabulary does not require this skill. Use it when the model itself may change.
+Run the process below when the domain model may change. When only consuming established vocabulary, read the applicable domain context and proceed.
 
 ## Process
 

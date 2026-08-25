@@ -1,7 +1,5 @@
 # Artifact Model
 
-Use this reference for ownership, traceability, lifecycle, and reconciliation across project documentation.
-
 ## Dependency model
 
 ```text

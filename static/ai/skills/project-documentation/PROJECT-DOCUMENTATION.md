@@ -1,7 +1,5 @@
 # Project Documentation
 
-Use this reference for project overviews, governance, and agent instructions.
-
 ## README
 
 `README.md` is the entry point for a person trying to understand or use the repository. It owns orientation and navigation, not every project fact.

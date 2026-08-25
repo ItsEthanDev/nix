@@ -2,7 +2,7 @@
 
 Turn an accepted specification into a technical approach, verification strategy, and executable sequence.
 
-Load the `project-documentation` skill's guidance for plans, tasks, research, data models, contracts, and validation scenarios before creating those artifacts. It owns their locations, formats, identifiers, relationships, and readiness criteria.
+Before creating planning artifacts, load the applicable `project-documentation` guidance and follow its location, format, identifier, relationship, and readiness rules.
 
 ## Process
 

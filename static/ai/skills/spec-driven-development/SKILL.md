@@ -11,7 +11,7 @@ Run four public phases:
 constitute → specify → plan → implement
 ```
 
-This skill owns phase selection, sequencing, gates, and execution. The `project-documentation` skill owns artifact roles, locations, formats, identifiers, lifecycle, and reconciliation. Load it whenever a phase creates or changes durable documentation; do not recreate its conventions here.
+Before a phase creates or changes durable documentation, load `project-documentation` and follow its artifact roles, locations, formats, identifiers, lifecycle, and reconciliation rules.
 
 ## Select the phase
 
