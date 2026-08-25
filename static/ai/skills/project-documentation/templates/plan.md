@@ -3,6 +3,7 @@
 **Feature Directory:** `specs/[NNN-feature-name]`
 **Specification:** [Path to accepted `spec.md`]
 **Date:** [Date]
+**Status:** Draft
 
 ## Summary
 
@@ -43,7 +44,7 @@ Resolve unjustified violations before implementation. Record an accepted consequ
 ### [Change area]
 
 - **Requirements:** FR-###, SC-###
-- **User stories:** US#
+- **User stories:** US-###
 - **Files and interfaces:** [Real paths and symbols]
 - **Design:** [Technical behavior and data flow]
 

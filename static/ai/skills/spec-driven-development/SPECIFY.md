@@ -1,25 +1,27 @@
 # Specify
 
-Define what should change and why without prescribing implementation. Use the project's existing format; otherwise start from [templates/spec.md](templates/spec.md).
+Elicit and accept what should change and why without choosing how to implement it.
+
+Load the `project-documentation` skill's feature-specification guidance before creating or changing the specification. It owns location, format, normative requirement language, identifiers, status, and readiness criteria.
 
 ## Process
 
-1. **Establish context.** Read the applicable constituted rules, project documentation, domain context, related behavior, and earlier specifications. Use established project terminology. Record applicable project constraints by stable ID when their canonical owner provides one; otherwise reference the canonical path and heading.
-2. **Bound the problem.** Record the problem, desired outcome, affected actors, in-scope behavior, and explicit non-goals.
-3. **Describe independent user stories.** Assign priorities such as `P1`, `P2`, and `P3`. For each story, state its value, independent test, and observable Given/When/Then acceptance scenarios.
-4. **Write testable requirements.** Assign stable `FR-###` IDs to functional requirements. Describe externally meaningful behavior, constraints, edge cases, and failure behavior. Reference rather than duplicate a project invariant; add a feature requirement only when it refines that invariant into observable behavior for this feature. Keep technical design out of the specification.
-5. **Define success criteria.** Assign stable `SC-###` IDs to measurable, technology-independent outcomes. Do not invent metrics that do not represent a real product or operational requirement.
-6. **Record assumptions and questions.** Make reasonable, reversible defaults explicit. Ask focused questions only when different answers materially change scope, security, data handling, or user-visible behavior.
-7. **Check specification quality.** Verify that every functional requirement is unambiguous, observable, consistent with constituted rules, and covered by at least one acceptance scenario. Verify that each success criterion can be evaluated without prescribing the implementation. Remove duplicated constitutional language and route technical mechanisms to the plan.
-8. **Resolve the gate.** Present unresolved decisions and a concise specification summary. Obtain approval before planning unless the user explicitly requested autonomous progression and no consequential uncertainty remains.
+1. **Establish context.** Read applicable project governance, project documentation, domain context, related behavior, earlier specifications, and relevant current behavior. Use established project terminology.
+2. **Bound the problem.** Identify the problem, desired outcome, affected actors, in-scope behavior, and explicit non-goals.
+3. **Elicit independent value.** Describe independently valuable user stories and observable acceptance scenarios. Prioritize them according to user value rather than implementation convenience.
+4. **Specify behavior.** Record externally meaningful obligations, constraints, edge cases, and failure behavior using the specification conventions from `project-documentation`. Reference rather than duplicate durable project rules.
+5. **Define meaningful outcomes.** Record measurable, technology-independent success criteria only when they represent genuine product or operational requirements.
+6. **Resolve uncertainty.** Make responsible reversible assumptions explicit. Ask focused questions when different answers materially change scope, security, privacy, data handling, or user-visible behavior.
+7. **Review quality.** Check every accepted behavior for unambiguous observable acceptance, consistency with project rules, and freedom from technical design. Route technical choices to planning.
+8. **Resolve the gate.** Present unresolved decisions and a concise summary. Obtain acceptance before planning unless the user requested autonomous progression and no consequential uncertainty remains.
 
 ## Completion criteria
 
 Specify is complete when:
 
-- Scope and non-goals are explicit.
-- Every accepted behavior has a stable `FR-###` ID and observable acceptance condition, and every meaningful outcome has an `SC-###` ID.
-- Assumptions are visible and consequential questions are resolved or block progression.
-- Applicable project constraints are referenced, and feature-specific refinements are distinguishable from project invariants.
-- The specification contains what and why, while technical choices remain for planning.
-- The accepted specification is stored in a project artifact rather than only in conversation.
+- Scope, non-goals, assumptions, and externally meaningful behavior are explicit.
+- Every accepted obligation has observable acceptance and every meaningful outcome can be evaluated without prescribing implementation.
+- Consequential product questions are resolved or explicitly block planning.
+- Applicable project rules are referenced without duplication.
+- Technical choices remain open for planning.
+- The specification satisfies the readiness criteria from `project-documentation` and is stored outside conversation history.

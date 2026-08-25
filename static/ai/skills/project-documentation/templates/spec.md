@@ -10,7 +10,7 @@
 
 ## User Scenarios & Testing
 
-### User Story 1 — [Title] (Priority: P1)
+### US-001 — [Title] (Priority: P1)
 
 [Describe the user journey and valuable outcome in plain language.]
 
@@ -30,7 +30,7 @@
 
 ### Functional Requirements
 
-- **FR-001:** The system MUST [testable, implementation-independent behavior].
+- **FR-001:** The system MUST [one independently verifiable, implementation-independent obligation].
 
 ### Key Entities
 

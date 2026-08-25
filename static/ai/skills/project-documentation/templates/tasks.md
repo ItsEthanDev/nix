@@ -9,11 +9,11 @@
 Each task uses:
 
 ```text
-- [ ] T### [P?] [US#?] Action with exact file path
+- [ ] T### [P?] [US-###?] Action with exact file path
 ```
 
 - `[P]` means the task can run in parallel because it has no incomplete dependency and does not conflict on the same files.
-- `[US#]` links feature work to a user story. Setup, foundational, and cross-cutting tasks may omit it.
+- `[US-###]` links feature work to a user story. Setup, foundational, and cross-cutting tasks may omit it.
 - Mark a task `[x]` only after its verification succeeds.
 
 ## Phase 1: Setup
@@ -28,7 +28,7 @@ Shared prerequisites that block every user story:
 
 **Checkpoint:** Foundational work is verified; user-story phases may begin.
 
-## Phase 3: User Story 1 — [Title] (Priority: P1)
+## Phase 3: US-001 — [Title] (Priority: P1)
 
 **Goal:** [Observable value delivered by this story.]
 
@@ -36,13 +36,13 @@ Shared prerequisites that block every user story:
 
 ### Tests, when required by the specification or project policy
 
-- [ ] T003 [P] [US1] Add failing test for FR-001 in tests/exact-path
+- [ ] T003 [P] [US-001] Add failing test for FR-001 in tests/exact-path
 
 ### Implementation
 
-- [ ] T004 [US1] Implement FR-001 in src/exact-path
+- [ ] T004 [US-001] Implement FR-001 in src/exact-path
 
-**Checkpoint:** User Story 1 passes its independent test.
+**Checkpoint:** US-001 passes its independent test.
 
 ## Final Phase: Polish & Cross-Cutting Concerns
 
