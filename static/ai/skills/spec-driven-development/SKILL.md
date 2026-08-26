@@ -11,7 +11,7 @@ Run four public phases:
 constitute → specify → plan → implement
 ```
 
-Before a phase creates or changes durable documentation, load `project-documentation` and follow its artifact roles, locations, formats, identifiers, lifecycle, and reconciliation rules.
+Before a phase creates or changes durable documentation, load `project-documentation` and follow its artifact roles, locations, formats, identifiers, lifecycle meanings, and reconciliation rules. `project-documentation` owns those conventions; this skill owns phase selection, phase ordering, transition behavior, and execution. Do not introduce a parallel artifact convention in this workflow.
 
 ## Select the phase
 

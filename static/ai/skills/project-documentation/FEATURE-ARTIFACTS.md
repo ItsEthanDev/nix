@@ -19,7 +19,7 @@ specs/
     └── contracts/            # optional interface or protocol contracts
 ```
 
-Use a concise action-noun feature name such as `003-add-token-revocation`. A feature directory and Git branch are independent. The core feature artifacts are `spec.md`, `plan.md`, and `tasks.md`; create an optional artifact only when separating its contents improves ownership, comprehension, reuse, or verification.
+Use a concise action-noun feature name such as `003-add-token-revocation`. A feature directory and Git branch are independent. `spec.md`, `plan.md`, and `tasks.md` are the standard feature artifacts, not mandatory ceremony. Especially small work may omit one or more when another established artifact clearly owns the necessary information and preserves sufficient traceability. Create any supporting artifact only when separating its contents improves ownership, comprehension, reuse, or verification.
 
 ## Feature specification
 
@@ -46,7 +46,7 @@ Write one independently verifiable obligation per requirement. Use established d
 
 Mark an unresolved product decision as `[NEEDS CLARIFICATION: specific question]` only when no responsible default exists and different answers materially affect scope, security, privacy, data handling, or user experience. Keep at most three markers in a draft, ordered by impact, and resolve them before treating the specification as accepted.
 
-A specification is ready for acceptance when scope and non-goals are explicit, every proposed behavior has an observable acceptance condition, normative obligations are independently verifiable, assumptions are visible, and no unresolved question could materially change the technical design. Apply the acceptance authority and transition rules in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md). A specification is ready for planning once it satisfies these criteria and its status is `Accepted`.
+A specification is ready for acceptance when scope and non-goals are explicit, every proposed behavior has an observable acceptance condition, normative obligations are independently verifiable, assumptions are visible, and no unresolved question could materially change the technical design. Apply the readiness and lifecycle semantics in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md). Follow the active workflow or repository governance for transition authority and approval behavior. A specification is ready for planning once it satisfies these criteria and its status is `Accepted`.
 
 ## Implementation plan
 
@@ -74,17 +74,20 @@ A plan is ready for task derivation or implementation when it references the rea
 Use this fallback grammar:
 
 ```text
-- [ ] T### [P?] [US-###?] Action with exact file path
+- [ ] T### [P?] [US-###?] [Refs: FR-###, SC-###]? Action with exact file path
 ```
 
 - `T###` is stable within the feature directory and ordered by dependency.
 - `[P]` means all dependencies are complete and concurrent execution cannot conflict on the same files or state.
 - `[US-###]` links feature work to a user story; setup, foundational, and cross-cutting work may omit it.
+- The optional `[Refs: ...]` block links delivery and verification work to one or more `FR-###` or `SC-###` identifiers. Pure scaffold or delivery-administration tasks may omit it.
 - `[x]` means the task's stated verification passed, not merely that an edit was attempted.
 
 Organize tasks into setup only when needed, shared foundational prerequisites, one independently verifiable phase per user story in priority order, and final cross-cutting work. Put required tests before implementation within a story. Each task must name a concrete action and exact path and must map to a requirement, necessary scaffold, verification step, or documented delivery concern.
 
-A task list is ready for execution when every planned change and verification action is represented, dependencies and parallel markers agree, each story remains independently verifiable, and no task introduces behavior or design absent from its upstream artifacts.
+A task list is ready for execution when every planned change and verification action is represented, dependencies and parallel markers agree, each story remains independently verifiable, delivery and verification tasks reference their requirements or outcomes, and no task introduces behavior or design absent from its upstream artifacts.
+
+When the repository uses plan lifecycle status, a task list used for implementation must reference an `Accepted` plan. The active workflow or repository governance owns the transition authority and any approval pause.
 
 ## Planning research
 
@@ -109,6 +112,12 @@ A contract is ready when operations and data are unambiguous, success and failur
 `quickstart.md` owns one concise end-to-end procedure for exercising the integrated feature. State prerequisites, exact steps, expected observable results, and cleanup when needed. Do not duplicate the complete verification strategy from the plan.
 
 A quickstart is ready when an intended reader can execute it from a documented starting state and each expected result maps to accepted behavior.
+
+## Verification evidence
+
+The implementation plan owns the intended verification method. Tests and checks own executable assertions. A CI record or durable verification report owns the observed result of executing those assertions.
+
+When durable result traceability is required and no external system already owns it, record a verification-results table in `tasks.md` with each applicable `FR-###` or `SC-###`, its evidence, and its observed result. Do not duplicate durable CI results when a stable link is sufficient.
 
 ## Requirements checklist
 

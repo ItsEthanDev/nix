@@ -4,13 +4,15 @@
 **Ratified:** [Date]
 **Last amended:** [Date]
 
+<!-- Remove optional rationale when it does not prevent a likely misinterpretation. Replace every retained placeholder before ratification. -->
+
 ## PR-001 — [Principle name]
 
 The project MUST [actionable durable rule].
 
 **Compliance signal:** [What later work must demonstrate.]
 
-**Rationale:** [Include only when needed to prevent likely misinterpretation.]
+**Rationale:** [Why this rule is necessary or easily misinterpreted.]
 
 ## Governance
 

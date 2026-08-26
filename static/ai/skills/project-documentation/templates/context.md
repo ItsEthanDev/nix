@@ -1,6 +1,8 @@
 # [Context name]
 
-[One or two sentences describing the context and why it exists.]
+[One or two sentences describing the context, its responsibility, and why it exists.]
+
+<!-- Keep a flat glossary unless natural groups improve retrieval. Omit `_Avoid_` when no competing term exists. -->
 
 ## Language
 

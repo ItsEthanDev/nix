@@ -5,7 +5,7 @@ description: Establish and maintain a repository's documentation system. Use whe
 
 # Project Documentation
 
-Give every durable project fact one canonical owner, predictable location, and explicit relationships to dependent artifacts.
+Give every durable semantic claim one authoritative owner, predictable location, and explicit relationships to dependent artifacts.
 
 ## Apply conventions in order
 
@@ -45,26 +45,29 @@ Use these logical owners unless the repository establishes a more specific one:
 | Substantial technical data design | Technical data model | `specs/NNN-feature-name/data-model.md` |
 | Externally meaningful interface or protocol | Contract | `specs/NNN-feature-name/contracts/` |
 | Integrated validation procedure | Validation scenario | `specs/NNN-feature-name/quickstart.md` |
-| Observable proof of delivered behavior | Verification evidence | Tests, checks, and recorded results |
+| Intended proof of delivered behavior | Verification strategy | Implementation plan |
+| Executable proof of delivered behavior | Verification check | Tests and checks |
+| Observed verification outcome | Verification result | CI record or durable verification report |
 | Agent-specific operating instructions | Agent instructions | `AGENTS.md`, `CLAUDE.md`, or harness equivalent |
 
-Put each fact in one canonical owner. Other artifacts reference that owner instead of copying it. A downstream artifact may add implementation precision while preserving upstream semantics; it must not introduce externally observable behavior, relax an upstream obligation, or silently contradict an upstream decision. Revise the canonical upstream owner first when semantics must change.
+Put each durable semantic claim in one authoritative owner. Other artifacts reference that owner or identify their local text as a derived projection. A downstream artifact may own a more precise representation while preserving upstream semantics; it must not introduce externally observable behavior, relax an upstream obligation, or silently contradict an upstream decision. Revise the canonical upstream owner first when semantics must change.
 
 ## Maintain the system
 
 1. Discover applicable instructions, documentation indexes, existing artifact paths, and local formats before choosing a destination.
-2. Identify the logical owner of each fact being added or changed.
+2. Identify the logical owner of each semantic claim being added or changed.
 3. Update the smallest set of canonical artifacts that fully records the change.
-4. Reconcile direct dependents using the change rules in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md).
-5. Check that references resolve, identifiers remain stable, placeholders match lifecycle state, and no dependent artifact contradicts its sources.
+4. Search for changed identifiers, paths, and headings, then reconcile the direct dependents identified through the rules in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md).
+5. Check that source references resolve, identifiers remain stable, placeholders match lifecycle state, and no dependent artifact contradicts its sources.
 
 ## Completion criteria
 
 Documentation maintenance is complete when:
 
-- Every changed durable fact has one canonical owner.
+- Every changed durable semantic claim has one authoritative owner, and each derived projection identifies that source.
 - Artifact paths and formats follow the selected authority order.
 - Required sections satisfy the applicable artifact guidance.
 - References and stable identifiers resolve without duplication or reuse.
 - Directly dependent artifacts agree with changed owners.
-- Optional artifacts exist only when separating their contents improves ownership, comprehension, reuse, or verification.
+- The artifact set is no more complex than the work requires; especially small work may omit standard artifacts when another established owner preserves the necessary information and traceability.
+- Optional supporting artifacts exist only when separating their contents improves ownership, comprehension, reuse, or verification.

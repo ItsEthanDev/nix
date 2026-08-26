@@ -5,6 +5,8 @@
 **Date:** [Date]
 **Status:** Draft
 
+<!-- Remove optional sections and fields that do not add information. Replace every retained placeholder before the plan leaves Draft. -->
+
 ## Summary
 
 [Primary requirement and the smallest sufficient technical approach.]
@@ -19,7 +21,7 @@
 - **Performance constraints:** [Value or none]
 - **Scale and scope:** [Value]
 
-## Constitution Check
+## Project Constraint Check
 
 | Principle or constraint | Status | Evidence or justification |
 | --- | --- | --- |
@@ -57,11 +59,15 @@ Resolve governance violations before implementation. If governance must change, 
 
 ## Delivery Considerations
 
-- **Dependencies:** [Dependencies or none]
-- **Migration:** [Migration or none]
-- **Rollback:** [Rollback approach or not applicable]
+<!-- Remove fields that do not apply. -->
+
+- **Dependencies:** [Dependencies]
+- **Migration:** [Migration approach]
+- **Rollback:** [Rollback approach]
 - **Risks:** [Risk and mitigation]
 
 ## Decisions and Open Questions
+
+<!-- Optional. Remove when there is no consequential decision or unresolved blocker to record. -->
 
 - [Consequential technical decision, rationale, or unresolved blocker.]

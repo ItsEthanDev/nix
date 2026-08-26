@@ -22,7 +22,22 @@ Supporting relationships:
 - A README navigates to canonical owners without replacing them.
 - Contracts and technical data models elaborate a plan and must preserve specification semantics.
 
-A reference is preferable to repeated prose. Include a short local summary only when the reader cannot use the artifact correctly without it, and link to the canonical owner.
+A reference is preferable to repeated prose. Include a short local summary only when the reader cannot use the artifact correctly without it, identify it as a derived projection, and link to the canonical owner.
+
+## Dependency discovery
+
+A dependent documentation artifact MUST reference each canonical artifact whose semantics it refines, implements, verifies, or summarizes. Use stable identifiers in addition to paths when the source provides them. Record these dependencies in a `Sources` section or in the artifact's equivalent structured source fields.
+
+To reconcile a changed owner:
+
+1. Identify each changed stable identifier, path, or heading.
+2. Search the repository for those references.
+3. Classify each match using the dependency model.
+4. Inspect only direct dependents whose semantics may be affected.
+5. Update the artifact that owns each inconsistency.
+6. Add a missing source reference when an implicit dependency is discovered.
+
+Use a repository-wide text search such as `rg -l 'PR-001|specs/003-add-token-revocation/spec\.md' .` to produce a bounded candidate set instead of reading every artifact. Do not maintain reverse dependency lists in canonical owners. Discover reverse relationships from source references so one dependency edge has one maintained representation.
 
 ## Stable identifiers
 
@@ -55,7 +70,11 @@ Use lifecycle metadata only when it changes how readers may use an artifact.
 
 A `Draft` artifact may contain explicitly marked unresolved items. An artifact used as an accepted downstream input must not contain unresolved items that could change that downstream work.
 
-The user normally owns the transition of a feature specification from `Draft` to `Accepted`. Present a ready specification for acceptance and wait for the user's approval before changing its status. Treat acceptance as delegated when the user asks the agent to complete the workflow autonomously, proceed into planning without an approval pause, or otherwise indicates that it should not wait for human approval. Delegated acceptance still requires the specification to satisfy its readiness criteria; record the transition by changing its status to `Accepted` before using it as a planning input.
+A feature specification may transition to `Accepted` only after it satisfies the specification readiness criteria. An accepted specification is eligible for use as a planning input.
+
+The active workflow, repository governance, or user's explicit request determines who may change lifecycle status and whether a transition requires an approval pause. This skill defines status semantics and validates readiness; it does not request approval or infer delegated approval.
+
+When a material revision introduces an unresolved issue that invalidates an artifact's readiness, return the artifact to `Draft` before it is used as a downstream input.
 
 ## Persistence policy
 
@@ -83,7 +102,9 @@ Update the canonical owner first, then inspect the listed dependents:
 | Consequential durable rationale | ADR | Plan and architecture documentation that reference the decision |
 | Execution order, dependency, or progress | Task list | Completion reports or automation consuming task state |
 | Technical evidence or unknown | Research | Plan decisions that rely on the finding |
-| Delivered proof | Tests and verification results | Task state and feature status |
+| Intended verification method | Implementation plan | Tasks, executable checks, and validation scenarios |
+| Executable assertion | Test or check | Plan evidence references and verification reports |
+| Observed execution result | CI record or durable verification report | Task state and feature status |
 
 A material upstream revision requires a consistency pass over every direct dependent. Reconcile by changing the artifact that owns the inconsistency; do not patch a downstream summary to conceal an upstream error.
 
@@ -92,7 +113,7 @@ A material upstream revision requires a consistency pass over every direct depen
 An artifact is ready for its intended use when:
 
 - Its required content is present and its status permits that use.
-- Facts are in their canonical owners and links to external owners resolve.
+- Semantic claims are in their canonical owners, derived projections identify their sources, and links to external owners resolve.
 - Identifiers are unique, stable, and correctly scoped.
 - Unresolved placeholders are absent or explicitly permitted by the lifecycle state.
 - It is internally consistent and does not contradict its upstream sources.
