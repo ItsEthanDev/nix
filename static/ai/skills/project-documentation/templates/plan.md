@@ -25,7 +25,7 @@
 | --- | --- | --- |
 | [Stable principle ID, or canonical path and heading] | Pass | [How this plan complies] |
 
-Resolve unjustified violations before implementation. Record an accepted consequential exception in its canonical owner or an ADR.
+Resolve governance violations before implementation. If governance must change, amend its canonical owner through the established process. An ADR may preserve the rationale for an amendment or record an exception only when the governing policy explicitly authorizes that exception mechanism.
 
 ## Existing Context
 

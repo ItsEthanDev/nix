@@ -1,6 +1,6 @@
 # Decision Records
 
-An ADR preserves the rationale for a consequential technical or domain-boundary decision that must remain understandable after its originating plan or conversation is gone.
+An ADR preserves the rationale for a consequential technical or domain-boundary decision that must remain understandable after its originating plan or conversation is gone. It does not supersede project governance. It may record a governance exception only when the governing policy explicitly authorizes that exception mechanism; the policy supplies the authority, while the ADR records its scope and rationale.
 
 ## When to create one
 

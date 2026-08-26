@@ -12,7 +12,7 @@ specs/
     ├── plan.md               # how and verification strategy
     ├── tasks.md              # execution order and progress
     ├── checklists/
-    │   └── requirements.md   # optional reviewer-owned requirements-quality gate
+    │   └── requirements.md   # optional workflow-maintained specification-quality gate
     ├── research.md           # optional planning research
     ├── data-model.md         # optional technical data design
     ├── quickstart.md         # optional end-to-end validation scenario
@@ -112,4 +112,6 @@ A quickstart is ready when an intended reader can execute it from a documented s
 
 ## Requirements checklist
 
-`checklists/requirements.md` is an optional reviewer-owned quality gate for the specification. Its checkboxes represent review findings, not implementation progress. An implementing agent may read it as a gate but must not silently approve reviewer-owned items.
+`checklists/requirements.md` is an optional specification-quality gate maintained by the specification authoring and clarification workflow. Its criteria evaluate the specification rather than the implementation. After creating or materially revising `spec.md`, that workflow may re-evaluate this checklist and change only checkbox states whose results changed.
+
+Use descriptive filenames such as `security.md`, `accessibility.md`, or `operations.md` for custom reviewer-owned requirements-quality checklists. Their criteria and checkbox states remain reviewer-owned unless the artifact explicitly delegates evaluation. An implementing agent treats every requirements-quality checklist as a read-only gate and never interprets its checkboxes as implementation progress; implementation progress belongs in `tasks.md`.
