@@ -58,6 +58,7 @@
 - See `README.md` for deployment commands.
 
 ## Agent guidance
+- Before modifying `static/ai/skills/project-documentation/`, read `static/ai/docs/project-documentation.md` and preserve its design goals and boundaries.
 - Follow the target organization and module boundaries in `docs/README.md`.
 - Treat repository documentation as intended target state; do not rewrite it solely to match incomplete implementation.
 - Preserve `RF-###` identifiers when updating `todo.txt` and mark completed work using todo.txt conventions.

@@ -4,7 +4,7 @@ This directory captures how I want coding agents to participate in software deve
 
 ## Skill boundaries
 
-`project-documentation` defines canonical artifact ownership, organization, and maintenance, including the resolution and recording of domain concepts. `spec-driven-development` applies those conventions while running the constitute, specify, plan, and implement workflow. `writing` improves expression for the intended reader.
+[`project-documentation`](docs/project-documentation.md) defines canonical artifact ownership, organization, and maintenance, including the resolution and recording of domain concepts. `spec-driven-development` applies those conventions while running the constitute, specify, plan, and implement workflow. `writing` improves expression for the intended reader.
 
 ## Influences
 
