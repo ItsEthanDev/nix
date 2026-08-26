@@ -46,7 +46,7 @@ Write one independently verifiable obligation per requirement. Use established d
 
 Mark an unresolved product decision as `[NEEDS CLARIFICATION: specific question]` only when no responsible default exists and different answers materially affect scope, security, privacy, data handling, or user experience. Keep at most three markers in a draft, ordered by impact, and resolve them before treating the specification as accepted.
 
-A specification is ready for planning when its status is `Accepted`, scope and non-goals are explicit, every accepted behavior has an observable acceptance condition, normative obligations are independently verifiable, assumptions are visible, and no unresolved question could materially change the technical design.
+A specification is ready for acceptance when scope and non-goals are explicit, every proposed behavior has an observable acceptance condition, normative obligations are independently verifiable, assumptions are visible, and no unresolved question could materially change the technical design. Apply the acceptance authority and transition rules in [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md). A specification is ready for planning once it satisfies these criteria and its status is `Accepted`.
 
 ## Implementation plan
 

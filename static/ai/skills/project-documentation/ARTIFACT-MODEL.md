@@ -55,6 +55,8 @@ Use lifecycle metadata only when it changes how readers may use an artifact.
 
 A `Draft` artifact may contain explicitly marked unresolved items. An artifact used as an accepted downstream input must not contain unresolved items that could change that downstream work.
 
+The user normally owns the transition of a feature specification from `Draft` to `Accepted`. Present a ready specification for acceptance and wait for the user's approval before changing its status. Treat acceptance as delegated when the user asks the agent to complete the workflow autonomously, proceed into planning without an approval pause, or otherwise indicates that it should not wait for human approval. Delegated acceptance still requires the specification to satisfy its readiness criteria; record the transition by changing its status to `Accepted` before using it as a planning input.
+
 ## Persistence policy
 
 Follow the repository's established history model. Otherwise use living feature artifacts:
