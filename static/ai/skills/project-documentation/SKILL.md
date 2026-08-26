@@ -1,6 +1,6 @@
 ---
 name: project-documentation
-description: Establish and maintain a repository's documentation system. Use when choosing, creating, reorganizing, or reconciling READMEs, governance documents, specifications, plans, task lists, research, domain context, ADRs, contracts, and related durable artifacts.
+description: Establish and maintain a repository's documentation system. Use when choosing, creating, reorganizing, or reconciling durable artifacts such as READMEs, governance, specifications, plans, tasks, research, ADRs, and contracts, or when resolving domain terminology, distinguishing context boundaries, or stress-testing domain concepts.
 ---
 
 # Project Documentation
@@ -23,7 +23,7 @@ Load only the references relevant to the request:
 
 - Repository orientation, README, project governance, constitution, or agent instructions → [PROJECT-DOCUMENTATION.md](PROJECT-DOCUMENTATION.md)
 - Feature specifications, plans, tasks, research, data models, contracts, quickstarts, or requirements checklists → [FEATURE-ARTIFACTS.md](FEATURE-ARTIFACTS.md)
-- Canonical domain vocabulary, `CONTEXT.md`, or `CONTEXT-MAP.md` → [DOMAIN-CONTEXT.md](DOMAIN-CONTEXT.md)
+- Domain terminology, context boundaries, `CONTEXT.md`, or `CONTEXT-MAP.md` → [DOMAIN-CONTEXT.md](DOMAIN-CONTEXT.md)
 - Architectural decision records or durable technical rationale → [DECISION-RECORDS.md](DECISION-RECORDS.md)
 
 Read [ARTIFACT-MODEL.md](ARTIFACT-MODEL.md) when introducing a documentation convention, assigning identifiers or statuses, changing artifact ownership, or reconciling multiple artifacts.

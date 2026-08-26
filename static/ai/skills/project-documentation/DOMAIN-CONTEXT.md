@@ -1,6 +1,20 @@
 # Domain Context
 
-Use domain context to record canonical project-specific vocabulary. Use the `domain-modeling` skill when actively discovering or challenging the model.
+Use domain context to discover, resolve, and record canonical project-specific vocabulary and context boundaries. When only consuming established vocabulary, read the applicable context and proceed without changing it.
+
+## Resolve domain language
+
+When the domain model may change:
+
+1. **Locate the context.** Read the applicable context map and glossary. Identify the context that owns the topic before introducing language.
+2. **Challenge conflicts.** When the user's term conflicts with canonical language, state both meanings and ask which concept is intended. Do not silently create a synonym.
+3. **Sharpen vague language.** Propose a precise canonical term for overloaded language and distinguish neighboring concepts that would otherwise collapse into one name.
+4. **Test concrete scenarios.** Invent ordinary and edge-case scenarios that force relationships, identity, lifecycle, ownership, and context boundaries to become explicit.
+5. **Cross-check reality.** Compare the proposed model with relevant code and existing documentation. Surface contradictions and establish whether the model, implementation, or both must change.
+6. **Record resolved language immediately.** Update the canonical context as soon as a term is resolved. Keep implementation details, requirements, technical decisions, and scratch notes in their respective owners.
+7. **Preserve consequential decisions selectively.** When a resolved domain boundary is also a hard-to-reverse, surprising trade-off, apply [DECISION-RECORDS.md](DECISION-RECORDS.md). Do not create an ADR for terminology alone.
+
+Domain language is resolved when each affected concept has one canonical term and distinguishable meaning, concrete scenarios expose no relevant ambiguity, context ownership is explicit, contradictions are reconciled or reported, and durable language is recorded outside conversation history.
 
 ## Organization
 
