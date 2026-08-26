@@ -43,7 +43,7 @@ When the repository contains multiple distinct domain contexts, use a root `CONT
         └── docs/adr/            # billing decisions
 ```
 
-Create these files lazily. If neither context file exists, create a root `CONTEXT.md` when the first project-specific term is resolved. Introduce a context map only when the repository has multiple contexts whose language or ownership must be distinguished.
+Create these files lazily. During specification work, if neither context file exists, generally create the canonical `CONTEXT.md` alongside the specification work unless the feature introduces no project-specific domain concepts. Follow repository context boundaries for its location; “alongside” means during the same workflow step, not necessarily inside the feature directory. Outside specification work, create a root `CONTEXT.md` when the first project-specific term is resolved. Introduce a context map only when the repository has multiple contexts whose language or ownership must be distinguished.
 
 ## CONTEXT.md
 
