@@ -130,13 +130,11 @@ The skill must define:
 
 The skill must not prescribe:
 
-- The `constitute → specify → plan → implement` workflow.
 - Approval gates or development phase transitions.
 - A universal repository layout when clear conventions already exist.
-- Prose style already governed by `writing`.
 - Empty artifacts created only to satisfy a template.
 
-Workflow-specific instructions belong in workflow skills. Prose quality belongs in `writing`. Repository-specific facts belong in repository documentation.
+Workflow-specific instructions belong to the user or in other workflow skills. Repository-specific facts belong in repository documentation.
 
 ## Runtime guidance and design rationale
 
