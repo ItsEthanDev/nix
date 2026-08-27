@@ -195,8 +195,8 @@ in {
 
       bind = [
         "SUPER, return, exec, ${terminalCommand}"
-        "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
-        "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
+        "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
+        "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
         "SUPER, mouse:274, exec, ${lib.getExe pkgs.hyprzoom} 0"
         "SUPER, G, togglespecialworkspace, gaming"
         "SUPER_CTRL, G, togglespecialworkspace, launchgame"
