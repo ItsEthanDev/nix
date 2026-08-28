@@ -20,6 +20,9 @@ in {
   imports = [
     ./hardware-configuration.nix
     inputs.noctalia.nixosModules.default
+
+    inputs.noctalia-greeter.nixosModules.default
+    inputs.stylix.nixosModules.stylix
   ];
 
   boot = {

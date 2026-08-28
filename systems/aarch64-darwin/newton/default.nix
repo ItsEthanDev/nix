@@ -1,8 +1,13 @@
 {
   config,
+  inputs,
   pkgs,
   ...
 }: {
+  imports = [
+    inputs.stylix.darwinModules.stylix
+  ];
+
   environment.shells = [config.programs.fish.package];
 
   homebrew.casks = ["ghostty"];
