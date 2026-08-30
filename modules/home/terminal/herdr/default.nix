@@ -16,6 +16,7 @@ in {
     programs.herdr = {
       enable = lib.mkDefault true;
       settings = {
+        onboarding = lib.mkDefault false;
         theme.name = lib.mkDefault "terminal";
         ui.toast.delivery = lib.mkDefault "system";
         keys = {
