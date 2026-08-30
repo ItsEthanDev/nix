@@ -261,12 +261,7 @@ in {
       "networkmanager"
       "wheel"
       "input"
-      "docker"
     ];
     shell = pkgs.zsh;
-  };
-
-  virtualisation.docker = {
-    enable = true;
   };
 }
