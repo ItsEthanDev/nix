@@ -94,6 +94,7 @@ in {
       zoxide.enable = true;
     };
     desktop = {
+      notificationForwarding.enable = true;
       noctalia = {
         enable = true;
         compositors.hyprland = {
