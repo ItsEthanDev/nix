@@ -74,7 +74,6 @@ in {
       zsa.enable = true;
     };
     remote = {
-      kimaki.enable = true;
       ssh = {
         enable = true;
         keyDirectory = ../../../static/ssh;
