@@ -8,7 +8,6 @@
 ## Directory overview
 - `README.md` describes the flake outputs, repository map, and deployment commands.
 - `docs/README.md` is the canonical guide to the intended repository and module organization.
-- `todo.txt` tracks the prioritized refactoring backlog in todo.txt format.
 - Root contains the flake entry (`flake.nix`) and flake lock (`flake.lock`).
 - Configuration is organized by platform and layer (system vs. user).
 - Supporting directories group reusable modules, overlays, and dev shells.
@@ -61,7 +60,6 @@
 - Before modifying `static/ai/skills/project-documentation/`, read `static/ai/docs/project-documentation.md` and preserve its design goals and boundaries.
 - Follow the target organization and module boundaries in `docs/README.md`.
 - Treat repository documentation as intended target state; do not rewrite it solely to match incomplete implementation.
-- Preserve `RF-###` identifiers when updating `todo.txt` and mark completed work using todo.txt conventions.
 - Read relevant `.nix` files before editing.
 - Don’t create new files unless requested.
 - Keep changes within the existing structure.
