@@ -222,12 +222,6 @@ in {
       inhibitsSleep = true;
       initialize = true;
     };
-    sunshine = {
-      enable = true;
-      autoStart = true;
-      capSysAdmin = true; # needed for Wayland
-      openFirewall = true;
-    };
     tailscale.enable = true;
   };
 

@@ -4,7 +4,6 @@ _: {
     ./ghostty
     ./herdr
     ./starship
-    ./zellij
     ./zsh
   ];
 }
