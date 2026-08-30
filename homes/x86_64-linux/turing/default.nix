@@ -140,6 +140,7 @@ in {
       enable = true;
       enableFishIntegration = true;
     };
+    herdr.settings.terminal.default_shell = lib.getExe pkgs.fish;
     home-manager.enable = true;
     lazygit.enable = true;
     noctalia.settings.idle.behavior = {
