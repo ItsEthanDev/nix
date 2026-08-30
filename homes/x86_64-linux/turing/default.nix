@@ -177,7 +177,6 @@ in {
       };
     };
     rmpc.enable = true;
-    vesktop.enable = true;
     zen-browser = {
       enable = true;
       configPath = "${config.home.homeDirectory}/.zen";
