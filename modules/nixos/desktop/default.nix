@@ -1,6 +1,5 @@
 _: {
   imports = [
     ./audio
-    ./graphics
   ];
 }

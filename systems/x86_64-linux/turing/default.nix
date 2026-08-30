@@ -51,11 +51,14 @@ in {
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    gamescope
-    retroarch-free
-    vkbasalt
-  ];
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    systemPackages = with pkgs; [
+      gamescope
+      retroarch-free
+      vkbasalt
+    ];
+  };
 
   hardware.bluetooth.enable = true;
 
@@ -63,18 +66,7 @@ in {
 
   my = {
     boot.silent.enable = true;
-    desktop = {
-      audio.enable = true;
-      graphics = {
-        enable = true;
-        autoLogin = {
-          enable = true;
-          user = user;
-        };
-        defaultSession = "hyprland-uwsm";
-        hintWayland = true;
-      };
-    };
+    desktop.audio.enable = true;
     gaming.steam.enable = true;
     hardware = {
       camera.droidcam.enable = true;
@@ -150,7 +142,7 @@ in {
     noctalia-greeter = {
       enable = true;
       settings = {
-        session.default = "hyprland-uwsm";
+        session.default = "Hyprland (uwsm-managed)";
         appearance = {
           scheme = "Synced";
           hide_logo = false;
