@@ -142,6 +142,22 @@ in {
     };
     home-manager.enable = true;
     lazygit.enable = true;
+    noctalia.settings.idle.behavior = {
+      lock = {
+        action = "lock";
+        enabled = true;
+        timeout = 600;
+      };
+      lock-and-suspend = {
+        action = "lock_and_suspend";
+        enabled = false;
+      };
+      screen-off = {
+        action = "screen_off";
+        enabled = true;
+        timeout = 660;
+      };
+    };
     opencode = {
       settings.provider = {
         ollama = {
