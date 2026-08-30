@@ -118,7 +118,6 @@ in {
       withUWSM = true;
       xwayland.enable = true;
     };
-    kdeconnect.enable = true;
     localsend = {
       enable = true;
       openFirewall = true;
