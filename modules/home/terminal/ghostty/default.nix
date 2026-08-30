@@ -48,7 +48,8 @@ in {
           if isDarwin
           then lib.mkDefault 8
           else lib.mkDefault 4;
-        # Window Save State
+        # Window
+        confirm-close-surface = lib.mkDefault false;
         window-save-state = lib.mkDefault "always";
       };
     };
