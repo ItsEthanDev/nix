@@ -43,7 +43,6 @@
         name = "Ethan Brady";
       };
       nixvim.enable = true;
-      opencode.enable = true;
       pi.enable = true;
     };
     remote.ssh.enable = true;

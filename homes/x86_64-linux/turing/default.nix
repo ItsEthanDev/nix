@@ -113,7 +113,6 @@ in {
       };
       hunk.enable = true;
       nixvim.enable = true;
-      opencode.enable = true;
       pi.enable = true;
     };
     gaming.mangohud = {
@@ -159,22 +158,6 @@ in {
         timeout = 660;
       };
     };
-    opencode = {
-      settings.provider = {
-        ollama = {
-          npm = "@ai-sdk/openai-compatible";
-          name = "Ollama (local)";
-          options = {
-            baseURL = "http://localhost:11434/v1";
-          };
-          models = {
-            "qwen3.6" = {
-              name = "Qwen3.6";
-            };
-          };
-        };
-      };
-    };
     rmpc.enable = true;
     zen-browser = {
       enable = true;
@@ -200,7 +183,6 @@ in {
       '';
     };
     mpdris2.enable = true;
-    ollama.enable = true;
   };
 
   stylix.targets.zen-browser.profileNames = ["Default Profile"];

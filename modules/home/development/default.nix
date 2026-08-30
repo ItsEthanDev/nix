@@ -3,7 +3,6 @@ _: {
     ./git
     ./hunk
     ./nixvim
-    ./opencode
     ./pi
   ];
 }
