@@ -55,7 +55,6 @@ in {
     systemPackages = with pkgs; [
       gamescope
       retroarch-free
-      vkbasalt
     ];
   };
 

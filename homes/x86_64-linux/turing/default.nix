@@ -76,7 +76,6 @@ in {
       pkg-config
       pnpm
       rustc
-      snes9x
       tlrc
       unzip
       wine
