@@ -154,7 +154,7 @@ in {
       };
       screen-off = {
         action = "screen_off";
-        enabled = true;
+        enabled = false;
         timeout = 660;
       };
     };
