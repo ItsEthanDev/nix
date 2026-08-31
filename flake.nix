@@ -78,12 +78,20 @@
           }
       );
 
-    checks.x86_64-linux.module-contracts = import ./checks {
-      inherit home-manager inputs nixpkgs;
-      darwinModules = self.darwinModules;
-      homeManagerModules = self.homeManagerModules;
-      nixosModules = self.nixosModules;
+    checks.x86_64-linux = let
       pkgs = pkgsFor "x86_64-linux";
+    in {
+      bun = pkgs.runCommand "bun-version" {nativeBuildInputs = [pkgs.bun];} ''
+        [[ "$(bun --version)" == "1.4.0" ]]
+        touch "$out"
+      '';
+
+      module-contracts = import ./checks {
+        inherit home-manager inputs nixpkgs pkgs;
+        darwinModules = self.darwinModules;
+        homeManagerModules = self.homeManagerModules;
+        nixosModules = self.nixosModules;
+      };
     };
 
     devShells = self.lib.forAllSystems (

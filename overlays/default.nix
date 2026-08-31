@@ -1,8 +1,9 @@
 {lib, ...}: {
-  hyprzoom =
-    import ./hyprzoom;
+  bun = import ./bun;
+  hyprzoom = import ./hyprzoom;
 
   default = lib.composeManyExtensions [
+    (import ./bun)
     (import ./hyprzoom)
   ];
 }
