@@ -7,11 +7,6 @@
 in {
   options.my.remote.ssh = {
     enable = lib.mkEnableOption "SSH remote access";
-    passwordAuthentication = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Whether to allow OpenSSH password and keyboard-interactive authentication.";
-    };
     user = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
       default = null;
@@ -27,8 +22,8 @@ in {
   config = lib.mkIf cfg.enable {
     services.openssh = {
       enable = lib.mkDefault true;
-      settings.PasswordAuthentication = lib.mkDefault cfg.passwordAuthentication;
-      settings.KbdInteractiveAuthentication = lib.mkDefault cfg.passwordAuthentication;
+      settings.KbdInteractiveAuthentication = lib.mkDefault false;
+      settings.PasswordAuthentication = lib.mkDefault false;
     };
 
     users.users = lib.mkIf (cfg.user != null && cfg.keyDirectory != null) (

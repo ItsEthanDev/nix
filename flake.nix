@@ -83,6 +83,9 @@
 
     darwinConfigurations = {
       newton = nix-darwin.lib.darwinSystem {
+        specialArgs = {
+          inherit inputs;
+        };
         modules = [
           {nixpkgs.overlays = [self.overlays.default];}
           self.darwinModules.default

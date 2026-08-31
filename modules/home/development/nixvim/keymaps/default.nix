@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  cfg = config.my.development.nixvim;
+  cfg = config.my.development;
 in {
   imports = [
     ./buffers.nix

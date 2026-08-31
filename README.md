@@ -13,11 +13,10 @@ is documented in [`docs/keybinds.md`](docs/keybinds.md).
 
 - `nixosConfigurations.<host>` contains complete NixOS host configurations.
 - `darwinConfigurations.<host>` contains complete nix-darwin host configurations.
-- `homeConfigurations."<user>@<host>"` contains standalone Home Manager
-  configurations. The same home configurations are also integrated into their
-  corresponding system configurations.
-- `nixosModules`, `darwinModules`, and `homeManagerModules` each expose a
-  `default` aggregate and named top-level module groups.
+- Home Manager configurations are integrated into their corresponding system
+  configurations.
+- `nixosModules`, `darwinModules`, and `homeManagerModules` expose each
+  evaluator's `default` module aggregate.
 - `overlays` exposes named overlays and a composed `default` overlay.
 - `packages.<system>` exposes packages built by this repository.
 - `devShells.<system>` exposes language-specific development shells.
@@ -47,5 +46,4 @@ Run the appropriate command from the repository root:
 ```sh
 sudo nixos-rebuild switch --flake .#turing
 darwin-rebuild switch --flake .#newton
-home-manager switch --flake '.#ethan@turing'
 ```

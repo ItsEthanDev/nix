@@ -19,13 +19,19 @@
 in {
   imports = [
     ./hardware-configuration.nix
-    inputs.noctalia.nixosModules.default
     inputs.noctalia-greeter.nixosModules.default
     inputs.stylix.nixosModules.stylix
   ];
 
   boot = {
+    consoleLogLevel = 3;
+    initrd.verbose = false;
     kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "rd.udev.log_level=3"
+      "rd.systemd.show_status=auto"
+    ];
     loader = {
       efi.canTouchEfiVariables = true;
       limine = {
@@ -52,7 +58,6 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
-      gamescope
       retroarch-free
     ];
   };
@@ -62,12 +67,10 @@ in {
   i18n.defaultLocale = "en_US.UTF-8";
 
   my = {
-    boot.silent.enable = true;
-    desktop.audio.enable = true;
-    gaming.steam.enable = true;
+    desktop.enable = true;
+    gaming.enable = true;
     hardware = {
       camera.droidcam.enable = true;
-      gamepads.enable = true;
       zsa.enable = true;
     };
     remote = {
@@ -110,12 +113,6 @@ in {
   programs = {
     _1password.enable = true;
     _1password-gui.enable = true;
-    gamemode.enable = true;
-    hyprland = {
-      enable = true;
-      withUWSM = true;
-      xwayland.enable = true;
-    };
     localsend = {
       enable = true;
       openFirewall = true;
@@ -130,10 +127,6 @@ in {
         libice
         libsm
       ];
-    };
-    noctalia = {
-      enable = true;
-      recommendedServices.enable = true;
     };
     noctalia-greeter = {
       enable = true;
@@ -175,11 +168,6 @@ in {
     obs-studio = {
       enable = true;
       enableVirtualCamera = true;
-    };
-    steam = {
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-      remotePlay.openFirewall = true;
     };
     zsh.enable = true;
   };

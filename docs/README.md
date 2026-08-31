@@ -44,8 +44,7 @@ modules/home/<capability>/default.nix
 Capabilities may be nested under well-named categories such as `desktop/`,
 `hardware/`, or `terminal/`. A behavior module's directory path should mirror
 its `my.*` option path, excluding the evaluator directory. For example,
-`modules/home/terminal/ghostty/default.nix` owns
-`my.terminal.ghostty.*`.
+`modules/home/terminal/default.nix` owns `my.terminal.*`.
 
 Every independently importable module is a directory with a `default.nix`.
 Private implementation fragments may use descriptive filenames, but they stay
@@ -74,6 +73,28 @@ module cannot be overridden at normal priority.
 
 ## Reusable Modules
 
+Repository modules are deep, opinionated capabilities: a small interface hides
+several coordinated implementation decisions. They are not aliases for upstream
+options or one-file wrappers around individual programs.
+
+### When a Module Earns Its Place
+
+A capability belongs in `modules/` when at least one of these conditions holds:
+
+- multiple hosts reuse the same policy;
+- the implementation coordinates several packages, programs, services, or
+  third-party modules;
+- the implementation hides generated configuration, validation, platform
+  adaptation, or lifecycle behavior;
+- the interface accepts genuine deployment inputs while keeping implementation
+  choices private; or
+- deleting the module would spread meaningful complexity across callers.
+
+Inline behavior in a host when it has one caller and mostly configures one
+upstream program. Do not preserve a module for speculative reuse. Combine
+programs that are consistently selected together when they form one user-facing
+capability, such as the interactive terminal or development environment.
+
 The module trees follow these rules:
 
 - `modules/nixos/`, `modules/darwin/`, and `modules/home/` remain separate.
@@ -81,21 +102,21 @@ The module trees follow these rules:
 - Each behavior-producing module defines `my.<path>.enable` with
   `lib.mkEnableOption`. Importing the module must have no effect until that
   option is explicitly enabled.
-- All behavior is gated by the module's primary `enable` option. Secondary
-  options may have useful inert defaults, but they do not activate behavior on
-  their own.
+- All behavior is gated by the module's primary `enable` option. Private
+  implementation fragments share that gate instead of defining additional
+  public enable options.
 - Non-enable options have explicit types and useful descriptions. Add an option
   only when it is a genuine input to the capability; do not mirror upstream
   options merely for convenience.
-- A module represents one cohesive capability, which may require several
-  packages, programs, or services. Category modules organize imports only; they
-  do not provide bundle-level enable options or configuration.
-- Aggregate `default.nix` files list imports explicitly. Each evaluator exposes
-  a `default` aggregate containing every repository module and named exports for
-  each top-level module directory.
-- Enabling one repository module does not enable another. A module may adapt its
-  own behavior to another enabled feature, but it must not reconfigure or
-  activate that feature.
+- A module may own several programs when their combination is the capability.
+  Avoid import-only category wrappers; an adjacent layer must change the
+  abstraction rather than repeat it.
+- Each evaluator exposes a `default` aggregate that explicitly imports every
+  repository module for that evaluator. Private fragments are imported only by
+  their owning module.
+- Enabling one public repository module does not enable another public
+  repository module. Optional integrations may adapt to another enabled
+  capability without taking ownership of it.
 - Imports of third-party modules belong to the repository module that owns the
   integration. Importing the third-party module must itself remain inert.
 - A host may directly import a third-party module when it owns all of that
@@ -127,8 +148,9 @@ third-party definition would otherwise suppress it; document that exception.
 
 ### Module Shape
 
-The following NixOS module illustrates the expected shape. The package list is
-intentionally additive; the remaining effects are overridable defaults.
+The following abbreviated NixOS module illustrates the expected shape. One
+capability coordinates several upstream systems. The package list is additive;
+the remaining scalar effects are overridable defaults.
 
 ```nix
 {
@@ -137,23 +159,25 @@ intentionally additive; the remaining effects are overridable defaults.
   pkgs,
   ...
 }: let
-  cfg = config.my.desktop.audio;
+  cfg = config.my.gaming;
 in {
-  options.my.desktop.audio.enable = lib.mkEnableOption "desktop audio";
+  options.my.gaming.enable = lib.mkEnableOption "Steam gaming and controller support";
 
   config = lib.mkIf cfg.enable {
-    security.rtkit.enable = lib.mkDefault true;
+    environment.systemPackages = [pkgs.gamescope pkgs.hidapi];
 
-    services.pipewire = {
-      enable = lib.mkDefault true;
-      alsa = {
-        enable = lib.mkDefault true;
-        support32Bit = lib.mkDefault true;
-      };
+    hardware = {
+      steam-hardware.enable = lib.mkDefault true;
+      uinput.enable = lib.mkDefault true;
+      xone.enable = lib.mkDefault true;
     };
 
-    # Keep additive definitions at normal priority so other lists merge.
-    environment.systemPackages = [pkgs.pavucontrol];
+    programs = {
+      gamemode.enable = lib.mkDefault true;
+      steam.enable = lib.mkDefault true;
+    };
+
+    services.joycond.enable = lib.mkDefault true;
   };
 }
 ```

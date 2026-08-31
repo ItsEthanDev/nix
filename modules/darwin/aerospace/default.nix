@@ -11,19 +11,19 @@ in {
     services.aerospace = {
       enable = lib.mkDefault true;
       settings = {
-        automatically-unhide-macos-hidden-apps = true;
-        default-root-container-layout = "tiles";
-        default-root-container-orientation = "auto";
+        automatically-unhide-macos-hidden-apps = lib.mkDefault true;
+        default-root-container-layout = lib.mkDefault "tiles";
+        default-root-container-orientation = lib.mkDefault "auto";
         gaps = {
           inner = {
-            horizontal = 8;
-            vertical = 8;
+            horizontal = lib.mkDefault 8;
+            vertical = lib.mkDefault 8;
           };
           outer = {
-            top = 8;
-            bottom = 8;
-            left = 8;
-            right = 8;
+            top = lib.mkDefault 8;
+            bottom = lib.mkDefault 8;
+            left = lib.mkDefault 8;
+            right = lib.mkDefault 8;
           };
         };
         mode.main.binding = {

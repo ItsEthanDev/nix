@@ -132,8 +132,8 @@ in {
         message = "Desktop notification forwarding requires Linux.";
       }
       {
-        assertion = config.my.desktop.noctalia.enable;
-        message = "Desktop notification forwarding requires Noctalia.";
+        assertion = config.my.graphics.enable;
+        message = "Desktop notification forwarding requires the graphical environment.";
       }
     ];
 

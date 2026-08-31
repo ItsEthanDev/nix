@@ -13,7 +13,6 @@
       discord
       fd
       gh
-      hunk
       jq
       nodejs
       pnpm
@@ -27,35 +26,17 @@
   };
 
   my = {
-    cli = {
-      bat.enable = true;
-      eza.enable = true;
-      fzf.enable = true;
-      gitShortcuts.enable = true;
-      zoxide.enable = true;
-    };
     development = {
+      enable = true;
       git = {
-        enable = true;
         email = "newton@itsEthan.dev";
         name = "Ethan Brady";
       };
-      nixvim.enable = true;
-      pi.enable = true;
     };
-    remote.ssh.enable = true;
-    terminal = {
-      fish = {
-        enable = true;
-        listOnDirectoryChange = true;
-      };
-      starship.enable = true;
-      zsh.enable = true;
-    };
+    terminal.enable = true;
   };
 
   programs = {
-    herdr.enable = true;
     home-manager.enable = true;
     lazygit.enable = true;
   };

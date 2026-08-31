@@ -81,49 +81,16 @@ in {
   };
 
   my = {
-    cli = {
-      bat.enable = true;
-      eza.enable = true;
-      fzf.enable = true;
-      gitShortcuts.enable = true;
-      zoxide.enable = true;
-    };
-    desktop = {
-      notificationForwarding.enable = true;
-      noctalia = {
-        enable = true;
-        compositors.hyprland = {
-          enableIntegration = true;
-          enableKeybindings = true;
-          enableRecommendedStyling = true;
-        };
-      };
-      hyprland.enable = true;
-    };
+    desktop.notificationForwarding.enable = true;
+    graphics.enable = true;
     development = {
+      enable = true;
       git = {
-        enable = true;
         email = "turing@itsEthan.dev";
         name = "Ethan Brady";
       };
-      hunk.enable = true;
-      nixvim.enable = true;
-      pi.enable = true;
     };
-    gaming.mangohud = {
-      enable = true;
-      enableSessionWide = true;
-    };
-    remote.ssh.enable = true;
-    terminal = {
-      fish = {
-        enable = true;
-        listOnDirectoryChange = true;
-      };
-      ghostty.enable = true;
-      herdr.enable = true;
-      starship.enable = true;
-    };
+    terminal.enable = true;
   };
 
   programs = {
@@ -132,24 +99,51 @@ in {
       enable = true;
       enableFishIntegration = true;
     };
-    ghostty.settings.command = lib.getExe config.programs.herdr.package;
-    herdr.settings.terminal.default_shell = lib.getExe pkgs.fish;
+    ghostty = {
+      clearDefaultKeybinds = true;
+      enable = true;
+      enableFishIntegration = true;
+      installBatSyntax = true;
+      settings = {
+        command = lib.getExe config.programs.herdr.package;
+        confirm-close-surface = false;
+        copy-on-select = true;
+        keybind = [
+          "super+q=quit"
+          "super+n=new_window"
+          "ctrl+shift+,=reload_config"
+          "shift+insert=paste_from_clipboard"
+          "ctrl+insert=copy_to_clipboard"
+          "ctrl+shift+-=decrease_font_size:1"
+          "ctrl+shift+==increase_font_size:1"
+          "ctrl+shift+0=reset_font_size"
+        ];
+        quick-terminal-position = "center";
+        quick-terminal-size = "90%,90%";
+        selection-clear-on-copy = true;
+        shell-integration = "fish";
+        window-padding-color = "extend";
+        window-padding-x = 4;
+        window-save-state = "always";
+      };
+    };
     home-manager.enable = true;
     lazygit.enable = true;
-    noctalia.settings.idle.behavior = {
-      lock = {
-        action = "lock";
-        enabled = true;
-        timeout = 600;
-      };
-      lock-and-suspend = {
-        action = "lock_and_suspend";
-        enabled = false;
-      };
-      screen-off = {
-        action = "screen_off";
-        enabled = false;
-        timeout = 660;
+    mangohud = {
+      enable = true;
+      enableSessionWide = true;
+      settings = {
+        display_server = true;
+        fan = true;
+        frametime = true;
+        gamemode = true;
+        gpu_fan = true;
+        gpu_temp = true;
+        no_display = true;
+        ram = true;
+        toggle_hud = "Super_L+Control_L+H";
+        vram = true;
+        wine = true;
       };
     };
     rmpc.enable = true;

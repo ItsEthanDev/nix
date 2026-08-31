@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.development.nixvim;
+  cfg = config.my.development;
 in {
   config = lib.mkIf cfg.enable {
     programs.nixvim.plugins = {
