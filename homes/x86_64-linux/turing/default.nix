@@ -180,6 +180,10 @@ in {
     settings = {
       "misc:mouse_move_enables_dpms" = true;
 
+      exec-once = [
+        "${lib.getExe pkgs.xrandr} --output DP-4 --primary"
+      ];
+
       bind = [
         "SUPER, return, exec, ${terminalCommand}"
         "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
