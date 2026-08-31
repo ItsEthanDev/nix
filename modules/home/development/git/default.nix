@@ -34,24 +34,13 @@ in {
           advice = {
             skippedCherryPicks = false;
           };
-          core = {
-            compression = 9;
-            whitespace = "error";
-            preloadindex = true;
-          };
           format = {
             pretty = "format:%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n";
           };
           init = {
             defaultBranch = "main";
           };
-          log = {
-            abbrevCommit = true;
-          };
-          pull = {
-            default = "current";
-            rebase = true;
-          };
+          pull.rebase = true;
           push = {
             autoSetupRemote = true;
             default = "current";
@@ -64,7 +53,6 @@ in {
           status = {
             branch = true;
             showStash = true;
-            showUntrackedFiles = "all";
           };
           "url \"git@github.com:ItsEthanDev/\"" = {
             insteadOf = "me:";

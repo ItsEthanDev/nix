@@ -1,11 +1,14 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.my.development.nixvim;
 in {
   config = lib.mkIf cfg.enable {
+    home.packages = [pkgs.ripgrep];
+
     programs.nixvim.plugins.mini = {
       enable = lib.mkDefault true;
       mockDevIcons = lib.mkDefault true;

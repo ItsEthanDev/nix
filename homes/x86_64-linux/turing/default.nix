@@ -77,7 +77,6 @@ in {
       tlrc
       unzip
       zip
-      zk
     ];
   };
 
@@ -124,7 +123,6 @@ in {
       ghostty.enable = true;
       herdr.enable = true;
       starship.enable = true;
-      zsh.enable = true;
     };
   };
 

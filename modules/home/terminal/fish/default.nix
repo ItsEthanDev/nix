@@ -34,9 +34,6 @@ in {
         # Disables the startup greeting
         set fish_greeting
 
-        # Sets the SHELL env variable to the fish location
-        set -gx SHELL (which fish)
-
         # History expansion with !!
         function last_history_item
           echo $history[1]

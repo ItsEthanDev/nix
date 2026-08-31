@@ -13,8 +13,6 @@ in {
         servers = {
           # CSS
           cssls.enable = true;
-          # JSON
-          jsonnet_ls.enable = true;
           # Nix
           nixd = {
             enable = true;

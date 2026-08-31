@@ -5,9 +5,7 @@
     ./lualine.nix
     ./mini.nix
     ./noice.nix
-    ./telescope.nix
     ./toggleterm.nix
     ./treesitter.nix
-    ./zk.nix
   ];
 }

@@ -63,17 +63,23 @@ in {
             end
           '';
           formatters_by_ft = {
+            css = [
+              "oxfmt"
+            ];
+            html = [
+              "oxfmt"
+            ];
             javascript = [
-              "biome"
+              "oxfmt"
             ];
             javascriptreact = [
-              "biome"
+              "oxfmt"
             ];
             json = [
-              "biome"
+              "oxfmt"
             ];
-            markdown = [
-              "biome"
+            jsonc = [
+              "oxfmt"
             ];
             nix = [
               "alejandra"
@@ -85,10 +91,10 @@ in {
               "rustfmt"
             ];
             typescript = [
-              "biome"
+              "oxfmt"
             ];
             typescriptreact = [
-              "biome"
+              "oxfmt"
             ];
           };
           notify_on_error = false;

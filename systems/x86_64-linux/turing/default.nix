@@ -83,6 +83,7 @@ in {
   networking = {
     firewall = {
       enable = true;
+      interfaces.tailscale0.allowedTCPPorts = [22];
       # TanStack Start (3000) Vite (5173) Hytale (5520) archipelago (38281)
       allowedTCPPorts = [3000 5173 5520 38281];
       allowedUDPPorts = [3000 5173 5520 38281];
@@ -188,6 +189,7 @@ in {
 
   services = {
     flatpak.enable = true;
+    openssh.openFirewall = false;
     restic.backups.r2 = {
       repository = "s3:https://7be572932f308ef922603015d775fdd2.r2.cloudflarestorage.com/backup/turing";
       environmentFile = "/etc/restic/r2.env";
