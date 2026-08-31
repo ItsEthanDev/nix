@@ -46,8 +46,8 @@ in {
           };
         };
         keybinds = {
-          down = ["Down" "Ctrl+n"];
-          up = ["Up" "Ctrl+p"];
+          down = lib.mkDefault ["Down" "Ctrl+n"];
+          up = lib.mkDefault ["Up" "Ctrl+p"];
         };
         shell = {
           font_family = lib.mkDefault config.stylix.fonts.sansSerif.name;
@@ -138,12 +138,12 @@ in {
           "SUPER, mouse:273, resizewindow"
         ];
         layerrule = {
-          name = "noctalia";
-          "match:namespace" = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$";
-          blur = true;
-          blur_popups = true;
-          ignore_alpha = 0.5;
-          no_anim = true;
+          name = lib.mkDefault "noctalia";
+          "match:namespace" = lib.mkDefault "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd)$";
+          blur = lib.mkDefault true;
+          blur_popups = lib.mkDefault true;
+          ignore_alpha = lib.mkDefault 0.5;
+          no_anim = lib.mkDefault true;
         };
         windowrule = [
           "float on, match:class ^dev\\.noctalia\\.Noctalia$"

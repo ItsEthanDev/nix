@@ -36,8 +36,8 @@ in {
       fish = {
         enable = lib.mkDefault true;
         binds."\\cy" = {
-          command = "accept-autosuggestion";
-          mode = "insert";
+          command = lib.mkDefault "accept-autosuggestion";
+          mode = lib.mkDefault "insert";
         };
         interactiveShellInit = ''
           fish_vi_key_bindings
@@ -53,8 +53,8 @@ in {
           end
         '';
         shellAbbrs."C" = {
-          position = "anywhere";
-          expansion = copyCommand;
+          position = lib.mkDefault "anywhere";
+          expansion = lib.mkDefault copyCommand;
         };
         inherit shellAliases;
       };

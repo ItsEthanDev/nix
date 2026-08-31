@@ -12,29 +12,29 @@ in {
         enable = lib.mkDefault true;
         servers = {
           # CSS
-          cssls.enable = true;
+          cssls.enable = lib.mkDefault true;
           # Nix
           nixd = {
-            enable = true;
+            enable = lib.mkDefault true;
             settings = {
-              nixpkgs.expr = "import ${pkgs.path} { }";
+              nixpkgs.expr = lib.mkDefault "import ${pkgs.path} { }";
             };
           };
           # Rust
           rust_analyzer = {
-            enable = true;
-            installRustc = false;
-            installCargo = false;
+            enable = lib.mkDefault true;
+            installRustc = lib.mkDefault false;
+            installCargo = lib.mkDefault false;
             settings = {
               cargo = {
-                targetDir = "target/rust-analyzer";
+                targetDir = lib.mkDefault "target/rust-analyzer";
               };
             };
           };
           # Tailwind
-          tailwindcss.enable = true;
+          tailwindcss.enable = lib.mkDefault true;
           # Typescript
-          tsgo.enable = true;
+          tsgo.enable = lib.mkDefault true;
         };
       };
     };

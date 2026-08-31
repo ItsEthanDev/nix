@@ -18,8 +18,8 @@ in {
     programs.nixvim = {
       enable = lib.mkDefault true;
       globals = {
-        mapleader = " ";
-        maplocalleader = "\\";
+        mapleader = lib.mkDefault " ";
+        maplocalleader = lib.mkDefault "\\";
       };
       defaultEditor = lib.mkDefault true;
       nixpkgs.useGlobalPackages = lib.mkDefault true;

@@ -27,41 +27,41 @@ in {
           };
         };
         mode.main.binding = {
-          "cmd-f" = "fullscreen";
-          "cmd-t" = "layout floating tiling";
+          "cmd-f" = lib.mkDefault "fullscreen";
+          "cmd-t" = lib.mkDefault "layout floating tiling";
 
-          "cmd-h" = "focus left --boundaries all-monitors-outer-frame";
-          "cmd-j" = "focus down --boundaries all-monitors-outer-frame";
-          "cmd-k" = "focus up --boundaries all-monitors-outer-frame";
-          "cmd-l" = "focus right --boundaries all-monitors-outer-frame";
+          "cmd-h" = lib.mkDefault "focus left --boundaries all-monitors-outer-frame";
+          "cmd-j" = lib.mkDefault "focus down --boundaries all-monitors-outer-frame";
+          "cmd-k" = lib.mkDefault "focus up --boundaries all-monitors-outer-frame";
+          "cmd-l" = lib.mkDefault "focus right --boundaries all-monitors-outer-frame";
 
-          "cmd-alt-h" = "move left --boundaries all-monitors-outer-frame";
-          "cmd-alt-j" = "move down --boundaries all-monitors-outer-frame";
-          "cmd-alt-k" = "move up --boundaries all-monitors-outer-frame";
-          "cmd-alt-l" = "move right --boundaries all-monitors-outer-frame";
+          "cmd-alt-h" = lib.mkDefault "move left --boundaries all-monitors-outer-frame";
+          "cmd-alt-j" = lib.mkDefault "move down --boundaries all-monitors-outer-frame";
+          "cmd-alt-k" = lib.mkDefault "move up --boundaries all-monitors-outer-frame";
+          "cmd-alt-l" = lib.mkDefault "move right --boundaries all-monitors-outer-frame";
 
-          "cmd-1" = "workspace 1";
-          "cmd-2" = "workspace 2";
-          "cmd-3" = "workspace 3";
-          "cmd-4" = "workspace 4";
-          "cmd-5" = "workspace 5";
-          "cmd-6" = "workspace 6";
-          "cmd-7" = "workspace 7";
-          "cmd-8" = "workspace 8";
-          "cmd-9" = "workspace 9";
+          "cmd-1" = lib.mkDefault "workspace 1";
+          "cmd-2" = lib.mkDefault "workspace 2";
+          "cmd-3" = lib.mkDefault "workspace 3";
+          "cmd-4" = lib.mkDefault "workspace 4";
+          "cmd-5" = lib.mkDefault "workspace 5";
+          "cmd-6" = lib.mkDefault "workspace 6";
+          "cmd-7" = lib.mkDefault "workspace 7";
+          "cmd-8" = lib.mkDefault "workspace 8";
+          "cmd-9" = lib.mkDefault "workspace 9";
 
-          "cmd-alt-1" = "move-node-to-workspace 1";
-          "cmd-alt-2" = "move-node-to-workspace 2";
-          "cmd-alt-3" = "move-node-to-workspace 3";
-          "cmd-alt-4" = "move-node-to-workspace 4";
-          "cmd-alt-5" = "move-node-to-workspace 5";
-          "cmd-alt-6" = "move-node-to-workspace 6";
-          "cmd-alt-7" = "move-node-to-workspace 7";
-          "cmd-alt-8" = "move-node-to-workspace 8";
-          "cmd-alt-9" = "move-node-to-workspace 9";
+          "cmd-alt-1" = lib.mkDefault "move-node-to-workspace 1";
+          "cmd-alt-2" = lib.mkDefault "move-node-to-workspace 2";
+          "cmd-alt-3" = lib.mkDefault "move-node-to-workspace 3";
+          "cmd-alt-4" = lib.mkDefault "move-node-to-workspace 4";
+          "cmd-alt-5" = lib.mkDefault "move-node-to-workspace 5";
+          "cmd-alt-6" = lib.mkDefault "move-node-to-workspace 6";
+          "cmd-alt-7" = lib.mkDefault "move-node-to-workspace 7";
+          "cmd-alt-8" = lib.mkDefault "move-node-to-workspace 8";
+          "cmd-alt-9" = lib.mkDefault "move-node-to-workspace 9";
 
-          "cmd-alt-tab" = "focus-monitor --wrap-around next";
-          "cmd-alt-shift-tab" = "move-workspace-to-monitor --wrap-around next";
+          "cmd-alt-tab" = lib.mkDefault "focus-monitor --wrap-around next";
+          "cmd-alt-shift-tab" = lib.mkDefault "move-workspace-to-monitor --wrap-around next";
         };
       };
     };

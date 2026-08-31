@@ -13,12 +13,12 @@ in {
       enable = lib.mkDefault true;
       mockDevIcons = lib.mkDefault true;
       modules = {
-        ai.enable = true;
-        basics.enable = true;
-        bracketed.enable = true;
-        bufremove.enable = true;
+        ai.enable = lib.mkDefault true;
+        basics.enable = lib.mkDefault true;
+        bracketed.enable = lib.mkDefault true;
+        bufremove.enable = lib.mkDefault true;
         clue = {
-          clues = [
+          clues = lib.mkDefault [
             {
               mode = "n";
               keys = "<Leader>b";
@@ -77,7 +77,7 @@ in {
             {__raw = "require('mini.clue').gen_clues.windows({ submode_resize = true })";}
             {__raw = "require('mini.clue').gen_clues.z()";}
           ];
-          triggers = [
+          triggers = lib.mkDefault [
             {
               mode = ["n" "x"];
               keys = "<Leader>";
@@ -132,36 +132,36 @@ in {
             }
           ];
         };
-        cmdline.enable = true;
-        comment.enable = true;
-        completion.enable = true;
-        cursorword.enable = true;
-        diff.enable = true;
-        extra.enable = true;
-        files.enable = true;
-        git.enable = true;
-        hipatterns.enable = true;
-        icons.enable = true;
-        indentscope.enable = true;
-        map.enable = true;
-        move.enable = true;
-        pairs.enable = true;
-        pick.enable = true;
-        snippets.enable = true;
-        splitjoin.enable = true;
+        cmdline.enable = lib.mkDefault true;
+        comment.enable = lib.mkDefault true;
+        completion.enable = lib.mkDefault true;
+        cursorword.enable = lib.mkDefault true;
+        diff.enable = lib.mkDefault true;
+        extra.enable = lib.mkDefault true;
+        files.enable = lib.mkDefault true;
+        git.enable = lib.mkDefault true;
+        hipatterns.enable = lib.mkDefault true;
+        icons.enable = lib.mkDefault true;
+        indentscope.enable = lib.mkDefault true;
+        map.enable = lib.mkDefault true;
+        move.enable = lib.mkDefault true;
+        pairs.enable = lib.mkDefault true;
+        pick.enable = lib.mkDefault true;
+        snippets.enable = lib.mkDefault true;
+        splitjoin.enable = lib.mkDefault true;
         starter = {
-          enable = true;
-          header = ''
+          enable = lib.mkDefault true;
+          header = lib.mkDefault ''
             ███╗   ██╗██╗██╗  ██╗██╗   ██╗██╗███╗   ███╗
             ████╗  ██║██║╚██╗██╔╝██║   ██║██║████╗ ████║
             ██╔██╗ ██║██║ ╚███╔╝ ██║   ██║██║██╔████╔██║
             ██║╚██╗██║██║ ██╔██╗ ╚██╗ ██╔╝██║██║╚██╔╝██║
             ██║ ╚████║██║██╔╝ ██╗ ╚████╔╝ ██║██║ ╚═╝ ██║
           '';
-          footer = "";
+          footer = lib.mkDefault "";
         };
-        surround.enable = true;
-        trailspace.enable = true;
+        surround.enable = lib.mkDefault true;
+        trailspace.enable = lib.mkDefault true;
       };
     };
   };

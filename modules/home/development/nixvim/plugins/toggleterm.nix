@@ -10,13 +10,13 @@ in {
       plugins.toggleterm = {
         enable = lib.mkDefault true;
         settings = {
-          direction = "float";
-          open_mapping = "[[<C-/>]]";
-          insert_mappings = true;
-          terminal_mappings = true;
-          start_in_insert = true;
-          shade_terminals = true;
-          float_opts.border = "curved";
+          direction = lib.mkDefault "float";
+          open_mapping = lib.mkDefault "[[<C-/>]]";
+          insert_mappings = lib.mkDefault true;
+          terminal_mappings = lib.mkDefault true;
+          start_in_insert = lib.mkDefault true;
+          shade_terminals = lib.mkDefault true;
+          float_opts.border = lib.mkDefault "curved";
         };
       };
     };

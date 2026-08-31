@@ -67,12 +67,24 @@
       inherit (nixpkgs) lib;
     };
 
-    packages = self.lib.forAllSystems (
-      system:
-        import ./packages {
-          pkgs = pkgsFor system;
-        }
-    );
+    packages =
+      nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ] (
+        system:
+          import ./packages {
+            pkgs = pkgsFor system;
+          }
+      );
+
+    checks.x86_64-linux.module-contracts = import ./checks {
+      inherit home-manager inputs nixpkgs;
+      darwinModules = self.darwinModules;
+      homeManagerModules = self.homeManagerModules;
+      nixosModules = self.nixosModules;
+      pkgs = pkgsFor "x86_64-linux";
+    };
 
     devShells = self.lib.forAllSystems (
       system:

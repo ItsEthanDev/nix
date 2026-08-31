@@ -49,7 +49,7 @@ in {
         autoInstall.enable = lib.mkDefault true;
         enable = lib.mkDefault true;
         settings = {
-          format_on_save = mkRaw ''
+          format_on_save = lib.mkDefault (mkRaw ''
             function(bufnr)
               if vim.g.autoformat == false or vim.b[bufnr].autoformat == false then
                 return
@@ -61,44 +61,44 @@ in {
                 stop_after_first = true,
               }
             end
-          '';
+          '');
           formatters_by_ft = {
-            css = [
+            css = lib.mkDefault [
               "oxfmt"
             ];
-            html = [
+            html = lib.mkDefault [
               "oxfmt"
             ];
-            javascript = [
+            javascript = lib.mkDefault [
               "oxfmt"
             ];
-            javascriptreact = [
+            javascriptreact = lib.mkDefault [
               "oxfmt"
             ];
-            json = [
+            json = lib.mkDefault [
               "oxfmt"
             ];
-            jsonc = [
+            jsonc = lib.mkDefault [
               "oxfmt"
             ];
-            nix = [
+            nix = lib.mkDefault [
               "alejandra"
             ];
-            python = [
+            python = lib.mkDefault [
               "black"
             ];
-            rust = [
+            rust = lib.mkDefault [
               "rustfmt"
             ];
-            typescript = [
+            typescript = lib.mkDefault [
               "oxfmt"
             ];
-            typescriptreact = [
+            typescriptreact = lib.mkDefault [
               "oxfmt"
             ];
           };
-          notify_on_error = false;
-          notify_no_formatters = false;
+          notify_on_error = lib.mkDefault false;
+          notify_no_formatters = lib.mkDefault false;
         };
       };
     };

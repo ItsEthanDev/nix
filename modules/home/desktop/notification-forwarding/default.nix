@@ -45,7 +45,7 @@
       def publish(topic, app_name, summary):
           payload = json.dumps({
               "topic": topic,
-              "title": app_name or "turing",
+              "title": app_name or "Desktop",
               "message": summary or "Desktop notification",
           }).encode("utf-8")
           request = urllib.request.Request(
@@ -111,13 +111,6 @@
 in {
   options.my.desktop.notificationForwarding = {
     enable = lib.mkEnableOption "forwarding desktop notification titles to ntfy while the session is locked";
-    # Set up the default topic file with:
-    #
-    # install -d -m 700 ~/.config/notification-forwarding
-    # topic="$(tr -d - </proc/sys/kernel/random/uuid)$(tr -d - </proc/sys/kernel/random/uuid)"
-    # printf '%s\n' "$topic" > ~/.config/notification-forwarding/ntfy-topic
-    # chmod 600 ~/.config/notification-forwarding/ntfy-topic
-    # echo "$topic"
     topicFile = lib.mkOption {
       type = lib.types.str;
       default = "${config.xdg.configHome}/notification-forwarding/ntfy-topic";
@@ -136,6 +129,19 @@ in {
         message = "Desktop notification forwarding requires the graphical environment.";
       }
     ];
+
+    home.activation.initializeNotificationForwardingTopic = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      topic_file=${lib.escapeShellArg cfg.topicFile}
+      topic_dir="$(${lib.getExe' pkgs.coreutils "dirname"} "$topic_file")"
+      ${lib.getExe' pkgs.coreutils "install"} -d -m 0700 "$topic_dir"
+      ${lib.getExe' pkgs.coreutils "chmod"} 0700 "$topic_dir"
+      if [[ ! -e "$topic_file" ]]; then
+        umask 077
+        topic="$(${lib.getExe' pkgs.coreutils "tr"} -d - </proc/sys/kernel/random/uuid)$(${lib.getExe' pkgs.coreutils "tr"} -d - </proc/sys/kernel/random/uuid)"
+        printf '%s\n' "$topic" > "$topic_file"
+      fi
+      ${lib.getExe' pkgs.coreutils "chmod"} 0600 "$topic_file"
+    '';
 
     programs.noctalia.settings.hooks = {
       session_locked = "systemctl --user start notification-forwarding.service";

@@ -1,12 +1,8 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home = {
     stateVersion = "24.05";
-    username = lib.mkForce "ethan";
-    homeDirectory = lib.mkForce "/Users/ethan";
+    username = "ethan";
+    homeDirectory = "/Users/ethan";
     packages = with pkgs; [
       bun
       cargo

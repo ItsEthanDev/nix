@@ -59,6 +59,8 @@
     fonts.sizes.terminal = 16;
   };
 
+  users.users.ethan.home = "/Users/ethan";
+
   system = {
     defaults = {
       ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;

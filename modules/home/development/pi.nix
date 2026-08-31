@@ -11,15 +11,15 @@ in {
       enable = lib.mkDefault true;
       extraPackages = [pkgs.nodejs];
       keybindings = {
-        "app.model.cycleForward" = [];
-        "tui.select.down" = ["down" "ctrl+n"];
-        "tui.select.up" = ["up" "ctrl+p"];
+        "app.model.cycleForward" = lib.mkDefault [];
+        "tui.select.down" = lib.mkDefault ["down" "ctrl+n"];
+        "tui.select.up" = lib.mkDefault ["up" "ctrl+p"];
       };
       settings = {
         branchSummary.skipPrompt = lib.mkDefault true;
         defaultProvider = lib.mkDefault "openai-codex";
         defaultModel = lib.mkDefault "gpt-5.6-sol";
-        enabledModels = ["openai-codex/gpt-5.6-*"];
+        enabledModels = lib.mkDefault ["openai-codex/gpt-5.6-*"];
         packages = [
           "npm:pi-web-access"
         ];

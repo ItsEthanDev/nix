@@ -20,6 +20,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = (cfg.user == null) == (cfg.keyDirectory == null);
+        message = "my.remote.ssh.user and my.remote.ssh.keyDirectory must be set together.";
+      }
+    ];
+
     services.openssh = {
       enable = lib.mkDefault true;
       settings.KbdInteractiveAuthentication = lib.mkDefault false;

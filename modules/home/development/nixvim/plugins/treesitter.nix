@@ -10,9 +10,9 @@ in {
       plugins.treesitter = {
         enable = lib.mkDefault true;
         settings = {
-          auto_install = true;
-          highlight.enable = true;
-          indent.enable = true;
+          auto_install = lib.mkDefault true;
+          highlight.enable = lib.mkDefault true;
+          indent.enable = lib.mkDefault true;
         };
       };
     };

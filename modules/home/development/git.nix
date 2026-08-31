@@ -45,7 +45,6 @@ in {
             email = lib.mkDefault cfg.git.email;
             name = lib.mkDefault cfg.git.name;
           };
-          "url \"git@github.com:ItsEthanDev/\"".insteadOf = lib.mkDefault "me:";
         };
       };
     };

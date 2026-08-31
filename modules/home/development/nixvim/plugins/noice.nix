@@ -12,13 +12,13 @@ in {
         settings = {
           # Use Noice's markdown rendering for LSP hover/signature and cmp docs.
           lsp.override = {
-            "vim.lsp.util.convert_input_to_markdown_lines" = true;
-            "vim.lsp.util.stylize_markdown" = true;
-            "cmp.entry.get_documentation" = true;
+            "vim.lsp.util.convert_input_to_markdown_lines" = lib.mkDefault true;
+            "vim.lsp.util.stylize_markdown" = lib.mkDefault true;
+            "cmp.entry.get_documentation" = lib.mkDefault true;
           };
 
           # Collapse common file/write progress messages into the compact mini view.
-          routes = [
+          routes = lib.mkDefault [
             {
               filter = {
                 event = "msg_show";
@@ -34,9 +34,9 @@ in {
 
           # Keep search and command input in the lower UI and send long output to a split.
           presets = {
-            bottom_search = true;
-            command_palette = true;
-            long_message_to_split = true;
+            bottom_search = lib.mkDefault true;
+            command_palette = lib.mkDefault true;
+            long_message_to_split = lib.mkDefault true;
           };
         };
       };
