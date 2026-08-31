@@ -8,11 +8,9 @@
     username = lib.mkForce "ethan";
     homeDirectory = lib.mkForce "/Users/ethan";
     packages = with pkgs; [
-      biome
       bun
       cargo
       discord
-      fastfetch
       fd
       gh
       hunk

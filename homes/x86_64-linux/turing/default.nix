@@ -58,12 +58,10 @@ in {
 
     packages = with pkgs; [
       archipelago
-      biome
       bun
       cargo
       celluloid
       discord
-      fastfetch
       fd
       gcc
       gh
@@ -78,7 +76,6 @@ in {
       rustc
       tlrc
       unzip
-      wine
       zip
       zk
     ];

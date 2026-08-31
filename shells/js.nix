@@ -4,6 +4,5 @@ pkgs.mkShell {
     nodejs
     pnpm
     bun
-    biome
   ];
 }
