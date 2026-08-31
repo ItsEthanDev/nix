@@ -1,68 +1,49 @@
 # AGENTS.md
 
-## Repository purpose
-- Personal Nix flake repository for configuring machines and user environments.
-- Source of truth for NixOS, macOS (nix-darwin), and Home Manager setups.
-- Works primarily through Nix modules and flake outputs.
+## Authority
 
-## Directory overview
-- `README.md` describes the flake outputs, repository map, and deployment commands.
-- `docs/README.md` is the canonical guide to the intended repository and module organization.
-- Root contains the flake entry (`flake.nix`) and flake lock (`flake.lock`).
-- Configuration is organized by platform and layer (system vs. user).
-- Supporting directories group reusable modules, overlays, and dev shells.
-- This repo is Nix-first: changes are expressed in `.nix` files.
+- [`specs/constitution.md`](specs/constitution.md) is the canonical owner of repository governance. Apply every relevant principle before changing code or durable documentation.
+- [`README.md`](README.md) owns repository orientation, current outputs, navigation, and deployment commands.
+- [`docs/keybinds.md`](docs/keybinds.md) owns the intended Linux global keybinding design.
+- [`static/ai/README.md`](static/ai/README.md) explains the configured AI-development assets.
+- Treat current code and descriptive documentation as evidence, not policy. When they conflict with the constitution, surface the conflict instead of preserving accidental behavior.
 
-## Structure (high level)
-- `systems/` holds host-specific system configurations.
-- `homes/` holds host-specific user configurations.
-- `modules/` contains reusable Nix modules grouped by platform.
-- `shells/` contains development shell definitions for tooling.
-- `overlays/` contains nixpkgs overlays.
-- `static/` contains non-secret static assets used by configuration.
+## Working procedure
 
-## Editing guidelines
-- Prefer small, focused changes; keep diffs minimal.
-- Follow existing formatting and indentation (two spaces, no tabs).
-- Keep module files declarative and side-effect free.
-- Avoid adding comments unless the user requests them.
-- Do not add external API documentation URLs as code comments; this repository overrides the parent instruction requiring them.
-- Do not introduce unrelated refactors.
+- Read relevant `.nix` files before editing them.
+- Keep changes focused and avoid unrelated refactors.
+- Do not create files unless the requested work needs them.
+- Preserve declarative, side-effect-free Nix module definitions.
+- Do not add comments unless they prevent likely misunderstanding or the user requests them.
+- Do not add external API documentation URLs as code comments.
+- Ask when a required host or user choice is unclear. If the current host is relevant and unspecified, run `hostname` rather than asking for that fact.
 
-## Nix style
-- Use `let ... in` blocks when reuse improves clarity.
-- Keep attribute sets sorted when reasonable.
-- Use `inherit` for passing through values rather than repeating names.
-- Avoid unnecessary string interpolation.
-- Use `with pkgs;` sparingly and only for short lists.
+## Nix conventions
 
-## Imports and module patterns
-- Keep `imports = [ ... ];` aligned and grouped by purpose.
-- Avoid deeply nested logic in modules; split into smaller modules when needed.
-- Use `specialArgs` for passing inputs instead of global references.
-- Prefer `config`/`options` separation when authoring new modules.
+- Format Nix with Alejandra when available and use two-space indentation without tabs.
+- Use lowercase kebab-case for directories and filenames and lower camelCase for multi-word option names.
+- Keep imports explicit and organized by purpose.
+- Use `let ... in` when reuse improves clarity.
+- Keep attribute sets reasonably ordered and use `inherit` when it improves clarity.
+- Avoid unnecessary interpolation and use `with pkgs;` only for short, clear lists.
+- Pass flake inputs through explicit module arguments such as `specialArgs` or `extraSpecialArgs`.
+- For non-trivial modules, separate `options` from `config` and bind the module configuration locally.
 
-## Naming conventions
-- Use lowercase kebab-case for directories and filenames.
-- Use lower camelCase for multi-word option names.
-- Hostnames and user names should match the existing directory layout.
-- Keep module file names descriptive and consistent.
+Module design, ownership, priorities, assertions, and composition are governed by [PR-002 through PR-006](specs/constitution.md); do not duplicate those rules here.
 
-## Formatting
-- Use Alejandra for Nix formatting when available.
-- Maintain 2-space indentation.
-- Keep lists and attribute sets trailing commas consistent with existing style.
+## Verification
 
-## Common commands
-- See `README.md` for deployment commands.
+Follow [PR-010](specs/constitution.md). At minimum:
 
-## Agent guidance
-- Before modifying `static/ai/skills/project-documentation/`, read `static/ai/docs/project-documentation.md` and preserve its design goals and boundaries.
-- Follow the target organization and module boundaries in `docs/README.md`.
-- Treat repository documentation as intended target state; do not rewrite it solely to match incomplete implementation.
-- Read relevant `.nix` files before editing.
-- Don’t create new files unless requested.
-- Keep changes within the existing structure.
-- Don’t assume missing directories or modules.
-- Ask questions when host or user names are unclear.
-- Run `hostname` to determine the current system host name if the user doesn't specify.
+- Format changed Nix files when Alejandra is available.
+- Evaluate or check every affected flake output that the current environment supports.
+- Use targeted behavioral checks when evaluation cannot prove the intended result.
+- Report commands run, results, and any surface that could not be verified.
+
+## Scoped instructions
+
+Before modifying `static/ai/skills/project-documentation/`, read `static/ai/docs/project-documentation.md` completely and preserve its documented design goals and boundaries.
+
+## Sources
+
+These agent procedures implement [PR-001 through PR-010](specs/constitution.md). The constitution remains authoritative if this file disagrees with it.
