@@ -108,7 +108,7 @@ Revise rather than adopt when invocation is useful but target selection or workf
 ## Revision anchors
 
 - **Baseline revision:** `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`
-- **Trial definition revision:** Pending until this artifact is committed
+- **Trial definition revision:** `24d58e0dd0394f21879d85e8882ed0bcdfebef1d`
 - **Implementation revision:** Not started
 - **Outcome revision:** Not started
 - **Anticipated implementation path:** `static/ai/skills/wait-what/SKILL.md`
