@@ -1,8 +1,11 @@
 # Trial: Inline `wait what` trigger
 
-- **Status:** Proposed
+- **Status:** Ready
 - **Created:** 2026-09-01
-- **Review condition:** At least one week of use and five genuine clarification opportunities after implementation
+- **Implemented:** 2026-09-01
+- **Activated:** Not started
+- **Earliest review:** One week after activation
+- **Review condition:** At least one week of use and five genuine clarification opportunities after activation
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
 ## Problem
@@ -82,7 +85,7 @@ For each genuine opportunity, record:
 | Date | Context | Trigger used | Trigger recognized | Correct target | State preserved | Proceeded next turn | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 
-No observations have been recorded because runtime implementation has not begun.
+No observations have been recorded yet.
 
 ### Measures
 
@@ -109,11 +112,11 @@ Revise rather than adopt when invocation is useful but target selection or workf
 
 - **Baseline revision:** `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`
 - **Trial definition revision:** `24d58e0dd0394f21879d85e8882ed0bcdfebef1d`
-- **Implementation revision:** Not started
+- **Implementation revision:** `a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a`
 - **Outcome revision:** Not started
-- **Anticipated implementation path:** `static/ai/skills/wait-what/SKILL.md`
+- **Implementation path:** `static/ai/skills/wait-what/SKILL.md`
 
-The baseline revision contains the accepted runtime skill before this trial. Commit the runtime implementation separately from this artifact, then record its full hash here in a subsequent documentation commit.
+The baseline revision contains the accepted runtime skill before this trial. The implementation revision changes only the runtime path listed above.
 
 ## Rollback
 
@@ -134,7 +137,7 @@ Rollback must preserve this trial artifact and record the rejected or revised ou
 
 ## Outcome
 
-No outcome has been recorded. The trial remains `Proposed`, and runtime behavior must not change until the implementation is committed separately.
+No outcome has been recorded. The trial remains `Ready` until the configured skill is deployed and activation evidence is recorded.
 
 ## Sources
 
