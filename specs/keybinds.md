@@ -1,9 +1,10 @@
-# Global Keybinding Strategy
+# Global Keybindings
 
-This document defines the intended grammar and catalog for global keyboard
-bindings on Linux. A global binding is available regardless of which
-application has focus. Bindings owned by the active context and pointer gestures
-are outside this document's scope.
+This living specification defines the intended grammar and catalog for global
+keyboard bindings on Linux. It owns the interaction model that individual Nix
+bindings implement but cannot express adequately. A global binding is available
+regardless of which application has focus. Bindings owned by the active context
+and pointer gestures are outside this specification's scope.
 
 The strategy is compositor-independent and describes actions rather than the
 keystrokes an implementation forwards. macOS may approximate the same feel
@@ -163,3 +164,9 @@ Capture destinations follow the configured screenshot behavior.
 
 Other self-identifying hardware keys invoke their matching action without
 `Super`, but machine-specific hardware controls are not cataloged here.
+
+## Sources
+
+This specification is constrained by
+[PR-009](constitution.md#pr-009--nix-owns-configuration-behavior) of the project
+constitution. It does not amend repository governance.

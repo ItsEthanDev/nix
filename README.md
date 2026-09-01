@@ -42,14 +42,14 @@ Home Manager is composed into these system configurations, so system and home ge
 | `packages/` | Packages exposed by the flake. |
 | `shells/` | Development shells exposed by the flake. |
 | `static/` | Non-secret static assets consumed by configuration. |
-| `specs/` | Canonical project governance and any future specifications. |
-| `docs/` | Focused documentation whose semantics are not adequately expressed by Nix. |
+| `specs/` | Canonical project governance and living specifications. |
 
 ## Documentation
 
+- [Specification index and conventions](specs/README.md) — organization and maintenance of living specifications.
 - [Project constitution](specs/constitution.md) — canonical repository governance.
-- [Global keybinding design](docs/keybinds.md) — intended Linux interaction model.
-- [AI-assisted development](static/ai/README.md) — purpose and organization of the configured agent skills.
+- [Global keybindings](specs/keybinds.md) — intended Linux interaction model.
+- [AI-assisted development](specs/ai/spec.md) — desired collaboration model for configured agent assets.
 - [Agent instructions](AGENTS.md) — repository procedures for coding agents.
 
 ## Sources

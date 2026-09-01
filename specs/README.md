@@ -1,0 +1,12 @@
+# Specifications
+
+Specifications are living, authoritative descriptions of intent that cannot be expressed adequately by the Nix configuration. Amend the owning specification when that intent changes, then reconcile its implementation and direct dependents.
+
+Use a flat `specs/<category>.md` file by default. Introduce a category directory only when plans, research, contracts, or other supporting artifacts improve ownership or comprehension. Apply structures, lifecycle metadata, normative terms, user stories, and stable identifiers only when they make a specification clearer or provide needed traceability.
+
+Current specifications:
+
+- [AI-assisted development](ai/spec.md), with supporting specifications for individual capabilities
+- [Global keybindings](keybinds.md)
+
+Repository governance remains canonical in the [project constitution](constitution.md), especially [PR-009](constitution.md#pr-009--nix-owns-configuration-behavior).

@@ -4,8 +4,10 @@
 
 - [`specs/constitution.md`](specs/constitution.md) is the canonical owner of repository governance. Apply every relevant principle before changing code or durable documentation.
 - [`README.md`](README.md) owns repository orientation, current outputs, navigation, and deployment commands.
-- [`docs/keybinds.md`](docs/keybinds.md) owns the intended Linux global keybinding design.
-- [`static/ai/README.md`](static/ai/README.md) explains the configured AI-development assets.
+- [`specs/README.md`](specs/README.md) defines how living specifications are organized and maintained.
+- [`specs/keybinds.md`](specs/keybinds.md) owns the intended Linux global keybinding design.
+- [`specs/ai/spec.md`](specs/ai/spec.md) owns the desired collaboration model for configured AI-development assets.
+- Local READMEs provide brief navigation to those canonical owners rather than duplicating their semantics.
 - Treat current code and descriptive documentation as evidence, not policy. When they conflict with the constitution, surface the conflict instead of preserving accidental behavior.
 
 ## Working procedure
@@ -42,7 +44,7 @@ Follow [PR-010](specs/constitution.md). At minimum:
 
 ## Scoped instructions
 
-Before modifying `static/ai/skills/project-documentation/`, read `static/ai/docs/project-documentation.md` completely and preserve its documented design goals and boundaries.
+Before modifying `static/ai/skills/project-documentation/`, read `specs/ai/project-documentation.md` completely and preserve its documented design goals and boundaries.
 
 ## Sources
 
