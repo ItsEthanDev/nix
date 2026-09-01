@@ -111,18 +111,21 @@ Revise rather than adopt when invocation is useful but target selection or workf
 
 - **Baseline revision:** `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`
 - **Trial definition revision:** `24d58e0dd0394f21879d85e8882ed0bcdfebef1d`
-- **Implementation revision:** `a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a`
+- **Implementation revisions:**
+  - `a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a` — initial inline trigger implementation
+  - `2412948d82346e1e637b53f814397a2681dc40aa` — simplified trigger guidance before evaluation
 - **Outcome revision:** Not started
 - **Implementation path:** `static/ai/skills/wait-what/SKILL.md`
 
-The baseline revision contains the accepted runtime skill before this trial. The implementation revision changes only the runtime path listed above.
+The baseline revision contains the accepted runtime skill before this trial. The implementation revisions change only the runtime path listed above.
 
 ## Rollback
 
-Before dependent work builds on the trial, revert its atomic implementation commit:
+Before dependent work builds on the trial, revert its atomic implementation commits in reverse chronological order:
 
 ```sh
-git revert <implementation-revision>
+git revert 2412948d82346e1e637b53f814397a2681dc40aa
+git revert a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a
 ```
 
 If later work prevents a clean revert, restore the affected runtime path from the baseline and commit the reconciliation:

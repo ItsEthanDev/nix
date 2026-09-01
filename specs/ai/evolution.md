@@ -53,15 +53,16 @@ Record full Git commit hashes for:
 
 - **Baseline revision:** A commit containing the last accepted version of every affected runtime path before implementation.
 - **Trial definition revision:** The commit that establishes the proposed trial.
-- **Implementation revision:** The atomic commit that activates the experimental behavior.
+- **Implementation revisions:** The atomic commits that activate or materially revise the experimental behavior.
 - **Outcome revision:** The commit that adopts, revises, or removes the behavior and records the result.
 
-Record every runtime path changed by the implementation. Keep one trial's runtime changes in an atomic commit without unrelated edits. Because the implementation hash cannot be recorded until that commit exists, add it to the trial artifact in a subsequent documentation commit.
+Record every runtime path changed by the implementation. Keep each runtime change in an atomic commit without unrelated edits. Because an implementation hash cannot be recorded until its commit exists, add it to the trial artifact in a subsequent documentation commit.
 
-Prefer reverting the atomic implementation commit while no later work depends on it:
+Prefer reverting implementation commits in reverse chronological order while no later work depends on them:
 
 ```sh
-git revert <implementation-revision>
+git revert <latest-implementation-revision>
+git revert <earlier-implementation-revision>
 ```
 
 When later work has become coupled to the trial, restore only the affected paths from the baseline and reconcile dependents explicitly:
