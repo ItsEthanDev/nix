@@ -114,6 +114,7 @@ Revise rather than adopt when invocation is useful but target selection or workf
 - **Implementation revisions:**
   - `a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a` — initial inline trigger implementation
   - `2412948d82346e1e637b53f814397a2681dc40aa` — simplified trigger guidance before evaluation
+  - `c64ea215116c2a8bc376f80b874f88b59e2051be` — removed runtime coupling to the grilling skill
 - **Outcome revision:** Not started
 - **Implementation path:** `static/ai/skills/wait-what/SKILL.md`
 
@@ -124,6 +125,7 @@ The baseline revision contains the accepted runtime skill before this trial. The
 Before dependent work builds on the trial, revert its atomic implementation commits in reverse chronological order:
 
 ```sh
+git revert c64ea215116c2a8bc376f80b874f88b59e2051be
 git revert 2412948d82346e1e637b53f814397a2681dc40aa
 git revert a0ee2fc7e4ae40d121ca6e2a5265c4487c4bce7a
 ```
