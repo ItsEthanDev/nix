@@ -24,14 +24,13 @@ A directly verifiable correction or an already accepted requirement does not nee
 ## Trial lifecycle
 
 - **Proposed:** The hypothesis, scope, evaluation, and baseline are recorded; runtime behavior has not changed.
-- **Ready:** The implementation revision is recorded, but the behavior has not yet been activated in its real environment.
-- **Trialing:** Activation is recorded and the behavior is available for observation.
+- **Trialing:** The implementation revision is recorded and the behavior is available for observation through normal configuration use.
 - **Adopted:** Evidence supports retaining the behavior, and its durable meaning has been promoted to a directive or capability specification.
 - **Revised:** Evidence supports another bounded variation; record the new hypothesis and revision anchors without rewriting the prior result.
 - **Rejected:** Evidence does not support retaining the behavior, and the implementation has been reverted or otherwise removed.
 - **Inconclusive:** The review condition was reached without enough evidence for adoption or rejection.
 
-A status changes how the artifact may be used, so every trial records one. A trial may return from `Inconclusive` to `Trialing` when its observation period continues without changing the hypothesis. When implementation and activation are the same operation, a trial may move directly from `Proposed` to `Trialing`.
+A status changes how the artifact may be used, so every trial records one. A trial may return from `Inconclusive` to `Trialing` when its observation period continues without changing the hypothesis.
 
 ## Define a trial
 
@@ -58,8 +57,6 @@ Record full Git commit hashes for:
 - **Outcome revision:** The commit that adopts, revises, or removes the behavior and records the result.
 
 Record every runtime path changed by the implementation. Keep one trial's runtime changes in an atomic commit without unrelated edits. Because the implementation hash cannot be recorded until that commit exists, add it to the trial artifact in a subsequent documentation commit.
-
-When activation requires deployment or another operation after implementation, record the activation date and evidence before starting the observation period. Review dates and usage counts begin at activation, not at the implementation commit.
 
 Prefer reverting the atomic implementation commit while no later work depends on it:
 

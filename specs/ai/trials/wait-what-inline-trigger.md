@@ -1,11 +1,10 @@
 # Trial: Inline `wait what` trigger
 
-- **Status:** Ready
+- **Status:** Trialing
 - **Created:** 2026-09-01
 - **Implemented:** 2026-09-01
-- **Activated:** Not started
-- **Earliest review:** One week after activation
-- **Review condition:** At least one week of use and five genuine clarification opportunities after activation
+- **Earliest review:** 2026-09-08
+- **Review condition:** At least one week of use and five genuine clarification opportunities after implementation
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
 ## Problem
@@ -137,7 +136,7 @@ Rollback must preserve this trial artifact and record the rejected or revised ou
 
 ## Outcome
 
-No outcome has been recorded. The trial remains `Ready` until the configured skill is deployed and activation evidence is recorded.
+No outcome has been recorded. The trial remains `Trialing` until its review condition is satisfied and the evidence supports adoption, revision, rejection, or an inconclusive result.
 
 ## Sources
 
