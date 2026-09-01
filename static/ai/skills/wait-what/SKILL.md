@@ -15,6 +15,4 @@ Re-pitch only the part that did not land while preserving the surrounding conver
 3. Re-explain the target with only the context needed to understand it. Use ASD-STE100 Simplified Technical English and the established ubiquitous language from the applicable `CONTEXT.md` when one exists.
 4. Stop after the scoped clarification so the user can respond.
 
-During a grilling session, record the user's other answers, leave the marked question unanswered, re-explain only that question, and wait before advancing branches that depend on it.
-
 When no target can be identified responsibly, ask one concise targeting question instead of re-pitching the whole response.
