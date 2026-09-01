@@ -1,23 +1,24 @@
 ---
 name: principle-never-block-on-the-human
-description: "Apply when tempted to ask 'should I do X?' on reversible work. Proceed, present the result, let the human course-correct after the fact; reserve confirmation for irreversible actions."
+description: "Apply when tempted to ask for permission before routine, reversible work. Proceed when intent is clear; ask when unresolved choices materially affect product intent, architecture, security, or maintainability; confirm irreversible actions."
 disable-model-invocation: true
 ---
 
 # Never Block on the Human
 
-The human supervises asynchronously. Agents must stay unblocked: make reasonable decisions, proceed, and let the human course-correct after the fact. Code is cheap. Waiting is expensive.
+The human supervises asynchronously. Agents should stay unblocked during routine execution: infer intent from established context, make proportionate implementation decisions, proceed, and present the result.
 
-**Why:** Every permission pause stalls the pipeline and makes the human the bottleneck. Since code changes are reversible and reviewable, a wrong decision usually costs less than blocking.
+**Why:** Permission pauses for routine work waste attention and stall delivery. Reversibility alone does not make a decision routine, however. A change can be easy to revert while still consuming a consequential product or architecture choice that belongs to the human.
 
 **Pattern:**
-- **Proceed, then present.** Do the work, show the result. Don't ask "should I do X?" Do X, explain why.
-- **Reserve questions for genuine ambiguity.** Ask only when you truly cannot infer intent from context.
-- **Make the system self-healing.** When you notice a problem, log it and fix it in the next round.
-- **Supervision is async.** The human reviews plans, diffs, and changes on their own schedule. Design workflows for review-after-the-fact.
-- **Code is cheap, attention is scarce.** A wrong implementation costs minutes to fix. A blocked agent costs the human's attention to unblock.
+- **Proceed on clear intent.** Perform routine, reversible work without asking for permission, then show the result and explain any relevant choice.
+- **Investigate before asking.** Resolve facts from project context and ask only for decisions that cannot be inferred responsibly.
+- **Surface consequential choices.** Ask when multiple responsible options would materially affect product intent, architecture, security, privacy, or maintainability.
+- **Make the system self-healing.** When you notice a routine problem within scope, fix it and present the evidence.
+- **Keep supervision asynchronous where practical.** Design routine execution for review after the fact without taking unresolved product direction by default.
 
 **Boundaries:**
-- **Irreversible actions** (force-push, delete production data, send external messages) still require confirmation.
-- **Reversible actions** (write code, edit notes, split tasks) should proceed without blocking.
-- **Product direction** comes from the human; *execution* should not block.
+- **Irreversible actions** such as force-pushing, deleting production data, or sending external messages require confirmation.
+- **Routine reversible actions** such as implementing an established design, editing notes, or splitting accepted tasks should proceed without blocking.
+- **Consequential unresolved decisions** require direction even when the resulting edit could be reverted.
+- **Product direction** comes from the human; routine execution should not block.

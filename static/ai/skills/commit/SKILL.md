@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Stage, commit, and push changes with conventional commit style. Creates meaningful commit messages and clean git history.
+description: Stage and commit changes with conventional commit style. Push only when the user explicitly requests it.
 ---
 
 # Commit Skill
@@ -37,6 +37,11 @@ This skill is relevant when:
 - Don't mix unrelated changes
 - Makes reverting easier
 - Simplifies code review
+
+### Explicit Pushes
+- Push only when the user explicitly requests it
+- A request to commit does not imply permission to push
+- Verify the branch and remote before pushing
 
 ### Pre-Commit Verification
 - All tests should pass

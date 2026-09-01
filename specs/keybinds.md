@@ -146,7 +146,7 @@ it and restores the underlying workspace.
 | Binding | Action |
 | --- | --- |
 | `Super+G` | Summon or dismiss the active game |
-| `Super+Ctrl+G` | Summon or dismiss the game launcher, starting it when necessary. |
+| `Super+Ctrl+G` | Summon or dismiss the game launcher. |
 
 Games and the game launcher route to their targets automatically, so this family
 does not provide manual window-transfer variants. Controller macros invoke the

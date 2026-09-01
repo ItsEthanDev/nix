@@ -44,8 +44,10 @@ Follow [PR-010](specs/constitution.md). At minimum:
 
 ## Scoped instructions
 
+Before modifying `static/ai/skills/preferences/`, read `specs/ai/preferences.md` completely and preserve its documented design goals and boundaries.
+
 Before modifying `static/ai/skills/project-documentation/`, read `specs/ai/project-documentation.md` completely and preserve its documented design goals and boundaries.
 
 ## Sources
 
-These agent procedures implement [PR-001 through PR-010](specs/constitution.md). The constitution remains authoritative if this file disagrees with it.
+These agent procedures are constrained by [PR-001 through PR-010](specs/constitution.md). The constitution remains authoritative if this file disagrees with it.

@@ -1,6 +1,6 @@
 # Specifications
 
-Specifications are living, authoritative descriptions of intent that cannot be expressed adequately by the Nix configuration. Amend the owning specification when that intent changes, then reconcile its implementation and direct dependents.
+Specifications are living, authoritative descriptions of intent, interactions, and acceptance boundaries that declarative configuration or implementation assets do not express adequately. Amend the owning specification when that intent changes, then reconcile its implementation and direct dependents.
 
 Use a flat `specs/<category>.md` file by default. Introduce a category directory only when plans, research, contracts, or other supporting artifacts improve ownership or comprehension. Apply structures, lifecycle metadata, normative terms, user stories, and stable identifiers only when they make a specification clearer or provide needed traceability.
 

@@ -86,6 +86,8 @@
         touch "$out"
       '';
 
+      documentation = import ./checks/documentation.nix {inherit pkgs;};
+
       module-contracts = import ./checks {
         inherit home-manager inputs nixpkgs pkgs;
         darwinModules = self.darwinModules;
