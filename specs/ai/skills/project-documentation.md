@@ -1,6 +1,6 @@
 # Project Documentation
 
-This living supporting specification refines the [AI-assisted development specification](spec.md) for project documentation. It owns the desired outcomes, authority model, and boundaries of the configured `project-documentation` capability. The runtime skill owns its task-specific procedures.
+This living supporting specification refines the [AI-assisted development specification](../spec.md) for project documentation. It owns the desired outcomes, authority model, and boundaries of the configured `project-documentation` capability. The runtime skill owns its task-specific procedures.
 
 ## Purpose
 
@@ -177,4 +177,4 @@ A change is complete when the runtime skill remains internally consistent, indep
 
 ## Sources
 
-This specification refines the [AI-assisted development specification](spec.md) and is constrained by [PR-009](../constitution.md#pr-009--nix-owns-configuration-behavior) of the project constitution.
+This specification refines the [AI-assisted development specification](../spec.md) and is constrained by [PR-009](../../constitution.md#pr-009--nix-owns-configuration-behavior) of the project constitution.

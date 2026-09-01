@@ -55,7 +55,9 @@ The configured assets under [`static/ai/`](../../static/ai/) realize this specif
 - Supporting documents may explain the design of an asset without replacing its runtime instructions.
 - Personal preferences supply defaults only when explicit requests and established project conventions leave a choice open.
 
-The supporting [project-documentation specification](project-documentation.md) defines canonical artifact ownership and maintenance. The [preferences specification](preferences.md) defines the boundary for personal defaults.
+The [AI development directives](directives.md) record accepted instructions that must survive implementation changes. The [AI asset evolution specification](evolution.md) defines how provisional changes are trialed, evaluated, adopted, or rejected.
+
+The supporting [project-documentation specification](skills/project-documentation.md) defines canonical artifact ownership and maintenance. The [preferences specification](skills/preferences.md) defines the boundary for personal defaults.
 
 ## Non-goals
 

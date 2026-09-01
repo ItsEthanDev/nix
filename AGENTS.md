@@ -44,9 +44,11 @@ Follow [PR-010](specs/constitution.md). At minimum:
 
 ## Scoped instructions
 
-Before modifying `static/ai/skills/preferences/`, read `specs/ai/preferences.md` completely and preserve its documented design goals and boundaries.
+Before adding, importing, replacing, or experimentally changing a configured AI asset, read `specs/ai/evolution.md`, applicable directives, active trials, and capability specifications.
 
-Before modifying `static/ai/skills/project-documentation/`, read `specs/ai/project-documentation.md` completely and preserve its documented design goals and boundaries.
+Before modifying `static/ai/skills/preferences/`, read `specs/ai/skills/preferences.md` completely and preserve its documented design goals and boundaries.
+
+Before modifying `static/ai/skills/project-documentation/`, read `specs/ai/skills/project-documentation.md` completely and preserve its documented design goals and boundaries.
 
 ## Sources
 

@@ -1,6 +1,6 @@
 # Preferences
 
-This living supporting specification refines the [AI-assisted development specification](spec.md) for personal development defaults. It owns the desired outcomes, authority, and boundaries of the configured `preferences` capability. The runtime skill owns its task-specific procedures and exact defaults.
+This living supporting specification refines the [AI-assisted development specification](../spec.md) for personal development defaults. It owns the desired outcomes, authority, and boundaries of the configured `preferences` capability. The runtime skill owns its task-specific procedures and exact defaults.
 
 ## Purpose
 
@@ -93,4 +93,4 @@ A change to the skill is complete when:
 
 ## Sources
 
-This specification refines the [AI-assisted development specification](spec.md) and is constrained by [PR-009](../constitution.md#pr-009--nix-owns-configuration-behavior) of the project constitution.
+This specification refines the [AI-assisted development specification](../spec.md) and is constrained by [PR-009](../../constitution.md#pr-009--nix-owns-configuration-behavior) of the project constitution.

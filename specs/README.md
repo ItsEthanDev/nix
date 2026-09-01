@@ -6,7 +6,10 @@ Use a flat `specs/<category>.md` file by default. Introduce a category directory
 
 Current specifications:
 
-- [AI-assisted development](ai/spec.md), with supporting specifications for individual capabilities
+- [AI-assisted development](ai/spec.md)
+  - [Durable AI development directives](ai/directives.md)
+  - [AI asset evolution and trials](ai/evolution.md)
+  - Capability specifications under [`ai/skills/`](ai/skills/)
 - [Global keybindings](keybinds.md)
 
 Repository governance remains canonical in the [project constitution](constitution.md), especially [PR-009](constitution.md#pr-009--nix-owns-configuration-behavior).
