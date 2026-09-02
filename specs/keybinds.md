@@ -61,7 +61,8 @@ modifier, and logout, reboot, and shutdown require a confirming system surface.
 
 The catalog is normative wherever a host provides the corresponding capability.
 A host may expose any practical range of numbered workspaces, but it preserves
-the number-key grammar throughout that range.
+the number-key grammar throughout that range. Digits `1` through `9` map
+directly to their numbered workspaces, and `0` maps to workspace 10.
 
 ### Editing
 
@@ -138,10 +139,10 @@ microphone key.
 
 ### Gaming
 
-The active game and game launcher are separate, directly addressable targets on
-the host's dedicated gaming display. Invoking either target while the other is
-visible switches directly between them. Invoking the visible target dismisses
-it and restores the underlying workspace.
+The active game and game launcher are separate, directly addressable targets.
+Invoking either target summons it on the currently focused monitor. Invoking
+either target while the other is visible there switches directly between them.
+Invoking the visible target dismisses it and restores the underlying workspace.
 
 | Binding | Action |
 | --- | --- |
