@@ -85,10 +85,11 @@ in {
   networking = {
     firewall = {
       enable = true;
-      interfaces.tailscale0.allowedTCPPorts = [22];
-      # TanStack Start (3000) Vite (5173) Hytale (5520) archipelago (38281)
-      allowedTCPPorts = [3000 5173 5520 38281];
-      allowedUDPPorts = [3000 5173 5520 38281];
+      # SSH (22) TanStack Start (3000) Vite (5173) Hytale (5520) Minecarft (25565) archipelago (38281)
+      interfaces.tailscale0 = {
+        allowedTCPPorts = [22 3000 5173 5520 25565 38281];
+        allowedUDPPorts = [22 3000 5173 5520 25565 38281];
+      };
     };
     hostName = "turing";
     networkmanager = {
