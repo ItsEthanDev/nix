@@ -1,7 +1,8 @@
 # Trial: Development review
 
-- **Status:** Proposed
+- **Status:** Trialing
 - **Created:** 2026-09-01
+- **Implemented:** 2026-09-01
 - **Review condition:** Ethan requests evaluation after deciding normal use has produced enough evidence
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
@@ -115,18 +116,25 @@ At evaluation, adopt the capability when its routing and review protocol are dep
 
 - **Baseline revision:** `2d1d495ee2e51030137914f0821b82e2d482dec4`
 - **Trial definition revision:** `549410313ff2c98186b6bfcfb5354b69e7a4fa79`
-- **Implementation revisions:** Not started
+- **Implementation revisions:**
+  - `e73bcbf62621f7ff607e7de1e1c1203e760e1d77` — initial review router, shared protocol, and six target lenses
 - **Outcome revision:** Not started
 
 ## Rollback
 
-Before dependent work builds on the trial, revert its implementation revisions in reverse chronological order. If later work prevents a clean revert, restore every runtime path listed under Affected assets from the baseline and reconcile dependents explicitly.
+Before dependent work builds on the trial, revert the implementation commit:
+
+```sh
+git revert e73bcbf62621f7ff607e7de1e1c1203e760e1d77
+```
+
+If later work prevents a clean revert, remove `static/ai/skills/development-review/` and reconcile dependents explicitly. The baseline predates every runtime path in that directory.
 
 Rollback preserves this trial artifact and records the rejected or revised outcome. It does not erase the evidence or the trial definition from history.
 
 ## Outcome
 
-No outcome has been recorded. The trial remains `Proposed` until the runtime implementation is available for normal use.
+No outcome has been recorded. The trial remains `Trialing` until Ethan requests evaluation and the available evidence supports adoption, revision, rejection, or an inconclusive result.
 
 ## Sources
 
