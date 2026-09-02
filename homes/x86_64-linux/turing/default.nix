@@ -99,6 +99,7 @@ in {
       enable = true;
       enableFishIntegration = true;
     };
+    fish.shellAliases.pi = "nix develop ~/.config/nix#pi --command pi";
     ghostty = {
       clearDefaultKeybinds = true;
       enable = true;
