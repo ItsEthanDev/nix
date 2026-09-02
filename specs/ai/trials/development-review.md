@@ -114,7 +114,7 @@ At evaluation, adopt the capability when its routing and review protocol are dep
 ## Revision anchors
 
 - **Baseline revision:** `2d1d495ee2e51030137914f0821b82e2d482dec4`
-- **Trial definition revision:** Not recorded until the definition commit exists
+- **Trial definition revision:** `549410313ff2c98186b6bfcfb5354b69e7a4fa79`
 - **Implementation revisions:** Not started
 - **Outcome revision:** Not started
 
