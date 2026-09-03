@@ -53,7 +53,7 @@ For architecture review without a narrower scope, treat the whole repository as 
 
 ## Findings
 
-### Blocking — [Conflict | Gap | Risk | Opportunity]: [title]
+### 1. Blocking — [Conflict | Gap | Risk | Opportunity]: [title]
 
 - **Evidence:** [specific source or explicitly labelled hypothesis]
 - **Impact:** [why this matters]
@@ -69,4 +69,4 @@ For architecture review without a narrower scope, treat the whole repository as 
 [One bounded handoff.]
 ```
 
-Order findings by `Blocking`, `Important`, then `Advisory`. Omit empty severity sections. Use conflict, gap, risk, or opportunity to describe the finding rather than treating every recommendation as a defect. Add a short strengths note only when it explains the assessment. When nothing material is found, say so directly and do not manufacture advisory work.
+Number every finding consecutively across the full report, starting at `1`, so later messages can refer to a finding unambiguously. Order findings by `Blocking`, `Important`, then `Advisory`. Omit empty severity sections. Use conflict, gap, risk, or opportunity to describe the finding rather than treating every recommendation as a defect. Add a short strengths note only when it explains the assessment. When nothing material is found, say so directly and do not manufacture advisory work.
