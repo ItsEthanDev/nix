@@ -54,6 +54,7 @@ The initial trial changes only these runtime paths. It does not modify the four 
 
 - A review is read-only. It does not intentionally edit files, apply recommendations, or change lifecycle states.
 - The reviewer returns one in-chat report with the review scope, evidence-backed findings ordered by severity, an assessment, and the recommended next step. It omits empty sections and does not create a standalone report.
+- Each finding has a consecutive number that is unique within the report so Ethan can refer to it unambiguously in follow-up messages.
 - Each finding identifies its type, evidence, impact, recommendation, and owning SDD phase or domain-context owner.
 - Findings use `Blocking`, `Important`, or `Advisory` severity and may be typed as a conflict, gap, risk, or opportunity.
 - `Blocking` expresses the reviewer's judgment that downstream use would be irresponsible for the cited reason. It does not itself prevent acceptance or change lifecycle state.
@@ -85,12 +86,17 @@ Record an event as a failure when:
 - a finding classified as `Blocking` or `Important` lacks traced evidence or a demonstrated contradiction;
 - an architecture recommendation rests only on generic preference rather than observed friction;
 - the reviewer intentionally changes repository state or lifecycle metadata during review;
+- findings are not numbered consecutively across the report;
 - the output is fragmented across target-specific formats or written to a standalone report without a separate request;
 - the reviewer treats its verdict as acceptance authority;
 - the reviewer continues into automatic repair or repeated review; or
 - the review manufactures findings instead of allowing a clean assessment.
 
 ## Evaluation
+
+Observed feedback:
+
+- On 2026-09-02, after using the skill several times, Ethan reported that unnumbered findings were difficult to reference in follow-up messages and requested a unique number for each item. The runtime format was revised to number findings consecutively across the report; this behavior remains under observation with the rest of the trial.
 
 Record representative review events during normal use:
 
@@ -105,6 +111,7 @@ Consider:
 - whether the selected scope matches the request and is stated clearly;
 - whether findings distinguish evidence from hypotheses and calibrate severity accordingly;
 - whether reports remain concise, unified, and actionable across target types;
+- whether finding numbers make follow-up discussion unambiguous;
 - whether recommendations route changes to the correct canonical owner;
 - whether the reviewer preserves repository and lifecycle state;
 - whether a fresh reviewer exposes useful assumptions without producing disproportionate noise; and
