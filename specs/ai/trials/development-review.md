@@ -125,6 +125,7 @@ At evaluation, adopt the capability when its routing and review protocol are dep
 - **Trial definition revision:** `549410313ff2c98186b6bfcfb5354b69e7a4fa79`
 - **Implementation revisions:**
   - `e73bcbf62621f7ff607e7de1e1c1203e760e1d77` — initial review router, shared protocol, and six target lenses
+  - `17da2270ae971c5011f44c9bfc6d5028d003f077` — consecutive finding numbers for unambiguous follow-up discussion
 - **Outcome revision:** Not started
 
 ## Rollback
