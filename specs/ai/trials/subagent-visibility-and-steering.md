@@ -17,7 +17,7 @@ A five-agent roster should separate common delegation shapes without replacing t
 - Sol independently reviews consequential work.
 - A parent-matching delegate handles bounded tasks that fit no specialist.
 
-This separation should improve speed and model usage while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. Making the configured skill catalog available to every child should preserve progressive disclosure without expanding a child's task, tools, or authority.
+This separation should improve speed and model usage while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
 
 ## Affected assets
 
@@ -36,13 +36,13 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 
 | Agent | Model and thinking | Context and prompt | Tools and extensions | Task boundary |
 | --- | --- | --- | --- | --- |
-| `scout` | Luna/low | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
-| `researcher` | Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence; do not make the parent decision |
-| `worker` | Terra/medium | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for an approved, bounded implementation |
-| `reviewer` | Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Independently inspect an explicit target and report evidence-backed findings |
+| `scout` | Luna/low | Fresh, replacement prompt, project context, no inherited skills | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
+| `researcher` | Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
+| `worker` | Terra/medium | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable change of moderate scope |
+| `reviewer` | Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
 | `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions | Handle bounded work only when no specialist has a better contract |
 
-Every agent inherits the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria.
+All agents except `scout` inherit the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria. `reviewer` must load `development-review`; `researcher` retains a contained method until a canonical research skill exists.
 
 Sol remains the default parent model and starts at medium thinking. Ethan or the parent may raise the parent to high for architecture, substantial planning, ambiguous product work, or synthesis of conflicting evidence. Max remains an explicit exceptional escalation.
 
@@ -51,6 +51,8 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 - Keep task framing, consequential decisions, orchestration, and synthesis with the parent.
 - Prefer the narrowest specialist whose contract fits the task.
 - Use `delegate` only for bounded work that does not fit `scout`, `researcher`, `worker`, or `reviewer`.
+- Route work to `reviewer` only when the user explicitly requested review or an authoritative artifact scheduled it, and include that authority in the assignment.
+- Route implementation to `worker` as the smallest coherent, independently verifiable unit after the parent resolves scope and consequential decisions. Keep trivial local edits, decomposition, ambiguous work, and final integration with the parent.
 - Work directly in the parent when delegation overhead exceeds the evidence, specialization, parallelism, or context-isolation benefit.
 - Give fresh-context agents a cold-start-complete task containing the goal, target, authority, relevant context, success criteria, validation, output shape, and stop conditions.
 - Keep one writer in a working tree. Parallelize read-only work unless filesystem isolation makes multiple writers safe.
@@ -62,7 +64,7 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 - No bundled agent remains enabled.
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
-- Agents preserve applicable project instructions and can discover every configured skill progressively.
+- Agents preserve applicable project instructions; every agent except `scout` can discover configured skills progressively.
 - Research runs load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
 - Read-only agents do not modify project files.
 - `worker` does not make unresolved consequential decisions and reports validation evidence.
@@ -104,7 +106,7 @@ After deployment:
 2. Inspect the agent list and confirm that exactly `scout`, `researcher`, `worker`, `reviewer`, and `delegate` are advertised.
 3. Run `/subagents-models` and confirm each specialist's effective model and thinking level.
 4. Confirm the parent starts with `openai-codex/gpt-5.6-sol` at medium thinking and retains the configured model set.
-5. Launch one minimal task per agent and confirm its tools, context, skill catalog, output behavior, and read/write boundary.
+5. Launch one minimal task per agent and confirm its tools, context, applicable skill behavior, output behavior, and read/write boundary.
 
 Configuration evaluation proves generated settings and managed files but does not replace these runtime checks.
 
