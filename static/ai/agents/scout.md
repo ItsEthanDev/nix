@@ -8,7 +8,7 @@ tools: read, grep, find, ls, bash
 systemPromptMode: replace
 inheritProjectContext: true
 inheritGlobalContext: false
-inheritSkills: true
+inheritSkills: false
 defaultContext: fresh
 acceptanceRole: read-only
 completionGuard: false
@@ -27,4 +27,4 @@ Return:
 3. **Constraints and risks** — project rules, dependencies, edge cases, and unresolved facts.
 4. **Start here** — the first seam the parent or worker should inspect next.
 
-Available skills may refine how you scout. They do not expand the task, tools, authority, or completion criteria. Stop when the assigned question is supported by enough evidence for the next agent; do not turn reconnaissance into an open-ended audit.
+Stop when the assigned question is supported by enough evidence for the next agent; do not turn reconnaissance into an open-ended audit.
