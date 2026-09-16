@@ -85,6 +85,26 @@ Before implementation, every session receives the top-level `codebase-design` sk
 
 ## Evaluation
 
+### Observed evidence
+
+A 2026-09-15 inspection covered 65 post-activation Pi sessions across nine working directories. After excluding trial administration, copied events, and borderline cases where loading the leaf would probably add context without changing a routine decision, it found nine genuine opportunities across three projects:
+
+| Date | Project and session | Opportunity | Routing source | Router loaded | Leaf loaded | Changed a decision | False or missed activation | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-12 | Timesheets `01a09703` | Consolidate Convex operations | Development review | Yes | Yes | Yes | No | Produced one prepared-state mutation and shared snapshots. |
+| 2026-09-13 | Connections `01a09c5e` | Design the inspection interface | Spec-driven development and TDD | Yes | Yes | Yes | No | Preserved a query-only boundary. |
+| 2026-09-13 | Connections `01a09c5e` | Place Promise adapters and lifecycle ownership | Spec-driven development and TDD | Yes | Yes | Yes | No | Validated adapter and lifecycle boundaries. |
+| 2026-09-14 | Connections `01a0a24a` | Review Memory, SQLite, and PostgreSQL store interfaces | Direct request and development review | Yes | Yes | Yes | No | Established one shared transition implementation. |
+| 2026-09-14 | Connections `01a0a24c` | Choose a generic PostgreSQL or Neon-specific store interface | Direct request | No | No | Yes, without the leaf | Missed | The response still separated portable store semantics, the client boundary, and runtime adapters. |
+| 2026-09-15 | Connections `01a0a2cc` | Review provider architecture | Direct request and development review | Yes | Yes | Yes | No | Kept provider policy local and introduced one atomic persistence transition. |
+| 2026-09-15 | Agents `01a0a688` | Place the credential-management seam | Direct request | Yes | Yes | Yes | No | Clarified ownership across Eve, Connections, Convex, and MCP. |
+| 2026-09-15 | Agents `01a0a6b3` | Restructure the Salesforce integration | Direct request | Yes | No | Yes, without the leaf | Missed | The router loaded, but the leaf did not for a concrete module-boundary and test-seam decision. |
+| 2026-09-15 | Agents `01a0a6c4` and `01a0a6c6` | Audit MCP ownership seams | Development review | Yes | Yes | Yes | No | Parent and reviewer both loaded the leaf; counted as one opportunity. |
+
+The inspection also found eight leaf reads across the seven successful opportunities. Every read was relevant, every selected leaf resolved successfully, representative uses changed or validated a concrete decision, and no false activation or broken interacting pointer appeared. Two narrower questions about a shared HTTP helper and duplicate base-URL parsing were excluded because direct reasoning resolved them without evidence that the full principle would improve the decision.
+
+The evidence is positive: progressive disclosure is precise and useful when selected. Two credible misses keep recall below the adoption target, while the stricter classification leaves only nine representative opportunities. Ethan chose to continue normal-use observation rather than revise the router from this short window.
+
 ### Observation period
 
 Observe at least ten genuine opportunities after the implementation is active in Pi. Include:

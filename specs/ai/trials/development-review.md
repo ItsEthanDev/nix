@@ -98,11 +98,13 @@ Observed feedback:
 
 - On 2026-09-02, after using the skill several times, Ethan reported that unnumbered findings were difficult to reference in follow-up messages and requested a unique number for each item. The runtime format was revised to number findings consecutively across the report; this behavior remains under observation with the rest of the trial.
 - On 2026-09-11, the Connections workflow spawned independent implementation reviews after three consecutive phases without a review request, although its accepted task list scheduled implementation review only at final task T067. This is evidence that review selection can drift into unsolicited workflow orchestration. The [proportional implementation assurance trial](proportional-implementation-assurance.md) owns the resulting cross-skill experiment and performance baseline.
+- On 2026-09-15, Ethan reported that models sometimes invoke review automatically after completing work. These reviews can add value, but repeated review after individual steps can also create unwanted delay. Ethan wants more normal-use evidence before deciding whether explicit or scheduled review should be the exclusive activation boundary.
 
 Record representative review events during normal use:
 
 | Date | Target and scope | Lens selection | Scope preserved | Evidence quality | Read-only | Useful handoff | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-09-15 | Evaluate AI trials with Ethan | Incorrect: inferred an independent specification review | No | N/A | Yes | No | The phrase “review my AI trials” referred to facilitated trial evaluation, not a request for independent judgment. Ethan corrected the interpretation. |
 
 Evaluate the trial whenever Ethan decides the observations are sufficient. Desired evidence includes different target lenses, bounded and whole-artifact scopes, an architecture survey, an implementation review, a clean assessment, and a request using `audit` language. These are coverage goals rather than an event-count or date threshold.
 

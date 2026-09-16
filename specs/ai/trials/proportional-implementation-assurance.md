@@ -97,6 +97,10 @@ Review usage comes from each spawn result's `details.results[].usage`. Wall time
 
 ## Evaluation
 
+### Observed feedback
+
+- On 2026-09-15, Ethan initially found this trial difficult to distinguish from the development-review trial. After clarifying that development review owns review quality while this trial owns review activation and verification cadence during implementation, Ethan requested more normal-use time before evaluation.
+
 ### Observation period
 
 Observe at least five implementation phase or independently verifiable slice completions across at least two projects. Include at least two delegated implementations and at least one explicit or artifact-scheduled review opportunity. Start observations only after the runtime revision is active in the Pi environment.
