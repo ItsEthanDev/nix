@@ -19,6 +19,7 @@ in {
         branchSummary.skipPrompt = lib.mkDefault true;
         defaultProvider = lib.mkDefault "openai-codex";
         defaultModel = lib.mkDefault "gpt-5.6-sol";
+        defaultThinkingLevel = lib.mkDefault "medium";
         enabledModels = lib.mkDefault [
           "openai-codex/gpt-5.6-sol"
           "openai-codex/gpt-5.6-terra"
@@ -34,6 +35,14 @@ in {
         ];
         subagents.disableBuiltins = lib.mkDefault true;
       };
+    };
+
+    home.file = {
+      ".pi/agent/agents/delegate.md".source = ../../../static/ai/agents/delegate.md;
+      ".pi/agent/agents/researcher.md".source = ../../../static/ai/agents/researcher.md;
+      ".pi/agent/agents/reviewer.md".source = ../../../static/ai/agents/reviewer.md;
+      ".pi/agent/agents/scout.md".source = ../../../static/ai/agents/scout.md;
+      ".pi/agent/agents/worker.md".source = ../../../static/ai/agents/worker.md;
     };
   };
 }
