@@ -139,8 +139,8 @@ The 2026-09-15 revision defines the five-agent roster, parent thinking default, 
 - **Empty-catalog trial definition:** `493d03892b88437bba0b2263bd6d92ea9697784c`
 - **Empty-catalog implementation:** `5406001f862797622cec90224d279d59b6dbd67d`
 - **Empty-catalog anchor record:** `2e96bd22dfde3f08da1161d8769797ce0ff053b9`
-- **Roster trial definition:** Pending commit
-- **Roster implementation revisions:** Pending commit
+- **Roster trial definition:** `e146ae498ba28a23846c190e19e7d62751de7812`
+- **Roster implementation revisions:** `34b5997a719efa375d81a1915a53dddf16046b06`
 - **Outcome revision:** Not started
 
 ## Rollback
