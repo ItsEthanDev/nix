@@ -40,6 +40,11 @@ in {
               nixpkgs.expr = lib.mkDefault "import ${pkgs.path} { }";
             };
           };
+          # Python
+          basedpyright = {
+            enable = lib.mkDefault true;
+            packageFallback = lib.mkDefault true;
+          };
           # Rust
           rust_analyzer = {
             enable = lib.mkDefault true;
