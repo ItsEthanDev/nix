@@ -2,8 +2,8 @@
 
 - **Status:** Trialing
 - **Created:** 2026-09-12
-- **Revised:** 2026-09-15
-- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including five `worker` events at Terra/medium and two steering attempts across the roster
+- **Revised:** 2026-09-16
+- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including five `worker` events at Terra/medium, five parent-initiated delegations across at least three roles, and two steering attempts across the roster
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
 ## Problem and hypothesis
@@ -17,13 +17,14 @@ A five-agent roster should separate common delegation shapes without replacing t
 - Sol independently reviews consequential work.
 - A parent-matching delegate handles bounded tasks that fit no specialist.
 
-This separation should improve speed and model usage while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
+This separation should preserve the parent's context window, reduce use of the stronger parent model for work a faster or less expensive specialist can perform well, and reduce elapsed time through appropriate concurrency while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. The parent should initiate delegation without waiting for an explicit request when those benefits, specialization, or independent evidence are likely to justify handoff and reconciliation overhead. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
 
 ## Affected assets
 
 - **Kind:** Pi extension, parent-model defaults, and global custom agents
 - **Runtime paths:**
   - [`modules/home/development/pi.nix`](../../../modules/home/development/pi.nix)
+  - [`static/ai/AGENTS.md`](../../../static/ai/AGENTS.md)
   - [`static/ai/agents/scout.md`](../../../static/ai/agents/scout.md)
   - [`static/ai/agents/researcher.md`](../../../static/ai/agents/researcher.md)
   - [`static/ai/agents/worker.md`](../../../static/ai/agents/worker.md)
@@ -48,12 +49,16 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 
 ## Routing rules
 
-- Keep task framing, consequential decisions, orchestration, and synthesis with the parent.
+- Treat delegation as authorized by default, but not required by default; do not require an explicit delegation request when the expected benefit justifies the overhead.
+- Before starting tool-heavy or context-heavy work, check whether an advertised specialist can reliably perform a bounded part while preserving parent context, reducing model cost or latency, enabling concurrency, or providing independent evidence.
+- Give the child a self-contained objective, clear boundaries, acceptance criteria, and a compact expected result.
+- Keep user intent, consequential decisions, decomposition, orchestration, synthesis, and final acceptance with the parent.
 - Prefer the narrowest specialist whose contract fits the task.
 - Use `delegate` only for bounded work that does not fit `scout`, `researcher`, `worker`, or `reviewer`.
 - Route work to `reviewer` only when the user explicitly requested review or an authoritative artifact scheduled it, and include that authority in the assignment.
 - Route implementation to `worker` as the smallest coherent, independently verifiable code, test, or configuration unit after the parent resolves scope and consequential decisions. Keep durable prose, trivial local edits, decomposition, ambiguous work, and final integration with the parent.
-- Work directly in the parent when delegation overhead exceeds the evidence, specialization, parallelism, or context-isolation benefit.
+- Work directly in the parent when the task is conversational, trivial, a small known lookup or edit, tightly dependent on parent-held context, or cheaper to complete than to hand off and reconcile.
+- Do not delegate merely because a specialist exists or because the task is long.
 - Give fresh-context agents a cold-start-complete task containing the goal, target, authority, relevant context, success criteria, validation, output shape, and stop conditions.
 - Keep one writer in a working tree. Parallelize read-only work unless filesystem isolation makes multiple writers safe.
 - Use a fork only when accumulated conversation state is essential and impractical to summarize safely.
@@ -69,12 +74,13 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 - Read-only agents do not modify project files.
 - `worker` does not make unresolved consequential decisions or author durable human- or agent-facing prose. It reports validation evidence and identifies direct documentation obligations created by its implementation without auditing documentation broadly.
 - Running work remains inspectable, steerable, and stoppable.
+- The parent recognizes and initiates useful delegation opportunities without requiring Ethan to name an agent or request delegation.
 
 ## Non-goals
 
 This trial does not:
 
-- authorize delegation without user or project authority;
+- require delegation when its expected benefit does not justify its overhead;
 - enable nested delegation;
 - evaluate missions, schedules, watchdog behavior, external runners, or autonomous multi-agent programs;
 - create separate planner, oracle, security, documentation, or domain-specialist agents;
@@ -88,6 +94,7 @@ Record an event as a failure when:
 - the requested agent, model, thinking level, skills catalog, or required tools are unavailable;
 - a bundled or unexpected custom agent appears;
 - the parent routes work to `delegate` when a specialist clearly fits;
+- the parent misses a clear delegation opportunity that would preserve substantial parent context, use a faster or less expensive capable specialist, reduce elapsed time through concurrency, or provide valuable independent evidence at acceptable handoff cost;
 - delegation costs more time or parent correction than doing the bounded task directly would reasonably require;
 - an agent broadens scope, violates its read/write boundary, or consumes an unresolved consequential decision;
 - a loaded skill causes irrelevant process, scope drift, or conflicting behavior;
@@ -114,12 +121,12 @@ Configuration evaluation proves generated settings and managed files but does no
 
 Record genuine events in this table:
 
-| Date | Agent | Task shape | Correct route | Adequate result | Parent correction | Skills loaded and relevant | Elapsed/usage note | Steering | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Date | Agent | Task shape | Correct route | Adequate result | Parent correction | Parent-context effect | Skills loaded and relevant | Elapsed/usage note | Steering | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Complete at least three events per agent. Record at least five `worker` events at Terra/medium before comparing explicit Terra/high and Luna/max runs on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes.
+Complete at least three events per agent and at least five parent-initiated delegations across three or more roles. Record at least five `worker` events at Terra/medium before comparing explicit Terra/high and Luna/max runs on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes.
 
-Adopt an agent when every event preserves its authority boundary and project rules, at least 80% of its events produce an adequate result without rerunning the task on a stronger model, and remaining correction cost does not erase the expected speed or usage benefit. Adopt visibility and steering when every conversation is inspectable and both steering attempts are effective. Revise or remove a role that overlaps another role, attracts incorrect routing, or repeatedly requires parent repair.
+Adopt an agent when every event preserves its authority boundary and project rules, at least 80% of its events produce an adequate result without rerunning the task on a stronger model, and remaining handoff and correction cost does not erase the expected parent-context, speed, or usage benefit. Adopt visibility and steering when every conversation is inspectable and both steering attempts are effective. Revise or remove a role that overlaps another role, attracts incorrect routing, or repeatedly requires parent repair.
 
 ## Revision history
 
@@ -133,7 +140,7 @@ The first `pi-subagents` variation disabled every bundled agent and exposed no c
 
 ### Current variation — model-tier roster
 
-The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. Evidence from an earlier variation remains attributable only to that variation.
+The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. The 2026-09-16 revision authorizes the parent to initiate delegation and makes preservation of parent context, model economy, and elapsed time the primary benefits weighed against handoff and reconciliation overhead. It also adds parent-initiated events and parent-context effects to the evaluation. Evidence from an earlier variation remains attributable only to that variation.
 
 ## Revision anchors
 

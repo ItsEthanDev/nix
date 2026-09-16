@@ -28,7 +28,10 @@ in {
         ];
         packages = [
           "npm:pi-web-access"
-          "npm:pi-subagents"
+          {
+            source = "npm:pi-subagents";
+            prompts = [];
+          }
         ];
         skills = [
           ../../../static/ai/skills
@@ -38,6 +41,7 @@ in {
     };
 
     home.file = {
+      ".pi/agent/AGENTS.md".source = ../../../static/ai/AGENTS.md;
       ".pi/agent/agents/delegate.md".source = ../../../static/ai/agents/delegate.md;
       ".pi/agent/agents/researcher.md".source = ../../../static/ai/agents/researcher.md;
       ".pi/agent/agents/reviewer.md".source = ../../../static/ai/agents/reviewer.md;
