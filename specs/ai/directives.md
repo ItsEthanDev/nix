@@ -38,6 +38,24 @@ Current realization:
 
 **Origin:** Ethan request, implemented in Git commit `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`.
 
+## Scope-sensitive `wait what` clarification
+
+**Intent:** Ethan can request a simpler replacement explanation without explicit skill invocation or loss of surrounding workflow state.
+
+Required behavior:
+
+- A standalone `wait what` re-pitches the complete preceding assistant response.
+- A numbered, quoted, or named reference re-pitches that complete target while preserving unaffected answers and decisions.
+- The replacement explanation preserves the target's meaning, uses a simpler conceptual order, and does not append detail or defend the previous explanation.
+- The target remains unresolved, and dependent work does not advance until Ethan responds.
+- Discussion of the phrase or capability does not activate clarification behavior.
+
+Current realization:
+
+- [`static/ai/skills/wait-what/SKILL.md`](../../static/ai/skills/wait-what/SKILL.md)
+
+**Origin:** [Inline `wait what` trigger trial](trials/wait-what-inline-trigger.md), adopted 2026-09-15.
+
 ## Maintaining directives
 
 Record the accepted outcome of a successful trial here when the behavior is durable but does not warrant a dedicated capability specification. When a directive develops substantial scope, interactions, or independent requirements, move its meaning to a focused specification and leave a concise pointer here.

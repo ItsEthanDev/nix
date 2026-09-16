@@ -1,10 +1,11 @@
 # Trial: Inline `wait what` trigger
 
-- **Status:** Revised
+- **Status:** Adopted
 - **Created:** 2026-09-01
 - **Implemented:** 2026-09-01
-- **Reviewed:** 2026-09-12
+- **Initial review:** 2026-09-12
 - **Revision 2 implemented:** 2026-09-12
+- **Revision 2 reviewed:** 2026-09-15
 - **Initial review condition:** At least one week of use and five genuine clarification opportunities after implementation
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
@@ -145,6 +146,18 @@ Observe at least five further genuine opportunities, including at least two stan
 
 Revise again when automatic invocation remains useful but explanation scope or form still fails. Reject automatic invocation when false activation or workflow disruption outweighs easier access.
 
+### Evaluation result
+
+Ethan reported that normal use provided sufficient genuine opportunities, although he did not retain an exact event count. Across that use:
+
+- standalone triggers consistently re-pitched the complete preceding response;
+- explicitly scoped triggers consistently selected the correct complete target and preserved unrelated state;
+- responses were simpler replacement explanations rather than appended detail or justification;
+- the clarification allowed work to proceed on the next turn; and
+- no false activation or workflow disruption occurred.
+
+This evidence satisfies the revision 2 adoption criteria. The missing exact event count limits quantitative analysis but does not change Ethan's assessment that the observation threshold was met.
+
 ## Revision anchors
 
 - **Baseline revision:** `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`
@@ -159,7 +172,7 @@ Revise again when automatic invocation remains useful but explanation scope or f
 - **Revision 2 implementation revisions:**
   - `66ee80df56cb67f09b8e31ade6f6b5e1df4dbaa0` — restored whole-response re-pitching as the default
   - `bc5d85f95347c05d9f586be1c93639bf14b3f7e8` — simplified the revised guidance without changing its intended behavior
-- **Outcome revision:** Not started
+- **Outcome revision:** Pending commit
 - **Implementation path:** `static/ai/skills/wait-what/SKILL.md`
 
 The baseline revision contains the accepted runtime skill before this trial. The implementation revisions change only the runtime path listed above.
@@ -194,7 +207,9 @@ Rollback must preserve this trial artifact and record the rejected or revised ou
 
 ## Outcome
 
-Revision 1 is **Revised**. Its automatic trigger and explicit inline targeting remain useful, but its narrowest-target default changed the original capability into selective follow-up explanation. Revision 2 restores whole-response re-pitching as the default and keeps narrow scope only when Ethan supplies it explicitly. Its implementation is committed; observation begins after the next configuration deployment.
+Revision 1 was **Revised** because its narrowest-target default changed the original capability into selective follow-up explanation.
+
+Revision 2 is **Adopted**. Normal use confirmed that whole-response re-pitching works as the standalone default, explicit targeting selects the intended complete item, unaffected state remains intact, and the replacement explanation allows work to continue without false activation or disruption. The accepted behavior is promoted to the [AI development directives](../directives.md).
 
 ## Sources
 
