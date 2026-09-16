@@ -27,11 +27,12 @@ in {
         ];
         packages = [
           "npm:pi-web-access"
-          "npm:pi-spawn"
+          "npm:pi-subagents"
         ];
         skills = [
           ../../../static/ai/skills
         ];
+        subagents.disableBuiltins = lib.mkDefault true;
       };
     };
   };
