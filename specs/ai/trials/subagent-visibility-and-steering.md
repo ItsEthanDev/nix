@@ -133,7 +133,7 @@ The first `pi-subagents` variation disabled every bundled agent and exposed no c
 
 ### Current variation — model-tier roster
 
-The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. A same-day refinement removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, and tightened the parent-owned scope contract for `worker`. Evidence from an earlier variation remains attributable only to that variation.
+The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. Evidence from an earlier variation remains attributable only to that variation.
 
 ## Revision anchors
 
@@ -141,8 +141,8 @@ The 2026-09-15 revision defines the five-agent roster, parent thinking default, 
 - **Empty-catalog trial definition:** `493d03892b88437bba0b2263bd6d92ea9697784c`
 - **Empty-catalog implementation:** `5406001f862797622cec90224d279d59b6dbd67d`
 - **Empty-catalog anchor record:** `2e96bd22dfde3f08da1161d8769797ce0ff053b9`
-- **Roster trial definitions:** `e146ae498ba28a23846c190e19e7d62751de7812`, `84406984cc35e170041a9dfcb1af29009c37ae2b`
-- **Roster implementation revisions:** `34b5997a719efa375d81a1915a53dddf16046b06`, `7f6a3e26606fd96143886a97b0cd78d7435426fb`
+- **Roster trial definitions:** `e146ae498ba28a23846c190e19e7d62751de7812`, `84406984cc35e170041a9dfcb1af29009c37ae2b`, `68468c1f4a528e1ead11fad77a75af24cecc425d`
+- **Roster implementation revisions:** `34b5997a719efa375d81a1915a53dddf16046b06`, `7f6a3e26606fd96143886a97b0cd78d7435426fb`, `6f859f1248fef6bb8af197f72711e1ddb27d62e8`
 - **Outcome revision:** Not started
 
 ## Rollback
