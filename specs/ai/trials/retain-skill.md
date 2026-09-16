@@ -1,6 +1,6 @@
 # Trial: Retain durable learning candidates
 
-- **Status:** Proposed
+- **Status:** Trialing
 - **Created:** 2026-09-15
 - **Review condition:** Observe at least five genuine invocations across at least three useful work boundaries, including at least one invocation that returns no candidates
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
@@ -84,11 +84,22 @@ Adopt the capability when:
 
 Revise when the capability is useful but candidate quality, scope labels, admission criteria, output shape, or invocation boundaries need adjustment. Reject it when weak suggestions or interruption cost outweigh the value of occasionally capturing durable knowledge.
 
+## Implementation verification
+
+Before deployment:
+
+- Pi loaded the skill through an explicit `--skill` path without validation warnings.
+- An empty-context invocation returned exactly `No durable learnings to capture.`
+- A synthetic mixed context returned three concise, correctly scoped candidates and excluded a routine TypeScript fact.
+- `nix flake check --no-build` passed with the skill included in the configured source tree.
+
+These checks validate loading and representative output shape but do not count as genuine trial events.
+
 ## Revision anchors
 
 - **Baseline revision:** `30dd14de4fdfb2cb0830bd22e056f55a7f9f0964`
-- **Trial definition revision:** Pending commit
-- **Implementation revision:** Pending commit
+- **Trial definition revision:** `e22eb8f9687769618922e1517e5d687c0abffa10`
+- **Implementation revision:** `2d0dfe48561eb2ed7867615d65264b95db9eb944`
 - **Outcome revision:** Not started
 
 ## Rollback
@@ -97,7 +108,7 @@ Remove `static/ai/skills/retain/SKILL.md` to return to the baseline runtime. Pre
 
 ## Outcome
 
-Observation has not started.
+Observation begins after the revised Home Manager configuration is deployed and genuine `/skill:retain` invocations occur at normal work boundaries.
 
 ## Sources
 
