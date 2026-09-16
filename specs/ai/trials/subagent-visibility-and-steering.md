@@ -38,7 +38,7 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 | --- | --- | --- | --- | --- |
 | `scout` | Luna/low | Fresh, replacement prompt, project context, no inherited skills | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
 | `researcher` | Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
-| `worker` | Terra/medium | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable change of moderate scope |
+| `worker` | Terra/medium | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
 | `reviewer` | Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
 | `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions | Handle bounded work only when no specialist has a better contract |
 
@@ -52,7 +52,7 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 - Prefer the narrowest specialist whose contract fits the task.
 - Use `delegate` only for bounded work that does not fit `scout`, `researcher`, `worker`, or `reviewer`.
 - Route work to `reviewer` only when the user explicitly requested review or an authoritative artifact scheduled it, and include that authority in the assignment.
-- Route implementation to `worker` as the smallest coherent, independently verifiable unit after the parent resolves scope and consequential decisions. Keep trivial local edits, decomposition, ambiguous work, and final integration with the parent.
+- Route implementation to `worker` as the smallest coherent, independently verifiable code, test, or configuration unit after the parent resolves scope and consequential decisions. Keep durable prose, trivial local edits, decomposition, ambiguous work, and final integration with the parent.
 - Work directly in the parent when delegation overhead exceeds the evidence, specialization, parallelism, or context-isolation benefit.
 - Give fresh-context agents a cold-start-complete task containing the goal, target, authority, relevant context, success criteria, validation, output shape, and stop conditions.
 - Keep one writer in a working tree. Parallelize read-only work unless filesystem isolation makes multiple writers safe.
@@ -67,7 +67,7 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 - Agents preserve applicable project instructions; every agent except `scout` can discover configured skills progressively.
 - Research runs load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
 - Read-only agents do not modify project files.
-- `worker` does not make unresolved consequential decisions and reports validation evidence.
+- `worker` does not make unresolved consequential decisions or author durable human- or agent-facing prose. It reports validation evidence and identifies direct documentation obligations created by its implementation without auditing documentation broadly.
 - Running work remains inspectable, steerable, and stoppable.
 
 ## Non-goals
