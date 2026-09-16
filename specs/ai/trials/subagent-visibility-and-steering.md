@@ -116,11 +116,11 @@ Evidence from one variation must remain attributed to that variation. Do not com
 ## Revision anchors
 
 - **Baseline revision:** `db8350f5e2b4d6f3887f5a2135ac367d8ad2f575`
-- **Trial definition revision:** Pending commit
-- **Implementation revisions:** Pending commit
+- **Trial definition revision:** `493d03892b88437bba0b2263bd6d92ea9697784c`
+- **Implementation revisions:** `5406001f862797622cec90224d279d59b6dbd67d`
 - **Outcome revision:** Not started
 
-The baseline contains the `pi-spawn` configuration before either trial variation. The initial variation was not assigned completed revision anchors before this revision. Record the revised trial definition and its implementation separately before treating the current anchors as complete.
+The baseline contains the `pi-spawn` configuration before either trial variation. The initial variation was not assigned completed revision anchors before this revision.
 
 ## Rollback
 
