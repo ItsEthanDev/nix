@@ -2,7 +2,7 @@
 
 - **Status:** Trialing
 - **Created:** 2026-09-12
-- **Revised:** 2026-09-16
+- **Revised:** 2026-09-17
 - **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including five `worker` events at Terra/medium, five parent-initiated delegations across at least three roles, and two steering attempts across the roster
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
@@ -65,7 +65,8 @@ Sol remains the default parent model and starts at medium thinking. Ethan or the
 
 ## Intended behavior
 
-- Pi loads `npm:pi-subagents` and advertises exactly the five managed custom agents.
+- Pi loads the `npm:pi-subagents` extension without its packaged prompts or skills and advertises exactly the five managed custom agents.
+- The parent uses the active tool contract for routine delegation and loads only a targeted guide when an advanced operation requires more detail.
 - No bundled agent remains enabled.
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
@@ -140,7 +141,7 @@ The first `pi-subagents` variation disabled every bundled agent and exposed no c
 
 ### Current variation — model-tier roster
 
-The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. The 2026-09-16 revision authorizes the parent to initiate delegation and makes preservation of parent context, model economy, and elapsed time the primary benefits weighed against handoff and reconciliation overhead. It also adds parent-initiated events and parent-context effects to the evaluation. Evidence from an earlier variation remains attributable only to that variation.
+The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. The 2026-09-16 revision authorizes the parent to initiate delegation and makes preservation of parent context, model economy, and elapsed time the primary benefits weighed against handoff and reconciliation overhead. It also adds parent-initiated events and parent-context effects to the evaluation. The 2026-09-17 revision continues excluding the package's prompts and now excludes its skills while retaining the extension and complete advertised roster. In one observed parent run, loading the `pi-subagents` skill and its four required references increased context from 31,703 to 57,307 tokens before child launch; routine delegation now relies on the active tool contract, with targeted guides reserved for advanced operations. Evidence from an earlier variation remains attributable only to that variation.
 
 ## Revision anchors
 
