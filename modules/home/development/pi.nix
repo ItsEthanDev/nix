@@ -31,6 +31,7 @@ in {
           {
             source = "npm:pi-subagents";
             prompts = [];
+            skills = ["-skills/council-mode"];
           }
         ];
         skills = [
