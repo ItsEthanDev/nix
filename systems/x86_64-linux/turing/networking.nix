@@ -10,8 +10,8 @@
       enable = true;
       # SSH (22) TanStack Start (3000) Vite (5173) Hytale (5520) Minecarft (25565) archipelago (38281)
       interfaces.tailscale0 = {
-        allowedTCPPorts = [22 3000 5173 5520 25565 38281];
-        allowedUDPPorts = [22 3000 5173 5520 25565 38281];
+        allowedTCPPorts = [22 3000 5173 5520 6419 25565 38281];
+        allowedUDPPorts = [22 3000 5173 5520 6419 25565 38281];
       };
     };
     hostName = "turing";
