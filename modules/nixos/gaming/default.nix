@@ -32,8 +32,12 @@ in {
       steam = {
         dedicatedServer.openFirewall = lib.mkDefault true;
         enable = lib.mkDefault true;
-        extest.enable = lib.mkDefault true;
+        extest.enable = lib.mkDefault false;
         localNetworkGameTransfers.openFirewall = lib.mkDefault true;
+        # TODO: Replace this override with extest.enable64Bit after nixpkgs#520162 merges.
+        package = lib.mkDefault (pkgs.steam.override {
+          extraEnv.LD_PRELOAD = "${pkgs.extest}/lib/libextest.so";
+        });
         remotePlay.openFirewall = lib.mkDefault true;
       };
     };
