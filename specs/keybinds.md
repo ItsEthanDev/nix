@@ -139,19 +139,18 @@ microphone key.
 
 ### Gaming
 
-The active game and game launcher are separate, directly addressable workspace
-targets on the primary gaming monitor. Invoking either target focuses its
-workspace, and repeated invocations are idempotent. Standard workspace bindings
-leave either target.
+The game launcher and active game share a workspace on the primary gaming
+monitor. Invoking the gaming target focuses that workspace, and repeated
+invocations are idempotent. Games open fullscreen over the launcher, so exiting
+a game reveals the launcher again.
 
 | Binding | Action |
 | --- | --- |
-| `Super+G` | Focus the active-game workspace. |
-| `Super+Ctrl+G` | Focus the game-launcher workspace. |
+| `Super+G` | Focus the gaming workspace. |
 
-Games and the game launcher route to their targets automatically, so this family
-does not provide manual window-transfer variants. Controller macros invoke the
-same canonical chords rather than defining a separate control scheme.
+Games and the game launcher route to the gaming workspace automatically, so
+this family does not provide manual window-transfer variants. Controller macros
+invoke the same canonical chord rather than defining a separate control scheme.
 
 ### Capture
 
