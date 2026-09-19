@@ -18,7 +18,7 @@ in {
 
     environment.systemPackages = [
       pkgs.gamescope
-      pkgs.hidapi
+      pkgs.usbutils
     ];
 
     hardware = {
@@ -33,6 +33,7 @@ in {
         dedicatedServer.openFirewall = lib.mkDefault true;
         enable = lib.mkDefault true;
         extest.enable = lib.mkDefault false;
+        extraPackages = [pkgs.hidapi];
         localNetworkGameTransfers.openFirewall = lib.mkDefault true;
         # TODO: Replace this override with extest.enable64Bit after nixpkgs#520162 merges.
         package = lib.mkDefault (pkgs.steam.override {

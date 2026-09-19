@@ -96,6 +96,7 @@ in {
   users.users."${user}" = {
     isNormalUser = true;
     extraGroups = [
+      "gamemode"
       "networkmanager"
       "wheel"
       "input"
