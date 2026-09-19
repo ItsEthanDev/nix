@@ -28,7 +28,6 @@ in {
     systemd.enable = false;
     settings = {
       "misc:mouse_move_enables_dpms" = true;
-      "misc:vrr" = 2;
 
       exec-once = lib.mkAfter [
         "${lib.getExe pkgs.xrandr} --output DP-4 --primary"
