@@ -139,15 +139,15 @@ microphone key.
 
 ### Gaming
 
-The active game and game launcher are separate, directly addressable targets.
-Invoking either target summons it on the currently focused monitor. Invoking
-either target while the other is visible there switches directly between them.
-Invoking the visible target dismisses it and restores the underlying workspace.
+The active game and game launcher are separate, directly addressable workspace
+targets on the primary gaming monitor. Invoking either target focuses its
+workspace, and repeated invocations are idempotent. Standard workspace bindings
+leave either target.
 
 | Binding | Action |
 | --- | --- |
-| `Super+G` | Summon or dismiss the active game |
-| `Super+Ctrl+G` | Summon or dismiss the game launcher. |
+| `Super+G` | Focus the active-game workspace. |
+| `Super+Ctrl+G` | Focus the game-launcher workspace. |
 
 Games and the game launcher route to their targets automatically, so this family
 does not provide manual window-transfer variants. Controller macros invoke the

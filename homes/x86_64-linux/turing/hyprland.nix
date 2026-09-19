@@ -16,8 +16,8 @@
   ];
   gamingWindowRules = builtins.concatLists (
     map (pattern: [
-      "workspace special:gaming, match:initial_class ${pattern}"
-      "workspace special:gaming, match:initial_title ${pattern}"
+      "workspace name:gaming, match:initial_class ${pattern}"
+      "workspace name:gaming, match:initial_title ${pattern}"
       "fullscreen on, match:initial_class ${pattern}"
       "fullscreen on, match:initial_title ${pattern}"
     ])
@@ -39,8 +39,8 @@ in {
         "SUPER, mouse_down, exec, ${lib.getExe pkgs.hyprzoom} 0.8"
         "SUPER, mouse_up, exec, ${lib.getExe pkgs.hyprzoom} 1.25"
         "SUPER, mouse:274, exec, ${lib.getExe pkgs.hyprzoom} 0"
-        "SUPER, G, togglespecialworkspace, gaming"
-        "SUPER_CTRL, G, togglespecialworkspace, launchgame"
+        "SUPER, G, workspace, name:gaming"
+        "SUPER_CTRL, G, workspace, name:launchgame"
       ];
       monitor = [
         "DP-4,2560x1440@164.80,1920x-360,1"
@@ -57,7 +57,7 @@ in {
           "size (monitor_w*0.25) (monitor_h*0.25), match:initial_title ^Discord Popout$"
           "move (monitor_w-window_w-48) (monitor_h-window_h-48), match:initial_title ^Discord Popout$"
           # Steam
-          "workspace special:launchgame silent, match:initial_class ^steam$, match:initial_title negative:^Steam Input On-screen Keyboard$"
+          "workspace name:launchgame silent, match:initial_class ^steam$, match:initial_title negative:^Steam Input On-screen Keyboard$"
           "workspace unset, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
           "float on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
           "no_focus on, match:initial_class ^steam$, match:initial_title ^Steam Input On-screen Keyboard$"
@@ -75,6 +75,8 @@ in {
         "3, monitor:DP-4, persistent:true"
         "4, monitor:DP-4, persistent:true"
         "5, monitor:DP-4, persistent:true"
+        "name:gaming, monitor:DP-4, persistent:true"
+        "name:launchgame, monitor:DP-4, persistent:true"
         "6, monitor:HDMI-A-1, persistent:true, default:true"
         "7, monitor:HDMI-A-1, persistent:true"
         "8, monitor:HDMI-A-1, persistent:true"
