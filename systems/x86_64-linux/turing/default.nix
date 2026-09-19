@@ -6,6 +6,7 @@ in {
     ./backup.nix
     ./hardware-configuration.nix
     ./networking.nix
+    ./samba.nix
   ];
 
   _module.args.primaryUser = user;
@@ -45,10 +46,19 @@ in {
     };
   };
 
-  nix.settings.experimental-features = [
-    "flakes"
-    "nix-command"
-  ];
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+      randomizedDelaySec = "45min";
+    };
+    optimise.automatic = true;
+    settings.experimental-features = [
+      "flakes"
+      "nix-command"
+    ];
+  };
 
   nixpkgs = {
     config.allowUnfree = true;
