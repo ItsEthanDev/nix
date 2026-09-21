@@ -82,6 +82,16 @@ in
       )
     '';
 
+    postFixup = ''
+      mv "$out/bin/vibe" "$out/bin/.vibe-gapps-wrapped"
+      cat >"$out/bin/vibe" <<EOF
+      #!${stdenv.shell}
+      export GDK_BACKEND=wayland,x11
+      exec "$out/bin/.vibe-gapps-wrapped" "\$@"
+      EOF
+      chmod +x "$out/bin/vibe"
+    '';
+
     meta = {
       description = "Private, offline audio and video transcription";
       homepage = "https://github.com/thewh1teagle/vibe";
