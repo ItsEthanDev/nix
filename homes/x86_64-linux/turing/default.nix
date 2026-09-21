@@ -50,6 +50,7 @@
       rustc
       tlrc
       unzip
+      vibe
       zip
     ];
   };
