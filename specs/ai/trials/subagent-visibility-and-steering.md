@@ -2,8 +2,8 @@
 
 - **Status:** Trialing
 - **Created:** 2026-09-12
-- **Revised:** 2026-09-17
-- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including five `worker` events at Terra/medium, five parent-initiated delegations across at least three roles, and two steering attempts across the roster
+- **Revised:** 2026-09-22
+- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including the completed Terra/medium `worker` baseline, five `worker` events at GPT-6 Luna/xhigh, five parent-initiated delegations across at least three roles, and two steering attempts across the roster
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
 ## Problem and hypothesis
@@ -12,9 +12,9 @@ The environment needs subagents that remain visible and steerable while allowing
 
 A five-agent roster should separate common delegation shapes without replacing the parent as decision-maker:
 
-- Luna handles fast local reconnaissance and external research.
-- Terra implements approved, well-scoped work.
-- Sol independently reviews consequential work.
+- GPT-6 Luna handles fast local reconnaissance and external research.
+- GPT-6 Luna at xhigh implements approved, well-scoped work.
+- GPT-6 Sol independently reviews consequential work.
 - A parent-matching delegate handles bounded tasks that fit no specialist.
 
 This separation should preserve the parent's context window, reduce use of the stronger parent model for work a faster or less expensive specialist can perform well, and reduce elapsed time through appropriate concurrency while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. The parent should initiate delegation without waiting for an explicit request when those benefits, specialization, or independent evidence are likely to justify handoff and reconciliation overhead. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
@@ -37,15 +37,15 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 
 | Agent | Model and thinking | Context and prompt | Tools and extensions | Task boundary |
 | --- | --- | --- | --- | --- |
-| `scout` | Luna/low | Fresh, replacement prompt, project context, no inherited skills | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
-| `researcher` | Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
-| `worker` | Terra/medium | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
-| `reviewer` | Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
+| `scout` | GPT-6 Luna/low | Fresh, replacement prompt, project context, no inherited skills | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
+| `researcher` | GPT-6 Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
+| `worker` | GPT-6 Luna/xhigh | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
+| `reviewer` | GPT-6 Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
 | `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions | Handle bounded work only when no specialist has a better contract |
 
 All agents except `scout` inherit the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria. `reviewer` must load `development-review`; `researcher` retains a contained method until a canonical research skill exists.
 
-Sol remains the default parent model and starts at medium thinking. Ethan or the parent may raise the parent to high for architecture, substantial planning, ambiguous product work, or synthesis of conflicting evidence. Max remains an explicit exceptional escalation.
+GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan or the parent may raise the parent to high for architecture, substantial planning, ambiguous product work, or synthesis of conflicting evidence. Max remains an explicit exceptional escalation.
 
 ## Routing rules
 
@@ -86,7 +86,7 @@ This trial does not:
 - evaluate missions, schedules, watchdog behavior, external runners, or autonomous multi-agent programs;
 - create separate planner, oracle, security, documentation, or domain-specialist agents;
 - claim that benchmark rankings predict local outcomes; or
-- make Terra the permanent worker model before comparison evidence exists.
+- make GPT-6 Luna/xhigh the permanent worker model before comparison evidence exists.
 
 ## Failure conditions
 
@@ -113,19 +113,21 @@ After deployment:
 1. Run `/subagents-doctor` and confirm the extension reports a healthy installation.
 2. Inspect the agent list and confirm that exactly `scout`, `researcher`, `worker`, `reviewer`, and `delegate` are advertised.
 3. Run `/subagents-models` and confirm each specialist's effective model and thinking level.
-4. Confirm the parent starts with `openai-codex/gpt-5.6-sol` at medium thinking and retains the configured model set.
+4. Confirm the parent starts with `openai-codex/gpt-6-sol` at medium thinking and the configured model set includes it.
 5. Launch one minimal task per agent and confirm its tools, context, applicable skill behavior, output behavior, and read/write boundary.
 
 Configuration evaluation proves generated settings and managed files but does not replace these runtime checks.
 
 ### Event evidence
 
+Ethan reports at least five successful implementation events with the `worker` at Terra/medium. This completes the planned suitability baseline for implementation work. Event-level details were not recorded here, so the baseline does not establish comparative latency, usage, or correction rates.
+
 Record genuine events in this table:
 
 | Date | Agent | Task shape | Correct route | Adequate result | Parent correction | Parent-context effect | Skills loaded and relevant | Elapsed/usage note | Steering | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Complete at least three events per agent and at least five parent-initiated delegations across three or more roles. Record at least five `worker` events at Terra/medium before comparing explicit Terra/high and Luna/max runs on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes.
+Complete at least three events per agent and at least five parent-initiated delegations across three or more roles. Record at least five `worker` events at GPT-6 Luna/xhigh and compare them with the reported Terra/medium baseline on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes. Do not claim comparative latency, usage, or correction improvements without event-level evidence.
 
 Adopt an agent when every event preserves its authority boundary and project rules, at least 80% of its events produce an adequate result without rerunning the task on a stronger model, and remaining handoff and correction cost does not erase the expected parent-context, speed, or usage benefit. Adopt visibility and steering when every conversation is inspectable and both steering attempts are effective. Revise or remove a role that overlaps another role, attracts incorrect routing, or repeatedly requires parent repair.
 
@@ -139,9 +141,13 @@ The initial variation replaced `pi-spawn` with `@tintinweb/pi-subagents`, retain
 
 The first `pi-subagents` variation disabled every bundled agent and exposed no custom agent. It established the extension boundary before local roles were defined.
 
-### Current variation — model-tier roster
+### Model-tier roster
 
 The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. The 2026-09-16 revision authorizes the parent to initiate delegation and makes preservation of parent context, model economy, and elapsed time the primary benefits weighed against handoff and reconciliation overhead. It also adds parent-initiated events and parent-context effects to the evaluation. The 2026-09-17 revision continues excluding the package's prompts and now excludes its skills while retaining the extension and complete advertised roster. In one observed parent run, loading the `pi-subagents` skill and its four required references increased context from 31,703 to 57,307 tokens before child launch; routine delegation now relies on the active tool contract, with targeted guides reserved for advanced operations. Evidence from an earlier variation remains attributable only to that variation.
+
+### Current variation — GPT-6 roster
+
+The 2026-09-22 revision moves `scout` and `researcher` to GPT-6 Luna, `reviewer` and the parent default to GPT-6 Sol, and `worker` from the successful Terra/medium baseline to GPT-6 Luna/xhigh. The role boundaries remain unchanged. The worker comparison now evaluates whether the GPT-6 variation preserves implementation success while improving the parent-context, latency, usage, or correction-cost outcomes already owned by this trial.
 
 ## Revision anchors
 
