@@ -35,6 +35,7 @@ in
       python
       pkgs.ripgrep
       pkgs.sqlite
+      pkgs.tectonic
       pkgs.unzip
       pkgs.xh
       pkgs.yq-go
