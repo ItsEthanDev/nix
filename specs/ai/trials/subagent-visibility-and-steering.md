@@ -157,6 +157,9 @@ The 2026-09-22 revision moves `scout` and `researcher` to GPT-6 Luna, `reviewer`
 - **Empty-catalog anchor record:** `2e96bd22dfde3f08da1161d8769797ce0ff053b9`
 - **Roster trial definitions:** `e146ae498ba28a23846c190e19e7d62751de7812`, `84406984cc35e170041a9dfcb1af29009c37ae2b`, `68468c1f4a528e1ead11fad77a75af24cecc425d`
 - **Roster implementation revisions:** `34b5997a719efa375d81a1915a53dddf16046b06`, `7f6a3e26606fd96143886a97b0cd78d7435426fb`, `6f859f1248fef6bb8af197f72711e1ddb27d62e8`
+- **GPT-6 baseline revision:** `fcd319dd9232b937c1ccec0d9131ec035c6a01fc`
+- **GPT-6 trial definition:** `458eb57a3c3998ae6e0177299aeb2c6cc1ea0cfc`
+- **GPT-6 implementation revision:** `10c37c9f14da2363fc8b25bd498ad3454739d44d`
 - **Outcome revision:** Not started
 
 ## Rollback
