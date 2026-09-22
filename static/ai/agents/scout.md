@@ -2,7 +2,7 @@
 name: scout
 description: Fast read-only local reconnaissance for locating code, tracing behavior, and returning compact evidence before planning or implementation
 advertise: true
-model: openai-codex/gpt-5.6-luna
+model: openai-codex/gpt-6-luna
 thinking: low
 tools: read, grep, find, ls, bash
 systemPromptMode: replace

@@ -18,10 +18,10 @@ in {
       settings = {
         branchSummary.skipPrompt = lib.mkDefault true;
         defaultProvider = lib.mkDefault "openai-codex";
-        defaultModel = lib.mkDefault "gpt-5.6-sol";
+        defaultModel = lib.mkDefault "gpt-6-sol";
         defaultThinkingLevel = lib.mkDefault "medium";
         enabledModels = lib.mkDefault [
-          "openai-codex/gpt-5.6-sol"
+          "openai-codex/gpt-6-sol"
           "openai-codex/gpt-5.6-terra"
           "openai-codex/gpt-5.6-luna"
           "openai-codex/gpt-6-astra"

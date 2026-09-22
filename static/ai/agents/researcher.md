@@ -2,7 +2,7 @@
 name: researcher
 description: Focused external research using primary sources, source validation, and concise decision-relevant findings for the parent
 advertise: true
-model: openai-codex/gpt-5.6-luna
+model: openai-codex/gpt-6-luna
 thinking: medium
 tools: read, web_search, fetch_content, get_search_content, source_check
 extensions: pi-web-access

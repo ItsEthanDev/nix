@@ -2,8 +2,8 @@
 name: worker
 description: Implements well-defined, independently verifiable code, test, or configuration changes of moderate scope; use the parent for durable prose, trivial edits, decomposition, ambiguous work, or consequential decisions
 advertise: true
-model: openai-codex/gpt-5.6-terra
-thinking: medium
+model: openai-codex/gpt-6-luna
+thinking: xhigh
 tools: read, grep, find, ls, bash, edit, write, contact_supervisor
 systemPromptMode: replace
 inheritProjectContext: true
