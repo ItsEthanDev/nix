@@ -47,7 +47,7 @@ in {
     home.file = {
       ".pi/agent/AGENTS.md".source = ../../../static/ai/AGENTS.md;
       ".pi/agent/extensions/subagent/config.json".text = builtins.toJSON {maxSubagentDepth = 2;};
-      ".pi/agent/agents/delegate.md".source = ../../../static/ai/agents/delegate.md;
+      ".pi/agent/agents/delegate.md".text = withWebAccess ../../../static/ai/agents/delegate.md;
       ".pi/agent/agents/researcher.md".text = withWebAccess ../../../static/ai/agents/researcher.md;
       ".pi/agent/agents/reviewer.md".text = withWebAccess ../../../static/ai/agents/reviewer.md;
       ".pi/agent/agents/scout.md".source = ../../../static/ai/agents/scout.md;

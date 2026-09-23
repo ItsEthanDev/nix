@@ -4,6 +4,7 @@ description: Parent-equivalent general delegate for bounded work that fits no sp
 advertise: true
 model: inherit
 allowNestedSubagents: true
+subagentOnlyExtensions: @PI_WEB_ACCESS_EXTENSION@
 systemPromptMode: append
 inheritProjectContext: true
 inheritGlobalContext: true

@@ -41,7 +41,7 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 | `researcher` | GPT-6 Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
 | `worker` | GPT-6 Luna/xhigh | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
 | `reviewer` | GPT-6 Sol/high | Fresh, replacement prompt, project context | Read-only local and web-source tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
-| `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions, including bounded nested delegation | Handle bounded work only when no specialist has a better contract |
+| `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools, explicit web access, and bounded nested delegation | Handle bounded work only when no specialist has a better contract |
 
 All agents except `scout` inherit the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria. `reviewer` must load `development-review`; `researcher` retains a contained method until a canonical research skill exists.
 
@@ -71,7 +71,7 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
 - Agents preserve applicable project instructions; every agent except `scout` can discover configured skills progressively.
-- Research and source-dependent review runs load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
+- Research, source-dependent review, and delegated tasks needing a direct lookup load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
 - Read-only agents do not modify project files.
 - `worker` does not make unresolved consequential decisions or author durable human- or agent-facing prose. It reports validation evidence and identifies direct documentation obligations created by its implementation without auditing documentation broadly.
 - Running work remains inspectable, steerable, and stoppable.
@@ -152,6 +152,10 @@ The 2026-09-22 revision moves `scout` and `researcher` to GPT-6 Luna, `reviewer`
 ### Accepted two-level `delegate` routing
 
 Ethan decided that a global coordinator may delegate a bounded project task to `delegate`, which may autonomously launch one further specialist layer. This is a direct requirement, not another experimental variation. The [bounded nested delegation directive](../directives.md#bounded-nested-delegation-through-delegate) owns its limits; this roster trial continues to observe whether delegation is useful without redefining that accepted boundary.
+
+### Delegate direct web access
+
+The delegate's parent-equivalent role includes occasional direct source lookups. Foreground children do not inherit ambient parent extensions, so the delegate must load `pi-web-access` explicitly rather than spawning a researcher for every lookup. A substantial, independent research task still belongs with `researcher`. This correction adds web tools without changing the two-level delegation limit or the specialist roles.
 
 ### Source-aware reviewer and researcher tool repair
 
