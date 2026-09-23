@@ -5,7 +5,7 @@ advertise: true
 model: openai-codex/gpt-6-luna
 thinking: medium
 tools: read, web_search, fetch_content, get_search_content, source_check
-extensions: pi-web-access
+subagentOnlyExtensions: @PI_WEB_ACCESS_EXTENSION@
 systemPromptMode: replace
 inheritProjectContext: true
 inheritGlobalContext: false

@@ -5,6 +5,9 @@
   ...
 }: let
   cfg = config.my.development;
+  webAccessExtension = "${config.home.homeDirectory}/.pi/agent/npm/node_modules/pi-web-access/index.ts";
+  withWebAccess = path:
+    builtins.replaceStrings ["@PI_WEB_ACCESS_EXTENSION@"] [webAccessExtension] (builtins.readFile path);
 in {
   config = lib.mkIf cfg.enable {
     programs.pi-coding-agent = {
@@ -44,8 +47,8 @@ in {
     home.file = {
       ".pi/agent/AGENTS.md".source = ../../../static/ai/AGENTS.md;
       ".pi/agent/agents/delegate.md".source = ../../../static/ai/agents/delegate.md;
-      ".pi/agent/agents/researcher.md".source = ../../../static/ai/agents/researcher.md;
-      ".pi/agent/agents/reviewer.md".source = ../../../static/ai/agents/reviewer.md;
+      ".pi/agent/agents/researcher.md".text = withWebAccess ../../../static/ai/agents/researcher.md;
+      ".pi/agent/agents/reviewer.md".text = withWebAccess ../../../static/ai/agents/reviewer.md;
       ".pi/agent/agents/scout.md".source = ../../../static/ai/agents/scout.md;
       ".pi/agent/agents/worker.md".source = ../../../static/ai/agents/worker.md;
     };
