@@ -178,6 +178,7 @@ Verify that the generated agent files point to the installed extension entrypoin
 - **Source-aware tool repair implementation:** `88a977ecc9dd91f535340fb917a2daede4a40475` — generate installed extension paths and allowlist read-only web tools
 - **Accepted nested-delegation directive:** `888b307` — record two-level delegate authority outside the trial
 - **Nested-delegation implementation:** `2198138` — enable delegate fanout and set the depth cap to two
+- **Delegate direct web access:** `462497a` — load `pi-web-access` explicitly in delegate children
 - **Outcome revision:** Not started
 
 ## Source-aware tool repair activation
@@ -197,6 +198,14 @@ Existing Pi sessions must reload or restart to observe the new agent definitions
 - **Behavioral check:** A `delegate` launched a `scout` that read `static/ai/agents/delegate.md` and returned the expected frontmatter value. Nested run receipt: `59dd4ce9-5d17-4f3d-a594-922b4d5df947`. System and user failed-unit checks found no failures.
 
 Existing Pi sessions must reload or restart to use the new depth setting.
+
+## Delegate web access activation
+
+- **Activated:** 2026-09-22 on `turing` through `sudo nixos-rebuild switch --flake .#turing`.
+- **System generation:** `/nix/store/949lcxcbxdqs575anvvh1sk2y4g4mx07-nixos-system-turing-26.11.20260922.6774f7b`.
+- **Evidence:** The managed delegate file resolves the installed `pi-web-access` entrypoint. A foreground `delegate` called `web_search` directly, without spawning a researcher, and returned the official Pi documentation URL. The child transcript records the direct tool call. System and user failed-unit checks found no failures.
+
+Existing Pi sessions must reload or restart to use the updated delegate definition.
 
 ## Rollback
 
