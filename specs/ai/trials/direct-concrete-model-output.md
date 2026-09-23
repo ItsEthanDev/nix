@@ -1,7 +1,9 @@
 # Trial: Direct and concrete model output
 
-- **Status:** Proposed
+- **Status:** Trialing
 - **Created:** 2026-09-22
+- **Implemented:** 2026-09-22
+- **Activated:** 2026-09-22
 - **Review condition:** Observe at least twelve substantive responses across at least four response categories and three Pi sessions
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
@@ -133,19 +135,34 @@ Revise when the output is generally easier to read but one or more instructions 
 ## Revision anchors
 
 - **Baseline revision:** `d87f179270a354538f2aa6af56c8a0d8fa93f88a`
-- **Trial definition revision:** Pending this definition commit
-- **Implementation revisions:** Not started
+- **Trial definition revision:** `084e528fe03f1080075e3ab1d71eebf94badcf57`
+- **Implementation revisions:**
+  - `f1cef79a0d6ec72159016b9e544ccb7d5ccac4de` — add direct and concrete writing defaults to the global agent instructions
 - **Outcome revision:** Not started
 
-## Activation and rollback
+## Activation evidence
 
-The trial begins observation only after the implementation is deployed through the applicable Nix configuration and the Pi process is restarted or reloaded.
+- **Activated:** 2026-09-22 on `turing`
+- **Command:** `sudo nixos-rebuild switch --flake .#turing`
+- **System generation:** `/nix/store/6lvi4vvykbhlmnymc7kgdjwbkwjj961d-nixos-system-turing-26.11.20260922.6774f7b`
+- **Managed instruction:** `/nix/store/zm2r6777695xkw7zg1sbj4n2xjsn7qja-hm_AGENTS.md`
+- **Verification:** The managed instruction matches `static/ai/AGENTS.md`, contains the trial section, and system and user failed-unit checks returned no failures.
 
-Before an implementation revision exists, rollback requires no runtime change. After implementation, record the exact revert command and affected path here.
+Observation events begin after this activation. Existing Pi processes must run `/reload` or restart before their behavior counts toward the trial.
+
+## Rollback
+
+Revert the runtime revision while preserving this trial and its evidence:
+
+```sh
+git revert f1cef79a0d6ec72159016b9e544ccb7d5ccac4de
+```
+
+If later work prevents a clean revert, restore `static/ai/AGENTS.md` from `d87f179270a354538f2aa6af56c8a0d8fa93f88a`, then reconcile later instructions explicitly.
 
 ## Outcome
 
-No outcome has been recorded. The trial remains `Proposed` until the runtime instruction is implemented and activated.
+No outcome has been recorded. The trial remains `Trialing` until its observation period supports adoption, revision, rejection, or an inconclusive result.
 
 ## Sources
 
