@@ -40,7 +40,7 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 | `scout` | GPT-6 Luna/low | Fresh, replacement prompt, project context, no inherited skills | Read-only tools plus inspection-only Bash | Locate and trace local code; return compressed evidence for another agent |
 | `researcher` | GPT-6 Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
 | `worker` | GPT-6 Luna/xhigh | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
-| `reviewer` | GPT-6 Sol/high | Fresh, replacement prompt, project context | Read-only tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
+| `reviewer` | GPT-6 Sol/high | Fresh, replacement prompt, project context | Read-only local and web-source tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
 | `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions | Handle bounded work only when no specialist has a better contract |
 
 All agents except `scout` inherit the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria. `reviewer` must load `development-review`; `researcher` retains a contained method until a canonical research skill exists.
@@ -71,7 +71,7 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
 - Agents preserve applicable project instructions; every agent except `scout` can discover configured skills progressively.
-- Research runs load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
+- Research and source-dependent review runs load `pi-web-access` in the child and fail clearly rather than silently continuing without required tools.
 - Read-only agents do not modify project files.
 - `worker` does not make unresolved consequential decisions or author durable human- or agent-facing prose. It reports validation evidence and identifies direct documentation obligations created by its implementation without auditing documentation broadly.
 - Running work remains inspectable, steerable, and stoppable.
@@ -145,9 +145,15 @@ The first `pi-subagents` variation disabled every bundled agent and exposed no c
 
 The 2026-09-15 revision defines the five-agent roster, parent thinking default, routing rules, failure conditions, and event-level evaluation. Same-day refinements removed post-launch routing text from `delegate`, excluded skills from `scout`, made `reviewer` defer to `development-review`, tightened the parent-owned scope contract for `worker`, and reserved durable prose for the parent while requiring the worker to report direct documentation obligations. The 2026-09-16 revision authorizes the parent to initiate delegation and makes preservation of parent context, model economy, and elapsed time the primary benefits weighed against handoff and reconciliation overhead. It also adds parent-initiated events and parent-context effects to the evaluation. The 2026-09-17 revision continues excluding the package's prompts and now excludes its skills while retaining the extension and complete advertised roster. In one observed parent run, loading the `pi-subagents` skill and its four required references increased context from 31,703 to 57,307 tokens before child launch; routine delegation now relies on the active tool contract, with targeted guides reserved for advanced operations. Evidence from an earlier variation remains attributable only to that variation.
 
-### Current variation — GPT-6 roster
+### GPT-6 roster
 
 The 2026-09-22 revision moves `scout` and `researcher` to GPT-6 Luna, `reviewer` and the parent default to GPT-6 Sol, and `worker` from the successful Terra/medium baseline to GPT-6 Luna/xhigh. The role boundaries remain unchanged. The worker comparison now evaluates whether the GPT-6 variation preserves implementation success while improving the parent-context, latency, usage, or correction-cost outcomes already owned by this trial.
+
+### Source-aware reviewer and researcher tool repair
+
+The reviewer has no web tools, so source-dependent review cannot search or fetch external evidence. The researcher names `pi-web-access` in its `extensions` field, but the child loader interprets that value as a path relative to the working directory and fails to load the provider. Both roles must explicitly allowlist the four read-only web tools and load the installed extension entrypoint as a resolved child-only path. The reviewer still uses external sources only when the authorized review target requires them; search does not expand review scope or authority.
+
+Verify that the generated agent files point to the installed extension entrypoint, then confirm each role's child runtime resolves all four web tools in both foreground and background launch modes. A local-only reviewer must still be able to finish without searching. This repair does not enable nested delegation or change any other role's tools.
 
 ## Revision anchors
 
