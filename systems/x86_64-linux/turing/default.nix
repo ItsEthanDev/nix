@@ -93,9 +93,12 @@ in {
 
   time.timeZone = "America/Denver";
 
+  virtualisation.docker.enable = true;
+
   users.users."${user}" = {
     isNormalUser = true;
     extraGroups = [
+      "docker"
       "gamemode"
       "networkmanager"
       "wheel"
