@@ -172,6 +172,8 @@ Verify that the generated agent files point to the installed extension entrypoin
 - **GPT-6 implementation revision:** `10c37c9f14da2363fc8b25bd498ad3454739d44d`
 - **Source-aware tool repair definition:** `ae23f9f` — record the broken reviewer/researcher tool boundary and repair criteria
 - **Source-aware tool repair implementation:** `88a977ecc9dd91f535340fb917a2daede4a40475` — generate installed extension paths and allowlist read-only web tools
+- **Accepted nested-delegation directive:** `888b307` — record two-level delegate authority outside the trial
+- **Nested-delegation implementation:** `2198138` — enable delegate fanout and set the depth cap to two
 - **Outcome revision:** Not started
 
 ## Source-aware tool repair activation
@@ -182,6 +184,15 @@ Verify that the generated agent files point to the installed extension entrypoin
 - **Evidence:** `nix flake check --no-build` passed; an actual `researcher` child called `web_search` successfully and returned the official Pi documentation URL. The deployed reviewer advertises the same web-tool allowlist and resolved extension path. A source-dependent reviewer execution remains to be observed under an authorized review request. System and user failed-unit checks found no failures.
 
 Existing Pi sessions must reload or restart to observe the new agent definitions.
+
+## Accepted delegate nesting activation
+
+- **Activated:** 2026-09-22 on `turing` through `sudo nixos-rebuild switch --flake .#turing`.
+- **System generation:** `/nix/store/a6vq3i2gkczhwv6qvp0dr8csc2yv743f-nixos-system-turing-26.11.20260922.6774f7b`.
+- **Configuration:** The managed `maxSubagentDepth` is `2`, and the deployed `delegate` has `allowNestedSubagents: true`. Other specialist tool allowlists do not include `subagent`.
+- **Behavioral check:** A `delegate` launched a `scout` that read `static/ai/agents/delegate.md` and returned the expected frontmatter value. Nested run receipt: `59dd4ce9-5d17-4f3d-a594-922b4d5df947`. System and user failed-unit checks found no failures.
+
+Existing Pi sessions must reload or restart to use the new depth setting.
 
 ## Rollback
 
