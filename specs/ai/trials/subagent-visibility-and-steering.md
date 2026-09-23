@@ -166,7 +166,18 @@ Verify that the generated agent files point to the installed extension entrypoin
 - **GPT-6 baseline revision:** `fcd319dd9232b937c1ccec0d9131ec035c6a01fc`
 - **GPT-6 trial definition:** `458eb57a3c3998ae6e0177299aeb2c6cc1ea0cfc`
 - **GPT-6 implementation revision:** `10c37c9f14da2363fc8b25bd498ad3454739d44d`
+- **Source-aware tool repair definition:** `ae23f9f` — record the broken reviewer/researcher tool boundary and repair criteria
+- **Source-aware tool repair implementation:** `88a977ecc9dd91f535340fb917a2daede4a40475` — generate installed extension paths and allowlist read-only web tools
 - **Outcome revision:** Not started
+
+## Source-aware tool repair activation
+
+- **Activated:** 2026-09-22 on `turing` through `sudo nixos-rebuild switch --flake .#turing`.
+- **System generation:** `/nix/store/wlyjzhgij4yajnzsj44ssyid05329lf0-nixos-system-turing-26.11.20260922.6774f7b`.
+- **Generated paths:** Both managed agent files reference `/home/ethan/.pi/agent/npm/node_modules/pi-web-access/index.ts` and allowlist `web_search`, `fetch_content`, `get_search_content`, and `source_check`.
+- **Evidence:** `nix flake check --no-build` passed; an actual `researcher` child called `web_search` successfully and returned the official Pi documentation URL. The deployed reviewer advertises the same web-tool allowlist and resolved extension path. A source-dependent reviewer execution remains to be observed under an authorized review request. System and user failed-unit checks found no failures.
+
+Existing Pi sessions must reload or restart to observe the new agent definitions.
 
 ## Rollback
 
