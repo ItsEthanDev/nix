@@ -41,7 +41,7 @@ The extension remains `npm:pi-subagents` with all bundled agents disabled. The f
 | `researcher` | GPT-6 Luna/medium | Fresh, replacement prompt, project context | Read and `pi-web-access` research tools | Gather and validate external evidence using its contained method; do not make the parent decision |
 | `worker` | GPT-6 Luna/xhigh | Fresh, replacement prompt, project context | Read, shell, edit, write, and supervisor coordination | Act as the sole writer for a well-defined, independently verifiable code, test, or configuration change of moderate scope; exclude durable prose |
 | `reviewer` | GPT-6 Sol/high | Fresh, replacement prompt, project context | Read-only local and web-source tools plus inspection-only Bash | Load `development-review` and inspect an explicitly authorized target under that skill's contract |
-| `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions | Handle bounded work only when no specialist has a better contract |
+| `delegate` | Parent model; thinking selected at launch | Fresh by default, appended Pi prompt, project and global context | Parent-like default tools and extensions, including bounded nested delegation | Handle bounded work only when no specialist has a better contract |
 
 All agents except `scout` inherit the configured skills catalog. Skills may refine execution but do not expand the assigned task, tool access, write authority, or completion criteria. `reviewer` must load `development-review`; `researcher` retains a contained method until a canonical research skill exists.
 
@@ -82,7 +82,7 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 This trial does not:
 
 - require delegation when its expected benefit does not justify its overhead;
-- enable nested delegation;
+- evaluate the already accepted two-level `delegate` routing rule independently of the roster's general delegation outcomes;
 - evaluate missions, schedules, watchdog behavior, external runners, or autonomous multi-agent programs;
 - create separate planner, oracle, security, documentation, or domain-specialist agents;
 - claim that benchmark rankings predict local outcomes; or
@@ -148,6 +148,10 @@ The 2026-09-15 revision defines the five-agent roster, parent thinking default, 
 ### GPT-6 roster
 
 The 2026-09-22 revision moves `scout` and `researcher` to GPT-6 Luna, `reviewer` and the parent default to GPT-6 Sol, and `worker` from the successful Terra/medium baseline to GPT-6 Luna/xhigh. The role boundaries remain unchanged. The worker comparison now evaluates whether the GPT-6 variation preserves implementation success while improving the parent-context, latency, usage, or correction-cost outcomes already owned by this trial.
+
+### Accepted two-level `delegate` routing
+
+Ethan decided that a global coordinator may delegate a bounded project task to `delegate`, which may autonomously launch one further specialist layer. This is a direct requirement, not another experimental variation. The [bounded nested delegation directive](../directives.md#bounded-nested-delegation-through-delegate) owns its limits; this roster trial continues to observe whether delegation is useful without redefining that accepted boundary.
 
 ### Source-aware reviewer and researcher tool repair
 

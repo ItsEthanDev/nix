@@ -56,6 +56,24 @@ Current realization:
 
 **Origin:** [Inline `wait what` trigger trial](trials/wait-what-inline-trigger.md), adopted 2026-09-15.
 
+## Bounded nested delegation through `delegate`
+
+**Intent:** A global coordinator can hand a bounded project task to `delegate`, which may then use one further layer of specialist subagents without requesting separate permission.
+
+Required behavior:
+
+- Only `delegate` may initiate nested delegation; other child roles do not gain the `subagent` tool.
+- The maximum chain is parent → delegate → specialist. The specialist cannot spawn another child, and `delegate` does not spawn another `delegate`.
+- A delegate may decide whether a specialist is worth the handoff under its assigned task and applicable project instructions. No separate parent approval or explicit fanout instruction is required.
+- The delegate remains responsible for the bounded project task, child evidence, and synthesis. The root parent retains consequential decisions and final acceptance. Nested delegation does not expand task scope, mutation authority, or permission to commit, push, publish, or deploy.
+
+Current realization:
+
+- [`static/ai/agents/delegate.md`](../../static/ai/agents/delegate.md)
+- [`modules/home/development/pi.nix`](../../modules/home/development/pi.nix)
+
+**Origin:** Ethan request, 2026-09-22.
+
 ## Maintaining directives
 
 Record the accepted outcome of a successful trial here when the behavior is durable but does not warrant a dedicated capability specification. When a directive develops substantial scope, interactions, or independent requirements, move its meaning to a focused specification and leave a concise pointer here.
