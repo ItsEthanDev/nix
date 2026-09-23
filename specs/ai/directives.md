@@ -4,6 +4,24 @@ This living specification records Ethan's accepted, durable instructions for con
 
 Git records when a directive changed. This specification owns its current accepted meaning. Proposed behavior remains in a [trial](evolution.md) until it is adopted.
 
+## Commit completed work by default
+
+**Intent:** Agents commit completed, verified changes without requiring a separate commit request.
+
+Required behavior:
+
+- After completing and verifying a requested change, commit only the files belonging to that change unless Ethan asks not to commit.
+- Do not commit incomplete work or changes whose scope is ambiguous. Report why a commit was not made.
+- Use the commit skill for staging and commit-message procedure.
+- This default does not authorize pushing or expand a delegated agent's authority to commit.
+
+Current realization:
+
+- [`static/ai/AGENTS.md`](../../static/ai/AGENTS.md)
+- [`static/ai/skills/commit/SKILL.md`](../../static/ai/skills/commit/SKILL.md)
+
+**Origin:** Ethan request to make completed work commit by default, without a trial.
+
 ## Explicit push consent
 
 **Intent:** Agents push changes only when Ethan explicitly requests it.

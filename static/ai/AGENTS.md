@@ -15,6 +15,10 @@ Give the child a self-contained objective, clear boundaries, acceptance criteria
 
 Work directly when the task is conversational, trivial, a small known lookup or edit, tightly dependent on parent-held context, or cheaper to complete than to hand off and reconcile. Do not delegate merely because a specialist exists or because the task is long.
 
+## Committing changes
+
+After completing and verifying a requested change, commit only the files belonging to that change unless the user asks you not to. Do not commit incomplete work or changes whose scope is ambiguous; report why no commit was made. Never push without an explicit request. Use the commit skill for staging and commit-message procedure. This default does not authorize delegated agents to commit.
+
 ## Writing and responses
 
 Write direct, concrete prose. Lead with the answer, action, or decision the reader needs.
