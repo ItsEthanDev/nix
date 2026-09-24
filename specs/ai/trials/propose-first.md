@@ -1,6 +1,6 @@
 # Trial: Propose before implementing
 
-- **Status:** Proposed
+- **Status:** Trialing
 - **Created:** 2026-09-23
 - **Review condition:** Observe at least five genuine requests, including the shorthand and a natural-language request, across at least two kinds of work
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
@@ -45,11 +45,16 @@ Adopt when at least five genuine opportunities include both shorthand and natura
 
 Validate skill discovery and frontmatter through Pi, inspect representative shorthand, natural-language, and non-trigger prompts, and check that the new source is included in the configured Nix skill tree. These checks do not count as genuine trial events.
 
+## Implementation verification
+
+- `nix flake check --no-build` passed with the new skill staged in the configured source tree.
+- Pi accepted the explicit skill path without validation warnings. Read-only smoke prompts for shorthand and natural-language requests returned recommendations without making changes. A discussion-only prompt did not request implementation. These outputs do not establish that automatic skill selection or the pause works reliably in normal use.
+
 ## Revision anchors
 
 - **Baseline revision:** `b309c6ce5c607cbf8b49440fa6405af184845253`
-- **Trial definition revision:** Pending definition commit
-- **Implementation revision:** Pending
+- **Trial definition revision:** `5a5c465e57c9b63c9d67e9d8df2359932ea5b1b0`
+- **Implementation revision:** `e3f06f539e82eb0815548a4b27d85a5b24245bc1`
 - **Outcome revision:** Not started
 
 ## Rollback
@@ -58,7 +63,7 @@ Remove `static/ai/skills/propose-first/SKILL.md` and preserve this trial and its
 
 ## Outcome
 
-No runtime behavior has changed. Observation begins after the new skill is available through the configured environment.
+The runtime skill has been added. Observation begins after the configured environment picks up the new skill through deployment or reload; isolated smoke prompts do not count as trial events.
 
 ## Sources
 
