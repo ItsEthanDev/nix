@@ -23,7 +23,7 @@ If the global agent instructions require direct, concrete prose and calibrated u
 
 - **Kind:** Global agent instructions
 - **Runtime path:** `static/ai/AGENTS.md`
-- **Interacting capability:** `static/ai/skills/writing/human-writing.md`
+- **Interacting capability:** `static/ai/skills/techniques/writing/human-writing.md`
 
 The global instructions own behavior that should apply to ordinary model output. The writing skill continues to own document-specific structure and editing guidance. The first revision does not change the writing skill so the effect of the always-loaded instruction can be observed separately.
 
@@ -166,4 +166,4 @@ No outcome has been recorded. The trial remains `Trialing` until its observation
 
 ## Sources
 
-This trial follows the [AI Asset Evolution specification](../evolution.md), refines adaptable assistance and economical changes in the [AI-Assisted Development specification](../spec.md), and interacts with the configured [human-writing guidance](../../../static/ai/skills/writing/human-writing.md). It preserves canonical ownership and direct-evidence requirements from [PR-009](../../constitution.md#pr-009--nix-owns-configuration-behavior) and [PR-010](../../constitution.md#pr-010--changes-require-direct-evidence).
+This trial follows the [AI Asset Evolution specification](../evolution.md), refines adaptable assistance and economical changes in the [AI-Assisted Development specification](../spec.md), and interacts with the configured [human-writing guidance](../../../static/ai/skills/techniques/writing/human-writing.md). It preserves canonical ownership and direct-evidence requirements from [PR-009](../../constitution.md#pr-009--nix-owns-configuration-behavior) and [PR-010](../../constitution.md#pr-010--changes-require-direct-evidence).

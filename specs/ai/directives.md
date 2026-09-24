@@ -18,7 +18,7 @@ Required behavior:
 Current realization:
 
 - [`static/ai/AGENTS.md`](../../static/ai/AGENTS.md)
-- [`static/ai/skills/commit/SKILL.md`](../../static/ai/skills/commit/SKILL.md)
+- [`static/ai/skills/techniques/commit/SKILL.md`](../../static/ai/skills/techniques/commit/SKILL.md)
 
 **Origin:** Ethan request to make completed work commit by default, without a trial.
 
@@ -34,7 +34,7 @@ Required behavior:
 
 Current realization:
 
-- [`static/ai/skills/commit/SKILL.md`](../../static/ai/skills/commit/SKILL.md)
+- [`static/ai/skills/techniques/commit/SKILL.md`](../../static/ai/skills/techniques/commit/SKILL.md)
 
 **Origin:** Ethan request, implemented in Git commit `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`.
 
