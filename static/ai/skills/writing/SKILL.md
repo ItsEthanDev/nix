@@ -1,11 +1,13 @@
 ---
 name: writing
-description: Create or review durable technical prose for humans or coding agents. Use for documentation, READMEs, RFCs, ADRs, PR descriptions, commit messages, AGENTS.md, CLAUDE.md, prompts, and skill files.
+description: Plan, draft, revise, or review durable technical prose for humans or coding agents. Use when choosing an artifact's audience or structure, proposing its wording in chat, or writing documentation, READMEs, specifications, RFCs, ADRs, PR descriptions, commit messages, AGENTS.md, CLAUDE.md, prompts, or skills.
 ---
 
 # Writing
 
 Write for the artifact's reader and purpose. When `project-documentation` applies, use it to select the artifact, canonical owner, schema, and maintenance rules before improving the information hierarchy and prose.
+
+Write proposed artifact text in the artifact's voice, even when presenting a draft in chat. State its decisions, status, and requirements directly instead of narrating the conversation that produced them. Write “The plan is accepted,” not “The owner accepts the plan.” Name a person only when their identity is necessary to the artifact's meaning or accountability; keep incidental conversation attribution in the source record that owns provenance, when one exists.
 
 ## Choose the reader
 
