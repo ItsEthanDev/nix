@@ -2,7 +2,7 @@
 
 This living specification records Ethan's accepted, durable instructions for configured AI capabilities. A directive describes required intent independently of the skill, system instruction, tool, extension, MCP server, or other asset that currently realizes it.
 
-Git records when a directive changed. This specification owns its current accepted meaning. Proposed behavior remains in a [trial](evolution.md) until it is adopted.
+Git records when a directive changed. This specification owns its current accepted meaning. An explicitly requested experiment remains in a [trial](evolution.md) until it is adopted. Accepted requirements may be implemented directly without a trial.
 
 ## Commit completed work by default
 

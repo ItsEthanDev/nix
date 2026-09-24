@@ -1,6 +1,6 @@
 # AI Asset Evolution
 
-This living specification defines how experimental changes to configured AI assets are proposed, implemented, evaluated, and resolved. It applies to skills, system instructions, MCP servers, tools, extensions, prompt templates, agent configuration, and combinations of those assets.
+This living specification defines how requested experiments with configured AI assets are proposed, implemented, evaluated, and resolved. It applies to skills, system instructions, MCP servers, tools, extensions, prompt templates, agent configuration, and combinations of those assets when a trial is requested.
 
 The goal is to distinguish inherited or experimental behavior from Ethan's accepted intent while allowing the environment to evolve through use.
 
@@ -17,9 +17,9 @@ A trial does not become a durable directive merely because its implementation ex
 
 ## When to run a trial
 
-Use a trial when the value or effect of a proposed behavior must be learned through real use, especially when changing automatic invocation, agent autonomy, interaction style, context loading, or coordination between capabilities.
+Run a trial when the user requests one to evaluate an uncertain or abstract idea whose value or effect needs to be learned through real use. Do not create a trial merely because a change affects automatic invocation, agent autonomy, interaction style, context loading, or coordination between capabilities. When uncertainty makes an experiment useful but no trial was requested, propose one rather than imposing it.
 
-A directly verifiable correction or an already accepted requirement does not need a trial. Implement it against its canonical directive or capability specification and provide direct evidence.
+Implement ordinary skill changes, directly verifiable corrections, and accepted requirements without a trial. Use their canonical directive or capability specification when one exists, and provide direct evidence for the change.
 
 ## Trial lifecycle
 
@@ -109,7 +109,7 @@ An upstream update does not override accepted directives or capability specifica
 1. Identify the applicable directives, capability specifications, and active trials.
 2. Separate the upstream import from reconciliation of accepted local intent.
 3. Preserve or deliberately amend each accepted obligation in its canonical owner.
-4. Treat uncertain upstream behavior as a new trial when real use is required to judge it.
+4. If uncertain upstream behavior needs evaluation through real use, propose a trial and run it only when requested.
 
 Upstream provenance may be recorded when a concrete update workflow requires it; this specification does not require a source manifest.
 
