@@ -38,7 +38,7 @@ Useful boundaries include completed planning, a completed implementation slice, 
 - `retain` extracts possible durable knowledge; [`project-documentation`](../../../static/ai/skills/project-documentation/SKILL.md) selects and updates canonical project artifacts after Ethan accepts a project candidate.
 - Personal candidates may later update [`preferences`](../../../static/ai/skills/preferences/SKILL.md), agent instructions, or another applicable capability, but `retain` does not perform that update.
 - Reusable candidates may later revise a skill, template, or tool through its normal evolution workflow.
-- [`handoff`](../../../static/ai/skills/techniques/handoff/SKILL.md) preserves transient continuation context for another session. `retain` does not duplicate handoff state, work summaries, open tasks, or resume instructions.
+- [`pause-work`](../../../static/ai/skills/techniques/pause-work/SKILL.md) preserves transient continuation context for another session. `retain` does not duplicate pause state, work summaries, open tasks, or resume instructions.
 
 ## Non-goals
 
