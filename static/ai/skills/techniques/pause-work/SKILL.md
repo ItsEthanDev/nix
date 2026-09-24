@@ -1,6 +1,7 @@
 ---
 name: pause-work
-description: Pause unfinished work at a safe boundary and leave a checkpoint for another agent or a post-compaction continuation. Use when asked to stop for now, pause a task, or preserve context before compaction.
+description: Pause work safely and save a resume checkpoint for another agent or after compaction.
+disable-model-invocation: true
 ---
 
 # Pause Work
