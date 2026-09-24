@@ -21,6 +21,10 @@ Split and link when substantial sections serve different modes. PR descriptions,
 - Define necessary domain terms on first use. Do not invent a synonym for an established term.
 - Verify changing facts against code, configuration, tests, or another authoritative source.
 
+## Write in the artifact's voice
+
+State a document's decisions, status, and requirements directly instead of narrating the conversation that produced them. Write “The plan is accepted,” not “The owner accepts the plan.” Name a person when their identity is necessary to the artifact's meaning or accountability; keep incidental conversation attribution in the source record that owns provenance.
+
 ## Write direct sentences
 
 - Address the reader as “you” when giving guidance.
