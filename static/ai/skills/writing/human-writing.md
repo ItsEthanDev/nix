@@ -23,7 +23,7 @@ Split and link when substantial sections serve different modes. PR descriptions,
 
 ## Write in the artifact's voice
 
-State a document's decisions, status, and requirements directly instead of narrating the conversation that produced them. Write “The plan is accepted,” not “The owner accepts the plan.” Name a person when their identity is necessary to the artifact's meaning or accountability; keep incidental conversation attribution in the source record that owns provenance.
+State a document's decisions, status, and requirements directly instead of narrating the conversation that produced them. Write “The plan is accepted,” not “The owner accepts the plan.” Name a person when their identity is necessary to the artifact's meaning or accountability; keep incidental conversation attribution in the source record that owns provenance, when one exists.
 
 ## Write direct sentences
 
