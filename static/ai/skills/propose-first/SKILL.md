@@ -1,6 +1,6 @@
 ---
 name: propose-first
-description: Propose a solution and pause before implementing when asked to "propose first" or explain a recommended approach before making changes. Do not activate for discussion about the skill itself.
+description: Propose a solution and pause before implementing when asked to "propose first" or explain a recommended approach before making changes.
 ---
 
 # Propose First
