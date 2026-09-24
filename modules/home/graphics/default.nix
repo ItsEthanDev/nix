@@ -7,6 +7,14 @@
 }: let
   cfg = config.my.graphics;
   ipc = "noctalia msg";
+  pasteShortcut = pkgs.writeShellScript "paste-shortcut" ''
+    if ${lib.getExe' pkgs.wl-clipboard "wl-paste"} --list-types |
+      ${lib.getExe pkgs.gnugrep} -q '^image/'; then
+      ${lib.getExe' pkgs.hyprland "hyprctl"} dispatch sendshortcut CTRL,V,activewindow
+    else
+      ${lib.getExe' pkgs.hyprland "hyprctl"} dispatch sendshortcut SHIFT,Insert,activewindow
+    fi
+  '';
 in {
   imports = [
     inputs.noctalia.homeModules.default
@@ -84,7 +92,8 @@ in {
 
         bind = [
           "SUPER, C, sendshortcut, CTRL, Insert, activewindow"
-          "SUPER, V, sendshortcut, SHIFT, Insert, activewindow"
+          # I'm testing this out; revert to "SUPER, V, sendshortcut, SHIFT, Insert, activewindow" if needed.
+          "SUPER, V, exec, ${pasteShortcut}"
           "SUPER, X, sendshortcut, CTRL, X, activewindow"
           "SUPER, A, sendshortcut, CTRL, A, activewindow"
           "SUPER, Z, sendshortcut, CTRL, Z, activewindow"
