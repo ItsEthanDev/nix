@@ -8,9 +8,9 @@
   networking = {
     firewall = {
       enable = true;
-      # SSH (22) TanStack Start (3000) Vite (5173) Hytale (5520) Minecarft (25565) archipelago (38281)
+      # SSH (22) TanStack Start (3000) Vite (5173) Hytale (5520) Minecraft (25565) archipelago (38281) mdts (8521)
       interfaces.tailscale0 = {
-        allowedTCPPorts = [22 3000 5173 5520 6419 25565 38281];
+        allowedTCPPorts = [22 3000 5173 5520 6419 8521 25565 38281];
         allowedUDPPorts = [22 3000 5173 5520 6419 25565 38281];
       };
     };

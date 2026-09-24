@@ -1,4 +1,5 @@
 {pkgs}: let
+  mdts = pkgs.callPackage ../packages/mdts {};
   python = pkgs.python3.withPackages (pythonPackages:
     with pythonPackages; [
       beautifulsoup4
@@ -28,6 +29,7 @@ in
         pkgs.imagemagick
         pkgs.jq
         pkgs.lychee
+        mdts
         pkgs.nodejs
         pkgs.openssl
         pkgs.pandoc
