@@ -24,7 +24,7 @@ Making `wait what` available as an automatic, scope-sensitive clarification trig
 - **Kind:** Skill
 - **Capability specification:** None currently
 - **Runtime path:** [`static/ai/skills/wait-what/SKILL.md`](../../../static/ai/skills/wait-what/SKILL.md)
-- **Interacting capability:** [`static/ai/skills/techniques/grilling/SKILL.md`](../../../static/ai/skills/techniques/grilling/SKILL.md)
+- **Interacting capability:** [`static/ai/skills/techniques/grilling/SKILL.md`](../../../static/ai/skills/techniques/alignment/SKILL.md)
 
 The trial may change only `static/ai/skills/wait-what/SKILL.md` initially. A change to `grilling` requires evidence that scoped clarification cannot preserve its design tree through the `wait-what` skill alone.
 
