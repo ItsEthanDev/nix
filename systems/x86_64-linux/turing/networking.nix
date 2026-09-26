@@ -18,6 +18,11 @@
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
+      settings."device-steam-frame" = {
+        "match-device" = "mac:9C:04:B6:88:D5:B9";
+        "allowed-connections" = "id:Steam Frame Wireless Adapter";
+        "wifi.iwd.autoconnect" = false;
+      };
     };
     wireless.iwd = {
       enable = true;
