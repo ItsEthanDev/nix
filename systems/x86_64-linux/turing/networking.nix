@@ -17,12 +17,9 @@
     hostName = "turing";
     networkmanager = {
       enable = true;
-      wifi.backend = "iwd";
+      wifi.backend = "wpa_supplicant";
     };
-    wireless.iwd = {
-      enable = true;
-      settings.General.Country = "US";
-    };
+    wireless.extraConfig = "country=US";
   };
 
   programs.localsend = {
