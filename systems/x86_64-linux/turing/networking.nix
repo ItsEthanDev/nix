@@ -20,7 +20,7 @@
       wifi.backend = "iwd";
       settings."device-steam-frame" = {
         "match-device" = "mac:9C:04:B6:88:D5:B9";
-        "allowed-connections" = "id:Steam Frame Wireless Adapter";
+        "allowed-connections" = "id:Steam\\sFrame\\sWireless\\sAdapter";
         "wifi.iwd.autoconnect" = false;
       };
     };
