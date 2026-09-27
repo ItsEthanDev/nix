@@ -46,6 +46,7 @@ in {
 
     home.file = {
       ".pi/agent/AGENTS.md".source = ../../../static/ai/AGENTS.md;
+      ".pi/agent/prompts/adopt-project-docs.md".source = ../../../static/ai/prompts/adopt-project-docs.md;
       ".pi/agent/extensions/subagent/config.json".text = builtins.toJSON {maxSubagentDepth = 2;};
       ".pi/agent/agents/delegate.md".source = webAgent ../../../static/ai/agents/delegate.md;
       ".pi/agent/agents/researcher.md".source = webAgent ../../../static/ai/agents/researcher.md;

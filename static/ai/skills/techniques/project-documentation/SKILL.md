@@ -1,6 +1,6 @@
 ---
 name: project-documentation
-description: Organize and reconcile project documentation, including feature specs, plans, tasks, contracts, domain context, decision records, READMEs, coworker setup, and operational dependencies. Use when choosing an artifact owner or maintaining related artifacts after a change.
+description: Bootstrap or migrate a project's documentation from code or legacy docs, and maintain feature specs, plans, tasks, contracts, domain context, decision records, READMEs, setup, and operational dependencies. Use when choosing artifact owners or reconciling related artifacts.
 ---
 
 # Project Documentation
@@ -8,6 +8,7 @@ description: Organize and reconcile project documentation, including feature spe
 1. Read the user's direction, repository instructions, and existing owners before choosing an artifact. Follow explicit direction, established conventions, then the fallbacks here. Surface conflicts with project governance.
 2. Identify what each changed claim means and where it belongs: intended behavior in a feature spec, technical approach in a plan, work state in tasks, exact interface agreement in a contract, vocabulary in domain context, durable rationale in an ADR, orientation in a README, and executable detail in code, schemas, or configuration.
 3. Load only the references whose decisions the task needs:
+   - Establishing documentation from code or migrating legacy docs: [bootstrap and migration](BOOTSTRAP.md), then its task-relevant references below.
    - Writing or changing a feature target, approach, or task list: [feature artifacts](FEATURE-ARTIFACTS.md).
    - Defining or changing an interface another component or consumer relies on: [contracts](CONTRACTS.md).
    - Naming a domain concept or locating its context: [domain context](DOMAIN-CONTEXT.md).

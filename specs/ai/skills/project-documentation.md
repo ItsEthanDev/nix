@@ -20,6 +20,12 @@ A user may designate a choice as **operational**: its current value is meant to 
 
 A user may designate a schema, configuration, or other declarative artifact as owner of its concrete details. Reference it rather than copying its declarations into prose. The feature specification owns the intended capability, behavioral boundaries, and constraints that the declaration does not express. A declared field or tool list can change without a prose edit only if it does not change an accepted user-visible, security, or consumer obligation; otherwise reconcile the relevant specification or contract. Protect external interface agreements even when their authoritative representation lives beside code.
 
+## Bootstrapping or migrating an existing project
+
+The technique must support projects with no documentation and projects with legacy artifacts. Inspect applicable instructions, code, tests, configuration, and existing docs to distinguish observed behavior from accepted intent. Use these sources to map actual capabilities and plausible feature boundaries, but do not treat implementation or historical prose as automatic authority over the current target. Ask the owner focused, batched questions where purpose, scope, intended behavior, or consequential design remains uncertain; record the answers in the appropriate owner without requiring a second approval. Proceed with independently clear work while leaving unresolved semantic changes untouched.
+
+Create useful, current artifacts rather than populating every conventional filename or speculating from code. Preserve uniquely useful information from legacy docs, repair direct references, and remove obsolete copies only when ownership and intent are clear. A coherent final structure need not pretend the decisions or artifacts were present from the start. Explain what was observed, what the owner established, what was verified, and what remains uncertain. Apply the existing human-documentation and operational-evidence boundaries when setting up a project from scratch.
+
 ## Familiar fallbacks without ceremony
 
 Where the repository has no established convention, place feature artifacts under `specs/<feature-name>/`, using `spec.md` for intended behavior, `plan.md` for technical approach and verification, and `tasks.md` for remaining and verified work. These are conventional places to look, not required files for every change. Create only artifacts that carry distinct information. Keep small starter templates for familiar navigation; omit sections that do not serve the work.
