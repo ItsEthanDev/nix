@@ -1,6 +1,6 @@
 # Research: [Feature name]
 
-**Feature Directory:** `specs/[NNN-feature-name]`
+**Feature Directory:** `specs/[feature-name]`
 **Plan:** [Path to `plan.md`]
 
 <!-- Retain only investigated questions that materially inform the plan. Replace every retained placeholder before relying on a finding. -->

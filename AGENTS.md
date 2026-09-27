@@ -48,7 +48,7 @@ Before adding, importing, replacing, or experimentally changing a configured AI 
 
 Before modifying `static/ai/skills/preferences/`, read `specs/ai/skills/preferences.md` completely and preserve its documented design goals and boundaries.
 
-Before modifying `static/ai/skills/project-documentation/`, read `specs/ai/skills/project-documentation.md` completely and preserve its documented design goals and boundaries.
+Before modifying `static/ai/skills/techniques/project-documentation/`, read `specs/ai/skills/project-documentation.md` completely and preserve its documented design goals and boundaries.
 
 ## Sources
 

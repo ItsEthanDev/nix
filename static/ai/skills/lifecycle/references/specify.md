@@ -1,0 +1,5 @@
+# Specify
+
+Read the user's request, applicable governance and domain context, related target artifacts, and relevant current behavior. Define the outcome and externally meaningful obligations without copying concrete details owned by schemas or configuration. Treat user-designated operational values as flexible; specify intended governing constraints rather than current instances. Record consequential project-specific terminology early through `project-documentation`.
+
+Use the feature owner's familiar spec location when needed. Use stable IDs for requirements worth referencing in chat, and examples or stories only when they improve clarity. Distinguish required and optional behavior; make meaningful open questions visible. If the user supplied or agreed to the target during this conversation, record it and proceed to planning if that was requested. If a discovery leads the agent to recommend a material change in target, request direction before adopting it. Check that the recorded target has clear acceptance conditions and no unresolved question that would force planning to guess.
