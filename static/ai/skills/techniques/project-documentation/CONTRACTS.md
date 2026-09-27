@@ -8,4 +8,4 @@ Define a contract when another component or consumer needs a stable observable a
 4. Verify provider and consumer obligations, including failure cases. Mocks alone do not prove the real provider conforms. Agree and version changes before consumers rely on them; coordinate migration and old-version support where necessary.
 5. If implementation reveals a mismatch, reconcile the authoritative contract, affected specs, plans, tests, and consumer versions. Do not silently edit a consumer copy or assume that a changed schema authorizes new product behavior.
 
-See the [Spec Kit contract-driven development guide](https://github.github.com/spec-kit/guides/contract-driven-development.html) for examples of contracts across repository boundaries. The repository's own conventions determine exact formats and paths.
+The repository's own conventions determine exact formats and paths.
