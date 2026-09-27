@@ -30,6 +30,16 @@ A task list is a current execution checklist, not a permanent work log. Remove o
 
 Create a `CONTEXT.md` early when the first consequential project-specific term or context boundary needs a durable definition, including during specification. Do not create one merely because a project started, and do not postpone it until a large glossary or terminology conflict accumulates. Use a context map only for genuinely distinct contexts. Keep domain vocabulary separate from feature requirements and implementation decisions.
 
+## Human orientation and operational dependencies
+
+Human-facing documentation is optional. When it is useful, the root README gives a coworker a short path to the project's purpose, the common way to get started, and deeper references. Keep the core readable quickly; move detailed procedures and lookup material into linked guides only when they improve navigation. Follow established repository locations; absent a convention, keep short setup instructions in the README and use `docs/setup.md` when they need their own page.
+
+Setup guidance should let an authorized coworker start from a clean checkout, obtain required access through the approved channel, follow verified steps, and recognize a working result without relying on the original author. Do not include credentials or secret values. Avoid copying commands and declarations already owned elsewhere unless the local steps need them, and verify the commands in the environment that supports them.
+
+Document operational dependencies when they help a coworker operate or revisit the project. Distinguish existing deployments from integrations or external configuration the project requires. A brief README pointer may suffice; for substantial detail use the repository's established owner or a linked `docs/operations.md`. Identify the environment and where to inspect it, the externally maintained configuration needed for the application to function, how authorized people obtain or manage access, and a safe way to verify the connection when known. Point to repository-owned configuration rather than repeating its declarations. Name no particular provider as a default.
+
+Deployment configuration describes intent, not proof that an environment is currently running. Report live-state claims only from a suitable operational source, with a source and verification date; mark unknown or unverified state explicitly. Code alone does not prove an external integration is configured. Documentation work does not authorize deployment, changing external configuration, or accessing credentials. Avoid secret values and sensitive operational details in tracked prose. Reconcile human guides when their own claims change or their sources change; do not make a prose inventory another editable source of truth.
+
 ## Interface contracts and other owners
 
 Define a contract when another component or consumer needs a stable observable agreement without depending on internals. This includes service APIs, events, plugin and library interfaces, automation-facing CLIs, and exchanged formats. A human-only CLI may need usage documentation without a separate contract artifact. Record inputs and outputs, relevant behavior and failure cases, compatibility, and verification at a level proportionate to the interface. A schema alone may not express retries or side effects.

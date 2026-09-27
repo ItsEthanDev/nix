@@ -1,6 +1,6 @@
 ---
 name: project-documentation
-description: Organize and reconcile project documentation, including feature specs, plans, tasks, contracts, domain context, decision records, and READMEs. Use when choosing an artifact owner or maintaining related artifacts after a change.
+description: Organize and reconcile project documentation, including feature specs, plans, tasks, contracts, domain context, decision records, READMEs, coworker setup, and operational dependencies. Use when choosing an artifact owner or maintaining related artifacts after a change.
 ---
 
 # Project Documentation
@@ -12,7 +12,7 @@ description: Organize and reconcile project documentation, including feature spe
    - Defining or changing an interface another component or consumer relies on: [contracts](CONTRACTS.md).
    - Naming a domain concept or locating its context: [domain context](DOMAIN-CONTEXT.md).
    - Recording or changing a consequential decision's lasting rationale: [decision records](DECISION-RECORDS.md).
-   - Updating a README, human-facing guide, or project rule: [README and governance](PROJECT-DOCUMENTATION.md).
+   - Writing a README, coworker setup, existing deployment or integration guide, or project rule: [human documentation and governance](PROJECT-DOCUMENTATION.md).
    - Choosing between competing owners, routing operational or declarative details, or reconciling multiple artifacts: [artifact model](ARTIFACT-MODEL.md).
 4. Update the owner of each accepted change and reconcile affected dependents. A change may start anywhere, but downstream edits do not silently redefine the target. When a disagreement about intent is not completely obvious from established authority, state both claims and ask the user which is correct. Fix unambiguous stale references directly.
 5. Check that paths and IDs resolve, affected artifacts agree, and no unnecessary file or obsolete task remains. Report any unresolved conflict.
