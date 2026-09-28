@@ -31,6 +31,7 @@ in {
         ];
         packages = [
           "npm:pi-web-access"
+          "npm:@narumitw/pi-stamp"
           {
             source = "npm:pi-subagents";
             prompts = [];
