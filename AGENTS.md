@@ -46,6 +46,8 @@ Follow [PR-010](specs/constitution.md). At minimum:
 
 Before adding, importing, replacing, or experimentally changing a configured AI asset, read `specs/ai/evolution.md`, applicable directives, active trials, and capability specifications.
 
+Before authoring a new local skill, read `specs/ai/spec.md` and `static/ai/skills/playbooks/authoring-skills/SKILL.md`. The four-role guidance applies to new local skills, not wholesale imports or retroactive reclassification.
+
 Before modifying `static/ai/skills/preferences/`, read `specs/ai/skills/preferences.md` completely and preserve its documented design goals and boundaries.
 
 Before modifying `static/ai/skills/techniques/project-documentation/`, read `specs/ai/skills/project-documentation.md` completely and preserve its documented design goals and boundaries.
