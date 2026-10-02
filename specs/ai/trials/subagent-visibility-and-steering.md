@@ -113,7 +113,7 @@ After deployment:
 1. Run `/subagents-doctor` and confirm the extension reports a healthy installation.
 2. Inspect the agent list and confirm that exactly `scout`, `researcher`, `worker`, `reviewer`, and `delegate` are advertised.
 3. Run `/subagents-models` and confirm each specialist's effective model and thinking level.
-4. Confirm the parent starts with `openai-codex/gpt-6-sol` at medium thinking and the configured model set includes it.
+4. Confirm the parent starts with `openai-codex/gpt-6.1-sol` at medium thinking and the configured model set includes it.
 5. Launch one minimal task per agent and confirm its tools, context, applicable skill behavior, output behavior, and read/write boundary.
 
 Configuration evaluation proves generated settings and managed files but does not replace these runtime checks.

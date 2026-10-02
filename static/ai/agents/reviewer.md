@@ -2,7 +2,7 @@
 name: reviewer
 description: Authorized review of an explicit target using the development-review skill; use only when the user requests review or an authoritative artifact schedules it
 advertise: true
-model: openai-codex/gpt-6-sol
+model: openai-codex/gpt-6.1-sol
 thinking: high
 tools: read, grep, find, ls, bash, web_search, fetch_content, get_search_content, source_check
 subagentOnlyExtensions: @PI_WEB_ACCESS_EXTENSION@
