@@ -8,24 +8,24 @@
 
 ## Problem
 
-`codebase-design` is exposed as a top-level model-invoked skill even though its guidance is one engineering principle: design deep modules with small interfaces, deliberate seams, and tests at the interface. Its name, description, and path therefore enter every Pi session, while the engineering-principles router separately owns selection for consequential architecture work.
+`codebase-design` is exposed as a top-level model-invoked skill even though its guidance is one engineering principle: design deep modules with small interfaces, deliberate seams, and tests at the interface. Its name, description, and path therefore enter every Pi session, while the principles router separately owns selection for consequential architecture work.
 
 The standalone placement also makes interacting skills call a separate capability to obtain vocabulary that belongs with engineering design guidance. This organization adds an always-loaded context pointer and splits related selection across two top-level skills.
 
 ## Hypothesis
 
-If the existing capability becomes one hidden **Design Deep Modules** leaf under `engineering-principles`, the engineering-principles router will still select it at relevant moments while `codebase-design` disappears from the top-level skill list. This should preserve useful deep-module guidance and reduce context injected into every session.
+If the existing capability becomes one hidden **Design Deep Modules** leaf under `principles`, the principles router will still select it at relevant moments while `codebase-design` disappears from the top-level skill list. This should preserve useful deep-module guidance and reduce context injected into every session.
 
 ## Affected assets
 
 - **Kind:** Engineering principle, selector, and interacting skill pointers
 - **Capability specification:** None during the trial
 - **Runtime paths to add:**
-  - `static/ai/skills/engineering-principles/principles/principle-design-deep-modules/SKILL.md`
-  - `static/ai/skills/engineering-principles/principles/principle-design-deep-modules/DEEPENING.md`
-  - `static/ai/skills/engineering-principles/principles/principle-design-deep-modules/DESIGN-IT-TWICE.md`
+  - `static/ai/skills/principles/principles/principle-design-deep-modules/SKILL.md`
+  - `static/ai/skills/principles/principles/principle-design-deep-modules/DEEPENING.md`
+  - `static/ai/skills/principles/principles/principle-design-deep-modules/DESIGN-IT-TWICE.md`
 - **Runtime paths to change:**
-  - `static/ai/skills/engineering-principles/SKILL.md`
+  - `static/ai/skills/principles/SKILL.md`
   - `static/ai/skills/techniques/tdd/SKILL.md`
   - `static/ai/skills/lifecycle/references/plan.md` (relocated from `static/ai/skills/spec-driven-development/PLAN.md`; revision anchors retain the original path)
   - `static/ai/skills/development-review/references/architecture.md`
@@ -36,15 +36,15 @@ If the existing capability becomes one hidden **Design Deep Modules** leaf under
   - `static/ai/skills/codebase-design/DESIGN-IT-TWICE.md`
 - **Interacting trial:** [Development review](development-review.md)
 
-The relocation preserves the current deep-module vocabulary and supporting playbooks. The selector and interacting pointers change only enough to route through `engineering-principles`.
+The relocation preserves the current deep-module vocabulary and supporting playbooks. The selector and interacting pointers change only enough to route through `principles`.
 
 ## Intended behavior
 
 - Pi does not include `codebase-design` in the top-level available-skills list or register `/skill:codebase-design`.
-- `engineering-principles` remains the model-visible router and selects **Design Deep Modules** when work concerns a module interface, deepening shallow structure, seam placement, or testability through an interface.
+- `principles` remains the model-visible router and selects **Design Deep Modules** when work concerns a module interface, deepening shallow structure, seam placement, or testability through an interface.
 - The selected leaf provides the existing module, interface, implementation, depth, seam, adapter, leverage, and locality vocabulary.
 - The selected leaf preserves the deletion test, interface-as-test-surface rule, adapter guidance, deepening workflow, and alternative-interface workflow.
-- `tdd`, spec-driven planning, and development-review lenses route relevant work through `engineering-principles` and the **Design Deep Modules** leaf rather than naming the removed top-level skill.
+- `tdd`, spec-driven planning, and development-review lenses route relevant work through `principles` and the **Design Deep Modules** leaf rather than naming the removed top-level skill.
 - Agents load the leaf only when its guidance can change a concrete design decision.
 
 ## Non-goals
@@ -54,7 +54,7 @@ This trial does not:
 - change the meaning of the deep-module vocabulary or accepted design guidance;
 - split the capability into multiple engineering principles;
 - merge `DESIGN-IT-TWICE.md` into **Exhaust the Design Space**;
-- change when the top-level `engineering-principles` router is selected;
+- change when the top-level `principles` router is selected;
 - guarantee deterministic model selection before normal-use evidence exists; or
 - add an extension, hook, or other invocation mechanism.
 
@@ -123,7 +123,7 @@ Also inspect every observed **Design Deep Modules** load during the period for r
 ### Measures
 
 - **Top-level context removal:** Whether a fresh activated session omits `codebase-design` from available skills without adding another top-level skill.
-- **Router recall:** Genuine opportunities that load `engineering-principles` divided by observed genuine opportunities.
+- **Router recall:** Genuine opportunities that load `principles` divided by observed genuine opportunities.
 - **Leaf recall:** Genuine opportunities that load **Design Deep Modules** divided by observed genuine opportunities.
 - **Routing completion:** Opportunities where router selection is followed by a successful leaf read.
 - **Leaf precision:** Relevant leaf loads divided by all observed leaf loads.

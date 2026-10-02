@@ -46,7 +46,7 @@ Follow [PR-010](specs/constitution.md). At minimum:
 
 Before adding, importing, replacing, or experimentally changing a configured AI asset, read `specs/ai/evolution.md`, applicable directives, active trials, and capability specifications.
 
-Before authoring a new local skill, read `specs/ai/spec.md` and `static/ai/skills/playbooks/authoring-skills/SKILL.md`. The four-role guidance applies to new local skills, not wholesale imports or retroactive reclassification. In this repository, keep lifecycle stages under the `lifecycle` router and engineering principles under `engineering-principles`; add playbooks and techniques as individually discoverable skills. Depart from this layout when selection among related skills justifies a router. These are repository conventions, not rules for other skill collections.
+Before authoring a new local skill, read `specs/ai/spec.md` and `static/ai/skills/playbooks/authoring-skills/SKILL.md`. The four-role guidance applies to new local skills, not wholesale imports or retroactive reclassification. In this repository, keep lifecycle stages under the `lifecycle` router and engineering principles under `principles`; add playbooks and techniques as individually discoverable skills. Depart from this layout when selection among related skills justifies a router. These are repository conventions, not rules for other skill collections.
 
 Before modifying `static/ai/skills/preferences/`, read `specs/ai/skills/preferences.md` completely and preserve its documented design goals and boundaries.
 

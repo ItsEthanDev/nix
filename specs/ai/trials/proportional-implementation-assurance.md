@@ -22,7 +22,7 @@ If implementation guidance uses the least expensive assurance level that proves 
 - **Runtime paths:**
   - `static/ai/skills/development-review/SKILL.md`
   - `static/ai/skills/lifecycle/references/implement.md` (relocated from `static/ai/skills/spec-driven-development/IMPLEMENT.md`; revision anchors retain the original path)
-  - `static/ai/skills/engineering-principles/principles/principle-sequence-verifiable-units/SKILL.md`
+  - `static/ai/skills/principles/principles/principle-sequence-verifiable-units/SKILL.md`
 - **Interacting trial:** [Development review](development-review.md)
 
 The development-review trial owns review routing, investigation, and output quality. This trial owns when implementation may activate that capability and how implementation scales verification across slice, phase, and feature boundaries.

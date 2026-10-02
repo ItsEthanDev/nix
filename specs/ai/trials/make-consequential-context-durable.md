@@ -19,8 +19,8 @@ The principle will establish when and why to record. `project-documentation` wil
 
 - **Kind:** Engineering principle and its selection guidance
 - **Planned runtime paths:**
-  - `static/ai/skills/engineering-principles/SKILL.md`
-  - `static/ai/skills/engineering-principles/principles/principle-make-consequential-context-durable/SKILL.md` (new)
+  - `static/ai/skills/principles/SKILL.md`
+  - `static/ai/skills/principles/principles/principle-make-consequential-context-durable/SKILL.md` (new)
 - **Related capability specification:** [Project Documentation](../skills/project-documentation.md)
 
 The initial implementation is limited to these two runtime paths. It does not add a standalone skill, change harness compaction behavior, or modify documentation conventions. Runtime behavior remains unchanged while this trial is `Proposed`.

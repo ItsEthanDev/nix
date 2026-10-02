@@ -1,9 +1,9 @@
 ---
-name: engineering-principles
+name: principles
 description: Applies rigorous engineering principles to nontrivial implementation, debugging, refactoring, architecture, migration, verification, and code review. Use before making consequential engineering decisions or editing code for a nontrivial task.
 ---
 
-# Engineering Principles
+# Principles
 
 Select the smallest relevant set of principles for the task, read each selected leaf skill in full, and let each one change a concrete decision. Do not load every principle by default or cite principles that did not affect the work.
 

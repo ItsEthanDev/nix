@@ -52,7 +52,7 @@ Required behavior:
 Current realization:
 
 - [AI-assisted development specification](spec.md#explicit-decisions)
-- [`principle-never-block-on-the-human`](../../static/ai/skills/engineering-principles/principles/principle-never-block-on-the-human/SKILL.md)
+- [`principle-never-block-on-the-human`](../../static/ai/skills/principles/principles/principle-never-block-on-the-human/SKILL.md)
 
 **Origin:** Ethan request, implemented in Git commit `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`.
 
