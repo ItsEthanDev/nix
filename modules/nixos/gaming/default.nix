@@ -32,13 +32,14 @@ in {
       steam = {
         dedicatedServer.openFirewall = lib.mkDefault true;
         enable = lib.mkDefault true;
-        extest.enable = lib.mkDefault false;
+        extest.enable = lib.mkDefault true;
         extraPackages = [pkgs.hidapi];
         localNetworkGameTransfers.openFirewall = lib.mkDefault true;
-        # TODO: Replace this override with extest.enable64Bit after nixpkgs#520162 merges.
-        package = lib.mkDefault (pkgs.steam.override {
-          extraEnv.LD_PRELOAD = "${pkgs.extest}/lib/libextest.so";
-        });
+        # Re-enable SteamRT3 and restore the 64-bit extest override once SteamVR supports it.
+        # TODO: Replace the override with extest.enable64Bit after nixpkgs#520162 merges.
+        # package = lib.mkDefault (pkgs.steam.override {
+        #   extraEnv.LD_PRELOAD = "${pkgs.extest}/lib/libextest.so";
+        # });
         remotePlay.openFirewall = lib.mkDefault true;
       };
     };
