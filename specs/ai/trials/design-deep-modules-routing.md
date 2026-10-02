@@ -26,7 +26,7 @@ If the existing capability becomes one hidden **Design Deep Modules** leaf under
   - `static/ai/skills/engineering-principles/principles/principle-design-deep-modules/DESIGN-IT-TWICE.md`
 - **Runtime paths to change:**
   - `static/ai/skills/engineering-principles/SKILL.md`
-  - `static/ai/skills/tdd/SKILL.md`
+  - `static/ai/skills/techniques/tdd/SKILL.md`
   - `static/ai/skills/lifecycle/references/plan.md` (relocated from `static/ai/skills/spec-driven-development/PLAN.md`; revision anchors retain the original path)
   - `static/ai/skills/development-review/references/architecture.md`
   - `static/ai/skills/development-review/references/plan.md`
