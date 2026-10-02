@@ -26,7 +26,7 @@ in {
         enabledModels = lib.mkDefault [
           "openai-codex/gpt-6.1-sol"
           "openai-codex/gpt-5.6-terra"
-          "openai-codex/gpt-5.6-luna"
+          "openai-codex/gpt-6-luna"
           "openai-codex/gpt-6-astra"
         ];
         packages = [
