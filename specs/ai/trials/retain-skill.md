@@ -1,6 +1,6 @@
 # Trial: Retain durable learning candidates
 
-- **Status:** Trialing
+- **Status:** Rejected
 - **Created:** 2026-09-15
 - **Review condition:** Observe at least five genuine invocations across at least three useful work boundaries, including at least one invocation that returns no candidates
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
@@ -14,8 +14,8 @@ A manually invoked `retain` skill should provide a low-friction curation boundar
 ## Affected asset
 
 - **Kind:** Human-invoked Pi skill
-- **Runtime path:** [`static/ai/skills/retain/SKILL.md`](../../../static/ai/skills/retain/SKILL.md)
-- **Discovery:** The existing `static/ai/skills` Pi settings entry discovers the new skill recursively; no Nix configuration change is required.
+- **Former runtime path:** `static/ai/skills/retain/SKILL.md`, removed when the trial was rejected.
+- **Discovery during the trial:** The existing `static/ai/skills` Pi settings entry discovered the skill recursively; no Nix configuration change was required.
 
 ## Intended behavior
 
@@ -108,7 +108,9 @@ Remove `static/ai/skills/retain/SKILL.md` to return to the baseline runtime. Pre
 
 ## Outcome
 
-Observation begins after the revised Home Manager configuration is deployed and genuine `/skill:retain` invocations occur at normal work boundaries.
+Ethan requested removing the skill for now because it had not been that useful. The runtime skill has been removed; this record preserves the experiment for possible reconsideration.
+
+No genuine invocation events were recorded in the evaluation table, so the quantitative adoption criteria cannot be assessed. Rejection records Ethan's usefulness judgment and explicit removal decision, not a measured candidate-quality result.
 
 ## Sources
 
