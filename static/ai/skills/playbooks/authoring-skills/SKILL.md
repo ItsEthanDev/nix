@@ -33,6 +33,12 @@ Keep one skill when the material shares an invocation and purpose. Split out a s
 
 Write reusable procedure in the skill. Find project policy, paths, commands, and other local facts in the target project's own sources rather than treating one environment as universal. Point to another authoritative instruction instead of copying it.
 
+## Delegate mechanics to scripts
+
+Put repeatable execution in a script when it makes the operation more reliable. Keep invocation criteria, authorization decisions, and unresolved judgment in the skill. Defer to the script for its interface and implemented behavior; do not duplicate its arguments, defaults, checks, or execution steps in skill prose.
+
+When adding or revising a bundled script, read [Writing skill scripts](references/scripts.md). Each skill that needs Nix-managed dependencies owns its own flake and lockfile rather than depending on a host configuration or collection-wide flake.
+
 ## Prune and check
 
 When in doubt, delete. Keep prose that changes a decision or action. Tell the agent to do the thing and skip the reason unless the rule would be confusing without it. Match tone and detail to scope.
