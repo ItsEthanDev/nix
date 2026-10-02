@@ -100,7 +100,7 @@ These checks validate loading and representative output shape but do not count a
 - **Baseline revision:** `30dd14de4fdfb2cb0830bd22e056f55a7f9f0964`
 - **Trial definition revision:** `e22eb8f9687769618922e1517e5d687c0abffa10`
 - **Implementation revision:** `2d0dfe48561eb2ed7867615d65264b95db9eb944`
-- **Outcome revision:** Not started
+- **Outcome revision:** `2c75cc3d87658427a8b362db0764e73abf4dbb4d`
 
 ## Rollback
 
