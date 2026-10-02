@@ -21,13 +21,13 @@ One model-invoked `development-review` skill with a shared protocol and progress
 - **Kind:** Skill
 - **Capability specification:** None during the trial
 - **Runtime paths:**
-  - `static/ai/skills/development-review/SKILL.md`
-  - `static/ai/skills/development-review/references/governance.md`
-  - `static/ai/skills/development-review/references/specification.md`
-  - `static/ai/skills/development-review/references/domain.md`
-  - `static/ai/skills/development-review/references/plan.md`
-  - `static/ai/skills/development-review/references/architecture.md`
-  - `static/ai/skills/development-review/references/implementation.md`
+  - `static/ai/skills/playbooks/development-review/SKILL.md`
+  - `static/ai/skills/playbooks/development-review/references/governance.md`
+  - `static/ai/skills/playbooks/development-review/references/specification.md`
+  - `static/ai/skills/playbooks/development-review/references/domain.md`
+  - `static/ai/skills/playbooks/development-review/references/plan.md`
+  - `static/ai/skills/playbooks/development-review/references/architecture.md`
+  - `static/ai/skills/playbooks/development-review/references/implementation.md`
 
 The initial trial changes only these runtime paths. It does not modify the four spec-driven development phase files. Evidence may later justify a capability specification or a focused routing reference from another asset.
 
@@ -139,7 +139,7 @@ Before dependent work builds on the trial, revert the implementation commit:
 git revert e73bcbf62621f7ff607e7de1e1c1203e760e1d77
 ```
 
-If later work prevents a clean revert, remove `static/ai/skills/development-review/` and reconcile dependents explicitly. The baseline predates every runtime path in that directory.
+If later work prevents a clean revert, remove `static/ai/skills/playbooks/development-review/` and reconcile dependents explicitly. The baseline predates every runtime path in that directory.
 
 Rollback preserves this trial artifact and records the rejected or revised outcome. It does not erase the evidence or the trial definition from history.
 

@@ -20,7 +20,7 @@ If implementation guidance uses the least expensive assurance level that proves 
 
 - **Kind:** Coordinated skill behavior
 - **Runtime paths:**
-  - `static/ai/skills/development-review/SKILL.md`
+  - `static/ai/skills/playbooks/development-review/SKILL.md`
   - `static/ai/skills/lifecycle/references/implement.md` (relocated from `static/ai/skills/spec-driven-development/IMPLEMENT.md`; revision anchors retain the original path)
   - `static/ai/skills/principles/principles/principle-sequence-verifiable-units/SKILL.md`
 - **Interacting trial:** [Development review](development-review.md)

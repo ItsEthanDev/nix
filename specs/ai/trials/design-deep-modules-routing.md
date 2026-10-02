@@ -28,8 +28,8 @@ If the existing capability becomes one hidden **Design Deep Modules** leaf under
   - `static/ai/skills/principles/SKILL.md`
   - `static/ai/skills/techniques/tdd/SKILL.md`
   - `static/ai/skills/lifecycle/references/plan.md` (relocated from `static/ai/skills/spec-driven-development/PLAN.md`; revision anchors retain the original path)
-  - `static/ai/skills/development-review/references/architecture.md`
-  - `static/ai/skills/development-review/references/plan.md`
+  - `static/ai/skills/playbooks/development-review/references/architecture.md`
+  - `static/ai/skills/playbooks/development-review/references/plan.md`
 - **Runtime paths to remove:**
   - `static/ai/skills/codebase-design/SKILL.md`
   - `static/ai/skills/codebase-design/DEEPENING.md`
