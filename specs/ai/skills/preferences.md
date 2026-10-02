@@ -63,7 +63,7 @@ The preferences skill owns Ethan's reusable personal defaults. It does not own:
 - The full procedure for introducing and validating specialized tooling when another skill owns that procedure.
 - Historical rationale that does not change agent behavior.
 
-For example, `preferences` may select Oxlint and Oxfmt and provide Ethan's preferred options. `quality-tooling` owns compatibility inspection, lint and format policy design, baseline triage, command integration, and verification procedure. A topic reference should route to the owning skill instead of duplicating that guidance.
+A topic reference should route to the owning skill when one exists instead of duplicating its procedure.
 
 Every preference has one authoritative runtime location. Other skills may point to it but must not restate it as an independent rule.
 
