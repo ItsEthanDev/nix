@@ -23,7 +23,8 @@ Making `wait what` available as an automatic, scope-sensitive clarification trig
 
 - **Kind:** Skill
 - **Capability specification:** None currently
-- **Runtime path:** [`static/ai/skills/wait-what/SKILL.md`](../../../static/ai/skills/wait-what/SKILL.md)
+- **Current runtime path:** [`static/ai/skills/techniques/repitch/SKILL.md`](../../../static/ai/skills/techniques/repitch/SKILL.md)
+- **Trial runtime path:** `static/ai/skills/wait-what/SKILL.md`. After adoption, the skill was renamed to `repitch` and moved into `techniques/`; `wait what` remains a clarification trigger. Historical implementation and rollback paths below refer to the trial revisions.
 - **Interacting capability:** [`static/ai/skills/techniques/grilling/SKILL.md`](../../../static/ai/skills/techniques/alignment/SKILL.md)
 
 The trial may change only `static/ai/skills/wait-what/SKILL.md` initially. A change to `grilling` requires evidence that scoped clarification cannot preserve its design tree through the `wait-what` skill alone.

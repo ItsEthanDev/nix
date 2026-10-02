@@ -62,7 +62,7 @@ Current realization:
 
 Required behavior:
 
-- A standalone `wait what` re-pitches the complete preceding assistant response.
+- A request to repitch or a standalone `wait what` re-pitches the complete preceding assistant response unless an explicit reference selects a target.
 - A numbered, quoted, or named reference re-pitches that complete target while preserving unaffected answers and decisions.
 - The replacement explanation preserves the target's meaning, uses a simpler conceptual order, and does not append detail or defend the previous explanation.
 - The target remains unresolved, and dependent work does not advance until Ethan responds.
@@ -70,7 +70,7 @@ Required behavior:
 
 Current realization:
 
-- [`static/ai/skills/wait-what/SKILL.md`](../../static/ai/skills/wait-what/SKILL.md)
+- [`static/ai/skills/techniques/repitch/SKILL.md`](../../static/ai/skills/techniques/repitch/SKILL.md)
 
 **Origin:** [Inline `wait what` trigger trial](trials/wait-what-inline-trigger.md), adopted 2026-09-15.
 

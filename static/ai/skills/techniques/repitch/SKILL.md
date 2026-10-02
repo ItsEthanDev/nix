@@ -1,13 +1,15 @@
 ---
-name: wait-what
-description: Re-pitch the complete previous response when the user says "wait what" as a clarification request; when attached to a numbered, quoted, or named target, re-pitch that complete target instead.
+name: repitch
+description: Re-pitch an explanation when the user asks to repitch or says "wait what" as a clarification request. Re-pitch the complete preceding response unless the user names, quotes, or numbers a specific target.
 ---
 
-The explanation did not land. Replace it with a simpler explanation rather than extending or defending it.
+# Repitch
+
+The explanation did not land. Replace it with a simpler explanation rather than extending or defending it. Apply this skill to requests to repitch an explanation or to `wait what` used as a clarification request, not discussion of the phrase or skill.
 
 1. Select the scope:
-   - A standalone `wait what` targets the complete preceding assistant response.
-   - In a numbered reply, `2. wait what` targets the complete question 2. A quotation or named reference similarly targets that complete item.
+   - A standalone `repitch` or `wait what` targets the complete preceding assistant response.
+   - In a numbered reply, `2. repitch` or `2. wait what` targets the complete question 2. A quotation or named reference similarly targets that complete item.
 2. Retain the conversational state of every unaffected answer and decision without repeating them. Keep the target unresolved and do not advance dependent work.
 3. Re-pitch the target from the beginning:
    - Give enough context to orient the user.
