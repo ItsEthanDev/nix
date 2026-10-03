@@ -1,4 +1,6 @@
 {primaryUser, ...}: {
+  boot.extraModprobeConfig = "options cfg80211 ieee80211_regdom=US";
+
   my.remote.ssh = {
     enable = true;
     keyDirectory = ../../../static/ssh;
