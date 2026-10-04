@@ -1,4 +1,23 @@
-{primaryUser, ...}: {
+{
+  lib,
+  primaryUser,
+  ...
+}: {
+  imports = [
+    {
+      options.services.udev.extraRules = lib.mkOption {
+        apply = rules:
+          lib.replaceStrings [
+            ''
+              ACTION=="add|remove", SUBSYSTEM=="net", ENV{DEVTYPE}=="wlan", \
+              RUN+="/run/current-system/systemd/bin/systemctl try-restart wpa_supplicant.service"
+            ''
+          ] [""]
+          rules;
+      };
+    }
+  ];
+
   boot.extraModprobeConfig = "options cfg80211 ieee80211_regdom=US";
 
   my.remote.ssh = {
@@ -20,6 +39,10 @@
     networkmanager = {
       enable = true;
       wifi.backend = "wpa_supplicant";
+      settings."device-steam-frame" = {
+        "match-device" = "mac:9C:04:B6:88:D5:B9";
+        "allowed-connections" = "id:Steam\\sFrame\\sWireless\\sAdapter";
+      };
     };
     wireless.extraConfig = "country=US";
   };
