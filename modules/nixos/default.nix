@@ -1,4 +1,6 @@
 {
+  steamFrame = import ./steam-frame;
+
   default = {
     imports = [
       ./desktop
@@ -6,6 +8,7 @@
       ./hardware/camera/droidcam
       ./hardware/zsa
       ./remote/ssh
+      ./steam-frame
     ];
   };
 }

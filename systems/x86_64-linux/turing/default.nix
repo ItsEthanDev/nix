@@ -40,6 +40,11 @@ in {
   my = {
     desktop.enable = true;
     gaming.enable = true;
+    steamFrame = {
+      enable = true;
+      countryCode = "US";
+      adapterMacAddress = "9C:04:B6:88:D5:B9";
+    };
     hardware = {
       camera.droidcam.enable = true;
       zsa.enable = true;
