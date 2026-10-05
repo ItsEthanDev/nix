@@ -1,3 +1,0 @@
-# Constitute
-
-Establish or amend durable project constraints when requested or when a proposed change requires it. Read existing governance, code, and relevant project context. Distinguish accepted rules from current implementation and feature-specific behavior. Ask about consequential choices the project has not decided; do not elevate accidental behavior into policy. Record agreed, actionable rules in their existing owner or the fallback selected by `project-documentation`, with a way to recognize compliance. Reconcile directly affected specifications and instructions before handing off to specify or plan. Constitute is not required anew for every feature.

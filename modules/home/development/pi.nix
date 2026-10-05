@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -39,7 +40,7 @@ in {
           }
         ];
         skills = [
-          ../../../static/ai/skills
+          "${inputs.its-skills}/skills"
         ];
         subagents.disableBuiltins = lib.mkDefault true;
       };

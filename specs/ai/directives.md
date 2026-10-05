@@ -18,7 +18,7 @@ Required behavior:
 Current realization:
 
 - [`static/ai/AGENTS.md`](../../static/ai/AGENTS.md)
-- [`static/ai/skills/techniques/commit/SKILL.md`](../../static/ai/skills/techniques/commit/SKILL.md)
+- [ItsSkills `commit`](https://github.com/ItsEthanDev/its-skills/blob/main/skills/techniques/commit/SKILL.md)
 
 **Origin:** Ethan request to make completed work commit by default, without a trial.
 
@@ -34,7 +34,7 @@ Required behavior:
 
 Current realization:
 
-- [`static/ai/skills/techniques/commit/SKILL.md`](../../static/ai/skills/techniques/commit/SKILL.md)
+- [ItsSkills `commit`](https://github.com/ItsEthanDev/its-skills/blob/main/skills/techniques/commit/SKILL.md)
 
 **Origin:** Ethan request, implemented in Git commit `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`.
 
@@ -52,7 +52,7 @@ Required behavior:
 Current realization:
 
 - [AI-assisted development specification](spec.md#explicit-decisions)
-- [`principle-never-block-on-the-human`](../../static/ai/skills/principles/principles/principle-never-block-on-the-human/SKILL.md)
+- [ItsSkills `principle-never-block-on-the-human`](https://github.com/ItsEthanDev/its-skills/blob/main/skills/principles/principle-never-block-on-the-human/SKILL.md)
 
 **Origin:** Ethan request, implemented in Git commit `0ab680ec82878fb1ec40029a0232916bdfb7bdbb`.
 
@@ -70,9 +70,9 @@ Required behavior:
 
 Current realization:
 
-- [`static/ai/skills/techniques/repitch/SKILL.md`](../../static/ai/skills/techniques/repitch/SKILL.md)
+- [ItsSkills `repitch`](https://github.com/ItsEthanDev/its-skills/blob/main/skills/techniques/repitch/SKILL.md)
 
-**Origin:** [Inline `wait what` trigger trial](trials/wait-what-inline-trigger.md), adopted 2026-09-15.
+**Origin:** Inline `wait what` trigger trial, adopted 2026-09-15. The retired trial is preserved in Git at `c52af7fbecda598b0e60cb54b57f9d577ea88112:specs/ai/trials/wait-what-inline-trigger.md`.
 
 ## Bounded nested delegation through `delegate`
 

@@ -219,6 +219,22 @@
         "type": "github"
       }
     },
+    "its-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1791181448,
+        "narHash": "sha256-XhLpcwTPyDcQ2lNeMll/Uii++2D+JwHwnJ6Zy1vaW6w=",
+        "owner": "ItsEthanDev",
+        "repo": "its-skills",
+        "rev": "1be2dd1db58d553f40575b0db6386cdbb9315214",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ItsEthanDev",
+        "repo": "its-skills",
+        "type": "github"
+      }
+    },
     "mandelbrust": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -397,6 +413,7 @@
       "inputs": {
         "barnyard": "barnyard",
         "home-manager": "home-manager",
+        "its-skills": "its-skills",
         "mandelbrust": "mandelbrust",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs",

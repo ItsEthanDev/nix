@@ -36,8 +36,6 @@ As a maintainer, I want focused capabilities that can be composed according to t
 
 A skill should provide a clear task boundary and disclose specialized detail progressively. Workflows may coordinate skills, but individual skills should remain useful outside a single workflow when their capability is general.
 
-When authoring a new local skill, choose one primary role: lifecycle for work state and transition gates, playbook for a problem-solving strategy, technique for a bounded reusable operation, or principle for a constraint on judgment. Roles describe the decision the skill owns, not the sequence in which skills may be used together or how they must be packaged. Follow the [repository's organization conventions](../../AGENTS.md); they do not require a router for every role. Do not retroactively classify existing skills; skills imported wholesale from another library may retain their own organization. The [authoring-skills playbook](../../static/ai/skills/playbooks/authoring-skills/SKILL.md) owns the procedure for applying this guidance.
-
 ## Collaboration principles
 
 - Project-specific authority takes precedence over reusable process guidance. Explicit user direction takes precedence unless it conflicts with repository governance.
@@ -49,7 +47,7 @@ When authoring a new local skill, choose one primary role: lifecycle for work st
 
 ## Asset boundaries
 
-The configured assets under [`static/ai/`](../../static/ai/) realize this specification:
+Configured AI assets realize this specification. [`static/ai/`](../../static/ai/) owns separately managed instructions, agents, and prompts. [ItsSkills](https://github.com/ItsEthanDev/its-skills) owns reusable skill implementations and their design specifications; this repository owns their locked input and discovery configuration.
 
 - `AGENTS.md` and harness instructions own repository-specific operating procedures.
 - Skills own reusable, task-specific behavior and may route to focused references.
@@ -58,8 +56,6 @@ The configured assets under [`static/ai/`](../../static/ai/) realize this specif
 - Personal preferences supply defaults only when explicit requests and established project conventions leave a choice open.
 
 The [AI development directives](directives.md) record accepted instructions that must survive implementation changes. The [AI asset evolution specification](evolution.md) defines how explicitly requested experiments are trialed, evaluated, adopted, or rejected.
-
-The supporting [project-documentation specification](skills/project-documentation.md) defines canonical artifact ownership and maintenance. The [preferences specification](skills/preferences.md) defines the boundary for personal defaults.
 
 ## Non-goals
 
@@ -70,10 +66,6 @@ This specification does not:
 - duplicate the detailed behavior of individual skills or repository instructions;
 - make external projects, example skill collections, or their conventions authoritative here; or
 - treat conversational confidence as evidence that a change works.
-
-## Influences
-
-The skill collection draws inspiration from [Matt Pocock's agent skills](https://github.com/mattpocock/skills) and Poteto's [Pstack](https://github.com/backnotprop/pstack), especially their use of focused skills, explicit task routing, and progressive disclosure. The spec-driven development workflow is further inspired by the [Pstack Explained overview of Agent Templates](https://hustlecoding.github.io/pstack-explained/agent-templates.html), [Agent Templates](https://github.com/lionbenjamin/agent-templates/tree/main), and [GitHub Spec Kit](https://github.com/github/spec-kit). These assets are local adaptations rather than mirrors of the source projects.
 
 ## Sources
 

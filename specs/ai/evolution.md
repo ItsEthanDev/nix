@@ -8,7 +8,7 @@ The goal is to distinguish inherited or experimental behavior from Ethan's accep
 
 - [`spec.md`](spec.md) owns the overall AI collaboration model.
 - [`directives.md`](directives.md) owns accepted, durable instructions that implementations must preserve.
-- Capability specifications such as those under [`skills/`](skills/) own substantial design intent for one capability.
+- A capability's owner maintains its substantial design intent. [ItsSkills](https://github.com/ItsEthanDev/its-skills) owns the reusable skills and their specifications.
 - A trial under [`trials/`](trials/) owns a provisional hypothesis, intended behavior, evaluation method, evidence, and outcome.
 - Runtime assets own task-specific implementation.
 - Git owns chronological history; specifications own current accepted meaning.
@@ -115,4 +115,4 @@ Upstream provenance may be recorded when a concrete update workflow requires it;
 
 ## Sources
 
-This specification refines the [AI-assisted development specification](spec.md), follows the ownership model in the [project-documentation capability specification](skills/project-documentation.md), and is constrained by [PR-009](../constitution.md#pr-009--nix-owns-configuration-behavior) and [PR-010](../constitution.md#pr-010--changes-require-direct-evidence) of the project constitution.
+This specification refines the [AI-assisted development specification](spec.md), follows the living-specification rules in the [specification index](../README.md), and is constrained by [PR-009](../constitution.md#pr-009--nix-owns-configuration-behavior) and [PR-010](../constitution.md#pr-010--changes-require-direct-evidence) of the project constitution.

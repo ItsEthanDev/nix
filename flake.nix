@@ -38,6 +38,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     zapp.url = "github:zsa/zapp";
+    its-skills = {
+      url = "github:ItsEthanDev/its-skills";
+      flake = false;
+    };
   };
 
   outputs = {
