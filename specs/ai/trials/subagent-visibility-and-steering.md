@@ -65,8 +65,8 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 
 ## Intended behavior
 
-- Pi loads the `npm:pi-subagents` extension and its packaged skills, excludes its packaged prompts, and advertises exactly the five managed custom agents.
-- Packaged skills provide delegation and council guidance without granting delegation authority.
+- Pi loads the `npm:pi-subagents` extension and its `pi-subagents` skill, excludes its `council-mode` skill and packaged prompts, and advertises exactly the five managed custom agents.
+- The packaged `pi-subagents` skill provides delegation guidance without granting delegation authority.
 - No bundled agent remains enabled.
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
@@ -167,6 +167,8 @@ Verify that the generated agent files point to the installed extension entrypoin
 
 The 2026-10-06 revision removes the global default authorization to delegate and restores the package's skills while continuing to exclude its prompts. Delegation now requires authority from the current request or applicable project instructions. Earlier autonomous-delegation observations remain evidence only for that variation. The five-agent roster and accepted nested-delegation directive remain unchanged; nested authority applies within an already authorized delegate assignment.
 
+A same-day refinement excludes the packaged `council-mode` skill while retaining `pi-subagents`. The extension, prompt exclusion, custom roster, and delegation authority remain unchanged.
+
 This revision does not establish activation, runtime setup, or improved delegation outcomes. Repeat the runtime setup gate and collect authorized events before drawing conclusions about this variation.
 
 ## Revision anchors
@@ -186,6 +188,7 @@ This revision does not establish activation, runtime setup, or improved delegati
 - **Nested-delegation implementation:** `2198138` — enable delegate fanout and set the depth cap to two
 - **Delegate direct web access:** `462497a` — load `pi-web-access` explicitly in delegate children
 - **Explicit-authority and packaged-skills implementation:** `4370a09a1de6c9be099b72a04ecb6893d4dba8db`: remove default delegation authorization and restore package skill discovery
+- **Council skill exclusion:** `ffd939168a6ae7dbfbcfec01734e7c5d384555e0`: disable `council-mode` while retaining `pi-subagents`
 - **Outcome revision:** Not started
 
 ## Source-aware tool repair activation
