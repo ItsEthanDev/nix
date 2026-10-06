@@ -36,7 +36,6 @@ in {
           {
             source = "npm:pi-subagents";
             prompts = [];
-            skills = [];
           }
         ];
         skills = [
