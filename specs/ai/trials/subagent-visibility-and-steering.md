@@ -2,8 +2,8 @@
 
 - **Status:** Trialing
 - **Created:** 2026-09-12
-- **Revised:** 2026-09-22
-- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including the completed Terra/medium `worker` baseline, five `worker` events at GPT-6 Luna/xhigh, five parent-initiated delegations across at least three roles, and two steering attempts across the roster
+- **Revised:** 2026-10-06
+- **Review condition:** Complete the runtime setup gate, then observe at least three genuine events per agent, including the completed Terra/medium `worker` baseline, five `worker` events at GPT-6 Luna/xhigh, five authorized delegations across at least three roles, and two steering attempts across the roster
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
 ## Problem and hypothesis
@@ -17,7 +17,7 @@ A five-agent roster should separate common delegation shapes without replacing t
 - GPT-6 Sol independently reviews consequential work.
 - A parent-matching delegate handles bounded tasks that fit no specialist.
 
-This separation should preserve the parent's context window, reduce use of the stronger parent model for work a faster or less expensive specialist can perform well, and reduce elapsed time through appropriate concurrency while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. The parent should initiate delegation without waiting for an explicit request when those benefits, specialization, or independent evidence are likely to justify handoff and reconciliation overhead. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
+This separation should preserve the parent's context window, reduce use of the stronger parent model for work a faster or less expensive specialist can perform well, and reduce elapsed time through appropriate concurrency while preserving project rules, explicit decisions, direct verification, and parent-owned synthesis. The parent should delegate only when the current request or applicable project instructions authorize it and the expected benefit justifies handoff and reconciliation overhead. Direct execution is the default; task complexity alone does not authorize delegation. Applicable children should use the configured skill catalog through progressive disclosure without expanding their task, tools, or authority. The narrow `scout` role should avoid skill context that could broaden reconnaissance.
 
 ## Affected assets
 
@@ -49,8 +49,8 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 
 ## Routing rules
 
-- Treat delegation as authorized by default, but not required by default; do not require an explicit delegation request when the expected benefit justifies the overhead.
-- Before starting tool-heavy or context-heavy work, check whether an advertised specialist can reliably perform a bounded part while preserving parent context, reducing model cost or latency, enabling concurrency, or providing independent evidence.
+- Require delegation authority from the current request or applicable project instructions. Do not infer authority from task complexity or a specialist's availability.
+- When delegation is authorized, check whether an advertised specialist can reliably perform a bounded part while preserving parent context, reducing model cost or latency, enabling concurrency, or providing independent evidence.
 - Give the child a self-contained objective, clear boundaries, acceptance criteria, and a compact expected result.
 - Keep user intent, consequential decisions, decomposition, orchestration, synthesis, and final acceptance with the parent.
 - Prefer the narrowest specialist whose contract fits the task.
@@ -65,8 +65,8 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 
 ## Intended behavior
 
-- Pi loads the `npm:pi-subagents` extension without its packaged prompts or skills and advertises exactly the five managed custom agents.
-- The parent uses the active tool contract for routine delegation and loads only a targeted guide when an advanced operation requires more detail.
+- Pi loads the `npm:pi-subagents` extension and its packaged skills, excludes its packaged prompts, and advertises exactly the five managed custom agents.
+- Packaged skills provide delegation and council guidance without granting delegation authority.
 - No bundled agent remains enabled.
 - Each specialist resolves to its configured model and thinking level.
 - `delegate` resolves to the active parent model and does not displace a matching specialist.
@@ -75,7 +75,7 @@ GPT-6 Sol remains the default parent model and starts at medium thinking. Ethan 
 - Read-only agents do not modify project files.
 - `worker` does not make unresolved consequential decisions or author durable human- or agent-facing prose. It reports validation evidence and identifies direct documentation obligations created by its implementation without auditing documentation broadly.
 - Running work remains inspectable, steerable, and stoppable.
-- The parent recognizes and initiates useful delegation opportunities without requiring Ethan to name an agent or request delegation.
+- The parent acts on useful delegation opportunities within explicit request or project authority; otherwise it works directly.
 
 ## Non-goals
 
@@ -95,7 +95,7 @@ Record an event as a failure when:
 - the requested agent, model, thinking level, skills catalog, or required tools are unavailable;
 - a bundled or unexpected custom agent appears;
 - the parent routes work to `delegate` when a specialist clearly fits;
-- the parent misses a clear delegation opportunity that would preserve substantial parent context, use a faster or less expensive capable specialist, reduce elapsed time through concurrency, or provide valuable independent evidence at acceptable handoff cost;
+- the parent delegates without request or project authority, or misses a clear authorized delegation opportunity with benefits that justify handoff cost;
 - delegation costs more time or parent correction than doing the bounded task directly would reasonably require;
 - an agent broadens scope, violates its read/write boundary, or consumes an unresolved consequential decision;
 - a loaded skill causes irrelevant process, scope drift, or conflicting behavior;
@@ -127,7 +127,7 @@ Record genuine events in this table:
 | Date | Agent | Task shape | Correct route | Adequate result | Parent correction | Parent-context effect | Skills loaded and relevant | Elapsed/usage note | Steering | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
-Complete at least three events per agent and at least five parent-initiated delegations across three or more roles. Record at least five `worker` events at GPT-6 Luna/xhigh and compare them with the reported Terra/medium baseline on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes. Do not claim comparative latency, usage, or correction improvements without event-level evidence.
+Complete at least three events per agent and at least five authorized delegations across three or more roles. Record the request or project instruction that authorizes each delegation. Record at least five `worker` events at GPT-6 Luna/xhigh and compare them with the reported Terra/medium baseline on representative tasks. Comparison runs should use similar task size, acceptance criteria, and verification; they do not need to repeat identical production changes. Do not claim comparative latency, usage, or correction improvements without event-level evidence.
 
 Adopt an agent when every event preserves its authority boundary and project rules, at least 80% of its events produce an adequate result without rerunning the task on a stronger model, and remaining handoff and correction cost does not erase the expected parent-context, speed, or usage benefit. Adopt visibility and steering when every conversation is inspectable and both steering attempts are effective. Revise or remove a role that overlaps another role, attracts incorrect routing, or repeatedly requires parent repair.
 
@@ -163,6 +163,12 @@ The reviewer has no web tools, so source-dependent review cannot search or fetch
 
 Verify that the generated agent files point to the installed extension entrypoint, then confirm each role's child runtime resolves all four web tools in both foreground and background launch modes. A local-only reviewer must still be able to finish without searching. This repair does not enable nested delegation or change any other role's tools.
 
+### Explicit delegation authority and packaged skills
+
+The 2026-10-06 revision removes the global default authorization to delegate and restores the package's skills while continuing to exclude its prompts. Delegation now requires authority from the current request or applicable project instructions. Earlier autonomous-delegation observations remain evidence only for that variation. The five-agent roster and accepted nested-delegation directive remain unchanged; nested authority applies within an already authorized delegate assignment.
+
+This revision does not establish activation, runtime setup, or improved delegation outcomes. Repeat the runtime setup gate and collect authorized events before drawing conclusions about this variation.
+
 ## Revision anchors
 
 - **Baseline revision:** `db8350f5e2b4d6f3887f5a2135ac367d8ad2f575`
@@ -179,6 +185,7 @@ Verify that the generated agent files point to the installed extension entrypoin
 - **Accepted nested-delegation directive:** `888b307` — record two-level delegate authority outside the trial
 - **Nested-delegation implementation:** `2198138` — enable delegate fanout and set the depth cap to two
 - **Delegate direct web access:** `462497a` — load `pi-web-access` explicitly in delegate children
+- **Explicit-authority and packaged-skills implementation:** `4370a09a1de6c9be099b72a04ecb6893d4dba8db`: remove default delegation authorization and restore package skill discovery
 - **Outcome revision:** Not started
 
 ## Source-aware tool repair activation

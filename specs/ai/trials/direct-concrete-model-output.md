@@ -4,6 +4,7 @@
 - **Created:** 2026-09-22
 - **Implemented:** 2026-09-22
 - **Activated:** 2026-09-22
+- **Revised:** 2026-10-06
 - **Review condition:** Observe at least twelve substantive responses across at least four response categories and three Pi sessions
 - **Evolution model:** [AI Asset Evolution](../evolution.md)
 
@@ -35,8 +36,8 @@ The global instructions own behavior that should apply to ordinary model output.
 - Use one consistent term for each concept.
 - Use an established technical term when it is more precise than a plain substitute.
 - Briefly define an uncommon term on first use unless the current conversation has established it.
-- Prefer direct sentences, active voice when the actor matters, and complete prose that does not require the reader to decode fragments or backtrack.
-- Avoid forced rhetorical patterns, decorative punctuation, excessive emphasis, chatbot pleasantries, filler, unnecessary hedging, and generic conclusions.
+- Prefer short, precise words over stock vocabulary or ornate substitutes.
+- Avoid decorative punctuation, excessive emphasis, chatbot pleasantries, filler, unnecessary hedging, and generic conclusions.
 - End when the requested answer is complete.
 
 ## Scope
@@ -132,12 +133,19 @@ Adopt the behavior when:
 
 Revise when the output is generally easier to read but one or more instructions cause a repeated, bounded problem. Reject when the instructions reduce precision, consistently produce choppy prose, or do not materially improve readability. Mark the trial `Inconclusive` when too few substantive responses occur or the observations do not cover the required categories.
 
+## Current revision
+
+The 2026-10-06 revision removes the global rules about active voice, splitting dense sentences, compressed fragments, and forced rhetorical patterns. The remaining direct, concrete writing defaults continue unchanged. The writing skill still owns document-specific guidance; the removed rules are no longer explicit requirements for ordinary conversational output.
+
+Earlier activation evidence describes the original instruction block, not this revision. No new activation or response-quality outcome is established here. Attribute future observations to the instruction revision in use rather than pooling them with the original variation.
+
 ## Revision anchors
 
 - **Baseline revision:** `d87f179270a354538f2aa6af56c8a0d8fa93f88a`
 - **Trial definition revision:** `084e528fe03f1080075e3ab1d71eebf94badcf57`
 - **Implementation revisions:**
   - `f1cef79a0d6ec72159016b9e544ccb7d5ccac4de` — add direct and concrete writing defaults to the global agent instructions
+  - `4370a09a1de6c9be099b72a04ecb6893d4dba8db`: remove the two global sentence-structure and rhetorical-pattern rules
 - **Outcome revision:** Not started
 
 ## Activation evidence
