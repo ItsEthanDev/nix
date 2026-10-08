@@ -92,6 +92,22 @@ Current realization:
 
 **Origin:** Ethan request, 2026-09-22.
 
+## Maintain codebase quality within the task
+
+**Intent:** Agents treat the requested result and the long-term quality of the codebase as joint responsibilities.
+
+Required behavior:
+
+- Understand the surrounding design before choosing an implementation, organization, documentation structure, or architecture.
+- Choose changes that fit the project's boundaries and keep behavior easy to understand, test, and extend. Prefer the simplest coherent solution over a local shortcut that shifts complexity elsewhere.
+- Make material tradeoffs explicit. Address quality problems introduced or exposed by the task when necessary for a sound result; raise broader problems separately rather than expanding into unrelated rewrites or speculative abstractions.
+
+Current realization:
+
+- [`static/ai/AGENTS.md`](../../static/ai/AGENTS.md)
+
+**Origin:** Ethan request to make global agent guidance emphasize codebase quality and deliberate design beyond immediate task completion.
+
 ## Maintaining directives
 
 Record the accepted outcome of a successful trial here when the behavior is durable but does not warrant a dedicated capability specification. When a directive develops substantial scope, interactions, or independent requirements, move its meaning to a focused specification and leave a concise pointer here.

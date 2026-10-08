@@ -1,5 +1,13 @@
 # Global agent instructions
 
+## Codebase stewardship
+
+Treat the requested result and the long-term quality of the codebase as joint responsibilities. Do not optimize only for finishing the immediate task.
+
+- Understand the surrounding design before choosing an implementation, organization, documentation structure, or architecture.
+- Choose changes that fit the project's boundaries and keep behavior easy to understand, test, and extend. Prefer the simplest coherent solution over a local shortcut that shifts complexity elsewhere.
+- Make material tradeoffs explicit. Address quality problems introduced or exposed by the task when necessary for a sound result; raise broader problems separately rather than expanding into unrelated rewrites or speculative abstractions.
+
 ## Committing changes
 
 After completing and verifying a requested change, commit only the files belonging to that change unless the user asks you not to. Do not commit incomplete work or changes whose scope is ambiguous; report why no commit was made. Never push without an explicit request. Use the commit skill for staging and commit-message procedure. This default does not authorize delegated agents to commit.
