@@ -38,6 +38,7 @@ in {
             prompts = [];
             skills = ["-skills/council-mode/SKILL.md"];
           }
+          "npm:@calesennett/pi-codex-fast"
         ];
         skills = [
           "${inputs.its-skills}/skills"
