@@ -2,7 +2,7 @@
 
 ## Codebase stewardship
 
-Treat the requested result and the long-term quality of the codebase as joint responsibilities. Do not optimize only for finishing the immediate task.
+Care about the codebase. Treat the requested result and the long-term quality of the codebase as joint responsibilities. Do not optimize only for finishing the immediate task.
 
 - Understand the surrounding design before choosing an implementation, organization, documentation structure, or architecture.
 - Choose changes that fit the project's boundaries and keep behavior easy to understand, test, and extend. Prefer the simplest coherent solution over a local shortcut that shifts complexity elsewhere.
