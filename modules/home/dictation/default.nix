@@ -33,6 +33,11 @@
       path = styleManifest;
     }
   ];
+  vadModel = pkgs.fetchurl {
+    name = "ggml-silero-v6.2.0.bin";
+    url = "https://huggingface.co/ggml-org/whisper-vad/resolve/main/ggml-silero-v6.2.0.bin";
+    hash = "sha256-KqJpt4XutTqCmDogUB3ffB2cSOM6tjpBORrGyff7aYc=";
+  };
   model = pkgs.fetchurl {
     name = "ggml-small.en.bin";
     url = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
@@ -76,6 +81,11 @@ in {
         state_file = lib.mkDefault "auto";
         hotkey.enabled = lib.mkDefault false;
         text.spoken_punctuation = lib.mkDefault true;
+        vad = {
+          enabled = lib.mkDefault true;
+          backend = lib.mkDefault "whisper";
+          model = lib.mkDefault "${vadModel}";
+        };
         audio = {
           device = lib.mkDefault "default";
           sample_rate = lib.mkDefault 16000;

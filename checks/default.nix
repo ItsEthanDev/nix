@@ -189,6 +189,8 @@ in
   assert !dictationSettings.hotkey.enabled;
   assert dictationSettings.state_file == "auto";
   assert dictationSettings.text.spoken_punctuation;
+  assert dictationSettings.vad.enabled;
+  assert dictationSettings.vad.backend == "whisper";
   assert dictationSettings.output.mode == "paste";
   assert dictationSettings.output.paste_keys == "shift+insert";
   assert !dictationSettings.output.auto_submit;
@@ -214,6 +216,22 @@ in
       test -f "${enabledDictation.config.services.voxtype.environment.VOXTYPE_OSD_QML_PATH}/shell.qml"
       ${lib.getExe enabledDictation.config.services.voxtype.package} \
         --config ${enabledDictation.config.xdg.configFile."voxtype/config.toml".source} config get --json > /dev/null
+
+      ${lib.getExe pkgs.python3} - "$TMPDIR/silence.wav" <<'PY'
+      import sys, wave
+      with wave.open(sys.argv[1], "wb") as file:
+          file.setnchannels(1)
+          file.setsampwidth(2)
+          file.setframerate(16000)
+          file.writeframes(b"\0\0" * 16000)
+      PY
+      ${lib.getExe enabledDictation.config.services.voxtype.package} \
+        --config ${enabledDictation.config.xdg.configFile."voxtype/config.toml".source} \
+        transcribe "$TMPDIR/silence.wav" > "$TMPDIR/silence-output"
+      grep -Fx 'No speech detected, skipping transcription.' "$TMPDIR/silence-output"
+      if grep -Eix 'you[.!?]?' "$TMPDIR/silence-output"; then
+        exit 1
+      fi
 
       mkdir -p "$TMPDIR/dictation/bin" "$TMPDIR/dictation/runtime"
       cat > "$TMPDIR/dictation/bin/qs" <<'SH'
