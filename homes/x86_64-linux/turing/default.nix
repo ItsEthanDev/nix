@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./dictation.nix
     ./hyprland.nix
     ./notification-forwarding.nix
     ./xdg.nix
@@ -57,6 +56,7 @@
   };
 
   my = {
+    dictation.enable = true;
     graphics.enable = true;
     development = {
       enable = true;

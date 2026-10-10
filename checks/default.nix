@@ -68,9 +68,48 @@
 
   disabledHome = mkHome [];
   enabledDictation = mkHome [
-    ../homes/x86_64-linux/turing/dictation.nix
-    {wayland.windowManager.hyprland.enable = true;}
+    {
+      my.dictation.enable = true;
+      wayland.windowManager.hyprland.enable = true;
+    }
   ];
+  invalidDictation = mkHome [
+    {my.dictation.enable = true;}
+  ];
+  disabledDictationService = mkHome [
+    {
+      my.dictation.enable = true;
+      wayland.windowManager.hyprland.enable = true;
+      services.voxtype.enable = false;
+    }
+  ];
+  overriddenDictation = mkHome [
+    {
+      my.dictation.enable = true;
+      wayland.windowManager.hyprland.enable = true;
+      services.voxtype.settings.audio.max_duration_secs = 120;
+    }
+  ];
+  styledDictation = mkHome [
+    inputs.stylix.homeModules.stylix
+    {
+      my.dictation.enable = true;
+      wayland.windowManager.hyprland.enable = true;
+      stylix = {
+        enable = true;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/espresso.yaml";
+      };
+    }
+  ];
+  dictationColors = styledDictation.config.lib.stylix.colors.withHashtag;
+  expectedDictationColors = pkgs.writeText "dictation-colors.json" (builtins.toJSON {
+    background = dictationColors.base00;
+    foreground = dictationColors.base05;
+    accent = dictationColors.base0D;
+    recording = dictationColors.base08;
+    transcribing = dictationColors.base0A;
+    success = dictationColors.base0B;
+  });
   dictationSettings = enabledDictation.config.services.voxtype.settings;
   dictationCommand = lib.getExe enabledDictation.config.services.voxtype.package;
   dictationBindings = enabledDictation.config.wayland.windowManager.hyprland.settings;
@@ -139,6 +178,11 @@ in
   assert !disabledHome.config.programs.fish.enable;
   assert !disabledHome.config.programs.git.enable;
   assert !disabledHome.config.programs.nixvim.enable;
+  assert !disabledHome.config.services.voxtype.enable;
+  assert !(disabledHome.config.xdg.configFile ? "voxtype/config.toml");
+  assert !(builtins.tryEval invalidDictation.activationPackage.drvPath).success;
+  assert !(builtins.tryEval disabledDictationService.activationPackage.drvPath).success;
+  assert overriddenDictation.config.services.voxtype.settings.audio.max_duration_secs == 120;
   assert enabledDictation.config.services.voxtype.enable;
   assert dictationSettings.engine == "whisper";
   assert dictationSettings.whisper.mode == "local";
@@ -152,6 +196,9 @@ in
   assert dictationSettings.osd.enabled;
   assert dictationSettings.osd.frontend == "quickshell";
   assert dictationSettings.osd.position == "bottom-center";
+  assert dictationSettings.osd.palette == "fallback";
+  assert dictationSettings.osd.style == "default";
+  assert styledDictation.config.services.voxtype.settings.osd.palette == "package";
   assert builtins.elem "SUPER, D, exec, ${dictationCommand} record start" dictationBindings.bind;
   assert builtins.elem "SUPER_SHIFT, D, exec, ${dictationCommand} record toggle" dictationBindings.bind;
   assert builtins.elem "SUPER_CTRL, D, exec, ${dictationCommand} record cancel" dictationBindings.bind;
@@ -166,6 +213,33 @@ in
       test -f "${enabledDictation.config.services.voxtype.environment.VOXTYPE_OSD_QML_PATH}/shell.qml"
       ${lib.getExe enabledDictation.config.services.voxtype.package} \
         --config ${enabledDictation.config.xdg.configFile."voxtype/config.toml".source} config get --json > /dev/null
+
+      mkdir -p "$TMPDIR/dictation/bin" "$TMPDIR/dictation/runtime"
+      cat > "$TMPDIR/dictation/bin/qs" <<'SH'
+      #!${pkgs.bash}/bin/bash
+      set -euo pipefail
+      [[ "$1" == "-p" && -f "$2/shell.qml" ]]
+      ${pkgs.coreutils}/bin/cp "$VOXTYPE_OSD_STYLE_FILE" "$CAPTURED_STYLE"
+      SH
+      chmod +x "$TMPDIR/dictation/bin/qs"
+      PATH="$TMPDIR/dictation/bin:${lib.makeBinPath [pkgs.coreutils pkgs.which]}" \
+      XDG_RUNTIME_DIR="$TMPDIR/dictation/runtime" \
+      CAPTURED_STYLE="$TMPDIR/dictation/style.json" \
+        ${lib.getExe' styledDictation.config.services.voxtype.package "voxtype-osd-quickshell"} \
+          --config ${styledDictation.config.xdg.configFile."voxtype/config.toml".source} \
+          --qml-path ${styledDictation.config.services.voxtype.environment.VOXTYPE_OSD_QML_PATH} \
+          --no-daemonize
+      ${lib.getExe pkgs.python3} - "$TMPDIR/dictation/style.json" ${expectedDictationColors} <<'PY'
+      import json, sys
+      with open(sys.argv[1]) as file:
+          style = json.load(file)
+      with open(sys.argv[2]) as file:
+          expected = json.load(file)
+      assert style["palette"] == "package", style
+      assert style["position"] == "bottom-center", style
+      for role, color in expected.items():
+          assert style["colors"][role] == color, (role, style["colors"][role], color)
+      PY
 
       ${notificationActivation}
       first_topic="$(< ${notificationTopicFile})"
