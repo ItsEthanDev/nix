@@ -75,6 +75,7 @@ in {
         engine = lib.mkDefault "whisper";
         state_file = lib.mkDefault "auto";
         hotkey.enabled = lib.mkDefault false;
+        text.spoken_punctuation = lib.mkDefault true;
         audio = {
           device = lib.mkDefault "default";
           sample_rate = lib.mkDefault 16000;

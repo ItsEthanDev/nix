@@ -188,6 +188,7 @@ in
   assert dictationSettings.whisper.mode == "local";
   assert !dictationSettings.hotkey.enabled;
   assert dictationSettings.state_file == "auto";
+  assert dictationSettings.text.spoken_punctuation;
   assert dictationSettings.output.mode == "paste";
   assert dictationSettings.output.paste_keys == "shift+insert";
   assert !dictationSettings.output.auto_submit;
