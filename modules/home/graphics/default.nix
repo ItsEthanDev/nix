@@ -57,6 +57,7 @@ in {
           down = lib.mkDefault ["Down" "Ctrl+n"];
           up = lib.mkDefault ["Up" "Ctrl+p"];
         };
+        osd.kinds.keyboard_layout = lib.mkDefault false;
         shell = {
           font_family = lib.mkDefault config.stylix.fonts.sansSerif.name;
           launcher.categories = lib.mkDefault false;
