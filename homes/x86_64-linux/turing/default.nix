@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./dictation.nix
     ./hyprland.nix
     ./notification-forwarding.nix
     ./xdg.nix

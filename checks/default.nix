@@ -67,6 +67,13 @@
   ];
 
   disabledHome = mkHome [];
+  enabledDictation = mkHome [
+    ../homes/x86_64-linux/turing/dictation.nix
+    {wayland.windowManager.hyprland.enable = true;}
+  ];
+  dictationSettings = enabledDictation.config.services.voxtype.settings;
+  dictationCommand = lib.getExe enabledDictation.config.services.voxtype.package;
+  dictationBindings = enabledDictation.config.wayland.windowManager.hyprland.settings;
   enabledNotificationForwarding = mkHome [
     {
       imports = [
@@ -132,6 +139,23 @@ in
   assert !disabledHome.config.programs.fish.enable;
   assert !disabledHome.config.programs.git.enable;
   assert !disabledHome.config.programs.nixvim.enable;
+  assert enabledDictation.config.services.voxtype.enable;
+  assert dictationSettings.engine == "whisper";
+  assert dictationSettings.whisper.mode == "local";
+  assert !dictationSettings.hotkey.enabled;
+  assert dictationSettings.state_file == "auto";
+  assert dictationSettings.output.mode == "paste";
+  assert dictationSettings.output.paste_keys == "shift+insert";
+  assert !dictationSettings.output.auto_submit;
+  assert !dictationSettings.output.smart_auto_submit;
+  assert dictationSettings.output.wait_for_modifier_release;
+  assert dictationSettings.osd.enabled;
+  assert dictationSettings.osd.frontend == "quickshell";
+  assert dictationSettings.osd.position == "bottom-center";
+  assert builtins.elem "SUPER, D, exec, ${dictationCommand} record start" dictationBindings.bind;
+  assert builtins.elem "SUPER_SHIFT, D, exec, ${dictationCommand} record toggle" dictationBindings.bind;
+  assert builtins.elem "SUPER_CTRL, D, exec, ${dictationCommand} record cancel" dictationBindings.bind;
+  assert builtins.elem "SUPER, D, exec, ${dictationCommand} record stop" dictationBindings.bindr;
   assert enabledNotificationForwarding.config.home.activation ? initializeNotificationForwardingTopic;
   assert enabledNotificationForwarding.config.home.activation ? reconcileNotificationForwardingHerdrPlugin;
   assert enabledNotificationForwarding.config.systemd.user.services.herdr-notifications-locked.Service.Type == "oneshot";
@@ -139,6 +163,10 @@ in
   assert !overriddenDevelopment.config.programs.nixvim.opts.number;
   assert !overriddenTerminal.config.programs.fish.enable;
     pkgs.runCommand "module-contracts" {} ''
+      test -f "${enabledDictation.config.services.voxtype.environment.VOXTYPE_OSD_QML_PATH}/shell.qml"
+      ${lib.getExe enabledDictation.config.services.voxtype.package} \
+        --config ${enabledDictation.config.xdg.configFile."voxtype/config.toml".source} config get --json > /dev/null
+
       ${notificationActivation}
       first_topic="$(< ${notificationTopicFile})"
       [[ "$first_topic" =~ ^[0-9a-f]{64}$ ]]

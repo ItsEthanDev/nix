@@ -87,6 +87,10 @@ in {
       enable = true;
       enableVirtualCamera = true;
     };
+    ydotool = {
+      enable = true;
+      group = "input";
+    };
     zsh.enable = true;
   };
 

@@ -137,6 +137,28 @@ Speaker volume and mute use their self-identifying hardware keys. The ordinary
 chord for microphone mute accommodates keyboards that cannot emit a dedicated
 microphone key.
 
+### Dictation
+
+Dictation inserts text for inspection without submitting it to the active
+application. Holding the dictation binding records until release. The toggle
+variant records until invoked again. Cancel discards the recording or pending
+transcription without inserting text.
+
+A programmable keyboard may map one physical key's hold and double-tap gestures
+to the hold and toggle bindings. Gesture recognition belongs to the keyboard;
+the desktop receives distinct chords, not a timed double-tap sequence.
+
+The listening indicator follows the dictation service's state, remains visible
+throughout recording, distinguishes transcription from listening, and does not
+take keyboard focus. Stopping recording closes the microphone before processing
+and insertion.
+
+| Binding | Action |
+| --- | --- |
+| `Super+D` | Hold to dictate, release to finish and insert. |
+| `Super+Shift+D` | Toggle dictation. |
+| `Super+Ctrl+D` | Cancel dictation. |
+
 ### Gaming
 
 The game launcher and active game share a workspace on the primary gaming
