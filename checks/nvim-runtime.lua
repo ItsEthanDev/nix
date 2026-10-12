@@ -35,6 +35,14 @@ local ok, err = xpcall(function()
   vim.opt.swapfile = false
   vim.opt.undofile = false
   vim.opt.exrc = false
+  open(tmp .. "/notes.md", { "" })
+  assert(vim.bo.filetype == "markdown")
+  assert(vim.wo.wrap and vim.wo.linebreak, "Markdown visual wrapping is disabled")
+  local paragraph = "This is a long markdown paragraph with enough words to cross eighty columns and demonstrate whether typing inserts actual newlines into the buffer."
+  vim.cmd.normal({ args = { "i" .. paragraph }, bang = true })
+  assert(vim.deep_equal(vim.api.nvim_buf_get_lines(0, 0, -1, false), { paragraph }), "Markdown typing inserted newlines")
+  vim.bo.modified = false
+
   write(tmp .. "/.oxfmtrc.json", { '{"semi":false,"singleQuote":true}' })
   write(tmp .. "/default/.git", {})
   open(tmp .. "/default/a.js", { "const x='hello'" })

@@ -22,6 +22,12 @@ in {
         desc = "Notify after reloading changed file";
         command = "echohl WarningMsg | echo 'File changed on disk. Buffer reloaded.' | echohl None";
       }
+      {
+        event = "FileType";
+        pattern = "markdown";
+        desc = "Keep Markdown wrapping visual only";
+        command = "setlocal textwidth=0";
+      }
       # JSON syntax can conceal quote characters when conceallevel is enabled.
       {
         event = "FileType";
