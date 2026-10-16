@@ -9,6 +9,9 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = [pkgs.ripgrep];
 
+    programs.nixvim.extraPackages = [pkgs.git];
+    programs.nixvim.extraFiles."lua/files-highlight.lua".source = ./files-highlight.lua;
+
     programs.nixvim.plugins.mini = {
       enable = lib.mkDefault true;
       mockDevIcons = lib.mkDefault true;
@@ -138,7 +141,10 @@ in {
         cursorword.enable = lib.mkDefault true;
         diff.enable = lib.mkDefault true;
         extra.enable = lib.mkDefault true;
-        files.enable = lib.mkDefault true;
+        files = {
+          enable = lib.mkDefault true;
+          content.highlight = lib.mkDefault {__raw = "require('files-highlight')";};
+        };
         git.enable = lib.mkDefault true;
         hipatterns.enable = lib.mkDefault true;
         icons.enable = lib.mkDefault true;

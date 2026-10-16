@@ -5,7 +5,7 @@
   pkgs,
 }:
 pkgs.runCommand "neovim-project-tools" {
-  nativeBuildInputs = [neovim pkgs.bash];
+  nativeBuildInputs = [neovim pkgs.bash pkgs.git];
   TYPESCRIPT_COMMAND_HELPER = ../modules/home/development/nixvim/plugins/typescript-command.lua;
   PROJECT_FORMATTERS_HELPER = ../modules/home/development/nixvim/plugins/project-formatters.lua;
   NATIVE_TYPESCRIPT = pkgs.lib.getExe pkgs.typescript;
@@ -21,6 +21,8 @@ pkgs.runCommand "neovim-project-tools" {
   ln -s ${pkgs.coreutils}/bin/true "$PROJECT_TOOL_BIN/rustfmt"
   ln -s ${pkgs.coreutils}/bin/true "$PROJECT_TOOL_BIN/rust-analyzer"
   export PATH="$PROJECT_TOOL_BIN:$PATH"
+  nvim --headless -i NONE --cmd 'set runtimepath^=${extraFiles}' -u ${initFile} \
+    -c 'luafile ${./nvim-files.lua}' -c 'qa!'
   nvim --headless -i NONE --cmd 'set runtimepath^=${extraFiles}' -u ${initFile} \
     -c 'luafile ${./nvim-runtime.lua}' -c 'qa!'
   touch "$out"
