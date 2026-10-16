@@ -125,6 +125,7 @@
         wine = true;
       };
     };
+    noctalia.package = pkgs.noctalia;
     rmpc.enable = true;
     zen-browser = {
       enable = true;

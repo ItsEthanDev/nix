@@ -2,6 +2,7 @@
   config,
   inputs,
   pkgs,
+  primaryUser,
   ...
 }: let
   colors = config.lib.stylix.colors;
@@ -20,6 +21,21 @@ in {
     inputs.noctalia-greeter.nixosModules.default
     inputs.stylix.nixosModules.stylix
   ];
+
+  nixpkgs.overlays = [
+    (_final: _prev: {
+      noctalia = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [./noctalia-enter-to-unlock.patch];
+      });
+    })
+  ];
+
+  services.greetd.settings.initial_session = {
+    user = primaryUser;
+    command = "${pkgs.uwsm}/bin/uwsm start -e -D Hyprland hyprland.desktop";
+  };
+
+  programs.noctalia.package = pkgs.noctalia;
 
   programs.noctalia-greeter = {
     enable = true;

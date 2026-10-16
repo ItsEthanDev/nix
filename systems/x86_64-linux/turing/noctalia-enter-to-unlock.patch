@@ -1,0 +1,56 @@
+--- a/src/shell/lockscreen/lock_screen.cpp
++++ b/src/shell/lockscreen/lock_screen.cpp
+@@ -1109,41 +1109,7 @@
+   if (m_authenticating || !m_locked || m_unlocking) {
+     return;
+   }
+-  if (m_password.empty()) {
+-    const bool allowEmptyPassword =
+-        m_configService != nullptr && m_configService->config().lockscreen.allowEmptyPassword;
+-    if (!allowEmptyPassword) {
+-      return;
+-    }
+-  }
+-
+-  stopFingerprint();
+-  if (m_wayland != nullptr) {
+-    m_wayland->stopKeyRepeat();
+-  }
+-
+-  std::string password = m_password;
+-  clearSensitiveString(m_password);
+-
+-  const std::uint64_t generation = ++m_authGeneration;
+-  m_authenticating = true;
+-  m_status = i18n::tr("lockscreen.authenticating");
+-  m_statusIsError = false;
+-  updatePromptOnSurfaces();
+-
+-  const PamAuthenticator authenticator = m_authenticator;
+-  // Authenticate against the "login" stack. If fingerprint is enabled, strip
+-  // pam_fprintd from it: noctalia drives the reader itself over D-Bus and the
+-  // two can't share the sensor. See docs/fingerprint.md.
+-  const std::string pamService = "login";
+-  const std::string pamLanguage(i18n::Service::instance().language());
+-  const std::string pamStartFailure = i18n::tr("auth.pam.start-failed");
+-  std::thread([this, generation, password = std::move(password), authenticator, pamService, pamLanguage,
+-               pamStartFailure]() mutable {
+-    const auto result = authenticator.authenticateCurrentUser(password, pamService, pamLanguage, pamStartFailure);
+-    clearSensitiveString(password);
+-    DeferredCall::callLater([this, generation, result]() { handleAuthResult(generation, result); });
+-  }).detach();
++  unlock();
+ }
+ 
+ void LockScreen::handleAuthResult(std::uint64_t generation, PamAuthenticator::Result result) {
+--- a/src/shell/lockscreen/lock_surface.cpp
++++ b/src/shell/lockscreen/lock_surface.cpp
+@@ -480,7 +480,7 @@
+   m_loginContentRow->addChild(
+       ui::input({
+           .out = &m_passwordField,
+-          .placeholder = i18n::tr("lockscreen.password-placeholder"),
++          .placeholder = "Press Enter to return",
+           .passwordMode = true,
+           .onChange =
+               [this](const std::string& value) {
