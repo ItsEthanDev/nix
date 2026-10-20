@@ -52,10 +52,6 @@ in {
       ".pi/agent/prompts/adopt-project-docs.md".source = ../../../static/ai/prompts/adopt-project-docs.md;
       ".pi/agent/extensions/subagent/config.json".text = builtins.toJSON {maxSubagentDepth = 2;};
       ".pi/agent/agents/delegate.md".source = webAgent ../../../static/ai/agents/delegate.md;
-      ".pi/agent/agents/researcher.md".source = webAgent ../../../static/ai/agents/researcher.md;
-      ".pi/agent/agents/reviewer.md".source = webAgent ../../../static/ai/agents/reviewer.md;
-      ".pi/agent/agents/scout.md".source = ../../../static/ai/agents/scout.md;
-      ".pi/agent/agents/worker.md".source = ../../../static/ai/agents/worker.md;
     };
   };
 }
