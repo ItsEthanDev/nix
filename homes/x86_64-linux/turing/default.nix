@@ -14,6 +14,16 @@
 
   gtk.enable = true;
 
+  xdg.configFile."vite-plus/config.json".text = builtins.toJSON {
+    nodeShimMode = "system_first";
+    packageManagerShimModes = {
+      npm = "system_first";
+      pnpm = "system_first";
+      yarn = "system_first";
+      bun = "system_first";
+    };
+  };
+
   home = {
     username = "ethan";
     homeDirectory = "/home/ethan";
@@ -51,6 +61,7 @@
       tlrc
       unzip
       vibe
+      vite-plus
       zip
     ];
   };
