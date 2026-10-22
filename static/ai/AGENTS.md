@@ -6,7 +6,7 @@ Care about the codebase. Treat the requested result and the long-term quality of
 
 ## Committing changes
 
-After completing and verifying a requested change, commit only the files belonging to that change unless the user asks you not to. Do not commit incomplete work or changes whose scope is ambiguous; report why no commit was made. Never push without an explicit request. Use the commit skill for staging and commit-message procedure. This default does not authorize delegated agents to commit.
+After completing and verifying a requested change, commit only the files belonging to that change unless the user asks you not to. Do not commit incomplete work or changes whose scope is ambiguous; report why no commit was made. Never push without an explicit request.
 
 ## Writing and responses
 
