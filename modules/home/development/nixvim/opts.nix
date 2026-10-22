@@ -12,7 +12,7 @@ in {
         autoread = lib.mkDefault true;
         breakindent = lib.mkDefault true;
         clipboard = lib.mkDefault "unnamedplus";
-        conceallevel = lib.mkDefault 2;
+        conceallevel = lib.mkDefault 0;
         cursorline = lib.mkDefault true;
         cursorlineopt = lib.mkDefault "number";
         expandtab = lib.mkDefault true;
