@@ -45,6 +45,7 @@
       bun
       cargo
       celluloid
+      codex
       discord
       fd
       gcc
