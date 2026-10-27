@@ -172,7 +172,29 @@
     };
     Service = {
       Type = "exec";
-      ExecStart = "${lib.getExe config.programs.herdr.package} server";
+      ExecStart = let
+        herdr = lib.getExe config.programs.herdr.package;
+      in
+        lib.getExe (pkgs.writeShellApplication {
+          name = "herdr-session-server";
+          text = ''
+            server_running() {
+              ${herdr} status server --json | ${lib.getExe pkgs.jq} -e '.running == true' >/dev/null
+            }
+
+            if server_running; then
+              exit 0
+            fi
+
+            ${herdr} server || {
+              status=$?
+              if server_running; then
+                exit 0
+              fi
+              exit "$status"
+            }
+          '';
+        });
       WorkingDirectory = config.home.homeDirectory;
       Restart = "on-failure";
       RestartSec = 3;
