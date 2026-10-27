@@ -15,10 +15,6 @@
       url = "github:ItsEthanDev/barnyard-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    claude-desktop = {
-      url = "github:NickyTope/claude-desktop-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixvim.url = "github:nix-community/nixvim";
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -58,6 +54,7 @@
     pkgsFor = system:
       import nixpkgs {
         inherit system;
+        config.allowUnfreePredicate = pkg: nixpkgs.lib.getName pkg == "claude-desktop";
         overlays = [self.overlays.default];
       };
   in {
