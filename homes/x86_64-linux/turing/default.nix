@@ -51,6 +51,7 @@
       gcc
       gh
       inputs.barnyard.packages.${pkgs.stdenv.hostPlatform.system}.barnyard
+      inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.default
       javaPackages.compiler.temurin-bin.jre-25
       jq
       loupe

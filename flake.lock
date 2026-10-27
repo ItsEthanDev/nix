@@ -88,6 +88,26 @@
         "type": "github"
       }
     },
+    "claude-desktop": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784155523,
+        "narHash": "sha256-Lhl3dfnvYye1MIdy2JP2etzJTL0+8tZ4J7/l3QrAXbY=",
+        "owner": "NickyTope",
+        "repo": "claude-desktop-nix",
+        "rev": "c09ece948569dee693aa27e76c5bf0f4411e28d7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NickyTope",
+        "repo": "claude-desktop-nix",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -413,6 +433,7 @@
     "root": {
       "inputs": {
         "barnyard": "barnyard",
+        "claude-desktop": "claude-desktop",
         "home-manager": "home-manager",
         "its-skills": "its-skills",
         "mandelbrust": "mandelbrust",
