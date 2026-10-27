@@ -61,6 +61,7 @@
       pnpm
       rustc
       tlrc
+      tuicr
       unzip
       vibe
       vite-plus
