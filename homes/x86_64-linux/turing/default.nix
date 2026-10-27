@@ -164,5 +164,22 @@
     mpdris2.enable = true;
   };
 
+  systemd.user.services.herdr = {
+    Unit = {
+      Description = "Herdr graphical-session server";
+      After = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
+    };
+    Service = {
+      Type = "exec";
+      ExecStart = "${lib.getExe config.programs.herdr.package} server";
+      WorkingDirectory = config.home.homeDirectory;
+      Restart = "on-failure";
+      RestartSec = 3;
+      Slice = "app-graphical.slice";
+    };
+    Install.WantedBy = ["graphical-session.target"];
+  };
+
   stylix.targets.zen-browser.profileNames = ["Default Profile"];
 }
